@@ -1,13 +1,15 @@
 #logo{
-  width:103em;
+  width:90em;
  height:20em;
+ position:relative;
+
 }
 body{
   overflow-x: hidden;
 }
 #loginTitle,#subtitle,#signin{
   position:relative;
-  left:400px;
+  left:500px;
   
 }
 #loginTitle{
@@ -16,7 +18,7 @@ body{
 
 input[type=text], select {
   position:relative;
-  left:400px;
+  left:500px;
   width: 500px;
   padding: 12px 20px;
   margin: 8px 0;
@@ -27,14 +29,14 @@ input[type=text], select {
 }
 #forgot{
   position:relative;
-  left:420px;
+  left:510px;
   color:blue;
  
 
 }
 #signup{
   position:relative;
-  left:720px;
+  left:810px;
   color:blue;
   
 }
@@ -55,7 +57,7 @@ input[type=text], select {
 #facebook{
   position: relative;
   padding: 12px 20px;
-  left:450px;
+  left:550px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
@@ -69,7 +71,7 @@ input[type=text], select {
 #google{
   position: relative;
   padding: 12px 20px;
-  left:500px;
+  left:600px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
