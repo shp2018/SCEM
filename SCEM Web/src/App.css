@@ -31,8 +31,6 @@ input[type=text], select {
   position:relative;
   left:510px;
   color:blue;
- 
-
 }
 #signup{
   position:relative;
@@ -90,7 +88,6 @@ input[type=text], select {
   padding: 3px;
 }
 
-
 .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
@@ -102,4 +99,65 @@ input[type=text], select {
     z-index: 1;
     width:30px;
     height:30px;
+}
+
+
+/*Forgot Password Page*/
+
+#forgot-page {
+    text-align: center;
+}
+
+#forgot-backButton {
+    position: absolute;
+    left: calc(50% - 153px);
+    filter: invert(100%);
+    margin-top: 17px;
+}
+
+#forgot-header {
+    background-color: #224cbf;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-bottom: 50px;
+    padding-top: 25px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 25px;
+}
+
+#forgot-forgotPasswordText {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#forgot-emailAndSubmit {
+    margin-top: 30px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#forgot-subtitle {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#forgot-emailInput {
+    border-radius: 5px;
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+}
+
+#forgot-submit {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: white;
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
 }
