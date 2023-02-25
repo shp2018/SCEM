@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import emailjs from 'emailjs-com';
+import '../css/forgot.css';
 
 function ForgotPassword() {
     emailjs.init('GONcF-cj5ZEW9CF6a');
