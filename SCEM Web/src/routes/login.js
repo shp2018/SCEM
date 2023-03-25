@@ -1,6 +1,6 @@
 import React from "react";
 import Glogin from "../components/googleLogin.js";
-import FbLogin from "../components/facebookLogin";
+import FbLogin from "../components/facebookLogin.js";
 import {useEffect} from 'react';
 import {useState} from 'react';
 import {gapi} from 'gapi-script'
@@ -39,7 +39,7 @@ function Login() {
     return (
         <body>
 
-        <div id={"login-header"}>
+        <div>
             <img id="logo" src='logoTemp.jpg' alt={"SCEM logo"}></img>
             <a href="/" id="back" className="arrow left"></a>
         </div>
@@ -62,7 +62,7 @@ function Login() {
                 OR
             </div>
 
-            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            <div id={"loginButtons"}>
                 <Glogin/>
                 <FbLogin/>
             </div>
