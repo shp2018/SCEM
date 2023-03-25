@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import emailjs from 'emailjs-com';
 import '../css/forgot.css';
+import {useNavigate} from "react-router-dom";
 
 function ForgotPassword() {
     emailjs.init('GONcF-cj5ZEW9CF6a');
@@ -11,6 +12,8 @@ function ForgotPassword() {
         email: email,
         OTP: Math.floor(100000 + Math.random() * 900000),
     }
+
+    const navigate = useNavigate();
 
     const sendEmail = e => {
         e.preventDefault();
@@ -23,7 +26,7 @@ function ForgotPassword() {
         emailjs.send('service_miwbqi2', 'template_5f1t95s', templateParams)
             .then((res) => {
                 alert('OTP to retrieve the password sent to the email if it exists.');
-                window.location = '/resetPassword';
+                navigate('/resetPassword', {state: {email: templateParams.email, OTP: templateParams.OTP} });
             }, err => {
                 console.log(err.text);
             })
@@ -62,7 +65,6 @@ function ForgotPassword() {
                 </button>
             </form>
             </div>
-
         </div>
     );
 }

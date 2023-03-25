@@ -1,0 +1,64 @@
+#reset-page {
+    text-align: center;
+}
+
+#reset-header {
+    background-color: #224cbf;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-bottom: 50px;
+    padding-top: 25px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 25px;
+}
+
+#reset-resetPasswordText {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#reset-subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#reset-backButton {
+    position: absolute;
+    left: calc(50% - 153px);
+    filter: invert(100%);
+    margin-top: 2%;
+}
+
+#reset-emailInput {
+    margin-right: 49%;
+    width: 200px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#reset-otp {
+    margin-right: 49%;
+    width: 200px;
+}
+
+#reset-password {
+    margin-right: 49%;
+    width: 200px;
+}
+
+#reset-confirmPassword {
+    margin-right: 49%;
+    width: 200px;
+}
+
+#reset-button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: white;
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
+}

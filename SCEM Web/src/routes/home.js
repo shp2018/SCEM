@@ -4,7 +4,7 @@ import HomeWithLogin from "../components/homeWithLogin";
 
 function checkLoginStatus() {
     // TODO: add function in condition to check if user is logged in or not
-    if (false) {
+    if (true) {
         return (
             <HomeWithoutLogin> </HomeWithoutLogin>
         );
