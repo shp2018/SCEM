@@ -4,6 +4,9 @@ import FbLogin from "../components/facebookLogin.js";
 import {useEffect} from 'react';
 import {useState} from 'react';
 import {gapi} from 'gapi-script'
+import {passWordValidate} from '../components/passwordValidate'
+import { userExist } from "../components/userExist.js";
+import { accountStatus } from "../components/accountStatus.js";
 import '../css/login.css';
 
 const clientId = "1020057730481-3iflk45qqttk0v8pg48bjk4j0nmi6qm2.apps.googleusercontent.com"
@@ -34,7 +37,23 @@ function Login() {
     const handleClick = () => {
         setEmail(email);
         setPassword(password);
-    };
+        if(userExist(givenEmail)){
+          if(passWordValidate(givenEmail,givenPassword)){
+            if(accountStatus(givenEmail)){
+              console.log("success")
+            }
+            else{
+              console.log("account locked")
+            }
+          }
+          else{
+            console.log("password does not match email")
+          }
+        }
+        else{
+          console.log("email does not exist")
+        }
+      };
 
     return (
         <body>
