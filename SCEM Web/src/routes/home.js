@@ -1,12 +1,23 @@
 import React from "react";
+import HomeWithoutLogin from "../components/homeWithoutLogin";
+import HomeWithLogin from "../components/homeWithLogin";
 
+function checkLoginStatus() {
+    // TODO: add function in condition to check if user is logged in or not
+    if (true) {
+        return (
+            <HomeWithoutLogin> </HomeWithoutLogin>
+        );
+    } else {
+        return (
+            <HomeWithLogin> </HomeWithLogin>
+        );
+    }
+}
 
-function Home(){
+function Home() {
     return (
-  <div>
-   <p>Working!</p>
-        
-      </div>
+        checkLoginStatus()
     );
 }
 

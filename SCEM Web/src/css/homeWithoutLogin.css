@@ -1,0 +1,115 @@
+#homeWithoutLogin-header {
+    position: relative;
+    width: 50%;
+}
+
+#homeWithoutLogin-logo {
+    text-align: center;
+    width: 100%;
+    margin-left: 50%;
+    border-radius: 30px;
+}
+
+#homeWithoutLogin-button-login {
+    position: absolute;
+    margin-left: 90%;
+    transform: translate(-50%, -200%);
+    -ms-transform: translate(-50%, -200%);
+    height: 35px;
+    width: 150px;
+    background-color: #224cbf;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    border-color: transparent;
+    font-weight: bold;
+}
+
+#homeWithoutLogin-button-signup {
+    transform: translate(-50%, -200%);
+    -ms-transform: translate(-50%, -200%);
+    position: absolute;
+    margin-left: 110%;
+    height: 35px;
+    width: 150px;
+    font-size: 18px;
+    border-radius: 10px;
+    border-color: transparent;
+    font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#homeWithoutLogin-suggestions {
+    padding: 30px;
+    text-align: center;
+    background-color: darkcyan;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 30px;
+}
+
+#homeWithoutLogin-navbar {
+    text-align: center;
+}
+
+#homeWithoutLogin-navbar ul li {
+    display: inline;
+}
+
+ul {
+    list-style-type: none;
+    margin: 60px;
+    padding: 0;
+    overflow: hidden;
+}
+
+li a {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 50px;
+    text-decoration: none;
+    color: black;
+    background-color: lightblue;
+}
+
+li a:hover {
+    background-color: whitesmoke;
+}
+
+a:visited {
+    color: black;
+}
+
+#homeWithoutLogin-imageBar {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    margin-left: 34.2%;
+    margin-top: 50px;
+    margin-bottom: -60px;
+}
+
+#homeWithoutLogin-icons {
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    margin-right: 131px;
+}
+
+#homeWithoutLogin-rent {
+    text-align: center;
+    color: black;
+    margin: 50px 40%;
+    padding: 30px;
+    background-color: lightgray;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}

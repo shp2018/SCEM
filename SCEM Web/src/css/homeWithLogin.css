@@ -1,0 +1,109 @@
+#homeWithLogin-header {
+    position: relative;
+    width: 50%;
+}
+
+#homeWithLogin-suggestions {
+    padding: 30px;
+    text-align: center;
+    background-color: darkcyan;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 30px;
+}
+
+#homeWithLogin-imageBar {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    margin-left: 34.2%;
+    margin-top: 50px;
+    margin-bottom: -60px;
+}
+
+#homeWithLogin-navbar {
+    text-align: center;
+}
+
+#homeWithLogin-navbar ul li {
+    display: inline;
+}
+
+ul {
+    list-style-type: none;
+    margin: 60px;
+    padding: 0;
+    overflow: hidden;
+}
+
+li a {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 50px;
+    text-decoration: none;
+    color: black;
+    background-color: lightblue;
+}
+
+li a:hover {
+    background-color: whitesmoke;
+}
+
+a:visited {
+    color: black;
+}
+
+#homeWithLogin-icons {
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    margin-right: 8.2em;
+}
+
+#homeWithLogin-menuItem {
+    text-align: center;
+    color: black;
+    margin: 50px 40%;
+    padding: 30px;
+    background-color: lightgray;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+#homeWithLogin-menuItemIcons {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 18px;
+    left: -44%;
+}
+
+#homeWithLogin-menuItemLinks {
+    position: absolute;
+    text-align: center;
+}
+
+#homeWithLogin-companyManagement {
+    margin-top: 100px;
+}
+
+#homeWithLogin-companyManagementHeader {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#homeWithLogin-equipmentManagement {
+    margin-top: 100px;
+}
+
+#homeWithLogin-equipmentManagementHeader {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
