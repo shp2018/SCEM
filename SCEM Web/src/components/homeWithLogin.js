@@ -5,36 +5,37 @@ function HomeWithLogin() {
     return (
         <div>
             <div id={"homeWithLogin-header"}>
-                <img id="homeWithoutLogin-logo" src='logoTemp.jpg' alt={"SCEM logo"}></img>
+                <img id="homeWithLogin-logo" src='logoTemp.jpg' alt={"SCEM logo"}></img>
             </div>
 
             <div id={"homeWithLogin-suggestions"}>
                 <p> AI Suggestions: Equipment A needs urgent maintenance to avoid future breakdown. </p>
             </div>
 
-            <div id={"homeWithLogin-imageBar"}>
-                <a href={"/"}><img src={'company.png'}
-                                   id={"homeWithLogin-icons"}
-                                   alt={"Generic Company Logo"}></img></a>
-                <a href={"/"}><img src={'equipment.png'}
-                                   id={"homeWithLogin-icons"}
-                                   alt={"Generic Equipment Logo"}></img></a>
-                <a href={"/"}><img src={'rent.png'}
-                                   id={"homeWithLogin-icons"}
-                                   alt={"Generic Rent Logo"}></img></a>
-                <a href={"/"}><img src={'marketplace.png'}
-                                   id={"homeWithLogin-icons"}
-                                   alt={"Generic Money Logo"}></img></a>
-            </div>
 
-            <div id={"homeWithLogin-navbar"}>
+            <nav id={"homeWithLogin-navbar"}>
+                <ul id={"homeWithLogin-iconBar"}>
+                    <img src={'company.png'}
+                         id={"homeWithLogin-icons"}
+                         alt={"Generic Company Logo"}></img>
+                    <img src={'equipment.png'}
+                         id={"homeWithLogin-icons"}
+                         alt={"Generic Equipment Logo"}></img>
+                    <img src={'rent.png'}
+                         id={"homeWithLogin-icons"}
+                         alt={"Generic Rent Logo"}></img>
+                    <img src={'marketplace.png'}
+                         id={"homeWithLogin-icons"}
+                         alt={"Generic Company Logo"}></img>
+                </ul>
+
                 <ul id={"homeWithLogin-links"}>
                     <li> <a href={"/"}> Company </a></li>
                     <li> <a href={"/"}> Equipment </a>  </li>
                     <li> <a href={"/"}> For Rent </a>  </li>
                     <li> <a href={"/"}> Marketplace </a> </li>
                 </ul>
-            </div>
+            </nav>
 
             <div id={"homeWithLogin-menuItem"}>
                 <img src={'rentMyEquipment.jpg'}

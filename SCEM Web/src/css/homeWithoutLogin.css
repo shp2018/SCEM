@@ -5,8 +5,8 @@
 
 #homeWithoutLogin-logo {
     text-align: center;
-    width: 100%;
-    margin-left: 50%;
+    width: 120%;
+    margin-left: 40%;
     border-radius: 30px;
 }
 
@@ -63,9 +63,22 @@ button:hover {
     display: inline;
 }
 
+#homeWithoutLogin-icons {
+    width: 3em;
+    height: 3em;
+    border-radius: 20px;
+    align-content: center;
+    margin-left: 3.9em;
+    margin-right: 4.5em;
+}
+
+#homeWithoutLogin-links {
+    margin-top: -0.5em;
+}
+
 ul {
     list-style-type: none;
-    margin: 60px;
+    margin-top: 50px;
     padding: 0;
     overflow: hidden;
 }
@@ -86,22 +99,6 @@ li a:hover {
 
 a:visited {
     color: black;
-}
-
-#homeWithoutLogin-imageBar {
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    margin-left: 34.2%;
-    margin-top: 50px;
-    margin-bottom: -60px;
-}
-
-#homeWithoutLogin-icons {
-    width: 50px;
-    height: 50px;
-    border-radius: 20px;
-    margin-right: 131px;
 }
 
 #homeWithoutLogin-rent {
