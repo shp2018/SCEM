@@ -29,25 +29,13 @@
     margin-top: 2%;
 }
 
-#reset-emailInput {
-    margin-right: 49%;
-    width: 200px;
-    border-radius: 5px;
-    margin-bottom: 5px;
+#reset-inputs {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#reset-otp {
-    margin-right: 49%;
-    width: 200px;
-}
-
-#reset-password {
-    margin-right: 49%;
-    width: 200px;
-}
-
-#reset-confirmPassword {
-    margin-right: 49%;
+#reset-emailInput, #reset-otp, #reset-password, #reset-confirmPassword {
     width: 200px;
 }
 
