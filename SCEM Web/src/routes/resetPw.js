@@ -25,13 +25,13 @@ function ResetPassword() {
     const checkForm = e => {
         e.preventDefault();
 
-        if (JSON.stringify(trueOTP) === userOTP) {
+        if ((JSON.stringify(trueOTP) === userOTP) && (userEmail === email)) {
             //changePassword(userEmail, userPassword);
             alert("Password change success.");
             navigate('/login');
             trueOTP = 9000000;
         } else {
-            alert("OTP incorrect, please provide the correct OTP sent in your email.");
+            alert("Email or OTP provided incorrect, please provide the correct OTP sent in your email.");
         }
     }
 
@@ -47,15 +47,14 @@ function ResetPassword() {
             </div>
             <p id={"reset-subtitle"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
             <form onSubmit={checkForm}>
-                <div>
+                <div id={"reset-inputs"}>
                     <input type={"text"}
                            defaultValue={email}
                            placeholder={"Email"}
                            id={"reset-emailInput"}
                            onChange={() => setUserEmail(document.getElementById("reset-emailInput").value)}
                     />
-                </div>
-                <div>
+
                     <input type={"text"}
                            placeholder={"OTP"}
                            id={"reset-otp"}
@@ -63,15 +62,12 @@ function ResetPassword() {
                            onChange={() => setUserOTP(document.getElementById("reset-otp").value)}
                     />
 
-                </div>
-                <div>
                     <input type={"password"}
                            placeholder={"Password"}
                            id={"reset-password"}
                            onChange={() => setUserPassword(document.getElementById("reset-password").value)}
                     />
-                </div>
-                <div>
+
                     <input type={"password"}
                            placeholder={"Confirm Password"}
                            id={"reset-confirmPassword"}/>
