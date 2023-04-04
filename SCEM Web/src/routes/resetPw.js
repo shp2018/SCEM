@@ -1,38 +1,46 @@
 import React, {useState} from "react";
 import '../css/resetPw.css';
 import {useLocation, useNavigate} from "react-router-dom";
+import {initializeApp} from "firebase/app";
+import {getDatabase} from "firebase/database";
+import {getAuth} from "firebase/auth";
 
 function ResetPassword() {
+    //Database config
+    const firebaseConfig = {
+        apiKey: "AIzaSyClVMzqHeGaGmWCFLcVD0aS450TKKgRhVk",
+        authDomain: "scem-1dec5.firebaseapp.com",
+        projectId: "scem-1dec5",
+        storageBucket: "scem-1dec5.appspot.com",
+        messagingSenderId: "497821850518",
+        appId: "1:497821850518:web:801b1501b984370a649bb7"
+    };
+
+    //Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    //Initialize Realtime Database and get a reference to the service
+    const database = getDatabase(app);
+
+    const auth = getAuth();
 
     const location = useLocation();
     const navigate = useNavigate();
 
-    let email, trueOTP;
+    let email;
 
     if (location.state != null) {
         email = location.state.email;
-        trueOTP = location.state.OTP;
     }
 
     // eslint-disable-next-line
     const [userEmail, setUserEmail] = useState(email);
     // eslint-disable-next-line
     const [userPassword, setUserPassword] = useState('');
-    const [userOTP, setUserOTP] = useState(0);
-
-    //console.log(trueOTP);
 
     const checkForm = e => {
         e.preventDefault();
 
-        if ((JSON.stringify(trueOTP) === userOTP) && (userEmail === email)) {
-            //changePassword(userEmail, userPassword);
-            alert("Password change success.");
-            navigate('/login');
-            trueOTP = 9000000;
-        } else {
-            alert("Email or OTP provided incorrect, please provide the correct OTP sent in your email.");
-        }
     }
 
     return (
@@ -53,13 +61,6 @@ function ResetPassword() {
                            placeholder={"Email"}
                            id={"reset-emailInput"}
                            onChange={() => setUserEmail(document.getElementById("reset-emailInput").value)}
-                    />
-
-                    <input type={"text"}
-                           placeholder={"OTP"}
-                           id={"reset-otp"}
-                           maxLength={"6"}
-                           onChange={() => setUserOTP(document.getElementById("reset-otp").value)}
                     />
 
                     <input type={"password"}
