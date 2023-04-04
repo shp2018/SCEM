@@ -81,7 +81,7 @@ function Signup() {
                         }}></input><br></br>
                         <input id="signup-InputConfirmPassword" type="password"
                                placeholder="Confirm Password"></input><br></br>
-                        <p id="message"></p>
+                        <p id="signup-message"></p>
                     </div>
                     <div class="tacbox">
                         <input id="checkbox" type="checkbox"/>
