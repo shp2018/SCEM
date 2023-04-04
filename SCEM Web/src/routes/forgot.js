@@ -1,35 +1,45 @@
 import React, {useState} from "react";
-import emailjs from 'emailjs-com';
 import '../css/forgot.css';
 import {useNavigate} from "react-router-dom";
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 function ForgotPassword() {
-    emailjs.init('GONcF-cj5ZEW9CF6a');
+    //Database config
+    const firebaseConfig = {
+        apiKey: "AIzaSyClVMzqHeGaGmWCFLcVD0aS450TKKgRhVk",
+        authDomain: "scem-1dec5.firebaseapp.com",
+        projectId: "scem-1dec5",
+        storageBucket: "scem-1dec5.appspot.com",
+        messagingSenderId: "497821850518",
+        appId: "1:497821850518:web:801b1501b984370a649bb7"
+    };
 
+    //Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    //Initialize Realtime Database and get a reference to the service
+    const database = getDatabase(app);
+
+    const auth = getAuth();
+
+    //Initialize email's state
     const [email, setEmail] = useState("");
-
-    const templateParams = {
-        email: email,
-        OTP: Math.floor(100000 + Math.random() * 900000),
-    }
 
     const navigate = useNavigate();
 
     const sendEmail = e => {
         e.preventDefault();
 
-        if (email === "") {
-            alert('Email not valid.');
-            return;
-        }
-
-        emailjs.send('service_miwbqi2', 'template_5f1t95s', templateParams)
-            .then((res) => {
-                alert('OTP to retrieve the password sent to the email if it exists.');
-                navigate('/resetPassword', {state: {email: templateParams.email, OTP: templateParams.OTP} });
-            }, err => {
-                console.log(err.text);
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                console.log("Success!")
             })
+            .catch((error => {
+                console.log(error.code);
+                console.log(error.message);
+            }))
     };
 
     return (

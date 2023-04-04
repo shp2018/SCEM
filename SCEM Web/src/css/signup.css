@@ -53,6 +53,24 @@
     border-color: #c4c7cc;
 }
 
+#signup-InputConfirmPassword {
+    border-style: double;
+    border-radius: 5px;
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+}
+
+#signup-InputEmail {
+    border-style: double;
+    border-radius: 5px;
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+}
+
 /*input {*/
 /*    height: 2em;*/
 /*    width: 2em;*/
@@ -107,4 +125,11 @@
     background-color: #de5246;
     color: white;
     font-weight: bold;
+}
+
+#signup-message {
+    font-size: 14px;
+    margin: 15px 0;
+    display: inline-block;
+    color: #ffffff;
 }
