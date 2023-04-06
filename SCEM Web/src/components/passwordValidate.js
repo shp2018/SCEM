@@ -16,6 +16,3 @@ export function passWordValidate(userKey,password){
     }
  
 }
-
-
-

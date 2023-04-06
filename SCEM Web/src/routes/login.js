@@ -4,10 +4,10 @@ import FbLogin from "../components/facebookLogin.js";
 import {useEffect} from 'react';
 import {useState} from 'react';
 import {gapi} from 'gapi-script'
-import {passWordValidate} from '../components/passwordValidate'
-import { userExist } from "../components/userExist.js";
-import { accountStatus } from "../components/accountStatus.js";
 import '../css/login.css';
+import {signInWithEmailAndPassword} from "firebase/auth";
+import {auth} from "../firebase";
+import {useNavigate} from "react-router-dom";
 
 const clientId = "1020057730481-3iflk45qqttk0v8pg48bjk4j0nmi6qm2.apps.googleusercontent.com"
 
@@ -27,33 +27,29 @@ function Login() {
     const [givenEmail, setEmail] = useState(email);
     // eslint-disable-next-line
     const [givenPassword, setPassword] = useState(password);
+    const navigate = useNavigate();
 
     const handleEmailChange = (event) => {
         Email(event.target.value);
     };
+
     const handlePasswordChange = (event) => {
         Password(event.target.value);
     };
+
     const handleClick = () => {
         setEmail(email);
         setPassword(password);
-        if(userExist(givenEmail)){
-          if(passWordValidate(givenEmail,givenPassword)){
-            if(accountStatus(givenEmail)){
-              console.log("success")
-            }
-            else{
-              console.log("account locked")
-            }
-          }
-          else{
-            console.log("password does not match email")
-          }
-        }
-        else{
-          console.log("email does not exist")
-        }
-      };
+
+        signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            console.log("Success!");
+            navigate("/");
+        }).catch((error) => {
+            console.log(error.code);
+            console.log(error.message);
+            alert("Invalid login. Try again.")
+        })
+    };
 
     return (
         <body>

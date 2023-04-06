@@ -1,23 +1,25 @@
 import React from "react";
 import HomeWithoutLogin from "../components/homeWithoutLogin";
 import HomeWithLogin from "../components/homeWithLogin";
+import {auth} from "../firebase";
 
-function checkLoginStatus() {
-    // TODO: add function in condition to check if user is logged in or not
-    if (false) {
+const user = auth.currentUser;
+
+function displayHomePage() {
+    if (user) {
         return (
-            <HomeWithoutLogin> </HomeWithoutLogin>
+            <HomeWithLogin> </HomeWithLogin>
         );
     } else {
         return (
-            <HomeWithLogin> </HomeWithLogin>
+            <HomeWithoutLogin> </HomeWithoutLogin>
         );
     }
 }
 
 function Home() {
     return (
-        checkLoginStatus()
+        displayHomePage()
     );
 }
 
