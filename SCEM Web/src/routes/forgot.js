@@ -1,40 +1,24 @@
 import React, {useState} from "react";
 import '../css/forgot.css';
-import {useNavigate} from "react-router-dom";
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import {sendPasswordResetEmail} from "firebase/auth";
+import {auth} from "../firebase";
 
 function ForgotPassword() {
-    //Database config
-    const firebaseConfig = {
-        apiKey: "AIzaSyClVMzqHeGaGmWCFLcVD0aS450TKKgRhVk",
-        authDomain: "scem-1dec5.firebaseapp.com",
-        projectId: "scem-1dec5",
-        storageBucket: "scem-1dec5.appspot.com",
-        messagingSenderId: "497821850518",
-        appId: "1:497821850518:web:801b1501b984370a649bb7"
+    // Handle continue URL after successful password change
+    const actionCodeSettings = {
+        url: "http://localhost:3000/login",
+        handleCodeInApp: false
     };
-
-    //Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-
-    //Initialize Realtime Database and get a reference to the service
-    const database = getDatabase(app);
-
-    const auth = getAuth();
 
     //Initialize email's state
     const [email, setEmail] = useState("");
 
-    const navigate = useNavigate();
-
     const sendEmail = e => {
         e.preventDefault();
 
-        sendPasswordResetEmail(auth, email)
+        sendPasswordResetEmail(auth, email, actionCodeSettings)
             .then(() => {
-                console.log("Success!")
+                alert("Success! Check your email.");
             })
             .catch((error => {
                 console.log(error.code);
@@ -60,20 +44,20 @@ function ForgotPassword() {
 
             <div id={"forgot-emailAndSubmit"}>
 
-            <form onSubmit={sendEmail}>
-                <div>
-                    <input type={"email"}
-                           placeholder={"Email"}
-                           id={"forgot-emailInput"}
-                    />
-                </div>
+                <form onSubmit={sendEmail}>
+                    <div>
+                        <input type={"email"}
+                               placeholder={"Email"}
+                               id={"forgot-emailInput"}
+                        />
+                    </div>
 
-                <button onClick={() => setEmail(document.getElementById("forgot-emailInput").value)}
-                        type={"submit"}
-                        id={"forgot-submit"}>
-                    Forgot
-                </button>
-            </form>
+                    <button onClick={() => setEmail(document.getElementById("forgot-emailInput").value)}
+                            type={"submit"}
+                            id={"forgot-submit"}>
+                        Forgot
+                    </button>
+                </form>
             </div>
         </div>
     );
