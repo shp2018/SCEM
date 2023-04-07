@@ -1,9 +1,7 @@
 import React from "react";
 import HomeWithoutLogin from "../components/homeWithoutLogin";
 import HomeWithLogin from "../components/homeWithLogin";
-import {auth} from "../firebase";
-
-const user = auth.currentUser;
+import {user} from "./login";
 
 function displayHomePage() {
     if (user) {

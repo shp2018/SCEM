@@ -1,17 +1,42 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import '../css/homeWithLogin.css';
+import {firestore} from "../firebase";
+import {user} from "../routes/login";
+import {collection, query, where, getDocs} from "firebase/firestore";
 
 function HomeWithLogin() {
+
+    const [userData, setUserData] = useState(null);
+
+    async function getUserData() {
+        const ref = collection(firestore, "users");
+
+        const q = query(ref, where("email", "==", user.email));
+
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc) => {
+            if (!userData) setUserData(doc.data());
+        });
+        return userData;
+    }
+
+    getUserData().then(r => {});
+
     return (
         <div>
             <div id={"homeWithLogin-header"}>
                 <img id="homeWithLogin-logo" src='logoTemp.jpg' alt={"SCEM logo"}></img>
             </div>
 
+            <div id={"homeWithLogin-userInfo"}>
+                <p> Welcome! {userData ? userData.fullname : null} </p>
+
+            </div>
+
             <div id={"homeWithLogin-suggestions"}>
                 <p> AI Suggestions: Equipment A needs urgent maintenance to avoid future breakdown. </p>
             </div>
-
 
             <nav id={"homeWithLogin-navbar"}>
                 <ul id={"homeWithLogin-iconBar"}>
@@ -30,10 +55,10 @@ function HomeWithLogin() {
                 </ul>
 
                 <ul id={"homeWithLogin-links"}>
-                    <li> <a href={"/"}> Company </a></li>
-                    <li> <a href={"/"}> Equipment </a>  </li>
-                    <li> <a href={"/"}> For Rent </a>  </li>
-                    <li> <a href={"/"}> Marketplace </a> </li>
+                    <li><a href={"/"}> Company </a></li>
+                    <li><a href={"/"}> Equipment </a></li>
+                    <li><a href={"/"}> For Rent </a></li>
+                    <li><a href={"/"}> Marketplace </a></li>
                 </ul>
             </nav>
 
