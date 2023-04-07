@@ -5,11 +5,13 @@ import {useEffect} from 'react';
 import {useState} from 'react';
 import {gapi} from 'gapi-script'
 import '../css/login.css';
-import {signInWithEmailAndPassword} from "firebase/auth";
-import {auth} from "../firebase";
+import {setPersistence, browserSessionPersistence, signInWithEmailAndPassword} from "firebase/auth";
+import {auth, firestore} from "../firebase";
 import {useNavigate} from "react-router-dom";
 
 const clientId = "1020057730481-3iflk45qqttk0v8pg48bjk4j0nmi6qm2.apps.googleusercontent.com"
+
+export let user;
 
 function Login() {
     useEffect(() => {
@@ -41,13 +43,16 @@ function Login() {
         setEmail(email);
         setPassword(password);
 
-        signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-            console.log("Success!");
-            navigate("/");
-        }).catch((error) => {
-            console.log(error.code);
-            console.log(error.message);
-            alert("Invalid login. Try again.")
+        setPersistence(auth, browserSessionPersistence).then(() => {
+            return signInWithEmailAndPassword(auth, email, password).then(() => {
+                alert("Success!")
+                user = auth.currentUser;
+                navigate("/");
+            }).catch((error) => {
+                console.log(error.code);
+                console.log(error.message);
+                alert("Invalid login. Try again.")
+            })
         })
     };
 
