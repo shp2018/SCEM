@@ -1,6 +1,3 @@
 .idea
 resources
 SCEM Web/node_modules
-SCEM Web/package.json
-SCEM Web/package-lock.json
-package-lock.json

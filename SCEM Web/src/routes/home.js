@@ -1,10 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import HomeWithoutLogin from "../components/homeWithoutLogin";
 import HomeWithLogin from "../components/homeWithLogin";
-import {user} from "./login";
+import {onAuthStateChanged} from "firebase/auth";
+import {auth} from "../firebase";
 
-function displayHomePage() {
-    if (user) {
+function Home() {
+    const [authState, setAuthState] = useState(false);
+
+    function checkAuthState() {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setAuthState(true);
+            }
+        })
+    }
+
+    checkAuthState();
+
+    if (authState) {
         return (
             <HomeWithLogin> </HomeWithLogin>
         );
@@ -13,12 +26,7 @@ function displayHomePage() {
             <HomeWithoutLogin> </HomeWithoutLogin>
         );
     }
-}
 
-function Home() {
-    return (
-        displayHomePage()
-    );
 }
 
 export default Home;
