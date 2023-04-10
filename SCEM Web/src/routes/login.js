@@ -16,7 +16,7 @@ export let user;
 function Login() {
     useEffect(() => {
         function start() {
-            gapi.client.init({
+            gapi.auth2.init({
                 clientId: clientId,
                 scope: ""
             })

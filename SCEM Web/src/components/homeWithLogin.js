@@ -1,32 +1,33 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import '../css/homeWithLogin.css';
-import {firestore} from "../firebase";
-import {user} from "../routes/login";
+import {auth, firestore} from "../firebase";
 import {collection, query, where, getDocs} from "firebase/firestore";
+import {onAuthStateChanged} from "firebase/auth";
 
 function HomeWithLogin() {
 
     const [userData, setUserData] = useState(null);
 
     async function getUserData() {
-        const ref = collection(firestore, "users");
+        onAuthStateChanged(auth, async (user) => {
+            const ref = collection(firestore, "users");
 
-        const q = query(ref, where("email", "==", user.email));
+            const q = query(ref, where("email", "==", user.email));
 
-        const querySnapshot = await getDocs(q);
+            const querySnapshot = await getDocs(q);
 
-        querySnapshot.forEach((doc) => {
-            if (!userData) setUserData(doc.data());
-        });
-        return userData;
+            querySnapshot.forEach((doc) => {
+                if (!userData) setUserData(doc.data());
+            });
+        })
     }
 
-    getUserData().then(r => {});
+    getUserData().then();
 
     return (
         <div>
             <div id={"homeWithLogin-header"}>
-                <img id="homeWithLogin-logo" src='logoTemp.jpg' alt={"SCEM logo"}></img>
+                <img id="homeWithLogin-logo" src="logoTemp.jpg" alt={"SCEM logo"}></img>
             </div>
 
             <div id={"homeWithLogin-userInfo"}>
