@@ -10,8 +10,6 @@ function Glogin(){
         console.log("LOGIN FAILED! res: ",res)
     }
     return(
-
-       
             <GoogleLogin
             clientId = {clientId}
             buttonText = "Sign in with Google"
@@ -21,11 +19,6 @@ function Glogin(){
             isSignedIn = {true}
             className="btnGoogle"
             ></GoogleLogin>
-
-   
-        
-
-
    )
 }
 export default Glogin;

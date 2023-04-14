@@ -31,7 +31,6 @@ function Signup() {
     const [fullname, setFullname] = useState("");
 
     const handleSave = async (e) => {
-        console.log("handleSave");
         e.preventDefault();
 
         // sign up the user
@@ -41,6 +40,7 @@ function Signup() {
             let data = {
                 fullname: fullname,
                 email: email,
+                locked: false,
             }
             try {
                 setDoc(ref, data)
