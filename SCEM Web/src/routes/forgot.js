@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import '../css/forgot.css';
 import {sendPasswordResetEmail} from "firebase/auth";
-import {auth} from "../firebase";
+import {auth, firestore} from "../firebase";
+import {collection, getDocs, query, where} from "firebase/firestore";
 
 function ForgotPassword() {
     // Handle continue URL after successful password change
@@ -12,18 +13,44 @@ function ForgotPassword() {
 
     //Initialize email's state
     const [email, setEmail] = useState("");
+    const [userData, setUserData] = useState(null);
 
-    const sendEmail = e => {
+    async function getUserData() {
+        const ref = collection(firestore, "users");
+
+        const q = query(ref, where("email", "==", email));
+
+        const querySnapshot = await getDocs(q);
+
+        await querySnapshot.forEach((doc) => {
+            if (!userData) setUserData(doc.data());
+        });
+    }
+
+    const sendEmail = async e => {
+        //TODO: If email provided is locked, do not send reset email.
         e.preventDefault();
 
-        sendPasswordResetEmail(auth, email, actionCodeSettings)
-            .then(() => {
-                alert("Success! Check your email.");
-            })
-            .catch((error => {
-                console.log(error.code);
-                console.log(error.message);
-            }))
+        await getUserData().then(() => {
+            console.log(userData);
+            sendPasswordResetEmail(auth, email, actionCodeSettings)
+                .then(() => {
+                    alert("Success! Check your email.");
+                })
+                .catch((error => {
+                    console.log(error.code);
+                    switch (error.code) {
+                        case ("auth/invalid-email"):
+                            alert("Account does not exist, please check your inputted email.");
+                            break;
+                        case ("auth/missing-email"):
+                            alert("Please provide an email.");
+                            break;
+                        default:
+                            break;
+                    }
+                }))
+        });
     };
 
     return (
@@ -40,7 +67,7 @@ function ForgotPassword() {
                 </div>
             </div>
 
-            <p id = "forgot-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            <p id="forgot-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 
             <div id={"forgot-emailAndSubmit"}>
 
