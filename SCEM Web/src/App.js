@@ -7,7 +7,6 @@ import Home from './routes/home';
 import ResetPassword from './routes/resetPw';
 import ForgotPassword from './routes/forgot';
 import Post from './routes/post'
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
     return (
