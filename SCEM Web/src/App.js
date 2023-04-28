@@ -6,7 +6,9 @@ import Login from './routes/login';
 import Home from './routes/home';
 import ResetPassword from './routes/resetPw';
 import ForgotPassword from './routes/forgot';
-import Post from './routes/post'
+import Post from './routes/post';
+import Marketplace from './routes/marketplace';
+import MarketplaceSearch from './routes/marketplaceSearch';
 
 function App() {
     return (
@@ -18,6 +20,8 @@ function App() {
                 <Route path="/forgotPassword" element={<ForgotPassword/>}/>
                 <Route path="/resetPassword" element={<ResetPassword/>}/>
                 <Route path="/post" element={<Post/>}/>
+                <Route path={"/marketplace"} element={<Marketplace/>}/>
+                <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
             </Routes>
         </Router>
     );

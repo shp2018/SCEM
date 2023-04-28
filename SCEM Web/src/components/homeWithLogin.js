@@ -59,7 +59,7 @@ function HomeWithLogin() {
                     <li><a href={"/"}> Company </a></li>
                     <li><a href={"/"}> Equipment </a></li>
                     <li><a href={"/"}> For Rent </a></li>
-                    <li><a href={"/"}> Marketplace </a></li>
+                    <li><a href={"/marketplace"}> Marketplace </a></li>
                 </ul>
             </nav>
 
