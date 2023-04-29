@@ -20,8 +20,6 @@ function MarketplaceSearch() {
 
     const search = e => {
         e.preventDefault();
-
-
     }
 
     return (
