@@ -1,0 +1,55 @@
+#marketplaceSearch-page {
+    text-align: center;
+}
+
+#marketplaceSearch-header {
+    background-color: #224cbf;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-bottom: 50px;
+    padding-top: 25px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 25px;
+}
+
+#marketplaceSearch-backButton {
+    display: inline-block;
+    position: relative;
+    filter: invert(100%);
+    right: 4em;
+    bottom: 0.1em;
+}
+
+#marketplaceSearch-title {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+}
+
+#marketplaceSearch-subtitles {
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#marketplaceSearch-fromDate {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+#marketplaceSearch-toDate {
+    display: inline-block;
+    margin-left: 1em;
+}
+
+#marketplaceSearch-searchButton {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: white;
+    width: 19em;
+    height: 3em;
+    margin-top: 20px;
+    border-radius: 0.7em;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
+}
