@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import '../css/marketplaceSearch.css';
-import {collection, getDocs, query, where} from "firebase/firestore";
-import {firestore} from "../firebase";
+import Typesense from 'typesense';
 
 function MarketplaceSearch() {
     const [name, setName] = useState("");
@@ -11,7 +10,15 @@ function MarketplaceSearch() {
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
 
-    const [searchResultName, setSearchResultName] = useState(null);
+    let client = new Typesense.Client({
+        'nodes': [{
+            'host': '6p7hdz3ktlmosu24p-1.a1.typesense.net', // where xxx is the ClusterID of your Typesense Cloud cluster
+            'port': '443',
+            'protocol': 'https'
+        }],
+        'apiKey': 'nzKj2vqJppoZmSDiJovnLbDbT32PBHGI',
+        'connectionTimeoutSeconds': 2
+    })
 
     function setState() {
         setName(document.getElementById("marketplaceSearch-nameInput").value);
@@ -22,21 +29,7 @@ function MarketplaceSearch() {
         setToDate(document.getElementById("marketplaceSearch-toDateInput").value);
     }
 
-    async function searchForName() {
-        const ref = collection(firestore, "marketplace");
-        let nameQuery;
-        if (name !== "") {
-            nameQuery = query(ref, where("name", "==", name));
-        } else {
-            nameQuery = query(ref, where("name", "!=", ""));
-        }
-        const nameQuerySnapshot = await getDocs(nameQuery);
-        nameQuerySnapshot.forEach((doc) => {
-            if (!searchResultName) setSearchResultName(doc.data());
-        })
-    }
-
-    const search = async e => {
+    const search = e => {
         e.preventDefault();
 
         // console.log(name);
@@ -46,7 +39,17 @@ function MarketplaceSearch() {
         // console.log(fromDate);
         // console.log(toDate);
 
-        await searchForName();
+        let search = {
+            'q' : name,
+            'query_by': 'name',
+        }
+
+        client.collections('marketplace')
+            .documents()
+            .search(search)
+            .then(function (searchResults) {
+                console.log(searchResults)
+            })
     }
 
     return (
@@ -92,7 +95,7 @@ function MarketplaceSearch() {
                 </div>
 
                 <div id={"marketplaceSearch-searchResults"}>
-                    {searchResultName ? searchResultName.name : ""}
+
                 </div>
             </form>
         </div>
