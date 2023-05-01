@@ -14,13 +14,11 @@
 
 #forgot-header {
     background-color: #224cbf;
-    margin-left: 30%;
-    margin-right: 30%;
-    padding-bottom: 50px;
-    padding-top: 25px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    margin-top: 25px;
+    padding-bottom: 4em;
+    padding-top: 2em;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
 }
 
 #forgot-forgotPasswordText {

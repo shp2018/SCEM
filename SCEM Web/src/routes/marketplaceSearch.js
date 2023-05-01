@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import '../css/marketplaceSearch.css';
+import {collection, getDocs, query, where} from "firebase/firestore";
+import {firestore} from "../firebase";
 
 function MarketplaceSearch() {
     const [name, setName] = useState("");
@@ -8,6 +10,8 @@ function MarketplaceSearch() {
     const [description, setDescription] = useState("");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
+
+    const [searchResultName, setSearchResultName] = useState(null);
 
     function setState() {
         setName(document.getElementById("marketplaceSearch-nameInput").value);
@@ -18,8 +22,31 @@ function MarketplaceSearch() {
         setToDate(document.getElementById("marketplaceSearch-toDateInput").value);
     }
 
-    const search = e => {
+    async function searchForName() {
+        const ref = collection(firestore, "marketplace");
+        let nameQuery;
+        if (name !== "") {
+            nameQuery = query(ref, where("name", "==", name));
+        } else {
+            nameQuery = query(ref, where("name", "!=", ""));
+        }
+        const nameQuerySnapshot = await getDocs(nameQuery);
+        nameQuerySnapshot.forEach((doc) => {
+            if (!searchResultName) setSearchResultName(doc.data());
+        })
+    }
+
+    const search = async e => {
         e.preventDefault();
+
+        // console.log(name);
+        // console.log(equipmentType);
+        // console.log(site);
+        // console.log(description);
+        // console.log(fromDate);
+        // console.log(toDate);
+
+        await searchForName();
     }
 
     return (
@@ -37,13 +64,13 @@ function MarketplaceSearch() {
                 <div id={"marketplaceSearch-equipmentType"}>
                     <p id={"marketplaceSearch-subtitles"}> Equipment Type </p>
                     <select id={"marketplaceSearch-equipmentTypeInput"}>
-                        <option> All </option>
+                        <option> All</option>
                     </select>
                 </div>
                 <div id={"marketplaceSearch-site"}>
                     <p id={"marketplaceSearch-subtitles"}> Site </p>
                     <select id={"marketplaceSearch-siteInput"}>
-                        <option> All </option>
+                        <option> All</option>
                     </select>
                 </div>
                 <div id={"marketplaceSearch-description"}>
@@ -62,6 +89,10 @@ function MarketplaceSearch() {
                 </div>
                 <div id={"marketplaceSearch-search"}>
                     <button type={"submit"} id={"marketplaceSearch-searchButton"} onClick={setState}> Search</button>
+                </div>
+
+                <div id={"marketplaceSearch-searchResults"}>
+                    {searchResultName ? searchResultName.name : ""}
                 </div>
             </form>
         </div>
