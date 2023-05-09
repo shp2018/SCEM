@@ -6,7 +6,7 @@ import {collection, addDoc} from "@firebase/firestore";
 
 
 const ref = firestore
-const dbRef = collection(ref, "marketplaceEquipment");
+const dbRef = collection(ref, "equipmentForRent");
 const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
 
 function Post() {
@@ -99,20 +99,20 @@ function Post() {
 
     const handlePost = (e) => {
         console.log("Equpment: " + equipment, "Title: " + title, "Info: " + info, "Daily: " + dPrice, "Weekly: " + wPrice, "Monthly: " + mPrice,"From"+fromDate,"To"+toDate, "Images: " + files)
-       
-       
+
+
         const data= {
             Equipment: equipment,
-            Title: title, 
-            Info: info, 
+            Title: title,
+            Info: info,
             DailyPrice: dPrice,
-            WeeklyPrice:wPrice, 
-            MonthlyPrice: + mPrice, 
+            WeeklyPrice:wPrice,
+            MonthlyPrice: + mPrice,
             Images: files,
             FromDate: fromDate,
             ToDate: toDate
         }
-        
+
         addDoc(dbRef, data)
         .then(docRef => {
             console.log("Document has been added successfully");
@@ -120,10 +120,10 @@ function Post() {
         .catch(error => {
             console.log(error);
         })
-      
+
     }
 
-    
+
     return (
         <div>
             <div id="equipment">Equipment</div>
