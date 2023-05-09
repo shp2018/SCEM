@@ -20,7 +20,7 @@ function App() {
                 <Route path="/forgotPassword" element={<ForgotPassword/>}/>
                 <Route path="/resetPassword" element={<ResetPassword/>}/>
                 <Route path="/post" element={<Post/>}/>
-                <Route path={"/marketplace"} element={<Marketplace/>}/>
+                <Route path={"/marketplace"} exact element={<Marketplace/>}/>
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
             </Routes>
         </Router>
