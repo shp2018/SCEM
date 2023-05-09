@@ -54,11 +54,11 @@ function MarketplaceSearch() {
 
         // // TODO: DEBUG
         // if (fromDate !== "") {
-        //     searchParams.filter_by += ` && dateListed:>${fromDate} `;
+        //     searchParams.filter_by += ` && dateListed:>=${fromDate}`;
         // }
         //
         // if (toDate !== "") {
-        //     searchParams.filter_by += ` && dateListed:<"${toDate}"`;
+        //     searchParams.filter_by += ` && dateListed:<=${toDate}`;
         // }
 
         console.log(searchParams.filter_by);
@@ -76,9 +76,14 @@ function MarketplaceSearch() {
         // console.log(fromDate);
         // console.log(toDate);
 
+        let searchParams = generateSearchParams();
+
+        console.log(fromDate);
+        console.log(toDate);
+
         client.collections('marketplace')
             .documents()
-            .search(generateSearchParams())
+            .search(searchParams)
             .then(function (searchResults) {
                 console.log(searchResults);
                 setSearchResults([]);
