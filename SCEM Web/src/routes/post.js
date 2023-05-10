@@ -3,8 +3,6 @@ import '../css/post.css';
 import {firestore} from "../firebase";
 import {collection, addDoc} from "@firebase/firestore";
 
-
-
 const ref = firestore
 const dbRef = collection(ref, "equipmentForRent");
 const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
@@ -120,9 +118,6 @@ function Post() {
         .catch(error => {
             console.log(error);
         })
-
-    }
-
 
     return (
         <div>

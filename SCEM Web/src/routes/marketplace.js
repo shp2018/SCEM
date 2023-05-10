@@ -29,6 +29,7 @@ function Marketplace() {
                 </div>
             </center>
         </div>
+
     );
 }
 
