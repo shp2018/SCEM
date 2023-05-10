@@ -3,7 +3,7 @@ import '../css/post.css';
 import {firestore} from "../firebase";
 import {collection, addDoc} from "@firebase/firestore";
 
-const ref = firestore
+const ref = firestore;
 const dbRef = collection(ref, "equipmentForRent");
 const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
 
@@ -16,8 +16,8 @@ function Post() {
     const [dPrice, setDPrice] = useState('');
     const [wPrice, setWPrice] = useState('');
     const [mPrice, setMPrice] = useState('');
-    const [fromDate,setFromDate] = useState('');
-    const [toDate,setToDate] = useState('');
+    const [fromDate, setFromDate] = useState('');
+    const [toDate, setToDate] = useState('');
     const [fileDataURL, setFileDataURL] = useState(null);
     const [imgNum, setImgNum] = useState(0)
     const [isShown, setIsShown] = useState(false);
@@ -96,28 +96,29 @@ function Post() {
     }
 
     const handlePost = (e) => {
-        console.log("Equpment: " + equipment, "Title: " + title, "Info: " + info, "Daily: " + dPrice, "Weekly: " + wPrice, "Monthly: " + mPrice,"From"+fromDate,"To"+toDate, "Images: " + files)
+        console.log("Equpment: " + equipment, "Title: " + title, "Info: " + info, "Daily: " + dPrice, "Weekly: " + wPrice, "Monthly: " + mPrice, "From" + fromDate, "To" + toDate, "Images: " + files)
 
 
-        const data= {
+        const data = {
             Equipment: equipment,
             Title: title,
             Info: info,
             DailyPrice: dPrice,
-            WeeklyPrice:wPrice,
-            MonthlyPrice: + mPrice,
+            WeeklyPrice: wPrice,
+            MonthlyPrice: +mPrice,
             Images: files,
             FromDate: fromDate,
             ToDate: toDate
         }
 
         addDoc(dbRef, data)
-        .then(docRef => {
-            console.log("Document has been added successfully");
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(docRef => {
+                console.log("Document has been added successfully");
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     return (
         <div>
@@ -139,7 +140,8 @@ function Post() {
             <div id="mprice">Monthly Price</div>
             <input id="mpriceInput" type="number" onChange={handleMPrice}></input>
             <div id="fromDatetext">From Date <span id="toDatetext">To Date</span></div>
-            <input id="fromDate" type="date" onChange={handleFromDate}></input> <input id="toDate" type="date" onChange={handleToDate}></input>
+            <input id="fromDate" type="date" onChange={handleFromDate}></input> <input id="toDate" type="date"
+                                                                                       onChange={handleToDate}></input>
             <div id="pic">Pictures <input id="img" type="file" multiple accept="image/*" onChange={changeHandler}
             /></div>
 
@@ -171,7 +173,6 @@ function Post() {
         </div>
 
     )
- }
-
+}
 
 export default Post;
