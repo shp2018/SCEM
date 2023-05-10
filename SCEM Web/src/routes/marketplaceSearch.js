@@ -52,13 +52,12 @@ function MarketplaceSearch() {
             searchParams.filter_by += ` && equipmentType:=${equipmentType}`;
         }
 
-        // // TODO: DEBUG
         // if (fromDate !== "") {
-        //     searchParams.filter_by += ` && dateListed:>=${fromDate}`;
+        //     searchParams.filter_by += ` && fromDate:>=${fromDate}`;
         // }
         //
         // if (toDate !== "") {
-        //     searchParams.filter_by += ` && dateListed:<=${toDate}`;
+        //     searchParams.filter_by += ` && toDate:<=${toDate}`;
         // }
 
         console.log(searchParams.filter_by);
@@ -78,9 +77,6 @@ function MarketplaceSearch() {
 
         let searchParams = generateSearchParams();
 
-        console.log(fromDate);
-        console.log(toDate);
-
         client.collections('marketplace')
             .documents()
             .search(searchParams)
@@ -93,7 +89,6 @@ function MarketplaceSearch() {
                 }
             })
     }
-
 
     return (
         <div id={"marketplaceSearch-page"}>
