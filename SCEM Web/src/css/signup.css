@@ -127,9 +127,10 @@
     font-weight: bold;
 }
 
-#signup-message {
-    font-size: 14px;
+
+p{
+    font-size : 14px;
     margin: 15px 0;
     display: inline-block;
-    color: #ffffff;
-}
+    color: #ff0000;
+  }
