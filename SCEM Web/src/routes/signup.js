@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 
 function Signup() {
- 
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,11 +18,11 @@ function Signup() {
 
 
 
-  
+
   const handleSave = async(e) => {
     console.log("handleSave",password, confirmPassword);
     e.preventDefault();
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       setpasswordMessage("Passwords do not match");
       return;
     }
@@ -34,7 +34,7 @@ function Signup() {
     console.log("in else");
     createUserWithEmailAndPassword(auth,email, password).then(cred => {
       const ref = doc(firestore,"users",cred.user.uid);
-      console.log(cred); 
+      console.log(cred);
       let data = {
         fullname:fullname,
         email:email,
@@ -45,12 +45,12 @@ function Signup() {
       } catch (e) {
         console.log(e);
       }
-    }).catch((e) => console.log(e)) 
+    }).catch((e) => console.log(e))
   }
-  
- 
 
-  
+
+
+
   return (
     <body>
     <div id={"signup-page"}>
@@ -74,7 +74,7 @@ function Signup() {
         <input id="signup-InputText" type="text" placeholder="Full Name"  onChange = {(e) => {setFullname(e.target.value)}} ></input><br></br>
         <input id="signup-InputEmail" type="text" placeholder="Email" onChange = {(e) => {setEmail(e.target.value)}} ></input><br></br>
         <input id="signup-InputPassword" type="password" placeholder="Password"  onChange = {(e) => {setPassword(e.target.value)}}></input><br></br>
-        <input id="signup-InputConfirmPassword" type="password" placeholder="Confirm Password" onChange = {(e) => {setConfirmPassword(e.target.value); setMessage("");}} ></input><br></br>
+        <input id="signup-InputConfirmPassword" type="password" placeholder="Confirm Password" onChange = {(e) => {setConfirmPassword(e.target.value); setcheckboxMessage("");}} ></input><br></br>
         <p id = "password-error">{passwordMessage}</p>
         </div>
 
@@ -87,8 +87,8 @@ function Signup() {
         <button id="signup-signupbutton" type="submit">Sign Up</button>
 
         <hr></hr>
-        <button id="signup-facebook">Sign Up with Facebook</button> 
-        <button id="signup-google">Sign Up with Google</button> 
+        <button id="signup-facebook">Sign Up with Facebook</button>
+        <button id="signup-google">Sign Up with Google</button>
       </div>
     </form>
 
