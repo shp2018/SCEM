@@ -29,6 +29,7 @@ function ForgotPassword() {
 
     const sendEmail = async e => {
         //TODO: If email provided is locked, do not send reset email.
+        // Testing
         e.preventDefault();
 
         await getUserData().then(() => {
