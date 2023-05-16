@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/gapi.auth2": "^0.0.57",
     "emailjs-com": "^3.2.0",
-    "firebase": "^9.19.1",
+    "firebase": "^9.21.0",
     "gapi-script": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
