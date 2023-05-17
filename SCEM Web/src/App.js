@@ -9,6 +9,7 @@ import ForgotPassword from './routes/forgot';
 import Post from './routes/post';
 import Marketplace from './routes/marketplace';
 import MarketplaceSearch from './routes/marketplaceSearch';
+import MarketplaceAddItem from './routes/marketplaceAddItem';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/post" element={<Post/>}/>
                 <Route path={"/marketplace"} exact element={<Marketplace/>}/>
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
+                <Route path={"/marketplace/addItem"} element={<MarketplaceAddItem/>}/>
             </Routes>
         </Router>
     );
