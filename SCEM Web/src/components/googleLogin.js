@@ -1,10 +1,26 @@
 import {GoogleLogin} from 'react-google-login';
+import React, { useRef, useState } from "react";
+import { firestore } from "../firebase";
+import { doc, setDoc } from "@firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
 const clientId = "1020057730481-3iflk45qqttk0v8pg48bjk4j0nmi6qm2.apps.googleusercontent.com"
 
 function Glogin(){
     const onSuccess= (res)=>{
-        console.log("LOGIN SUCCESS! Current user: ",res.profileObj)
+        console.log("LOGIN SUCCESS! Current user: ",res.profileObj.name)
+        const ref = doc(firestore,"users",res.profileObj.googleId);
+      let data = {
+        fullname:res.profileObj.name,
+        email:res.profileObj.email,
+        locked:false
+      }
+      try {
+        setDoc(ref,data)
+      } catch (e) {
+        console.log(e);
+      }
     }
     const onFailure= (res)=>{
         console.log("LOGIN FAILED! res: ",res)
