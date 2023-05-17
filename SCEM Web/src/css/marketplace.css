@@ -1,18 +1,34 @@
 #marketplace-header {
     margin-top: 4em;
-    margin-bottom: 4em;
+    margin-bottom: 3em;
     text-align: center;
 }
 
+#marketplace-homeIcon {
+    position: absolute;
+    z-index: auto;
+}
+
 #marketplace-SCEMLogo {
-    border-radius: 2em;
+    border-radius: 1em;
 }
 
 #marketplace-searchButton {
     position: absolute;
+    z-index: auto;
 }
 
 #marketplace-marketplaceItems {
     text-align: center;
+}
+
+#marketplace-footer {
+    background-color: #3b5998;
+    /*display: inline-block;*/
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15em;
+    padding: 2em;
+    position: sticky;
 }
 
