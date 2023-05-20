@@ -32,7 +32,7 @@
 }
 
 #marketplaceAddItem-inputBoxes {
-    display: centre;
+    text-align: center;
 }
 
 #marketplaceAddItem-InputName {
@@ -112,13 +112,3 @@
     background-color: #224cbf;
     border-color: #c4c7cc;
 }
-
-
-
-
-p{
-    font-size : 14px;
-    margin: 15px 0;
-    display: inline-block;
-    color: #ff0000;
-  }

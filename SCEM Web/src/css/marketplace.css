@@ -1,0 +1,44 @@
+#marketplace-header {
+    margin-top: 4em;
+    margin-bottom: 3em;
+    text-align: center;
+}
+
+#marketplace-homeIcon {
+    position: absolute;
+    z-index: auto;
+}
+
+#marketplace-SCEMLogo {
+    border-radius: 1em;
+}
+
+#marketplace-searchButton {
+    position: absolute;
+    z-index: auto;
+}
+
+#marketplace-marketplaceItems {
+    text-align: center;
+}
+
+#marketplace-marketplaceItem {
+    text-align: center;
+    margin-bottom: 2em;
+    padding: 3em;
+    background-color: whitesmoke;
+    border-radius: 2em;
+    margin-left: 35%;
+    margin-right: 35%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#marketplace-marketplaceItemTitle {
+    margin-bottom: 1em;
+}
+
+#marketplace-marketplaceItemLink {
+    color: blue;
+}
+
+
