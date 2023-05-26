@@ -15,7 +15,6 @@ function Marketplace() {
 
         querySnapshot.forEach((doc) => {
             let data = doc.data();
-            console.log(data);
             setMarketplaceItems(curr => [...curr,
                 <div id={"marketplace-marketplaceItem"}>
                     <div id={"marketplace-marketplaceItemTitle"}>
