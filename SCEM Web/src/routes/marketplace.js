@@ -17,17 +17,16 @@ function Marketplace() {
 
         querySnapshot.forEach((doc) => {
             let data = doc.data();
-            if (marketplaceItems.size() === 0) {
-                setMarketplaceItems(curr => [...curr,
-                    <div id={"marketplace-marketplaceItem"}>
-                        <div id={"marketplace-marketplaceItemTitle"}>
-                            <a href={`/marketplace/${doc.id}`}
-                               id={"marketplace-marketplaceItemLink"}>
-                                {data.name} </a>
-                        </div>
-                        {data.description}
-                    </div>]);
-            }
+            setMarketplaceItems(curr => [...curr,
+                <div id={"marketplace-marketplaceItem"}>
+                    <div id={"marketplace-marketplaceItemTitle"}>
+                        <a href={`/marketplace/${doc.id}`}
+                           id={"marketplace-marketplaceItemLink"}>
+                            {data.name} </a>
+                    </div>
+                    {data.description}
+                </div>]);
+
         });
     }
 
