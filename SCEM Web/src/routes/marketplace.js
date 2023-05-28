@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {collection, getDocs} from "@firebase/firestore";
 import {firestore} from "../firebase";
 import {query, where} from "firebase/firestore";
@@ -27,7 +27,9 @@ function Marketplace() {
         });
     }
 
-    getMarketplaceData();
+    useEffect(() => {
+        getMarketplaceData();
+    }, []);
 
     return (
         <div>
