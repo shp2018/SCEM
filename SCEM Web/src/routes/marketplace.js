@@ -1,29 +1,33 @@
 import React, {useState} from "react";
 import {collection, getDocs} from "@firebase/firestore";
-import {firestore} from "../firebase";
-import {query, where} from "firebase/firestore";
+import {auth, firestore} from "../firebase";
+import {query, where, limit} from "firebase/firestore";
 import '../css/marketplace.css';
+import {onAuthStateChanged} from "firebase/auth";
+import {user} from "./login";
 
 function Marketplace() {
     const [marketplaceItems, setMarketplaceItems] = useState([]);
     const ref = collection(firestore, "marketplace");
 
     async function getMarketplaceData() {
-        const q = query(ref, where("name", "!=", ""));
+        const q = query(ref, where("name", "!=", ""), limit(5));
         const querySnapshot = await getDocs(q);
         setMarketplaceItems([]);
 
         querySnapshot.forEach((doc) => {
             let data = doc.data();
-            setMarketplaceItems(curr => [...curr,
-                <div id={"marketplace-marketplaceItem"}>
-                    <div id={"marketplace-marketplaceItemTitle"}>
-                    <a href={`/marketplace/${doc.id}`}
-                       id={"marketplace-marketplaceItemLink"}>
-                        {data.name} </a>
-                    </div>
-                    {data.description}
-                </div>]);
+            if (marketplaceItems.size() === 0) {
+                setMarketplaceItems(curr => [...curr,
+                    <div id={"marketplace-marketplaceItem"}>
+                        <div id={"marketplace-marketplaceItemTitle"}>
+                            <a href={`/marketplace/${doc.id}`}
+                               id={"marketplace-marketplaceItemLink"}>
+                                {data.name} </a>
+                        </div>
+                        {data.description}
+                    </div>]);
+            }
         });
     }
 
