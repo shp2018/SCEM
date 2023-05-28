@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {collection, getDocs} from "@firebase/firestore";
 import {firestore} from "../firebase";
 import {query, where} from "firebase/firestore";
@@ -15,20 +15,21 @@ function Marketplace() {
 
         querySnapshot.forEach((doc) => {
             let data = doc.data();
-            console.log(data);
             setMarketplaceItems(curr => [...curr,
                 <div id={"marketplace-marketplaceItem"}>
                     <div id={"marketplace-marketplaceItemTitle"}>
-                    <a href={`/marketplace/${doc.id}`}
-                       id={"marketplace-marketplaceItemLink"}>
-                        {data.name} </a>
+                        <a href={`/marketplace/${doc.id}`}
+                           id={"marketplace-marketplaceItemLink"}>
+                            {data.name} </a>
                     </div>
                     {data.description}
                 </div>]);
         });
     }
 
-    getMarketplaceData();
+    useEffect(() => {
+        getMarketplaceData();
+    }, []);
 
     return (
         <div>
