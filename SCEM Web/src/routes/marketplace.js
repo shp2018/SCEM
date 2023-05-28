@@ -1,17 +1,15 @@
 import React, {useState} from "react";
 import {collection, getDocs} from "@firebase/firestore";
-import {auth, firestore} from "../firebase";
-import {query, where, limit} from "firebase/firestore";
+import {firestore} from "../firebase";
+import {query, where} from "firebase/firestore";
 import '../css/marketplace.css';
-import {onAuthStateChanged} from "firebase/auth";
-import {user} from "./login";
 
 function Marketplace() {
     const [marketplaceItems, setMarketplaceItems] = useState([]);
     const ref = collection(firestore, "marketplace");
 
     async function getMarketplaceData() {
-        const q = query(ref, where("name", "!=", ""), limit(5));
+        const q = query(ref, where("name", "!=", ""));
         const querySnapshot = await getDocs(q);
         setMarketplaceItems([]);
 
@@ -26,7 +24,6 @@ function Marketplace() {
                     </div>
                     {data.description}
                 </div>]);
-
         });
     }
 
