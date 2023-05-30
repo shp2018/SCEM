@@ -4,9 +4,7 @@ import {BrowserRouter as Router, Routes, Route}
 import Signup from './routes/signup';
 import Login from './routes/login';
 import Home from './routes/home';
-import ResetPassword from './routes/resetPw';
 import ForgotPassword from './routes/forgot';
-import Post from './routes/post';
 import Marketplace from './routes/marketplace';
 import MarketplaceSearch from './routes/marketplaceSearch';
 import MarketplaceAddItem from './routes/marketplaceAddItem';
@@ -19,9 +17,7 @@ function App() {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/forgotPassword" element={<ForgotPassword/>}/>
-                <Route path="/resetPassword" element={<ResetPassword/>}/>
-                <Route path="/post" element={<Post/>}/>
-                <Route path={"/marketplace"} exact element={<Marketplace/>}/>
+                <Route path={"/marketplace"} element={<Marketplace/>}/>
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
                 <Route path={"/marketplace/addItem"} element={<MarketplaceAddItem/>}/>
             </Routes>

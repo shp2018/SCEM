@@ -23,6 +23,7 @@
 }
 
 #marketplace-marketplaceItem {
+    position: relative;
     text-align: center;
     margin-bottom: 2em;
     padding: 3em;
@@ -41,4 +42,20 @@
     color: blue;
 }
 
+#marketplace-marketplaceItemUserCreated {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
 
+#marketplace-marketplaceItemDateAndTimeCreated {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#marketplace-addItem {
+    position: fixed;
+    top: 0;
+    right: 0;
+}

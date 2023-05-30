@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import '../css/signup.css';
 import { firestore } from "../firebase";
-import { doc, setDoc } from "@firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 
