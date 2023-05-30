@@ -8,6 +8,7 @@ import ForgotPassword from './routes/forgot';
 import Marketplace from './routes/marketplace';
 import MarketplaceSearch from './routes/marketplaceSearch';
 import MarketplaceAddItem from './routes/marketplaceAddItem';
+import MarketplaceItem from './routes/marketplaceItem';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                 <Route path={"/marketplace"} element={<Marketplace/>}/>
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
                 <Route path={"/marketplace/addItem"} element={<MarketplaceAddItem/>}/>
+                <Route path={'/marketplace/:marketplaceId'} element={<MarketplaceItem/>}/>
             </Routes>
         </Router>
     );
