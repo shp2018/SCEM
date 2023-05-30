@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import '../css/post.css';
+import './post.css';
 import {firestore} from "../firebase";
 import {collection, addDoc} from "firebase/firestore";
 

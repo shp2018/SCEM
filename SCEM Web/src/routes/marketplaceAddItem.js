@@ -9,6 +9,9 @@ function MarketplaceAddItem() {
     const [equipmentType, setEquipmentType] = useState("");
     const [site, setSite] = useState("");
     const [description, setDescription] = useState("");
+    const [dailyPrice, setDailyPrice] = useState("");
+    const [weeklyPrice, setWeeklyPrice] = useState("");
+    const [monthlyPrice, setMonthlyPrice] = useState("");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
 
@@ -77,6 +80,9 @@ function MarketplaceAddItem() {
             equipmentType: equipmentType,
             site: site,
             description: description,
+            dailyPrice: dailyPrice,
+            weeklyPrice: weeklyPrice,
+            monthlyPrice: monthlyPrice,
             fromDate: fromDate,
             toDate: toDate,
             userCreated: userName,
@@ -101,7 +107,7 @@ function MarketplaceAddItem() {
                     </a>
                 </div>
                 <div id={"marketplaceAddItem-marketplaceAddItemText"}>
-                    <h3> Add Item </h3>
+                    <h3> For Rent </h3>
                 </div>
             </div>
             <br></br>
@@ -112,32 +118,56 @@ function MarketplaceAddItem() {
                         <input id="marketplaceAddItem-InputName" type="text" placeholder="Name" onChange={(e) => {
                             setName(e.target.value)
                         }}></input><br></br>
+
                         <label id="marketplaceAddItem-LabelEquipmentType">Equipment type</label>
                         <input id="marketplaceAddItem-InputEquipmentType" type="text" placeholder="Equipment type"
                                onChange={(e) => {
                                    setEquipmentType(e.target.value)
                                }}></input><br></br>
+
                         <label id="marketplaceAddItem-LabelSite">Site</label>
                         <input id="marketplaceAddItem-InputSite" type="text" placeholder="Site" onChange={(e) => {
                             setSite(e.target.value)
                         }}></input><br></br>
+
                         <label id="marketplaceAddItem-LabelDescription">Description</label>
                         <input id="marketplaceAddItem-InputDescription" type="text" placeholder="Description"
                                onChange={(e) => {
                                    setDescription(e.target.value)
                                }}></input><br></br>
+
+                        <label id="marketplaceAddItem-LabelDailyPrice">Daily Price</label>
+                        <input id="marketplaceAddItem-InputDailyPrice" type="text" placeholder="Daily Price"
+                               onChange={(e) => {
+                                   setDailyPrice(e.target.value)
+                               }}></input><br></br>
+
+                        <label id="marketplaceAddItem-LabelWeeklyPrice">Weekly Price</label>
+                        <input id="marketplaceAddItem-InputWeeklyPrice" type="text" placeholder="Weekly Price"
+                               onChange={(e) => {
+                                   setWeeklyPrice(e.target.value)
+                               }}></input><br></br>
+
+                        <label id="marketplaceAddItem-LabelMonthlyPrice">Monthly Price</label>
+                        <input id="marketplaceAddItem-InputMonthlyPrice" type="text" placeholder="Monthly Price"
+                               onChange={(e) => {
+                                   setMonthlyPrice(e.target.value)
+                               }}></input><br></br>
+
                         <label id="marketplaceAddItem-LabelFromDate">From Date</label><br></br>
                         <input id="marketplaceAddItem-InputFromDate" type="date" placeholder="From date"
                                onChange={(e) => {
                                    setFromDate(e.target.value)
                                }}></input><br></br>
                         <br></br>
+
                         <label id="marketplaceAddItem-LabelToDate">To Date</label><br></br>
                         <input id="marketplaceAddItem-InputToDate" type="date" placeholder="To date" onChange={(e) => {
                             setToDate(e.target.value)
                         }}></input><br></br>
+
                     </div>
-                    <button id="marketplaceAddItem-marketplaceAddItembutton" type="submit">Add Item</button>
+                    <button id="marketplaceAddItem-marketplaceAddItembutton" type="submit">Post</button>
                 </div>
             </form>
         </div>

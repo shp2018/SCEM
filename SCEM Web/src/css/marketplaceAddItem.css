@@ -80,6 +80,33 @@
     border-color: #c4c7cc;
 }
 
+#marketplaceAddItem-InputDailyPrice {
+    border-style: double;
+    border-radius: 5px;
+    width: 500px;
+    height: 60px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+}
+
+#marketplaceAddItem-InputWeeklyPrice {
+    border-style: double;
+    border-radius: 5px;
+    width: 500px;
+    height: 60px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+}
+
+#marketplaceAddItem-InputMonthlyPrice {
+    border-style: double;
+    border-radius: 5px;
+    width: 500px;
+    height: 60px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+}
+
 #marketplaceAddItem-InputEquipmentType {
     border-style: double;
     border-radius: 5px;
