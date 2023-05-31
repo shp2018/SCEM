@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {auth, firestore} from "../firebase";
+import {auth, firestore, storage} from "../firebase";
 import {addDoc, collection, getDocs, query, where} from "firebase/firestore";
 import '../css/marketplaceAddItem.css';
 import {onAuthStateChanged} from "firebase/auth";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 function MarketplaceAddItem() {
     const [name, setName] = useState("");
@@ -26,7 +27,6 @@ function MarketplaceAddItem() {
             return monthOutput;
         }
     }
-
     const time = () => {
         const hoursOutput = new Date().getHours();
         const minutesOutput = new Date().getMinutes();
@@ -44,12 +44,7 @@ function MarketplaceAddItem() {
             }
         }
     }
-
     const date = "" + (new Date().getFullYear()) + "-" + month() + "-" + (new Date().getDate());
-
-    useEffect(() => {
-        checkAuthState();
-    }, []);
 
     async function checkAuthState() {
         onAuthStateChanged(auth, async (user) => {
@@ -63,6 +58,41 @@ function MarketplaceAddItem() {
                 });
             }
         })
+    }
+    useEffect(() => {
+        checkAuthState();
+    }, []);
+
+    const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
+    const [files, setFiles] = useState(null);
+    const [file, setFile] = useState(null);
+    const storageRef = ref(storage, '/marketplaceImages/lol');
+    const [fileDataURL, setFileDataURL] = useState(null);
+    const [isShown, setIsShown] = useState(false);
+    const [imgNum, setImgNum] = useState(0)
+    const handleNext = () => {
+        const n = files.length - 1
+        if (imgNum < n) {
+            handleIncrement()
+        } else {
+            setImgNum(0)
+        }
+        console.log(imgNum)
+        setFile(files[imgNum])
+    }
+    const handleIncrement = () => {
+        setImgNum(imgNum + 1)
+    }
+    const changeHandler = (e) => {
+        const files = e.target.files;
+        const file = e.target.files[0];
+        if (!file.type.match(imageMimeType)) {
+            alert("Image mime type is not valid");
+            return;
+        }
+        setFile(file);
+        setFiles(files)
+        setIsShown(current => !current);
     }
 
     const handleSave = async (e) => {
@@ -95,6 +125,10 @@ function MarketplaceAddItem() {
         } catch (e) {
             console.log(e);
         }
+
+        uploadBytes(storageRef, file).then((snapshot) => {
+            console.log("Uploaded image.");
+        })
     }
 
     return (
@@ -168,6 +202,21 @@ function MarketplaceAddItem() {
 
                     </div>
                     <button id="marketplaceAddItem-marketplaceAddItembutton" type="submit">Post</button>
+                    <div id="pic">Pictures <input id="img" type="file" multiple accept="image/*" onChange={changeHandler}
+                    /></div>
+                    <div>
+                        {fileDataURL ?
+                            <p className="preview">
+                                {
+                                    <img className="preview" src={fileDataURL} alt="preview"/>
+                                }
+                            </p> : null}
+                        {isShown && (
+                            <div>
+                                <button id="next" onClick={handleNext}></button>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </form>
         </div>
