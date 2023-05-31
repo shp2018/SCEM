@@ -66,7 +66,6 @@ function MarketplaceAddItem() {
     const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
     const [files, setFiles] = useState(null);
     const [file, setFile] = useState(null);
-    const storageRef = ref(storage, '/marketplaceImages/lol');
     const [fileDataURL, setFileDataURL] = useState(null);
     const [isShown, setIsShown] = useState(false);
     const [imgNum, setImgNum] = useState(0)
@@ -103,7 +102,7 @@ function MarketplaceAddItem() {
             return;
         }
 
-        const ref = collection(firestore, "marketplace");
+        const marketplaceRef = collection(firestore, "marketplace");
 
         let data = {
             name: name,
@@ -120,15 +119,19 @@ function MarketplaceAddItem() {
             timeCreated: time(),
         };
         try {
-            await addDoc(ref, data);
+            await addDoc(marketplaceRef, data);
             alert("Success!");
         } catch (e) {
             console.log(e);
         }
 
-        uploadBytes(storageRef, file).then((snapshot) => {
-            console.log("Uploaded image.");
-        })
+        console.log(files);
+        for (let i = 0; i < files.length; i++) {
+            const storageRef = ref(storage, `/marketplaceImages/${name}/${i}`);
+            uploadBytes(storageRef, files[i]).then((snapshot) => {
+                console.log("Uploaded image " + i);
+            })
+        }
     }
 
     return (
@@ -199,24 +202,26 @@ function MarketplaceAddItem() {
                         <input id="marketplaceAddItem-InputToDate" type="date" placeholder="To date" onChange={(e) => {
                             setToDate(e.target.value)
                         }}></input><br></br>
+                    </div>
+                    <div id={"marketplaceAddItem-addImages"}>
+                        <div id="pic">Pictures <input id="img" type="file" multiple accept="image/*" onChange={changeHandler}
+                        /></div>
+                        <div>
+                            {fileDataURL ?
+                                <p className="preview">
+                                    {
+                                        <img className="preview" src={fileDataURL} alt="preview"/>
+                                    }
+                                </p> : null}
+                            {isShown && (
+                                <div>
+                                    <button id="next" onClick={handleNext}></button>
+                                </div>
+                            )}
+                        </div>
+                    </div>
 
-                    </div>
                     <button id="marketplaceAddItem-marketplaceAddItembutton" type="submit">Post</button>
-                    <div id="pic">Pictures <input id="img" type="file" multiple accept="image/*" onChange={changeHandler}
-                    /></div>
-                    <div>
-                        {fileDataURL ?
-                            <p className="preview">
-                                {
-                                    <img className="preview" src={fileDataURL} alt="preview"/>
-                                }
-                            </p> : null}
-                        {isShown && (
-                            <div>
-                                <button id="next" onClick={handleNext}></button>
-                            </div>
-                        )}
-                    </div>
                 </div>
             </form>
         </div>
