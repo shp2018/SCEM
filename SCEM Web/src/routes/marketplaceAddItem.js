@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {auth, firestore, storage} from "../firebase";
-import {addDoc, collection, getDocs, query, where} from "firebase/firestore";
+import {doc, addDoc, collection, getDocs, query, where, updateDoc} from "firebase/firestore";
 import '../css/marketplaceAddItem.css';
 import {onAuthStateChanged} from "firebase/auth";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 function MarketplaceAddItem() {
     const [name, setName] = useState("");
@@ -117,20 +117,27 @@ function MarketplaceAddItem() {
             userCreated: userName,
             dateCreated: date,
             timeCreated: time(),
+            image: "",
         };
         try {
-            await addDoc(marketplaceRef, data);
+            addDoc(marketplaceRef, data).then((res) => {
+                for (let i = 0; i < files.length; i++) {
+                    const storageRef = ref(storage, `/marketplaceImages/${res._key.path.lastSegment()}/${i}`);
+                    uploadBytes(storageRef, files[i]).then((snapshot) => {
+                        console.log("Uploaded image " + i);
+                        getDownloadURL(storageRef).then((url) => {
+                            console.log(url);
+                            const itemRef = doc(firestore, "marketplace", res._key.path.lastSegment());
+                            updateDoc(itemRef, {
+                              image: url,
+                            })
+                        })
+                    })
+                }
+            });
             alert("Success!");
         } catch (e) {
             console.log(e);
-        }
-
-        console.log(files);
-        for (let i = 0; i < files.length; i++) {
-            const storageRef = ref(storage, `/marketplaceImages/${name}/${i}`);
-            uploadBytes(storageRef, files[i]).then((snapshot) => {
-                console.log("Uploaded image " + i);
-            })
         }
     }
 
