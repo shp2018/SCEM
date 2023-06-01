@@ -117,7 +117,7 @@ function MarketplaceAddItem() {
             userCreated: userName,
             dateCreated: date,
             timeCreated: time(),
-            image: "",
+            images: [],
         };
         try {
             addDoc(marketplaceRef, data).then((res) => {
@@ -129,7 +129,7 @@ function MarketplaceAddItem() {
                             console.log(url);
                             const itemRef = doc(firestore, "marketplace", res._key.path.lastSegment());
                             updateDoc(itemRef, {
-                              image: url,
+                              images: url,
                             })
                         })
                     })
