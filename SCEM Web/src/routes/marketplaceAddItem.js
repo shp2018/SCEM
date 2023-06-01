@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {auth, firestore, storage} from "../firebase";
-import {doc, addDoc, collection, getDocs, query, where, updateDoc} from "firebase/firestore";
+import {doc, addDoc, collection, getDocs, query, where, updateDoc, arrayUnion} from "firebase/firestore";
 import '../css/marketplaceAddItem.css';
 import {onAuthStateChanged} from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -129,7 +129,7 @@ function MarketplaceAddItem() {
                             console.log(url);
                             const itemRef = doc(firestore, "marketplace", res._key.path.lastSegment());
                             updateDoc(itemRef, {
-                              images: url,
+                              images: arrayUnion(url),
                             })
                         })
                     })
