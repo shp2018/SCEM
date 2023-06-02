@@ -16,6 +16,13 @@ function MarketplaceAddItem() {
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
 
+    const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
+    const [files, setFiles] = useState(null);
+    const [setFile] = useState(null);
+    const [fileDataURL] = useState(null);
+    const [isShown, setIsShown] = useState(false);
+    const [imgNum, setImgNum] = useState(0);
+
     const [authState, setAuthState] = useState(false);
     const [userName, setUserName] = useState("");
 
@@ -27,7 +34,6 @@ function MarketplaceAddItem() {
             return monthOutput;
         }
     }
-
     const day = () => {
         const dayOutput = new Date().getDate();
         if (dayOutput < 10) {
@@ -36,7 +42,6 @@ function MarketplaceAddItem() {
             return dayOutput;
         }
     }
-
     const time = () => {
         const hoursOutput = new Date().getHours();
         const minutesOutput = new Date().getMinutes();
@@ -69,29 +74,22 @@ function MarketplaceAddItem() {
             }
         })
     }
+
     useEffect(() => {
         checkAuthState();
     }, []);
 
-    const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
-    const [files, setFiles] = useState(null);
-    const [file, setFile] = useState(null);
-    const [fileDataURL, setFileDataURL] = useState(null);
-    const [isShown, setIsShown] = useState(false);
-    const [imgNum, setImgNum] = useState(0)
     const handleNext = () => {
-        const n = files.length - 1
+        const n = files.length - 1;
         if (imgNum < n) {
-            handleIncrement()
+            setImgNum(imgNum + 1);
         } else {
-            setImgNum(0)
+            setImgNum(0);
         }
-        console.log(imgNum)
-        setFile(files[imgNum])
+        console.log(imgNum);
+        setFile(files[imgNum]);
     }
-    const handleIncrement = () => {
-        setImgNum(imgNum + 1)
-    }
+
     const changeHandler = (e) => {
         const files = e.target.files;
         const file = e.target.files[0];
@@ -100,7 +98,7 @@ function MarketplaceAddItem() {
             return;
         }
         setFile(file);
-        setFiles(files)
+        setFiles(files);
         setIsShown(current => !current);
     }
 
@@ -132,7 +130,7 @@ function MarketplaceAddItem() {
         try {
             addDoc(marketplaceRef, data).then((res) => {
                 for (let i = 0; i < files.length; i++) {
-                    const storageRef = ref(storage, `/marketplaceImages/${res._key.path.lastSegment()}/${i}`);
+                    const storageRef = ref(storage, `/marketplaceImages/${res._key.path.lastSegment()}/${i + 1}`);
                     uploadBytes(storageRef, files[i]).then(() => {
                         console.log("Uploaded image " + i);
                         getDownloadURL(storageRef).then((url) => {
