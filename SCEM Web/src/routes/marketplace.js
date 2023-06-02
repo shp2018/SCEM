@@ -6,15 +6,16 @@ import '../css/marketplace.css';
 
 function Marketplace() {
     const [marketplaceItems, setMarketplaceItems] = useState([]);
-    const ref = collection(firestore, "marketplace");
+    const marketplaceRef = collection(firestore, "marketplace");
 
     async function getMarketplaceData() {
-        const q = query(ref, where("name", "!=", ""));
+        const q = query(marketplaceRef, where("name", "!=", ""));
         const querySnapshot = await getDocs(q);
         setMarketplaceItems([]);
 
         querySnapshot.forEach((doc) => {
             let data = doc.data();
+            console.log(data);
             setMarketplaceItems(curr => [...curr,
                 <div id={"marketplace-marketplaceItem"}>
                     <div id={"marketplace-marketplaceItemTitle"}>
@@ -32,6 +33,12 @@ function Marketplace() {
                         {data.dateCreated}
                         {" "}
                         {data.timeCreated}
+                    </div>
+                    <div id={"marketplace-marketplaceItemImageDiv"}>
+                        <img src={"https://firebasestorage.googleapis.com/v0/b/scem-ef60b.appspot.com/o/marketp" +
+                            "laceImages%2F56rSX3li4Jx50gPSKbHb%2F2?alt=media&token=2e88c8e8-cc58-4fd6-9bbe-301c7f5bfa37"}
+                             alt={"Marketplace Item Image"}
+                        id={"marketplace-marketplaceItemImage"}></img>
                     </div>
                 </div>]);
         });
@@ -73,7 +80,9 @@ function Marketplace() {
             </div>
 
             <div id={"marketplace-addItem"}>
-                <a href={"/marketplace/addItem"}> <button> Add Item </button></a>
+                <a href={"/marketplace/addItem"}>
+                    <button> Add Item</button>
+                </a>
             </div>
 
         </div>

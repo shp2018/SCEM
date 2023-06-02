@@ -3,7 +3,7 @@ import {auth, firestore, storage} from "../firebase";
 import {doc, addDoc, collection, getDocs, query, where, updateDoc, arrayUnion} from "firebase/firestore";
 import '../css/marketplaceAddItem.css';
 import {onAuthStateChanged} from "firebase/auth";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 function MarketplaceAddItem() {
     const [name, setName] = useState("");
@@ -27,6 +27,16 @@ function MarketplaceAddItem() {
             return monthOutput;
         }
     }
+
+    const day = () => {
+        const dayOutput = new Date().getDate();
+        if (dayOutput < 10) {
+            return "" + 0 + dayOutput;
+        } else {
+            return dayOutput;
+        }
+    }
+
     const time = () => {
         const hoursOutput = new Date().getHours();
         const minutesOutput = new Date().getMinutes();
@@ -44,7 +54,7 @@ function MarketplaceAddItem() {
             }
         }
     }
-    const date = "" + (new Date().getFullYear()) + "-" + month() + "-" + (new Date().getDate());
+    const date = "" + (new Date().getFullYear()) + "-" + month() + "-" + day();
 
     async function checkAuthState() {
         onAuthStateChanged(auth, async (user) => {
@@ -123,7 +133,7 @@ function MarketplaceAddItem() {
             addDoc(marketplaceRef, data).then((res) => {
                 for (let i = 0; i < files.length; i++) {
                     const storageRef = ref(storage, `/marketplaceImages/${res._key.path.lastSegment()}/${i}`);
-                    uploadBytes(storageRef, files[i]).then((snapshot) => {
+                    uploadBytes(storageRef, files[i]).then(() => {
                         console.log("Uploaded image " + i);
                         getDownloadURL(storageRef).then((url) => {
                             console.log(url);

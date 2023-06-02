@@ -42,6 +42,15 @@
     color: blue;
 }
 
+#marketplace-marketplaceItemImageDiv {
+    margin-top: 2em;
+}
+
+#marketplace-marketplaceItemImage {
+    height: 80%;
+    width: 80%;
+}
+
 #marketplace-marketplaceItemUserCreated {
     position: absolute;
     bottom: 0;
