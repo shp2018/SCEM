@@ -18,8 +18,8 @@ function MarketplaceAddItem() {
 
     const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
     const [files, setFiles] = useState(null);
-    const [setFile] = useState(null);
-    const [fileDataURL] = useState(null);
+    const [file, setFile] = useState(null);
+    const [fileDataURL, setFileDataURL] = useState(null);
     const [isShown, setIsShown] = useState(false);
     const [imgNum, setImgNum] = useState(0);
 
