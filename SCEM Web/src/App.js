@@ -9,6 +9,7 @@ import Marketplace from './routes/marketplace';
 import MarketplaceSearch from './routes/marketplaceSearch';
 import MarketplaceAddItem from './routes/marketplaceAddItem';
 import MarketplaceItem from './routes/marketplaceItem';
+import Profile from './routes/profile';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
                 <Route path={"/marketplace/addItem"} element={<MarketplaceAddItem/>}/>
                 <Route path={'/marketplace/:marketplaceId'} element={<MarketplaceItem/>}/>
+                <Route path={"/profile"} element={<Profile/>}/>
             </Routes>
         </Router>
     );
