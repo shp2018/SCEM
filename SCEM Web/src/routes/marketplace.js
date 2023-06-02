@@ -9,8 +9,8 @@ function Marketplace() {
     const marketplaceRef = collection(firestore, "marketplace");
 
     async function getMarketplaceData() {
-        const q = query(marketplaceRef, where("name", "!=", ""));
-        const querySnapshot = await getDocs(q);
+        const marketplaceQuery = query(marketplaceRef, where("name", "!=", ""));
+        const querySnapshot = await getDocs(marketplaceQuery);
         setMarketplaceItems([]);
 
         querySnapshot.forEach((doc) => {
@@ -26,7 +26,8 @@ function Marketplace() {
                         {data.description}
                     </div>
                     <div id={"marketplace-marketplaceItemUserCreated"}>
-                        {data.userCreated}
+                        <a href={`/profile/${data.userID}`}
+                           id={"marketplace-marketplaceItemUserCreatedLink"}> {data.userCreated} </a>
                     </div>
                     <div id={"marketplace-marketplaceItemDateAndTimeCreated"}>
                         {data.dateCreated}
@@ -36,7 +37,7 @@ function Marketplace() {
                     <div id={"marketplace-marketplaceItemImageDiv"}>
                         <img src={data.images}
                              alt={"Marketplace Item Image"}
-                        id={"marketplace-marketplaceItemImage"}></img>
+                             id={"marketplace-marketplaceItemImage"}></img>
                     </div>
                 </div>]);
         });
