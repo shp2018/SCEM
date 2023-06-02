@@ -25,6 +25,7 @@ function MarketplaceAddItem() {
 
     const [authState, setAuthState] = useState(false);
     const [userName, setUserName] = useState("");
+    const [userID, setUserID] = useState(null);
 
     const month = () => {
         const monthOutput = new Date().getMonth() + 1
@@ -64,12 +65,16 @@ function MarketplaceAddItem() {
     async function checkAuthState() {
         onAuthStateChanged(auth, async (user) => {
             if (user) {
+                setUserID(user.uid);
                 setAuthState(true);
                 const ref = collection(firestore, "users");
                 const q = query(ref, where("email", "==", user.email));
                 const querySnapshot = await getDocs(q);
                 querySnapshot.forEach((doc) => {
-                    if (!userName) setUserName(doc.data().fullname);
+                    console.log(doc.data());
+                    if (!userName) {
+                        setUserName(doc.data().fullname);
+                    }
                 });
             }
         })
@@ -123,6 +128,7 @@ function MarketplaceAddItem() {
             fromDate: fromDate,
             toDate: toDate,
             userCreated: userName,
+            userID: userID,
             dateCreated: date,
             timeCreated: time(),
             images: [],
