@@ -1,5 +1,6 @@
 #profile {
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #profile-header {
@@ -11,6 +12,10 @@
     border-radius: 1em;
 }
 
+#profile-userName {
+    margin-top: 3em;
+}
+
 #profile-totalItems {
     left: calc(50% - 3em);
     margin-bottom: 3em;
@@ -19,17 +24,64 @@
 #profile-totalText {
     display: inline-block;
     margin-right: 1em;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
 
 #profile-totalNumber {
     display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
     color: #224cbf;
     font-weight: bold;
 }
 
 #profile-userPastRentals {
+    text-align: center;
+}
 
+#profile-profileItem {
+    position: relative;
+    text-align: center;
+    margin-bottom: 2em;
+    padding: 3em;
+    background-color: whitesmoke;
+    border-radius: 2em;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+#profile-profileItemTitle {
+    margin-bottom: 1em;
+}
+
+#profile-profileItemLink {
+    color: blue;
+}
+
+#profile-profileItemImageDiv {
+    position: absolute;
+    margin-top: 2em;
+    top: 0;
+    left: 3em;
+}
+
+#profile-profileItemImage {
+    width: 6em;
+    height: 5em;
+    border-radius: 1em;
+    object-fit: cover;
+}
+
+#profile-profileItemUserCreated {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#profile-profileItemUserCreatedLink {
+    color: blue;
+}
+
+#profile-profileItemDateAndTimeCreated {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }

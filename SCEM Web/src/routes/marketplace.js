@@ -16,7 +16,8 @@ function Marketplace() {
         querySnapshot.forEach((doc) => {
             let data = doc.data();
             setMarketplaceItems(curr => [...curr,
-                <div id={"marketplace-marketplaceItem"}>
+                <div id={"marketplace-marketplaceItem"}
+                     key={`${doc.id}`}>
                     <div id={"marketplace-marketplaceItemTitle"}>
                         <a href={`/marketplace/${doc.id}`}
                            id={"marketplace-marketplaceItemLink"}>
@@ -36,7 +37,7 @@ function Marketplace() {
                     </div>
                     <div id={"marketplace-marketplaceItemImageDiv"}>
                         <img src={data.images}
-                             alt={"Marketplace Item Image"}
+                             alt={"Marketplace Item"}
                              id={"marketplace-marketplaceItemImage"}></img>
                     </div>
                 </div>]);
@@ -45,6 +46,7 @@ function Marketplace() {
 
     useEffect(() => {
         getMarketplaceData();
+        // eslint-disable-next-line
     }, []);
 
     return (
