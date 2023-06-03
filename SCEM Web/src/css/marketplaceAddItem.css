@@ -80,6 +80,33 @@
     border-color: #c4c7cc;
 }
 
+#marketplaceAddItem-InputDailyPrice {
+    border-style: double;
+    border-radius: 5px;
+    width: 500px;
+    height: 60px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+}
+
+#marketplaceAddItem-InputWeeklyPrice {
+    border-style: double;
+    border-radius: 5px;
+    width: 500px;
+    height: 60px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+}
+
+#marketplaceAddItem-InputMonthlyPrice {
+    border-style: double;
+    border-radius: 5px;
+    width: 500px;
+    height: 60px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+}
+
 #marketplaceAddItem-InputEquipmentType {
     border-style: double;
     border-radius: 5px;
@@ -99,8 +126,6 @@
 /*    vertical-align: middle;*/
 /*}*/
 
-
-
 #marketplaceAddItem-marketplaceAddItembutton {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
@@ -111,4 +136,9 @@
     border-radius: 10px;
     background-color: #224cbf;
     border-color: #c4c7cc;
+}
+
+#marketplaceAddItem-addImages {
+    margin-top: 2em;
+    margin-bottom: 0.5em;
 }

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import '../css/resetPw.css';
+import './resetPw.css';
 import {useLocation, useNavigate} from "react-router-dom";
 import {initializeApp} from "firebase/app";
 import {getDatabase} from "firebase/database";

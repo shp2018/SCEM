@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {collection, getDocs} from "@firebase/firestore";
+import {collection, getDocs} from "firebase/firestore";
 import {firestore} from "../firebase";
 import {query, where} from "firebase/firestore";
 import '../css/marketplace.css';
 
 function Marketplace() {
     const [marketplaceItems, setMarketplaceItems] = useState([]);
-    const ref = collection(firestore, "marketplace");
+    const marketplaceRef = collection(firestore, "marketplace");
 
     async function getMarketplaceData() {
-        const q = query(ref, where("name", "!=", ""));
+        const q = query(marketplaceRef, where("name", "!=", ""));
         const querySnapshot = await getDocs(q);
         setMarketplaceItems([]);
 
@@ -22,7 +22,22 @@ function Marketplace() {
                            id={"marketplace-marketplaceItemLink"}>
                             {data.name} </a>
                     </div>
-                    {data.description}
+                    <div id={"marketplace-marketplaceItemDescription"}>
+                        {data.description}
+                    </div>
+                    <div id={"marketplace-marketplaceItemUserCreated"}>
+                        {data.userCreated}
+                    </div>
+                    <div id={"marketplace-marketplaceItemDateAndTimeCreated"}>
+                        {data.dateCreated}
+                        {" "}
+                        {data.timeCreated}
+                    </div>
+                    <div id={"marketplace-marketplaceItemImageDiv"}>
+                        <img src={data.images}
+                             alt={"Marketplace Item Image"}
+                        id={"marketplace-marketplaceItemImage"}></img>
+                    </div>
                 </div>]);
         });
     }
@@ -60,6 +75,12 @@ function Marketplace() {
 
             <div id="marketplace-marketplaceItems">
                 {marketplaceItems}
+            </div>
+
+            <div id={"marketplace-addItem"}>
+                <a href={"/marketplace/addItem"}>
+                    <button> Add Item</button>
+                </a>
             </div>
 
         </div>
