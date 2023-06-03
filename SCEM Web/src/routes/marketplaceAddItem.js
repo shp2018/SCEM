@@ -18,16 +18,13 @@ function MarketplaceAddItem() {
 
     const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
     const [files, setFiles] = useState(null);
-    // eslint-disable-next-line
     const [file, setFile] = useState(null);
-    // eslint-disable-next-line
     const [fileDataURL, setFileDataURL] = useState(null);
     const [isShown, setIsShown] = useState(false);
     const [imgNum, setImgNum] = useState(0);
 
     const [authState, setAuthState] = useState(false);
     const [userName, setUserName] = useState("");
-    const [userID, setUserID] = useState(null);
 
     const month = () => {
         const monthOutput = new Date().getMonth() + 1
@@ -67,15 +64,12 @@ function MarketplaceAddItem() {
     async function checkAuthState() {
         onAuthStateChanged(auth, async (user) => {
             if (user) {
-                setUserID(user.uid);
                 setAuthState(true);
                 const ref = collection(firestore, "users");
                 const q = query(ref, where("email", "==", user.email));
                 const querySnapshot = await getDocs(q);
                 querySnapshot.forEach((doc) => {
-                    if (!userName) {
-                        setUserName(doc.data().fullname);
-                    }
+                    if (!userName) setUserName(doc.data().fullname);
                 });
             }
         })
@@ -92,6 +86,7 @@ function MarketplaceAddItem() {
         } else {
             setImgNum(0);
         }
+        console.log(imgNum);
         setFile(files[imgNum]);
     }
 
@@ -128,7 +123,6 @@ function MarketplaceAddItem() {
             fromDate: fromDate,
             toDate: toDate,
             userCreated: userName,
-            userID: userID,
             dateCreated: date,
             timeCreated: time(),
             images: [],
@@ -138,7 +132,9 @@ function MarketplaceAddItem() {
                 for (let i = 0; i < files.length; i++) {
                     const storageRef = ref(storage, `/marketplaceImages/${res._key.path.lastSegment()}/${i + 1}`);
                     uploadBytes(storageRef, files[i]).then(() => {
+                        console.log("Uploaded image " + i);
                         getDownloadURL(storageRef).then((url) => {
+                            console.log(url);
                             const itemRef = doc(firestore, "marketplace", res._key.path.lastSegment());
                             updateDoc(itemRef, {
                               images: arrayUnion(url),

@@ -9,15 +9,14 @@ function Marketplace() {
     const marketplaceRef = collection(firestore, "marketplace");
 
     async function getMarketplaceData() {
-        const marketplaceQuery = query(marketplaceRef, where("name", "!=", ""));
-        const querySnapshot = await getDocs(marketplaceQuery);
+        const q = query(marketplaceRef, where("name", "!=", ""));
+        const querySnapshot = await getDocs(q);
         setMarketplaceItems([]);
 
         querySnapshot.forEach((doc) => {
             let data = doc.data();
             setMarketplaceItems(curr => [...curr,
-                <div id={"marketplace-marketplaceItem"}
-                     key={`${doc.id}`}>
+                <div id={"marketplace-marketplaceItem"}>
                     <div id={"marketplace-marketplaceItemTitle"}>
                         <a href={`/marketplace/${doc.id}`}
                            id={"marketplace-marketplaceItemLink"}>
@@ -27,8 +26,7 @@ function Marketplace() {
                         {data.description}
                     </div>
                     <div id={"marketplace-marketplaceItemUserCreated"}>
-                        <a href={`/profile/${data.userID}`}
-                           id={"marketplace-marketplaceItemUserCreatedLink"}> {data.userCreated} </a>
+                        {data.userCreated}
                     </div>
                     <div id={"marketplace-marketplaceItemDateAndTimeCreated"}>
                         {data.dateCreated}
@@ -37,8 +35,8 @@ function Marketplace() {
                     </div>
                     <div id={"marketplace-marketplaceItemImageDiv"}>
                         <img src={data.images}
-                             alt={"Marketplace Item"}
-                             id={"marketplace-marketplaceItemImage"}></img>
+                             alt={"Marketplace Item Image"}
+                        id={"marketplace-marketplaceItemImage"}></img>
                     </div>
                 </div>]);
         });
@@ -46,7 +44,6 @@ function Marketplace() {
 
     useEffect(() => {
         getMarketplaceData();
-        // eslint-disable-next-line
     }, []);
 
     return (
