@@ -23,7 +23,7 @@ function App() {
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
                 <Route path={"/marketplace/addItem"} element={<MarketplaceAddItem/>}/>
                 <Route path={'/marketplace/:marketplaceId'} element={<MarketplaceItem/>}/>
-                <Route path={"/profile/:profileId"} element={<Profile/>}/>
+                <Route path={"/profile"} element={<Profile/>}/>
             </Routes>
         </Router>
     );

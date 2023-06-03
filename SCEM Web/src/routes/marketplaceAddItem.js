@@ -18,9 +18,7 @@ function MarketplaceAddItem() {
 
     const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
     const [files, setFiles] = useState(null);
-    // eslint-disable-next-line
     const [file, setFile] = useState(null);
-    // eslint-disable-next-line
     const [fileDataURL, setFileDataURL] = useState(null);
     const [isShown, setIsShown] = useState(false);
     const [imgNum, setImgNum] = useState(0);
