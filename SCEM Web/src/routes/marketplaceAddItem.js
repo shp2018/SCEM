@@ -73,6 +73,7 @@ function MarketplaceAddItem() {
                 const q = query(ref, where("email", "==", user.email));
                 const querySnapshot = await getDocs(q);
                 querySnapshot.forEach((doc) => {
+                    console.log(doc.data());
                     if (!userName) {
                         setUserName(doc.data().fullname);
                     }
@@ -92,6 +93,7 @@ function MarketplaceAddItem() {
         } else {
             setImgNum(0);
         }
+        console.log(imgNum);
         setFile(files[imgNum]);
     }
 
@@ -138,7 +140,9 @@ function MarketplaceAddItem() {
                 for (let i = 0; i < files.length; i++) {
                     const storageRef = ref(storage, `/marketplaceImages/${res._key.path.lastSegment()}/${i + 1}`);
                     uploadBytes(storageRef, files[i]).then(() => {
+                        console.log("Uploaded image " + i);
                         getDownloadURL(storageRef).then((url) => {
+                            console.log(url);
                             const itemRef = doc(firestore, "marketplace", res._key.path.lastSegment());
                             updateDoc(itemRef, {
                               images: arrayUnion(url),
