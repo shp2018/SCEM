@@ -10,6 +10,12 @@
     border-radius: 30px;
 }
 
+#homeWithLogin-signOutButton {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
 #homeWithLogin-userInfo {
     position: relative;
     text-align: center;
