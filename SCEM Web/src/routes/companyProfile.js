@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {auth, firestore} from "../firebase";
-import {doc, setDoc, collection, getDocs, query, where, getDoc,updateDoc, arrayUnion} from "firebase/firestore";
+import {doc, setDoc, collection, getDocs, query, where, getDoc, updateDoc} from "firebase/firestore";
 import '../css/companyProfile.css';
 import {onAuthStateChanged} from "firebase/auth";
-
 
 function CompanyProfile() {
     const [cName, setcName] = useState("");
@@ -42,7 +41,6 @@ function CompanyProfile() {
     }, []);
 
 
-
     const handleSave = async (e) => {
         e.preventDefault();
 
@@ -51,7 +49,7 @@ function CompanyProfile() {
             return;
         }
 
-        const companyProfileRef = doc(firestore, "company",cName);
+        const companyProfileRef = doc(firestore, "company", cName);
         const companyData = await getDoc(companyProfileRef);
 
         let data = {
@@ -68,20 +66,16 @@ function CompanyProfile() {
             userID: userID,
         };
 
-        if(companyData.exists()) {
-            updateDoc(companyProfileRef, data)
-            alert("existing company profile data has been updated")
+        if (companyData.exists()) {
+            await updateDoc(companyProfileRef, data);
+            alert("existing company profile data has been updated");
         } else {
-            setDoc(companyProfileRef, data)
-            alert("new company profile data has been created")
+            await setDoc(companyProfileRef, data)
+            alert("new company profile data has been created");
         }
-       
-
-    
     }
 
-    return (
-        <body>
+    return (<body>
         <div id={"companyProfile-page"}>
             <div id={"companyProfile-header"}>
                 <div id={"companyProfile-backButton"}>
@@ -109,9 +103,10 @@ function CompanyProfile() {
                                }}></input><br></br>
 
                         <label id="companyProfile-Label">Company Phone Number</label>
-                        <input id="companyProfile-Input" type="text" placeholder="Company phone number" onChange={(e) => {
-                            setcNumber(e.target.value)
-                        }}></input><br></br>
+                        <input id="companyProfile-Input" type="text" placeholder="Company phone number"
+                               onChange={(e) => {
+                                   setcNumber(e.target.value)
+                               }}></input><br></br>
 
                         <label id="companyProfile-Label">Company Owner</label>
                         <input id="companyProfile-Input" type="text" placeholder="Company owner"
@@ -149,14 +144,12 @@ function CompanyProfile() {
                             setaccType(e.target.value)
                         }}></input><br></br>
                     </div>
-                  
 
                     <button id="companyProfile-companyProfilebutton" type="submit">Update</button>
                 </div>
             </form>
         </div>
-        </body>
-    )
+        </body>)
 }
 
 export default CompanyProfile;
