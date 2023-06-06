@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {auth, firestore} from "../firebase";
-import {doc, addDoc, collection, getDocs, query, where, updateDoc, arrayUnion} from "firebase/firestore";
+import {doc, setDoc, collection, getDocs, query, where, getDoc,updateDoc, arrayUnion} from "firebase/firestore";
 import '../css/companyProfile.css';
 import {onAuthStateChanged} from "firebase/auth";
 
@@ -51,7 +51,8 @@ function CompanyProfile() {
             return;
         }
 
-        const companyProfileRef = collection(firestore, "company");
+        const companyProfileRef = doc(firestore, "company",cName);
+        const companyData = await getDoc(companyProfileRef);
 
         let data = {
             companyName: cName,
@@ -66,7 +67,15 @@ function CompanyProfile() {
             userCreated: userName,
             userID: userID,
         };
-        addDoc(companyProfileRef, data)
+
+        if(companyData.exists()) {
+            updateDoc(companyProfileRef, data)
+            alert("existing company profile data has been updated")
+        } else {
+            setDoc(companyProfileRef, data)
+            alert("new company profile data has been created")
+        }
+       
 
     
     }
