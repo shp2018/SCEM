@@ -3,6 +3,7 @@ import '../css/homeWithLogin.css';
 import {auth, firestore} from "../firebase";
 import {collection, query, where, getDocs} from "firebase/firestore";
 import {onAuthStateChanged} from "firebase/auth";
+import SignOut from "./signout";
 
 function HomeWithLogin() {
 
@@ -28,6 +29,10 @@ function HomeWithLogin() {
         <div>
             <div id={"homeWithLogin-header"}>
                 <img id="homeWithLogin-logo" src="logoTemp.jpg" alt={"SCEM logo"}></img>
+            </div>
+
+            <div id={"homeWithLogin-signOutButton"}>
+                <SignOut></SignOut>
             </div>
 
             <div id={"homeWithLogin-userInfo"}>
