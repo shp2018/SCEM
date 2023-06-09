@@ -60,10 +60,9 @@ function Profile() {
     return (
         <div id={"profile"}>
             <div id={"profile-header"}>
-                <img src={"logoWithBackground.jpg"}
+                <img src={"/logoWithBackground.jpg"}
                      id={"profile-headerImage"}
-                     alt={"SCEM Logo"}>
-                </img>
+                     alt={"SCEM Logo"}></img>
                 <div id={"profile-userName"}>
                     {userName ? userName : null}
                 </div>
