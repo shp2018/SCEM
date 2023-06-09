@@ -61,7 +61,7 @@ function Marketplace() {
                     </svg>
                 </a>
 
-                <img src={"logoWithBackground.jpg"}
+                <img src={"/logoWithBackground.jpg"}
                      id={"marketplace-SCEMLogo"}
                      alt={"SCEM Logo"}>
                 </img>
