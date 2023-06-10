@@ -53,7 +53,7 @@ function HomeWithoutLogin() {
             <a href={"/"}> Rent my equipment </a>
         </div>
         <div id={"homeWithoutLogin-rent"}>
-            <a href={"/"}> Equipment for rent </a>
+            <a href={"/equipmentForRent"}> Equipment for rent </a>
         </div>
 
 
