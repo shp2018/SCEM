@@ -1,20 +1,22 @@
-#homeWithoutLogin-header {
-    position: relative;
-    width: 50%;
+#homeWithoutLogin-body {
+    text-align: center;
 }
 
 #homeWithoutLogin-logo {
-    text-align: center;
-    width: 120%;
-    margin-left: 40%;
-    border-radius: 30px;
+    border-radius: 1em;
+    margin-top: 4em;
+}
+
+#homeWithoutLogin-loginSignupButtons {
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+#homeWithoutLogin-buttons {
+    display: inline-block;
 }
 
 #homeWithoutLogin-button-login {
-    position: absolute;
-    margin-left: 90%;
-    transform: translate(-50%, -200%);
-    -ms-transform: translate(-50%, -200%);
     height: 35px;
     width: 150px;
     background-color: #224cbf;
@@ -26,10 +28,6 @@
 }
 
 #homeWithoutLogin-button-signup {
-    transform: translate(-50%, -200%);
-    -ms-transform: translate(-50%, -200%);
-    position: absolute;
-    margin-left: 110%;
     height: 35px;
     width: 150px;
     font-size: 18px;

@@ -57,16 +57,16 @@ function Login() {
     };
 
     return (
-        <body>
+        <body id={"login-body"}>
 
         <div>
-            <img id="logo" src='logoTemp.jpg' alt={"SCEM logo"}></img>
+            <img id="login-logo" src='/logoWithBackground.jpg' alt={"SCEM logo"}></img>
             <a href="/" id="back" className="arrow left"></a>
         </div>
 
         <div className="loginMain">
             <h1 id="loginTitle">Login</h1>
-            <p id="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            <p id="subtitle">Welcome back to the SCEM app.</p>
             <input id="Email" type="text" placeholder="Email" name="email"
                    onChange={handleEmailChange}></input><br></br>
             <input id="Password" type="password" placeholder="Password" name="password"

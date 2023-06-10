@@ -132,6 +132,7 @@ function MarketplaceAddItem() {
             dateCreated: date,
             timeCreated: time(),
             images: [],
+            onRent: false,
         };
         try {
             addDoc(marketplaceRef, data).then((res) => {

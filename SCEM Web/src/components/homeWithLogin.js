@@ -26,9 +26,9 @@ function HomeWithLogin() {
     getUserData().then();
 
     return (
-        <div>
+        <body id={"homeWithLogin-body"}>
             <div id={"homeWithLogin-header"}>
-                <img id="homeWithLogin-logo" src="logoTemp.jpg" alt={"SCEM logo"}></img>
+                <img id="homeWithLogin-logo" src="/logoWithBackground.jpg" alt={"SCEM logo"}></img>
             </div>
 
             <div id={"homeWithLogin-signOutButton"}>
@@ -147,7 +147,7 @@ function HomeWithLogin() {
                 </div>
             </div>
 
-        </div>
+        </body>
     );
 }
 
