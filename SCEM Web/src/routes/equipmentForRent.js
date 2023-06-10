@@ -59,7 +59,7 @@ function EquipmentForRent() {
 
         <div id={"equipmentForRent-header"}>
             <div id={"equipmentForRent-backButton"}>
-                <a href={"/login"}
+                <a href={"/"}
                    className={"arrow left"}>
                 </a>
             </div>
