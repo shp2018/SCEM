@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
-import { firestore } from "../firebase";
+import { doc, getDoc, updateDoc, collection, query, where, getDocs } from "firebase/firestore";
+import {  auth, firestore } from "../firebase";
+import "../css/marketplaceItem.css";
+import {onAuthStateChanged} from "firebase/auth";
 
 const MarketplaceItem = () => {
   const location = useLocation();
-  const [itemData, setItemData] = useState(null); // State to store the retrieved document data
+  const [itemData, setItemData] = useState(null);
+  const [reviewData, setReviewData] = useState({
+    name: "",
+    review: "",
+    rating: 0,
+    timestamp: null,
+  });
+  const [userID, setUserID] = useState("");
+  const [userName, setUserName] = useState("");
+  const [authState, setAuthState] = useState(false);
 
   useEffect(() => {
     const path = location.pathname;
@@ -15,8 +26,7 @@ const MarketplaceItem = () => {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          console.log("Document data:", data);
-          setItemData(data); // Update the state with the retrieved document data
+          setItemData(data);
         } else {
           console.log("No such document!");
         }
@@ -28,22 +38,152 @@ const MarketplaceItem = () => {
     getData();
   }, [location]);
 
+  useEffect(() => {
+    const checkAuthState = async () => {
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          setUserID(user.uid);
+          setAuthState(true);
+          const ref = collection(firestore, "users");
+          const q = query(ref, where("email", "==", user.email));
+          const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) => {
+            if (!userName) {
+              setUserName(doc.data().fullname);
+            }
+          });
+        }
+      });
+    };
+
+    checkAuthState();
+  }, [userName]);
+
+  const handleNameChange = (event) => {
+    setReviewData({ ...reviewData, name: event.target.value });
+  };
+
+  const handleReviewChange = (event) => {
+    setReviewData({ ...reviewData, review: event.target.value });
+  };
+
+  const handleRatingChange = (event) => {
+    setReviewData({ ...reviewData, rating: parseInt(event.target.value) });
+  };
+
+  const submitReview = async (event) => {
+    event.preventDefault();
+    if (!reviewData.review ||  !reviewData.rating) {
+      return; // Don't submit empty reviews, names, or ratings
+    }
+  
+    try {
+      const path = location.pathname;
+      const docRef = doc(firestore, "marketplace", path.slice(12));
+      await updateDoc(docRef, {
+        reviews: [
+          ...(itemData.reviews || []),
+          {
+            name: userName,
+            review: reviewData.review,
+            rating: reviewData.rating,
+            timestamp: new Date().toISOString(),
+          },
+        ],
+      });
+      setReviewData((prevReviewData) => ({
+        ...prevReviewData,
+        review: "",
+        rating: 0,
+      }));
+  
+      // Fetch the updated data from Firestore and update the state
+      const updatedDocSnap = await getDoc(docRef);
+      if (updatedDocSnap.exists()) {
+        const updatedData = updatedDocSnap.data();
+        setItemData(updatedData);
+      }
+    } catch (error) {
+      console.error("Error submitting review:", error);
+    }
+  };
+  
+  
+
+  const renderStars = (rating) => {
+  const filledStars = "★".repeat(rating);
+  const emptyStars = "☆".repeat(5 - rating);
+  return <span className="star">{filledStars + emptyStars}</span>;
+};
+
+
   return (
-    <div>
+    <div className="container">
       {itemData ? (
-        <>
-          <h2>Name: {itemData.name}</h2>
-          <p>Description: {itemData.description}</p>
-          <p>Date Created: {itemData.dateCreated}</p>
-          <p>Equipment Type: {itemData.equipmentType}</p>
-          <p>Site: {itemData.site}</p>
-          <p>Time Created: {itemData.timeCreated}</p>
-          <p>To Date: {itemData.toDate}</p>
-          <p>User Created: {itemData.userCreated}</p>
-          {/* Render other properties as needed */}
-        </>
+        <div className="content">
+          <div className="blue-box">
+            <h2>{itemData.name}</h2>
+          </div>
+          <div className="item-details">
+            <p>Description: {itemData.description}</p>
+            <p>Date Created: {itemData.dateCreated}</p>
+            <p>Equipment Type: {itemData.equipmentType}</p>
+            <p>Site: {itemData.site}</p>
+            <p>Time Created: {itemData.timeCreated}</p>
+            <p>To Date: {itemData.toDate}</p>
+            <p>User Created: {itemData.userCreated}</p>
+            {/* Render other properties */}
+            {/* Render other item details */}
+          </div>
+          <div className="reviews">
+            <h3>Reviews</h3>
+            <ul className="review-list">
+              {itemData.reviews &&
+                itemData.reviews.map((review, index) => (
+                  <li key={index} className="review-item">
+                    <div className="review-box">
+                      <strong>{review.name}: </strong>
+                      {review.review}
+                      <br />
+                      Rating: {renderStars(review.rating)}
+                      <br />
+                      Time: {new Date(review.timestamp).toLocaleString()}
+                    </div>
+                  </li>
+                ))}
+            </ul>
+            <form className="review-form" onSubmit={submitReview}>
+              <input
+                className="name-input"
+                type="text"
+                value={authState ? userName : reviewData.name}
+                onChange={handleNameChange}
+                placeholder="Enter your name"
+              />
+              <input
+                className="review-input"
+                type="text"
+                value={reviewData.review}
+                onChange={handleReviewChange}
+                placeholder="Write a review"
+              />
+              <input
+                className="rating-input"
+                type="number"
+                min={1}
+                max={5}
+                value={reviewData.rating}
+                onChange={handleRatingChange}
+                placeholder="Rating (1-5)"
+              />
+              <button className="review-submit" type="submit">
+                Review
+              </button>
+            </form>
+          </div>
+        </div>
       ) : (
-        <p>Loading...</p>
+        <p className="loading">Loading...</p>
       )}
     </div>
   );
