@@ -25,7 +25,7 @@ function Profile() {
                      key={`${doc.id}`}>
                     <div id={"profile-profileItemTitle"}>
                         <a href={`/marketplace/${doc.id}`}
-                           id={"profile-marketplaceItemLink"}>
+                           id={"profile-profileItemLink"}>
                             {data.name} </a>
                     </div>
                     <div id={"profile-profileItemDescription"}>
@@ -74,7 +74,7 @@ function Profile() {
             </div>
 
             <div id={"profile-userPastRentals"}>
-                {loaded ? userPastRentals : <p> Loading... </p>}
+                {loaded ? userPastRentals : <p className={"loading"}> Loading... </p>}
             </div>
         </div>
     );

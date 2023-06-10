@@ -1,8 +1,6 @@
-#logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+#login-logo {
+    margin-top: 4em;
+    border-radius: 1em;
 }
 
 #back {
@@ -14,8 +12,9 @@
     height: 15px;
 }
 
-body {
+#login-body {
     overflow-x: hidden;
+    text-align: center;
 }
 
 #loginMain {
@@ -88,7 +87,7 @@ input[type=password], select {
     height: 35px;
     border-radius: 4px;
     color: white;
-    border: 0px transparent;
+    border: 0 transparent;
 }
 
 .btnFacebook {
