@@ -1,0 +1,82 @@
+#equipmentForRent-body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#equipmentForRent-header {
+    background-color: #224cbf;
+    padding-bottom: 4em;
+    padding-top: 2em;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
+}
+
+#equipmentForRent-titleText {
+    color: white;
+    display: inline-block;
+}
+
+#equipmentForRent-backButton {
+    position: relative;
+    display: inline-block;
+    right: 4em;
+    bottom: 0.1em;
+    filter: invert(100%);
+}
+
+#equipmentForRent-marketplaceItem {
+    position: relative;
+    text-align: center;
+    margin-bottom: 2em;
+    padding: 3em;
+    background-color: whitesmoke;
+    border-radius: 2em;
+    margin-left: 35%;
+    margin-right: 35%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#equipmentForRent-marketplaceItemTitle {
+    margin-bottom: 1em;
+}
+
+#equipmentForRent-marketplaceItemLink {
+    color: blue;
+}
+
+#equipmentForRent-marketplaceItemImageDiv {
+    position: absolute;
+    margin-top: 2em;
+    top: 0;
+    left: 3em;
+}
+
+#equipmentForRent-marketplaceItemImage {
+    width: 6em;
+    height: 5em;
+    border-radius: 1em;
+    object-fit: cover;
+}
+
+#equipmentForRent-marketplaceItemUserCreated {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#equipmentForRent-marketplaceItemUserCreatedLink {
+    color: blue;
+}
+
+#equipmentForRent-marketplaceItemDateAndTimeCreated {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#equipmentForRent-marketplaceItemDailyPrice {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
