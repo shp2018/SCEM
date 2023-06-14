@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import '../css/homeWithLogin.css';
 import {auth, firestore} from "../firebase";
 import {collection, query, where, getDocs} from "firebase/firestore";
@@ -6,7 +6,6 @@ import {onAuthStateChanged} from "firebase/auth";
 import SignOut from "./signout";
 
 function HomeWithLogin() {
-
     const [userData, setUserData] = useState(null);
 
     async function getUserData() {
@@ -23,7 +22,9 @@ function HomeWithLogin() {
         })
     }
 
-    getUserData().then();
+    useEffect(() => {
+        getUserData().then();
+    }, []);
 
     return (
         <body id={"homeWithLogin-body"}>
