@@ -125,16 +125,28 @@ const MarketplaceItem = () => {
             <h2>{itemData.name}</h2>
           </div>
           <div className="item-details">
-            <p>Description: {itemData.description}</p>
-            <p>Date Created: {itemData.dateCreated}</p>
-            <p>Equipment Type: {itemData.equipmentType}</p>
-            <p>Site: {itemData.site}</p>
-            <p>Time Created: {itemData.timeCreated}</p>
-            <p>To Date: {itemData.toDate}</p>
-            <p>User Created: {itemData.userCreated}</p>
-            {/* Render other properties */}
-            {/* Render other item details */}
-          </div>
+          <p className="item-image">
+    <img
+      src={itemData.images}
+      alt="Marketplace Item"
+      id="marketplace-marketplaceItemImage"
+    />
+  </p>
+  <p>{itemData.description}</p>
+  <p>
+    <span className="price"><strong>{itemData.dailyPrice}$/per day </strong></span>
+    <br />
+    <span className="price"><strong>{itemData.weeklyPrice}$/per week </strong> </span>
+    <br />
+    <span className="price"><strong>{itemData.monthlyPrice}$/per month </strong> </span>
+  </p>
+  <p>
+    <strong>Owner</strong> <br></br> {itemData.userCreated}
+  </p>
+  {/* Render other properties */}
+  {/* Render other item details */}
+</div>
+
           <div className="reviews">
             <h3>Reviews</h3>
             <ul className="review-list">
@@ -181,7 +193,11 @@ const MarketplaceItem = () => {
               </button>
             </form>
           </div>
+          <button className="rent-submit" type="submit">
+                Rent
+              </button>
         </div>
+        
       ) : (
         <p className="loading">Loading...</p>
       )}
