@@ -55,24 +55,22 @@ function EquipmentForRent() {
     }, []);
 
     return (
-        <body id={"equipmentForRent-body"}>
+        <div id={"equipmentForRent-body"}>
+            <div id={"equipmentForRent-header"}>
+                <div id={"equipmentForRent-backButton"}>
+                    <a href={"/"}
+                       className={"arrow left"}>
+                    </a>
+                </div>
 
-        <div id={"equipmentForRent-header"}>
-            <div id={"equipmentForRent-backButton"}>
-                <a href={"/"}
-                   className={"arrow left"}>
-                </a>
+                <div id={"equipmentForRent-titleText"}>
+                    <h3> Equipment For Rent </h3>
+                </div>
             </div>
-
-            <div id={"equipmentForRent-titleText"}>
-                <h3> Equipment For Rent </h3>
+            <div id={"equipmentForRent-items"}>
+                {loaded ? equipmentForRent : <p className={"loaded"}> Loading... </p>}
             </div>
         </div>
-        <div id={"equipmentForRent-items"}>
-            {loaded ? equipmentForRent : <p className={"loaded"}> Loading... </p>}
-        </div>
-
-        </body>
     );
 }
 

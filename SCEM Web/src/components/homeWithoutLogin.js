@@ -3,7 +3,7 @@ import '../css/homeWithoutLogin.css';
 
 function HomeWithoutLogin() {
     return (
-        <body id={"homeWithoutLogin-body"}>
+        <div id={"homeWithoutLogin-body"}>
         <div>
             <img id="homeWithoutLogin-logo" src='/logoWithBackground.jpg' alt={"SCEM logo"}></img>
         </div>
@@ -57,7 +57,7 @@ function HomeWithoutLogin() {
         </div>
 
 
-        </body>
+        </div>
     );
 }
 
