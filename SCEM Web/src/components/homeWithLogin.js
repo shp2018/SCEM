@@ -27,7 +27,7 @@ function HomeWithLogin() {
     }, []);
 
     return (
-        <body id={"homeWithLogin-body"}>
+        <div id={"homeWithLogin-body"}>
             <div id={"homeWithLogin-header"}>
                 <img id="homeWithLogin-logo" src="/logoWithBackground.jpg" alt={"SCEM logo"}></img>
             </div>
@@ -148,7 +148,7 @@ function HomeWithLogin() {
                 </div>
             </div>
 
-        </body>
+        </div>
     );
 }
 
