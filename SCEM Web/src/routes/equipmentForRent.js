@@ -24,7 +24,7 @@ function EquipmentForRent() {
                             {data.name} </a>
                     </div>
                     <div id={"equipmentForRent-marketplaceItemDescription"}>
-                        {data.description}
+                        {data.description.substring(0, 100) + "..."}
                     </div>
                     <div id={"equipmentForRent-marketplaceItemDailyPrice"}>
                         <p> Daily Price: ${data.dailyPrice} </p>
