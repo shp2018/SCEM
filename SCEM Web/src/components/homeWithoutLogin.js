@@ -39,7 +39,7 @@ function HomeWithoutLogin() {
             </ul>
 
             <ul id={"homeWithoutLogin-links"}>
-                <li><a href={"/"}> Company </a>
+                <li><a href={"/companyProfile"}> Company </a>
                 </li>
                 <li><a href={"/"}> Equipment </a>
                 </li>
