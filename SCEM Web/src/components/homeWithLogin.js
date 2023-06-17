@@ -63,7 +63,7 @@ function HomeWithLogin() {
 
                 <ul id={"homeWithLogin-links"}>
                     <li><a href={"/companyProfile"}> Company </a></li>
-                    <li><a href={"/"}> Equipment </a></li>
+                    <li><a href={"/myRentalManagement"}> Equipment </a></li>
                     <li><a href={"/"}> For Rent </a></li>
                     <li><a href={"/marketplace"}> Marketplace </a></li>
                 </ul>
