@@ -20,7 +20,7 @@ function Login() {
                 clientId: clientId,
                 scope: ""
             })
-        };
+        }
         gapi.load('client:auth2', start)
     })
     const [email, Email] = useState('');
@@ -66,7 +66,7 @@ function Login() {
 
         <div className="loginMain">
             <h1 id="loginTitle">Login</h1>
-            <p id="subtitle">Welcome back to the SCEM app.</p>
+            <p id="subtitle">Safeguard your assets with advanced equipment management technology.</p>
             <input id="Email" type="text" placeholder="Email" name="email"
                    onChange={handleEmailChange}></input><br></br>
             <input id="Password" type="password" placeholder="Password" name="password"
