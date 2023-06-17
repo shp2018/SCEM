@@ -49,7 +49,7 @@ function CompanyProfile() {
             return;
         }
 
-        const companyProfileRef = doc(firestore, "company", cName);
+        const companyProfileRef = doc(firestore, "company");
         const companyData = await getDoc(companyProfileRef);
 
         let data = {
