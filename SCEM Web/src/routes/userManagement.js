@@ -3,9 +3,9 @@ import '../css/userManagement.css';
 
 const UserManagement = () => {
     return (
-      <>
-          User Management
-      </>
+        <div>
+            User Management
+        </div>
     );
 }
 
