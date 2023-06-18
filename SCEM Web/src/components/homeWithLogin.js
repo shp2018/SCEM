@@ -33,7 +33,7 @@ function HomeWithLogin() {
             </div>
 
             <div id={"homeWithLogin-signOutButton"}>
-                <SignOut></SignOut>
+                <SignOut/>
             </div>
 
             <div id={"homeWithLogin-userInfo"}>
@@ -103,7 +103,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/userGroup"}
                        id={"homeWithLogin-menuItemLinks"}> User group </a>
                 </div>
 
@@ -112,7 +112,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/userManagement"}
                        id={"homeWithLogin-menuItemLinks"}> User management </a>
                 </div>
             </div>

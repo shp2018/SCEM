@@ -14,6 +14,8 @@ import Profile from './routes/profile';
 import CompanyProfile from './routes/companyProfile';
 import MyRentalManagement from "./routes/myRentalManagement";
 import EquipmentCurrentlyOnRent from "./routes/equipmentCurrentlyOnRent";
+import UserManagement from "./routes/userManagement";
+import UserGroup from "./routes/userGroup";
 
 function App() {
     return (
@@ -32,6 +34,8 @@ function App() {
                 <Route path={"/profile/:profileId"} element={<Profile/>}/>
                 <Route path={"/equipmentCurrentlyOnRent"} element={<EquipmentCurrentlyOnRent/>}/>
                 <Route path={"/myRentalManagement"} element={<MyRentalManagement/>}/>
+                <Route path={"/userManagement"} element={<UserManagement/>}/>
+                <Route path={"/userGroup"} element={<UserGroup/>}/>
             </Routes>
         </Router>
     );
