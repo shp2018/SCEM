@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import '../css/homeWithLogin.css';
 import {auth, firestore} from "../firebase";
 import {collection, query, where, getDocs} from "firebase/firestore";
@@ -6,7 +6,6 @@ import {onAuthStateChanged} from "firebase/auth";
 import SignOut from "./signout";
 
 function HomeWithLogin() {
-
     const [userData, setUserData] = useState(null);
 
     async function getUserData() {
@@ -23,16 +22,18 @@ function HomeWithLogin() {
         })
     }
 
-    getUserData().then();
+    useEffect(() => {
+        getUserData().then();
+    }, []);
 
     return (
-        <body id={"homeWithLogin-body"}>
+        <div id={"homeWithLogin-body"}>
             <div id={"homeWithLogin-header"}>
                 <img id="homeWithLogin-logo" src="/logoWithBackground.jpg" alt={"SCEM logo"}></img>
             </div>
 
             <div id={"homeWithLogin-signOutButton"}>
-                <SignOut></SignOut>
+                <SignOut/>
             </div>
 
             <div id={"homeWithLogin-userInfo"}>
@@ -62,7 +63,7 @@ function HomeWithLogin() {
 
                 <ul id={"homeWithLogin-links"}>
                     <li><a href={"/companyProfile"}> Company </a></li>
-                    <li><a href={"/"}> Equipment </a></li>
+                    <li><a href={"/myRentalManagement"}> Equipment </a></li>
                     <li><a href={"/"}> For Rent </a></li>
                     <li><a href={"/marketplace"}> Marketplace </a></li>
                 </ul>
@@ -93,7 +94,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/companyProfile"}
                        id={"homeWithLogin-menuItemLinks"}> Company Profile </a>
                 </div>
 
@@ -102,7 +103,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/userGroup"}
                        id={"homeWithLogin-menuItemLinks"}> User group </a>
                 </div>
 
@@ -111,7 +112,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/userManagement"}
                        id={"homeWithLogin-menuItemLinks"}> User management </a>
                 </div>
             </div>
@@ -147,7 +148,7 @@ function HomeWithLogin() {
                 </div>
             </div>
 
-        </body>
+        </div>
     );
 }
 

@@ -6,7 +6,7 @@ import {useState} from 'react';
 import {gapi} from 'gapi-script'
 import '../css/login.css';
 import {setPersistence, browserSessionPersistence, signInWithEmailAndPassword} from "firebase/auth";
-import {auth, firestore} from "../firebase";
+import {auth} from "../firebase";
 import {useNavigate} from "react-router-dom";
 
 const clientId = "1020057730481-3iflk45qqttk0v8pg48bjk4j0nmi6qm2.apps.googleusercontent.com"
@@ -20,7 +20,7 @@ function Login() {
                 clientId: clientId,
                 scope: ""
             })
-        };
+        }
         gapi.load('client:auth2', start)
     })
     const [email, Email] = useState('');
@@ -57,7 +57,7 @@ function Login() {
     };
 
     return (
-        <body id={"login-body"}>
+        <div id={"login-body"}>
 
         <div>
             <img id="login-logo" src='/logoWithBackground.jpg' alt={"SCEM logo"}></img>
@@ -66,7 +66,7 @@ function Login() {
 
         <div className="loginMain">
             <h1 id="loginTitle">Login</h1>
-            <p id="subtitle">Welcome back to the SCEM app.</p>
+            <p id="subtitle">Safeguard your assets with advanced equipment management technology.</p>
             <input id="Email" type="text" placeholder="Email" name="email"
                    onChange={handleEmailChange}></input><br></br>
             <input id="Password" type="password" placeholder="Password" name="password"
@@ -93,7 +93,7 @@ function Login() {
 
         </div>
 
-        </body>
+        </div>
     );
 }
 

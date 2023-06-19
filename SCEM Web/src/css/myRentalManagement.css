@@ -1,0 +1,62 @@
+#myRentalManagement-body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#myRentalManagement-header {
+    background-color: #133da5;
+    padding-bottom: 4em;
+    padding-top: 2em;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
+}
+
+#myRentalManagement-titleText {
+    color: white;
+    display: inline-block;
+}
+
+#myRentalManagement-backButton {
+    position: relative;
+    display: inline-block;
+    right: 4em;
+    bottom: 0.1em;
+    filter: invert(100%);
+}
+
+#myRentalManagement-myRentalsTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.myRentalManagement-myRentalsTableElement {
+    text-align: center;
+    border: 1px solid black;
+    height: 2.5em;
+}
+
+.myRentalManagement-myRentalsTableHeading {
+    border: 1px solid black;
+    height: 2.5em;
+    background-color: #5982d3;
+}
+
+#myRentalManagement-myRentalsTableLinkArrow {
+    height: 60%;
+    width: 60%;
+}
+
+#myRentalManagement-myRentalsTable {
+    counter-reset: rowNumber;
+}
+
+#myRentalManagement-myRentalsTable tr:not(:first-child) {
+    counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+    content: counter(rowNumber);
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
