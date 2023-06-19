@@ -1,0 +1,65 @@
+
+#createLocationGroup-page {
+    text-align: center;
+}
+
+#createLocationGroup-backButton {
+    position: absolute;
+    left: calc(50% - 153px);
+    filter: invert(100%);
+    margin-top: 17px;
+}
+
+#createLocationGroup-header {
+    background-color: #224cbf;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-bottom: 50px;
+    padding-top: 25px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 25px;
+}
+
+#createLocationGroup-createLocationGroupText {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#createLocationGroup-subtitle {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#createLocationGroup-inputBoxes {
+    text-align: center;
+}
+
+#createLocationGroup-Input {
+    border-style: double;
+    border-radius: 5px;
+    width: 500px;
+    height: 60px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+}
+
+
+
+#createLocationGroup-Label {
+    text-align:left;
+}
+
+
+#createLocationGroup-createLocationGroupbutton {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: white;
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
+}
+
