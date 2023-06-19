@@ -51,7 +51,7 @@ function MyRentalManagement() {
                     </a>
                 </div>
                 <div id="myRentalManagement-titleText">
-                    <h3 id={"#myRentalManagement-titleText"}> My Rental Management </h3>
+                    <h3 id={"myRentalManagement-titleText"}> My Rental Management </h3>
                 </div>
             </div>
 
