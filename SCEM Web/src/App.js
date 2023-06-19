@@ -14,6 +14,8 @@ import Profile from './routes/profile';
 import CompanyProfile from './routes/companyProfile';
 import MyRentalManagement from "./routes/myRentalManagement";
 import EquipmentCurrentlyOnRent from "./routes/equipmentCurrentlyOnRent";
+import CreateLocationGroup from './routes/createLocationGroup';
+import LocationGroup from './routes/locationGroup';
 
 function App() {
     return (
@@ -23,6 +25,8 @@ function App() {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/companyProfile" element={<CompanyProfile/>}/>
+                <Route path="/locationGroup" element={<LocationGroup/>}/>
+                <Route path="/locationGroup/create" element={<CreateLocationGroup/>}/>
                 <Route path="/forgotPassword" element={<ForgotPassword/>}/>
                 <Route path={"/marketplace"} element={<Marketplace/>}/>
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
