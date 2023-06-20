@@ -5,7 +5,6 @@
 
 #userManagement-header {
     background-color: #133da5;
-    padding-bottom: 4em;
     padding-top: 2em;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em;
@@ -25,6 +24,17 @@
     filter: invert(100%);
 }
 
+#userManagement-addButtonDiv {
+    position: relative;
+    text-align: right;
+    bottom: 4em;
+}
+
+#userManagement-addButton {
+    height: 40px;
+    width: 40px;
+}
+
 #userManagement-usersInfoTable {
     margin-left: auto;
     margin-right: auto;
@@ -41,6 +51,11 @@
     border: 1px solid black;
     height: 2.5em;
     background-color: #5982d3;
+}
+
+#userManagement-tableLinkArrow {
+    width: 1.5em;
+    height: 1.5em;
 }
 
 #userManagement-usersInfoTable tr:not(:first-child) {

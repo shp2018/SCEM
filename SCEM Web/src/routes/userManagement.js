@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import '../css/userManagement.css';
 import {onAuthStateChanged} from "firebase/auth";
 import {auth, firestore} from "../firebase";
-import {collection, getDocs, query, where} from "firebase/firestore";
+import {collection, getDocs, query, where, doc, getDoc} from "firebase/firestore";
 
 const UserManagement = () => {
     const [userID, setUserID] = useState(null);
@@ -20,19 +20,39 @@ const UserManagement = () => {
     const getUsersPaths = async () => {
         const companyQuery = query(companyRef, where("userID", "==", userID));
         const querySnapshot = await getDocs(companyQuery);
-        setUsersPath([]);
+        await setUsersPath([]);
 
         querySnapshot.forEach(doc => {
-            let data = doc.data();
-            console.log(data.users);
-            data.users.forEach((res) => {
-                console.log(res.path);
+            const usersArray = doc.data().users;
+
+            usersArray.forEach((res) => {
+                setUsersPath(curr => [...curr,
+                    res._key.path.lastSegment()]);
             });
         });
     }
 
     const getUsersData = async () => {
+        setUsersData([]);
+        for (const res of usersPath) {
+            const docRef = doc(firestore, "users", res);
+            const docSnap = await getDoc(docRef);
+            let data = docSnap.data();
 
+            setUsersData(curr => [...curr,
+                <tr key={`${docSnap.id}`}>
+                    <td className={"userManagement-usersInfoTableElement"}>{}</td>
+                    <td className={"userManagement-usersInfoTableElement"}>{data.fullname}</td>
+                    <td className={"userManagement-usersInfoTableElement"}>{data.email}</td>
+                    <td className={"userManagement-usersInfoTableElement"}>{data.locked ? "Off" : "On"}</td>
+                    <td className={"userManagement-usersInfoTableElement"}>
+                        <a href={``}>
+                            <img src={"/triangle-right.svg"} alt={"Right arrow used to redirect user to item link."}
+                                 id={"userManagement-tableLinkArrow"}></img>
+                        </a>
+                    </td>
+                </tr>]);
+        }
     }
 
     useEffect(() => {
@@ -43,7 +63,7 @@ const UserManagement = () => {
                 })
             })
         })
-    }, [userID]);
+    }, [userID, loaded]);
 
     return (
         <div id={"userManagement-body"}>
@@ -59,6 +79,13 @@ const UserManagement = () => {
                         <div id={"userManagement-titleText"}>
                             <h3 id={"userManagement-titleText"}>User Management</h3>
                         </div>
+                        <div id={"userManagement-addButtonDiv"}>
+                            <a href={"/userManagement/createUser"}>
+                                <img src={"/locationAdd.png"} id={"userManagement-addButton"}
+                                     alt={"add location button"}>
+                                </img>
+                            </a>
+                        </div>
                     </div>
 
                     <div id={"userManagement-usersInfo"}>
@@ -73,7 +100,7 @@ const UserManagement = () => {
                                 <th className={"userManagement-usersInfoTableHeading"}>Active</th>
                                 <th className={"userManagement-usersInfoTableHeading"}></th>
                             </tr>
-                            {usersPath}
+                            {usersData}
                             </tbody>
                         </table>
                     </div>
