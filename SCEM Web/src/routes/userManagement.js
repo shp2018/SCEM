@@ -6,7 +6,8 @@ import {collection, getDocs, query, where} from "firebase/firestore";
 
 const UserManagement = () => {
     const [userID, setUserID] = useState(null);
-    const [usersInfo, setUsersInfo] = useState([]);
+    const [usersPath, setUsersPath] = useState([]);
+    const [usersData, setUsersData] = useState([])
     const [loaded, setLoaded] = useState(false);
     const companyRef = collection(firestore, "company");
 
@@ -16,23 +17,30 @@ const UserManagement = () => {
         })
     }
 
-    const getUsersInfo = async () => {
+    const getUsersPaths = async () => {
         const companyQuery = query(companyRef, where("userID", "==", userID));
         const querySnapshot = await getDocs(companyQuery);
-        setUsersInfo([]);
+        setUsersPath([]);
 
         querySnapshot.forEach(doc => {
             let data = doc.data();
-            console.log(doc);
-            console.log(data);
             console.log(data.users);
-        })
+            data.users.forEach((res) => {
+                console.log(res.path);
+            });
+        });
+    }
+
+    const getUsersData = async () => {
+
     }
 
     useEffect(() => {
         getUserID().then(() => {
-            getUsersInfo().then(() => {
-                setLoaded(true);
+            getUsersPaths().then(() => {
+                getUsersData().then(() => {
+                    setLoaded(true);
+                })
             })
         })
     }, [userID]);
@@ -65,10 +73,7 @@ const UserManagement = () => {
                                 <th className={"userManagement-usersInfoTableHeading"}>Active</th>
                                 <th className={"userManagement-usersInfoTableHeading"}></th>
                             </tr>
-                            <tr>
-                                <td className={"userManagement-usersInfoTableElement"}>lol</td>
-                                {usersInfo}
-                            </tr>
+                            {usersPath}
                             </tbody>
                         </table>
                     </div>
