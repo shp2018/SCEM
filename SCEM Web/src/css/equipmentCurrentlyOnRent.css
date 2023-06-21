@@ -1,0 +1,46 @@
+#marketplaceTable {
+  counter-reset: row-counter; /* Add this line to reset the counter */
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#marketplaceTable th {
+  background-color: #A3B7E5;
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+#marketplaceTable td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+#marketplaceTable td:first-child:before {
+  counter-increment: row-counter; /* Add this line to increment the counter */
+  content: counter(row-counter); /* Add this line to display the counter */
+}
+
+#blueBox {
+  background-color: #224cbf;
+  padding: 50px;
+}
+
+#blueBox h1 {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+}
+
+.triangle-button {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid blue;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border-right: none;
+}
