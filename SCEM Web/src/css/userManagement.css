@@ -27,7 +27,8 @@
 #userManagement-addButtonDiv {
     position: relative;
     text-align: right;
-    bottom: 4em;
+    bottom: 3em;
+    right: 1.5em;
 }
 
 #userManagement-addButton {

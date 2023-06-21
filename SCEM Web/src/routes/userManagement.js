@@ -67,47 +67,42 @@ const UserManagement = () => {
 
     return (
         <div id={"userManagement-body"}>
-            {loaded
-                ?
-                <div>
-                    <div id={"userManagement-header"}>
-                        <div id={"userManagement-backButton"}>
-                            <a href={"/"}
-                               className={"arrow left"}>
-                            </a>
-                        </div>
-                        <div id={"userManagement-titleText"}>
-                            <h3 id={"userManagement-titleText"}>User Management</h3>
-                        </div>
-                        <div id={"userManagement-addButtonDiv"}>
-                            <a href={"/userManagement/createUser"}>
-                                <img src={"/locationAdd.png"} id={"userManagement-addButton"}
-                                     alt={"add location button"}>
-                                </img>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div id={"userManagement-usersInfo"}>
-                        <table
-                            className={"userManagement-usersInfoTableElement"}
-                            id={"userManagement-usersInfoTable"}>
-                            <tbody>
-                            <tr>
-                                <th className={"userManagement-usersInfoTableHeading"}>#</th>
-                                <th className={"userManagement-usersInfoTableHeading"}>Name</th>
-                                <th className={"userManagement-usersInfoTableHeading"}>Email</th>
-                                <th className={"userManagement-usersInfoTableHeading"}>Active</th>
-                                <th className={"userManagement-usersInfoTableHeading"}></th>
-                            </tr>
-                            {usersData}
-                            </tbody>
-                        </table>
-                    </div>
-
+            <div id={"userManagement-header"}>
+                <div id={"userManagement-backButton"}>
+                    <a href={"/"}
+                       className={"arrow left"}>
+                    </a>
                 </div>
-                :
-                <p className={"loading"}>Loading...</p>}
+                <div id={"userManagement-titleText"}>
+                    <h3 id={"userManagement-titleText"}>User Management</h3>
+                </div>
+                <div id={"userManagement-addButtonDiv"}>
+                    <a href={"/userManagement/createUser"}>
+                        <img src={"/locationAdd.png"} id={"userManagement-addButton"}
+                             alt={"Add user button"}>
+                        </img>
+                    </a>
+                </div>
+            </div>
+
+            <div id={"userManagement-usersInfo"}>
+                {loaded ?
+                    <table
+                        className={"userManagement-usersInfoTableElement"}
+                        id={"userManagement-usersInfoTable"}>
+                        <tbody>
+                        <tr>
+                            <th className={"userManagement-usersInfoTableHeading"}>#</th>
+                            <th className={"userManagement-usersInfoTableHeading"}>Name</th>
+                            <th className={"userManagement-usersInfoTableHeading"}>Email</th>
+                            <th className={"userManagement-usersInfoTableHeading"}>Active</th>
+                            <th className={"userManagement-usersInfoTableHeading"}></th>
+                        </tr>
+                        {usersData}
+                        </tbody>
+                    </table>
+                    : <p className={"loading"}>Loading...</p>}
+            </div>
         </div>
     );
 }
