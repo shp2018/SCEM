@@ -85,6 +85,14 @@ function HomeWithLogin() {
                 <a href={"/equipmentForRent"}
                    id={"homeWithLogin-menuItemLinks"}> Equipment for rent </a>
             </div>
+            <div id={"homeWithLogin-menuItem"}>
+                <img src={'equipmentForRent.jpg'}
+                     id={"homeWithLogin-menuItemIcons"}
+                     alt={""}>
+                </img>
+                <a href={"/equipmentCurrentlyOnRent"}
+                   id={"homeWithLogin-menuItemLinks"}> Equipment currently on rent </a>
+            </div>
 
             <div id={"homeWithLogin-companyManagement"}>
                 <h3 id={"homeWithLogin-companyManagementHeader"}> Company Management </h3>
