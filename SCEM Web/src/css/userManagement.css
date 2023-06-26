@@ -63,7 +63,7 @@
     counter-increment: rowNumber;
 }
 
-table tr td:first-child::before {
+#userManagement-usersInfoTable tr .userManagement-usersInfoTableElement:first-child::before {
     content: counter(rowNumber);
     margin-left: 0.5em;
     margin-right: 0.5em;
