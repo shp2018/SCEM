@@ -1,24 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "../css/userManagement-createUser.css";
-import {
-    createUserWithEmailAndPassword,
-    onAuthStateChanged,
-    reauthenticateWithCredential,
-    sendPasswordResetEmail, signInWithEmailAndPassword
-} from "firebase/auth";
+import {createUserWithEmailAndPassword, sendPasswordResetEmail} from "firebase/auth";
 import {auth, firestore} from "../firebase";
 import {doc, setDoc} from "firebase/firestore";
-import {userEmail} from "./userManagement";
 
 const UserManagementCreateUser = () => {
     const [newUserName, setNewUserName] = useState("");
     const [newUserEmail, setNewUserEmail] = useState("");
-    const [currentUserPassword, setCurrentUserPassword] = useState("");
-
-    const promptForCredentials = async () => {
-        const credential = prompt("Provide your password for re-authentication.");
-        setCurrentUserPassword(credential);
-    }
 
     const createUser = e => {
         e.preventDefault();
@@ -36,21 +24,12 @@ const UserManagementCreateUser = () => {
                 auth.signOut().then(() => {
                     sendPasswordResetEmail(auth, newUserEmail).then(() => {
                         alert(`Go to the email ${newUserEmail} to set the password for the account created.`);
-                        // TODO: log back in to current user
-                        // promptForCredentials().then(() => {
-                        //     console.log(userEmail);
-                        //     console.log(currentUserPassword);
-                        //     signInWithEmailAndPassword(auth, userEmail, currentUserPassword).then(() => {
-                        //         window.location.href = "/userManagement";
-                        //     }).catch((error) => {
-                        //         console.log(error);
-                        //         alert("Invalid login. Try again.");
-                        //     })
-                        // });
+                        // TODO: log back in to current user OR redirect to login page, then redirect back to userManagement
                     });
                 });
             });
         }).catch(err => {
+            console.log(err.message);
             if (err.message === "Firebase: Error (auth/email-already-in-use).") {
                 alert("Account already exists, please register another account.");
             }
