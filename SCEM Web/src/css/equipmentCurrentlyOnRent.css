@@ -35,7 +35,7 @@
     counter-increment: rowNumber;
 }
 
-table tr td:first-child::before {
+#equipmentCurrentlyOnRent-table tr .equipmentCurrentlyOnRent-tableElement:first-child::before {
     content: counter(rowNumber);
     margin-left: 0.5em;
     margin-right: 0.5em;

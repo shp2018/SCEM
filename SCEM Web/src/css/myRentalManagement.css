@@ -55,7 +55,7 @@
     counter-increment: rowNumber;
 }
 
-table tr td:first-child::before {
+#myRentalManagement-myRentalsTable tr .myRentalManagement-myRentalsTableElement:first-child::before {
     content: counter(rowNumber);
     margin-left: 0.5em;
     margin-right: 0.5em;
