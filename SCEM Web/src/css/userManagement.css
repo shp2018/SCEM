@@ -5,7 +5,7 @@
 
 #userManagement-header {
     background-color: #133da5;
-    padding-top: 2em;
+    padding: 2em 0 0 0;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em;
     margin: 2em 30% 2em;
@@ -68,3 +68,52 @@ table tr td:first-child::before {
     margin-left: 0.5em;
     margin-right: 0.5em;
 }
+
+.userManagement-dropdownButton {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.userManagement-dropdownButton:hover {
+    background-color: #f1f1f1;
+}
+
+#userManagement-dropDownButtonID {
+    background-color: white;
+}
+
+#userManagement-dropdownCancel {
+    color: black;
+    padding: 16px;
+    background-color: #ffffff;
+}
+
+#userManagement-dropdownCancel:hover {
+    min-width: 160px;
+    background-color: #f1f1f1;
+}
+
+#userManagement-dropdownDiv {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.show {display: block;}

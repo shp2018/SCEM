@@ -71,13 +71,24 @@
     border-color: #c4c7cc;
 }
 
+.signup-inputs {
+    width: 500px;
+    padding: 12px 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 /*input {*/
 /*    height: 2em;*/
 /*    width: 2em;*/
 /*    vertical-align: middle;*/
 /*}*/
 
-.tacbox {
+#tacbox {
     position: relative;
     display: block;
     margin-left: auto;
