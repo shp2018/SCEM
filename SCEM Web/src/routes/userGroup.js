@@ -66,8 +66,9 @@ const UserGroup = () => {
       users: users.map((user) => user.id),
     };
 
-    await addDoc(userGroupsCollectionRef, newUserGroup);
-    console.log('User group added to Firestore');
+    await addDoc(userGroupsCollectionRef, newUserGroup).then(() => {
+        alert("User group added.");
+    });
 
     setGroupName('');
     setUsers([]);
@@ -81,6 +82,7 @@ const UserGroup = () => {
         </div>
         <h3 id="userGroup-titleText">Create User Group</h3>
       </div>
+
       <div id="userGroup-inputBox">
         <input
           type="text"
@@ -131,16 +133,16 @@ const UserGroup = () => {
         </button>
       </div>
       <br />
-      <table>
-        <thead>
+      <table id={"userGroup-table"}>
+        <thead id={"userGroup-tableHead"}>
           <tr>
-            <th>STT</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th></th>
+            <th className={"userGroup-tableHeading"}>STT</th>
+            <th className={"userGroup-tableHeading"}>Name</th>
+            <th className={"userGroup-tableHeading"}>Email</th>
+            <th className={"userGroup-tableHeading"}></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id={"userGroup-tableBody"}>
           {users.map((user, index) => (
             <tr key={user.id}>
               <td>{index + 1}</td>

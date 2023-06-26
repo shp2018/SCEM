@@ -1,193 +1,180 @@
 #userGroup-body {
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #userGroup-header {
-  background-color: #133da5;
-  padding-bottom: 4em;
-  padding-top: 2em;
-  border-top-left-radius: 2em;
-  border-top-right-radius: 2em;
-  margin: 2em 30% 2em;
+    background-color: #133da5;
+    padding-bottom: 4em;
+    padding-top: 2em;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
 }
 
 #userGroup-titleText {
-  color: white;
-  display: inline-block;
+    color: white;
+    display: inline-block;
 }
 
 #userGroup-backButton {
-  position: relative;
-  display: inline-block;
-  right: 4em;
-  bottom: 0.1em;
-  filter: invert(100%);
+    position: relative;
+    display: inline-block;
+    right: 4em;
+    bottom: 0.1em;
+    filter: invert(100%);
 }
 
 #userGroup-body {
-  width: 400px;
-  margin: 0 auto;
-  padding: 20px;
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 #userGroup-inputBox {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 #userGroup-inputBox input[type="text"] {
-  width: 100%;
-  padding: 15px;
-  font-size: 16px;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
 }
 
 #userGroup-permissionsHeader {
-  font-size: 18px;
-  margin-bottom: 10px;
-  text-align : left;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
 #userGroup-checkboxes {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 #userGroup-checkboxes label {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 #userGroup-checkboxes input[type="checkbox"] {
-  margin-right: 10px;
-  width: 20px;
-  height: 20px;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
 }
 
 #userGroup-addUserSection {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
 
 #userGroup-addUserSection input[type="text"] {
-  flex: 1;
-  padding: 15px; /* Increase padding for height */
-  font-size: 18px; /* Increase font size */
-  margin-right: 10px;
+    flex: 1;
+    padding: 15px; /* Increase padding for height */
+    font-size: 18px; /* Increase font size */
+    margin-right: 10px;
 }
 
 #userGroup-addButton {
-  background-color: blue;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 15px 24px; /* Increase padding for height and width */
-  font-size: 18px; /* Increase font size */
-  cursor: pointer;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 24px; /* Increase padding for height and width */
+    font-size: 18px; /* Increase font size */
+    cursor: pointer;
 }
 
-
-
-table {
-  width: 100%;
-  border-collapse: collapse;
+#userGroup-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-thead {
-  background-color: #5982d3;
+#userGroup-tableHead {
+    background-color: #5982d3;
 }
 
-th {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ccc; /* Add grey border to table header cells */
+.userGroup-tableHeading {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc; /* Add grey border to table header cells */
 }
 
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tbody td {
-  padding: 10px;
-  border: 1px solid #ccc; /* Add grey border to table cells */
+#userGroup-tableBody td {
+    padding: 10px;
+    border: 1px solid #ccc; /* Add grey border to table cells */
 }
 
 #userGroup-table button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  color: #ff0000;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ff0000;
 }
 
 #userGroup-table button:hover {
-  color: #ff3333;
+    color: #ff3333;
 }
-
 
 .remove-button {
-  background-color: transparent;
-  color: red;
-  border: none;
-  padding: 12px 20px; /* Increase padding to make the button thicker */
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 25px; /* Adjust font size as needed */
-  height: 50px; /* Set a specific height for the button */
+    background-color: transparent;
+    color: red;
+    border: none;
+    padding: 12px 20px; /* Increase padding to make the button thicker */
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 25px; /* Adjust font size as needed */
+    height: 50px; /* Set a specific height for the button */
 }
-
-
-
-
 
 #userGroup-saveButton {
-  background-color: blue;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 15px 170px; /* Increase padding for height and width */
-  font-size: 18px; /* Increase font size */
-  cursor: pointer;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 170px; /* Increase padding for height and width */
+    font-size: 18px; /* Increase font size */
+    cursor: pointer;
 }
-/* Add this CSS code in your userGroup.css file */
-/* Add this CSS code in your userGroup.css file */
+
 .checkbox {
-  display: none;
+    display: none;
 }
 
 .checkbox-label {
-  position: relative;
-  cursor: pointer;
-  padding-left: 25px;
+    position: relative;
+    cursor: pointer;
+    padding-left: 25px;
 }
 
 .checkbox-label::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 18px;
-  height: 18px;
-  border: 2px solid blue;
-  border-radius: 4px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid blue;
+    border-radius: 4px;
 }
 
 .checkbox-label::after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 5px;
-  width: 7px;
-  height: 12px;
-  border: solid blue;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  opacity: 0;
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    width: 7px;
+    height: 12px;
+    border: solid blue;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
 }
 
 .checkbox:checked + .checkbox-label::after {
-  opacity: 1;
+    opacity: 1;
 }
-

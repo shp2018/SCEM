@@ -88,8 +88,8 @@ function EquipmentCurrentlyOnRent() {
                         <th className={"equipmentCurrentlyOnRent-tableHeading"}>Renter</th>
                         <th className={"equipmentCurrentlyOnRent-tableHeading"}></th>
                     </tr>
-                    </tbody>
                     {marketplaceItems}
+                    </tbody>
                 </table>
             ) : (
                 <p className={"loading"}>Loading...</p>
