@@ -18,6 +18,8 @@ import CreateLocationGroup from './routes/createLocationGroup';
 import LocationGroup from './routes/locationGroup';
 import UserManagement from "./routes/userManagement";
 import UserGroup from "./routes/userGroup";
+import EquipmentGroup from "./routes/equipmentGroup";
+import CreateEquipmentGroup from './routes/createEquipmentGroup';
 
 function App() {
     return (
@@ -40,6 +42,8 @@ function App() {
                 <Route path={"/myRentalManagement"} element={<MyRentalManagement/>}/>
                 <Route path={"/userManagement"} element={<UserManagement/>}/>
                 <Route path={"/userGroup"} element={<UserGroup/>}/>
+                <Route path={"/equipmentGroup"} element={<EquipmentGroup/>}/>
+                <Route path="/equipmentGroup/create" element={<CreateEquipmentGroup/>}/>
             </Routes>
         </Router>
     );
