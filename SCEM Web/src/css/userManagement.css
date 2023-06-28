@@ -20,15 +20,18 @@
     position: relative;
     display: inline-block;
     right: 4em;
+    padding-bottom: 4em;
     bottom: 0.1em;
     filter: invert(100%);
 }
 
 #userManagement-addButtonDiv {
     position: relative;
-    text-align: right;
-    bottom: 3em;
-    right: 1.5em;
+    display: inline-block;
+    height: 5px;
+    width: 5px;
+    left: 20%;
+    top: 0.7em;
 }
 
 #userManagement-addButton {

@@ -103,11 +103,11 @@ const UserManagement = () => {
                     <h3 id={"userManagement-titleText"}>User Management</h3>
                 </div>
                 <div id={"userManagement-addButtonDiv"}>
-                    <a href={"/userManagement/createUser"}>
-                        <img src={"/locationAdd.png"} id={"userManagement-addButton"}
-                             alt={"Add user button"}>
-                        </img>
-                    </a>
+                <a href={"/userManagement/createUser"} id={"userManagement-addButtonLink"}>
+                    <img src={"/locationAdd.png"} id={"userManagement-addButton"}
+                         alt={"Add user button"}>
+                    </img>
+                </a>
                 </div>
             </div>
 
