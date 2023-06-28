@@ -39,11 +39,14 @@
 }
 
 #forgot-emailInput {
-    border-radius: 5px;
-    width: 300px;
-    height: 40px;
-    font-size: 15px;
-    border-color: #c4c7cc;
+    width: 400px;
+    padding: 12px 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 #forgot-submit {

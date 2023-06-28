@@ -68,12 +68,12 @@ function CreateLocationGroup() {
                 <div>
                     <div id={"createLocationGroup-inputBoxes"}>
                         <label id="createLocationGroup-Label">Name</label>
-                        <input id="createLocationGroup-Input" type="text" onChange={(e) => {
+                        <input className="createLocationGroup-Input" type="text" onChange={(e) => {
                             setName(e.target.value)
                         }}></input><br></br>
 
                         <label id="createLocationGroup-Label">Description</label>
-                        <input id="createLocationGroup-Input" type="text"
+                        <input className="createLocationGroup-Input" type="text"
                                onChange={(e) => {
                                    setDescription(e.target.value)
                                }}></input><br></br>

@@ -128,7 +128,7 @@ const MarketplaceItem = () => {
             onRent: true,
             onRentName: userName,
             onRentID: userID,
-        }).then(r => {
+        }).then(() => {
             alert("Success!");
         })
     }
@@ -182,7 +182,7 @@ const MarketplaceItem = () => {
                         </ul>
                         <form className="review-form" onSubmit={submitReview}>
                             <input
-                                className="name-input"
+                                className="review-input"
                                 type="text"
                                 value={authState ? userName : reviewData.name}
                                 onChange={handleNameChange}
@@ -196,7 +196,7 @@ const MarketplaceItem = () => {
                                 placeholder="Write a review"
                             />
                             <input
-                                className="rating-input"
+                                className="review-rating"
                                 type="number"
                                 min={1}
                                 max={5}

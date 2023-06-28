@@ -17,6 +17,7 @@ import EquipmentCurrentlyOnRent from "./routes/equipmentCurrentlyOnRent";
 import CreateLocationGroup from './routes/createLocationGroup';
 import LocationGroup from './routes/locationGroup';
 import UserManagement from "./routes/userManagement";
+import UserManagementCreateUser from "./routes/userManagement-createUser";
 import UserGroup from "./routes/userGroup";
 import EquipmentGroup from "./routes/equipmentGroup";
 import CreateEquipmentGroup from './routes/createEquipmentGroup';
@@ -25,13 +26,13 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route exact path="/" element={<Home/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/signup" element={<Signup/>}/>
-                <Route path="/companyProfile" element={<CompanyProfile/>}/>
-                <Route path="/locationGroup" element={<LocationGroup/>}/>
-                <Route path="/locationGroup/create" element={<CreateLocationGroup/>}/>
-                <Route path="/forgotPassword" element={<ForgotPassword/>}/>
+                <Route path={"/"} element={<Home/>}/>
+                <Route path={"/login"} element={<Login/>}/>
+                <Route path={"/signup"} element={<Signup/>}/>
+                <Route path={"/companyProfile"} element={<CompanyProfile/>}/>
+                <Route path={"/locationGroup"} element={<LocationGroup/>}/>
+                <Route path={"/locationGroup/create"} element={<CreateLocationGroup/>}/>
+                <Route path={"/forgotPassword"} element={<ForgotPassword/>}/>
                 <Route path={"/marketplace"} element={<Marketplace/>}/>
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
                 <Route path={"/marketplace/addItem"} element={<MarketplaceAddItem/>}/>
@@ -41,6 +42,7 @@ function App() {
                 <Route path={"/equipmentCurrentlyOnRent"} element={<EquipmentCurrentlyOnRent/>}/>
                 <Route path={"/myRentalManagement"} element={<MyRentalManagement/>}/>
                 <Route path={"/userManagement"} element={<UserManagement/>}/>
+                <Route path={"/userManagement/createUser"} element={<UserManagementCreateUser/>}/>
                 <Route path={"/userGroup"} element={<UserGroup/>}/>
                 <Route path={"/equipmentGroup"} element={<EquipmentGroup/>}/>
                 <Route path="/equipmentGroup/create" element={<CreateEquipmentGroup/>}/>

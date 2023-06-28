@@ -7,13 +7,15 @@ import {gapi} from 'gapi-script'
 import '../css/login.css';
 import {setPersistence, browserSessionPersistence, signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../firebase";
-import {useNavigate} from "react-router-dom";
 
 const clientId = "1020057730481-3iflk45qqttk0v8pg48bjk4j0nmi6qm2.apps.googleusercontent.com"
 
 export let user;
 
 function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     useEffect(() => {
         function start() {
             gapi.auth2.init({
@@ -23,31 +25,23 @@ function Login() {
         }
         gapi.load('client:auth2', start)
     })
-    const [email, Email] = useState('');
-    const [password, Password] = useState('');
-    // eslint-disable-next-line
-    const [givenEmail, setEmail] = useState(email);
-    // eslint-disable-next-line
-    const [givenPassword, setPassword] = useState(password);
-    const navigate = useNavigate();
 
     const handleEmailChange = (event) => {
-        Email(event.target.value);
+        setEmail(event.target.value);
     };
 
     const handlePasswordChange = (event) => {
-        Password(event.target.value);
+        setPassword(event.target.value);
     };
 
     const handleClick = () => {
-        setEmail(email);
-        setPassword(password);
-
         setPersistence(auth, browserSessionPersistence).then(() => {
             return signInWithEmailAndPassword(auth, email, password).then(() => {
                 alert("Success!")
                 user = auth.currentUser;
-                navigate("/");
+                const previousURL = sessionStorage.getItem('previousURL');
+                if (previousURL) window.location.href = previousURL;
+                else window.location.href = '/';
             }).catch((error) => {
                 console.log(error.code);
                 console.log(error.message);
@@ -67,9 +61,9 @@ function Login() {
         <div className="loginMain">
             <h1 id="loginTitle">Login</h1>
             <p id="subtitle">Safeguard your assets with advanced equipment management technology.</p>
-            <input id="Email" type="text" placeholder="Email" name="email"
+            <input className="login-input" type="text" placeholder="Email" name="email"
                    onChange={handleEmailChange}></input><br></br>
-            <input id="Password" type="password" placeholder="Password" name="password"
+            <input className="login-input" type="password" placeholder="Password" name="password"
                    onChange={handlePasswordChange}></input><br></br>
             <a id="forgot" href="/forgotPassword">Forgot Password</a>
             <br></br>

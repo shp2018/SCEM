@@ -35,85 +35,15 @@
     text-align: center;
 }
 
-#marketplaceAddItem-InputName {
-    border-style: double;
-    border-radius: 5px;
+.marketplaceAddItem-inputs {
     width: 500px;
-    height: 60px;
-    font-size: 15px;
-    border-color: #c4c7cc;
-}
-
-#marketplaceAddItem-InputFromDate {
-    border-style: double;
-    border-radius: 5px;
-    width: 500px;
-    height: 60px;
-    font-size: 15px;
-    border-color: #c4c7cc;
-}
-
-#marketplaceAddItem-InputToDate {
-    border-style: double;
-    border-radius: 5px;
-    width: 500px;
-    height: 60px;
-    font-size: 15px;
-    border-color: #c4c7cc;
-}
-
-#marketplaceAddItem-InputSite {
-    border-style: double;
-    border-radius: 5px;
-    width: 500px;
-    height: 60px;
-    font-size: 15px;
-    border-color: #c4c7cc;
-}
-
-#marketplaceAddItem-InputDescription {
-    border-style: double;
-    border-radius: 5px;
-    width: 500px;
-    height: 60px;
-    font-size: 15px;
-    border-color: #c4c7cc;
-}
-
-#marketplaceAddItem-InputDailyPrice {
-    border-style: double;
-    border-radius: 5px;
-    width: 500px;
-    height: 60px;
-    font-size: 15px;
-    border-color: #c4c7cc;
-}
-
-#marketplaceAddItem-InputWeeklyPrice {
-    border-style: double;
-    border-radius: 5px;
-    width: 500px;
-    height: 60px;
-    font-size: 15px;
-    border-color: #c4c7cc;
-}
-
-#marketplaceAddItem-InputMonthlyPrice {
-    border-style: double;
-    border-radius: 5px;
-    width: 500px;
-    height: 60px;
-    font-size: 15px;
-    border-color: #c4c7cc;
-}
-
-#marketplaceAddItem-InputEquipmentType {
-    border-style: double;
-    border-radius: 5px;
-    width: 500px;
-    height: 60px;
-    font-size: 15px;
-    border-color: #c4c7cc;
+    padding: 12px 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 #marketplaceAddItem-LabelName {

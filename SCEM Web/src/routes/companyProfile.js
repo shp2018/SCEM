@@ -118,55 +118,58 @@ function CompanyProfile() {
                     <div>
                         <div id={"companyProfile-inputBoxes"}>
                             <label id="companyProfile-Label">Company Name</label>
-                            <input id="companyProfile-Input" type="text" placeholder="Company name" onChange={(e) => {
-                                setcName(e.target.value)
-                            }}
+                            <input className="companyProfile-Input" type="text" placeholder="Company name"
+                                   onChange={(e) => {
+                                       setcName(e.target.value)
+                                   }}
                                    defaultValue={cName}></input><br></br>
 
                             <label id="companyProfile-Label">Company Email</label>
-                            <input id="companyProfile-Input" type="text" placeholder="Company email"
+                            <input className="companyProfile-Input" type="email" placeholder="Company email"
                                    onChange={(e) => {
                                        setcEmail(e.target.value)
                                    }}
                                    defaultValue={cEmail}></input><br></br>
 
                             <label id="companyProfile-Label">Company Phone Number</label>
-                            <input id="companyProfile-Input" type="text" placeholder="Company phone number"
+                            <input className="companyProfile-Input" type="tel" placeholder="Company phone number"
+                                   maxLength={10}
                                    onChange={(e) => {
                                        setcNumber(e.target.value)
                                    }}
                                    defaultValue={cNumber}></input><br></br>
 
                             <label id="companyProfile-Label">Company Owner</label>
-                            <input id="companyProfile-Input" type="text" placeholder="Company owner"
+                            <input className="companyProfile-Input" type="text" placeholder="Company owner"
                                    onChange={(e) => {
                                        setcOwner(e.target.value)
                                    }}
                                    defaultValue={cOwner}></input><br></br>
 
                             <label id="companyProfile-Label">Technical Support Email</label>
-                            <input id="companyProfile-Input" type="text" placeholder="Technical support email"
+                            <input className="companyProfile-Input" type="email" placeholder="Technical support email"
                                    onChange={(e) => {
                                        settEmail(e.target.value)
                                    }}
                                    defaultValue={tEmail}></input><br></br>
 
                             <label id="companyProfile-Label">Technical Support Phone</label>
-                            <input id="companyProfile-Input" type="text" placeholder="Technical support phone"
+                            <input className="companyProfile-Input" type="tel" placeholder="Technical support phone"
+                                   maxLength={10}
                                    onChange={(e) => {
                                        settNumber(e.target.value)
                                    }}
                                    defaultValue={tNumber}></input><br></br>
 
                             <label id="companyProfile-Label">Technical Person Name </label>
-                            <input id="companyProfile-Input" type="text" placeholder="Technical person name"
+                            <input className="companyProfile-Input" type="text" placeholder="Technical person name"
                                    onChange={(e) => {
                                        settName(e.target.value)
                                    }}
                                    defaultValue={tName}></input><br></br>
 
                             <label id="companyProfile-Label">Tax ID</label><br></br>
-                            <input id="companyProfile-Input" type="text" placeholder="Tax ID"
+                            <input className="companyProfile-Input" type="text" placeholder="Tax ID"
                                    onChange={(e) => {
                                        settaxID(e.target.value)
                                    }}
@@ -174,7 +177,7 @@ function CompanyProfile() {
                             <br></br>
 
                             <label id="companyProfile-Label">Account Type</label><br></br>
-                            <select id="companyProfile-Input" placeholder="Account type"
+                            <select className="companyProfile-Input" placeholder="Account type"
                                     defaultValue={accType ? accType : "User"}
                                     onChange={(e) => {
                                         setaccType(e.target.value)

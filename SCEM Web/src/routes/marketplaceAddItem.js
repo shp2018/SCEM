@@ -3,7 +3,7 @@ import {auth, firestore, storage} from "../firebase";
 import {doc, addDoc, collection, getDocs, query, where, updateDoc, arrayUnion} from "firebase/firestore";
 import '../css/marketplaceAddItem.css';
 import {onAuthStateChanged} from "firebase/auth";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 
 function MarketplaceAddItem() {
     const [name, setName] = useState("");
@@ -144,7 +144,7 @@ function MarketplaceAddItem() {
                         getDownloadURL(storageRef).then((url) => {
                             const itemRef = doc(firestore, "marketplace", res._key.path.lastSegment());
                             updateDoc(itemRef, {
-                              images: arrayUnion(url),
+                                images: arrayUnion(url),
                             })
                         })
                     })
@@ -174,59 +174,69 @@ function MarketplaceAddItem() {
                 <div>
                     <div id={"marketplaceAddItem-inputBoxes"}>
                         <label id="marketplaceAddItem-LabelName">Name</label>
-                        <input id="marketplaceAddItem-InputName" type="text" placeholder="Name" onChange={(e) => {
+                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputName" type="text"
+                               placeholder="Name" onChange={(e) => {
                             setName(e.target.value)
                         }}></input><br></br>
 
                         <label id="marketplaceAddItem-LabelEquipmentType">Equipment type</label>
-                        <input id="marketplaceAddItem-InputEquipmentType" type="text" placeholder="Equipment type"
+                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputEquipmentType"
+                               type="text" placeholder="Equipment type"
                                onChange={(e) => {
                                    setEquipmentType(e.target.value)
                                }}></input><br></br>
 
                         <label id="marketplaceAddItem-LabelSite">Site</label>
-                        <input id="marketplaceAddItem-InputSite" type="text" placeholder="Site" onChange={(e) => {
+                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputSite" type="text"
+                               placeholder="Site" onChange={(e) => {
                             setSite(e.target.value)
                         }}></input><br></br>
 
                         <label id="marketplaceAddItem-LabelDescription">Description</label>
-                        <input id="marketplaceAddItem-InputDescription" type="text" placeholder="Description"
+                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputDescription"
+                               type="text" placeholder="Description"
                                onChange={(e) => {
                                    setDescription(e.target.value)
                                }}></input><br></br>
 
                         <label id="marketplaceAddItem-LabelDailyPrice">Daily Price</label>
-                        <input id="marketplaceAddItem-InputDailyPrice" type="text" placeholder="Daily Price"
+                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputDailyPrice" type="text"
+                               placeholder="Daily Price"
                                onChange={(e) => {
                                    setDailyPrice(e.target.value)
                                }}></input><br></br>
 
                         <label id="marketplaceAddItem-LabelWeeklyPrice">Weekly Price</label>
-                        <input id="marketplaceAddItem-InputWeeklyPrice" type="text" placeholder="Weekly Price"
+                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputWeeklyPrice"
+                               type="text" placeholder="Weekly Price"
                                onChange={(e) => {
                                    setWeeklyPrice(e.target.value)
                                }}></input><br></br>
 
                         <label id="marketplaceAddItem-LabelMonthlyPrice">Monthly Price</label>
-                        <input id="marketplaceAddItem-InputMonthlyPrice" type="text" placeholder="Monthly Price"
+                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputMonthlyPrice"
+                               type="text" placeholder="Monthly Price"
                                onChange={(e) => {
                                    setMonthlyPrice(e.target.value)
                                }}></input><br></br>
 
                         <label id="marketplaceAddItem-LabelFromDate">From Date</label><br></br>
-                        <input id="marketplaceAddItem-InputFromDate" type="date" placeholder="From date"
+                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputFromDate" type="date"
+                               placeholder="From date"
                                onChange={(e) => {
                                    setFromDate(e.target.value)
                                }}></input><br></br>
                         <br></br>
 
                         <label id="marketplaceAddItem-LabelToDate">To Date</label><br></br>
-                        <input id="marketplaceAddItem-InputToDate" type="date" placeholder="To date" onChange={(e) => {
+                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputToDate" type="date"
+                               placeholder="To date" onChange={(e) => {
                             setToDate(e.target.value)
                         }}></input><br></br>
                     </div>
                     <div id={"marketplaceAddItem-addImages"}>
-                        <div id="pic">Pictures <input id="img" type="file" multiple accept="image/*" onChange={changeHandler}
+                        <div id="pic">Pictures <input id="img" type="file" multiple accept="image/*"
+                                                      onChange={changeHandler}
                         /></div>
                         <div>
                             {fileDataURL ?

@@ -40,7 +40,7 @@ function ForgotPassword() {
                 </div>
             </div>
 
-            <p id = "forgot-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            <p id = "forgot-subtitle">Enter the account's email address below.</p>
 
             <div id={"forgot-emailAndSubmit"}>
 

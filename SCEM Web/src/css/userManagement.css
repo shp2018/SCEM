@@ -1,0 +1,122 @@
+#userManagement-body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#userManagement-header {
+    background-color: #133da5;
+    padding: 2em 0 0 0;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
+}
+
+#userManagement-titleText {
+    color: white;
+    display: inline-block;
+}
+
+#userManagement-backButton {
+    position: relative;
+    display: inline-block;
+    right: 4em;
+    padding-bottom: 4em;
+    bottom: 0.1em;
+    filter: invert(100%);
+}
+
+#userManagement-addButtonDiv {
+    position: relative;
+    display: inline-block;
+    height: 5px;
+    width: 5px;
+    left: 20%;
+    top: 0.7em;
+}
+
+#userManagement-addButton {
+    height: 40px;
+    width: 40px;
+}
+
+#userManagement-usersInfoTable {
+    margin-left: auto;
+    margin-right: auto;
+    counter-reset: rowNumber;
+}
+
+.userManagement-usersInfoTableElement {
+    text-align: center;
+    border: 1px solid black;
+    height: 2.5em;
+}
+
+.userManagement-usersInfoTableHeading {
+    border: 1px solid black;
+    height: 2.5em;
+    background-color: #5982d3;
+}
+
+#userManagement-tableLinkArrow {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+#userManagement-usersInfoTable tr:not(:first-child) {
+    counter-increment: rowNumber;
+}
+
+#userManagement-usersInfoTable tr .userManagement-usersInfoTableElement:first-child::before {
+    content: counter(rowNumber);
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.userManagement-dropdownButton {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.userManagement-dropdownButton:hover {
+    background-color: #f1f1f1;
+}
+
+#userManagement-dropDownButtonID {
+    background-color: white;
+}
+
+#userManagement-dropdownCancel {
+    color: black;
+    padding: 16px;
+    background-color: #ffffff;
+}
+
+#userManagement-dropdownCancel:hover {
+    min-width: 160px;
+    background-color: #f1f1f1;
+}
+
+#userManagement-dropdownDiv {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.show {display: block;}

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import '../css/signup.css';
 import { firestore } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
@@ -34,14 +34,17 @@ function Signup() {
     console.log("in else");
     createUserWithEmailAndPassword(auth,email, password).then(cred => {
       const ref = doc(firestore,"users",cred.user.uid);
-      console.log(cred);
       let data = {
         fullname:fullname,
         email:email,
         locked:false
       }
       try {
-        setDoc(ref,data)
+        setDoc(ref,data).then(() => {
+            alert("Sign up success.")
+            auth.signOut();
+            window.location.href = "/login";
+        })
       } catch (e) {
         console.log(e);
       }
@@ -71,16 +74,16 @@ function Signup() {
     <form id = "signup-form" onSubmit = {handleSave}>
       <div>
         <div id={"signup-inputBoxes"}>
-        <input id="signup-InputText" type="text" placeholder="Full Name"  onChange = {(e) => {setFullname(e.target.value)}} ></input><br></br>
-        <input id="signup-InputEmail" type="text" placeholder="Email" onChange = {(e) => {setEmail(e.target.value)}} ></input><br></br>
-        <input id="signup-InputPassword" type="password" placeholder="Password"  onChange = {(e) => {setPassword(e.target.value)}}></input><br></br>
-        <input id="signup-InputConfirmPassword" type="password" placeholder="Confirm Password" onChange = {(e) => {setConfirmPassword(e.target.value); setcheckboxMessage("");}} ></input><br></br>
+        <input className="signup-inputs" id="signup-InputText" type="text" placeholder="Full Name"  onChange = {(e) => {setFullname(e.target.value)}} ></input><br></br>
+        <input className="signup-inputs" id="signup-InputEmail" type="email" placeholder="Email" onChange = {(e) => {setEmail(e.target.value)}} ></input><br></br>
+        <input className="signup-inputs" id="signup-InputPassword" type="password" placeholder="Password"  onChange = {(e) => {setPassword(e.target.value)}}></input><br></br>
+        <input className="signup-inputs" id="signup-InputConfirmPassword" type="password" placeholder="Confirm Password" onChange = {(e) => {setConfirmPassword(e.target.value); setcheckboxMessage("");}} ></input><br></br>
         <p id = "password-error">{passwordMessage}</p>
         </div>
 
-        <div class="tacbox">
+        <div id="tacbox">
           <input id="checkbox" type="checkbox" onClick = {() => setIsChecked(!isChecked)}/>
-          <label for="checkbox"> I agree to the <a href="/">Terms and Conditions</a> of SCEM.</label>
+          <label form="checkbox"> I agree to the <a href="/">Terms and Conditions</a> of SCEM.</label>
           <p id = "checkbox-error">{checkboxMessage}</p>
         </div>
 
