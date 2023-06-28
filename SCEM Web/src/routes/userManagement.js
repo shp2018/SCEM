@@ -128,11 +128,6 @@ const UserManagement = () => {
                             {usersData}
                             </tbody>
                         </table>
-                        <div id={"userManagement-userGroupsDiv"}>
-                            <h3>User Group</h3>
-                            <input type={"checkbox"}></input>
-                            <label>Group A</label>
-                        </div>
                     </div>
                     : <p className={"loading"}>Loading...</p>}
             </div>

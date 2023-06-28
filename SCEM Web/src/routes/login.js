@@ -7,7 +7,6 @@ import {gapi} from 'gapi-script'
 import '../css/login.css';
 import {setPersistence, browserSessionPersistence, signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../firebase";
-import {useNavigate} from "react-router-dom";
 
 const clientId = "1020057730481-3iflk45qqttk0v8pg48bjk4j0nmi6qm2.apps.googleusercontent.com"
 
@@ -16,7 +15,6 @@ export let user;
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
 
     useEffect(() => {
         function start() {
@@ -41,7 +39,9 @@ function Login() {
             return signInWithEmailAndPassword(auth, email, password).then(() => {
                 alert("Success!")
                 user = auth.currentUser;
-                navigate("/");
+                const previousURL = sessionStorage.getItem('previousURL');
+                if (previousURL) window.location.href = previousURL;
+                else window.location.href = '/';
             }).catch((error) => {
                 console.log(error.code);
                 console.log(error.message);

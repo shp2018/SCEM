@@ -1,12 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "../css/userManagement-createUser.css";
 import {createUserWithEmailAndPassword, sendPasswordResetEmail} from "firebase/auth";
 import {auth, firestore} from "../firebase";
-import {doc, setDoc} from "firebase/firestore";
+import {collection, doc, getDocs, query, setDoc} from "firebase/firestore";
 
 const UserManagementCreateUser = () => {
     const [newUserName, setNewUserName] = useState("");
     const [newUserEmail, setNewUserEmail] = useState("");
+    const [userGroups, setUserGroups] = useState([]);
+
+    // TODO: Refactor to only include userGroups associated with logged in user.
+    const getUserGroups = async () => {
+        setUserGroups([]);
+        const userGroupRef = collection(firestore, "userGroups");
+        const userGroupsQuery = query(userGroupRef);
+        const querySnapshot = await getDocs(userGroupsQuery);
+    }
+
+    useEffect(() => {
+        getUserGroups().then();
+    },[]);
 
     const createUser = e => {
         e.preventDefault();
@@ -24,17 +37,18 @@ const UserManagementCreateUser = () => {
                 auth.signOut().then(() => {
                     sendPasswordResetEmail(auth, newUserEmail).then(() => {
                         alert(`Go to the email ${newUserEmail} to set the password for the account created.`);
-                        // TODO: log back in to current user OR redirect to login page, then redirect back to userManagement
+                        alert(`Please re-login. You'll be redirect back to the UserManagement page after logging in.`)
+                        sessionStorage.setItem('previousURL', "/userManagement");
+                        window.location.href = '/login';
                     });
                 });
             });
         }).catch(err => {
-            console.log(err.message);
+            console.error(err.message);
             if (err.message === "Firebase: Error (auth/email-already-in-use).") {
                 alert("Account already exists, please register another account.");
             }
         })
-
     }
 
     return (
@@ -61,8 +75,15 @@ const UserManagementCreateUser = () => {
                     <input type={"email"} className={"userManagementCreateUser-formInput"}
                            onChange={e => setNewUserEmail(e.target.value)}></input>
                 </div>
+                <div id={"userManagement-userGroupsDiv"}>
+                    <h3>User Group</h3>
+                    <input type={"checkbox"}></input>
+                    <label>Group A</label>
+                </div>
                 <div className={"userManagementCreateUser-formInputDiv"}>
-                    <button type={"submit"} id={"userManagementCreateUser-formSubmitButton"}>Update</button>
+                    {userGroups.map(userGroup =>
+                        <button type={"submit"} id={"userManagementCreateUser-formSubmitButton"}>Update</button>
+                    )}
                 </div>
             </form>
         </div>
