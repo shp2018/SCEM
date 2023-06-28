@@ -2,24 +2,50 @@ import React, {useEffect, useState} from 'react';
 import "../css/userManagement-createUser.css";
 import {createUserWithEmailAndPassword, sendPasswordResetEmail} from "firebase/auth";
 import {auth, firestore} from "../firebase";
-import {collection, doc, getDocs, query, setDoc} from "firebase/firestore";
+import {arrayUnion, collection, doc, getDocs, query, setDoc, updateDoc} from "firebase/firestore";
 
 const UserManagementCreateUser = () => {
     const [newUserName, setNewUserName] = useState("");
     const [newUserEmail, setNewUserEmail] = useState("");
     const [userGroups, setUserGroups] = useState([]);
+    const [userGroupsData, setUserGroupsData] = useState([]);
+    const [loaded, setLoaded] = useState(false);
 
     // TODO: Refactor to only include userGroups associated with logged in user.
     const getUserGroups = async () => {
-        setUserGroups([]);
         const userGroupRef = collection(firestore, "userGroups");
         const userGroupsQuery = query(userGroupRef);
         const querySnapshot = await getDocs(userGroupsQuery);
+        setUserGroups([]);
+        setUserGroupsData([]);
+
+        querySnapshot.forEach((doc) => {
+            let data = doc.data();
+            setUserGroupsData(curr => [...curr, doc]);
+            setUserGroups(curr => [...curr,
+            <div key={doc.id}>
+                <input type={"checkbox"} id={doc.id}/>
+                <label>{data.name}</label>
+            </div>]);
+        })
+    }
+
+    const updateUserGroups = async (userUID) => {
+        for (const userGroupData of userGroupsData) {
+            if (document.getElementById(userGroupData.id).checked) {
+                const targetDoc = doc(firestore, "userGroups", userGroupData.id);
+                await updateDoc(targetDoc, {
+                    users: arrayUnion(userUID),
+                })
+            }
+        }
     }
 
     useEffect(() => {
-        getUserGroups().then();
-    },[]);
+        getUserGroups().then(() => {
+            setLoaded(true);
+        });
+    }, []);
 
     const createUser = e => {
         e.preventDefault();
@@ -32,12 +58,13 @@ const UserManagementCreateUser = () => {
                 fullname: newUserName,
                 email: newUserEmail,
                 locked: false,
-            }).then(() => {
+            }).then(async () => {
+                await updateUserGroups(res.user.uid);
                 // sign out of newly created account, since signup automatically signs into created account
                 auth.signOut().then(() => {
                     sendPasswordResetEmail(auth, newUserEmail).then(() => {
                         alert(`Go to the email ${newUserEmail} to set the password for the account created.`);
-                        alert(`Please re-login. You'll be redirect back to the UserManagement page after logging in.`)
+                        alert(`Please re-login. You'll be redirected back to the User Management page after logging in.`)
                         sessionStorage.setItem('previousURL', "/userManagement");
                         window.location.href = '/login';
                     });
@@ -77,13 +104,10 @@ const UserManagementCreateUser = () => {
                 </div>
                 <div id={"userManagement-userGroupsDiv"}>
                     <h3>User Group</h3>
-                    <input type={"checkbox"}></input>
-                    <label>Group A</label>
+                    {loaded ? userGroups : <p className={"loading"}>Loading...</p>}
                 </div>
                 <div className={"userManagementCreateUser-formInputDiv"}>
-                    {userGroups.map(userGroup =>
-                        <button type={"submit"} id={"userManagementCreateUser-formSubmitButton"}>Update</button>
-                    )}
+                    <button type={"submit"} id={"userManagementCreateUser-formSubmitButton"}>Update</button>
                 </div>
             </form>
         </div>
