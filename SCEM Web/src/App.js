@@ -19,6 +19,7 @@ import LocationGroup from './routes/locationGroup';
 import UserManagement from "./routes/userManagement";
 import UserManagementCreateUser from "./routes/userManagement-createUser";
 import UserGroup from "./routes/userGroup";
+import UserGroupCreate from "./routes/userGroupCreate";
 import EquipmentGroup from "./routes/equipmentGroup";
 import CreateEquipmentGroup from './routes/createEquipmentGroup';
 
@@ -44,6 +45,7 @@ function App() {
                 <Route path={"/userManagement"} element={<UserManagement/>}/>
                 <Route path={"/userManagement/createUser"} element={<UserManagementCreateUser/>}/>
                 <Route path={"/userGroup"} element={<UserGroup/>}/>
+                <Route path={"/userGroup/create"} element={<UserGroupCreate/>}/>
                 <Route path={"/equipmentGroup"} element={<EquipmentGroup/>}/>
                 <Route path="/equipmentGroup/create" element={<CreateEquipmentGroup/>}/>
             </Routes>
