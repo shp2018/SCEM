@@ -1,171 +1,106 @@
-import React, { useState } from 'react';
-import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
-import { firestore } from '../firebase';
-import '../css/userGroup.css';
+import React, {useState, useEffect} from 'react';
+import "../css/userGroup.css";
+import {collection, getDocs, query} from "firebase/firestore";
+import {firestore} from "../firebase";
 
 const UserGroup = () => {
-  const [groupName, setGroupName] = useState('');
-  const [userInGroup, setUserInGroup] = useState('');
-  const [users, setUsers] = useState([]);
-  const [rentChecked, setRentChecked] = useState(false);
-  const [forRentChecked, setForRentChecked] = useState(false);
-  const [viewAllChecked, setViewAllChecked] = useState(false);
+    const [userGroupIDs, setUserGroupIDs] = useState([]);
+    const [loaded, setLoaded] = useState(false);
 
-  const handleGroupNameChange = (event) => {
-    setGroupName(event.target.value);
-  };
-
-  const handleUserInGroupChange = (event) => {
-    setUserInGroup(event.target.value);
-  };
-
-  const handleRentChange = () => {
-    setRentChecked(!rentChecked);
-  };
-
-  const handleForRentChange = () => {
-    setForRentChecked(!forRentChecked);
-  };
-
-  const handleViewAllChange = () => {
-    setViewAllChecked(!viewAllChecked);
-  };
-
-  const handleAddUser = async () => {
-    const usersCollectionRef = collection(firestore, 'users');
-    const usersQuery = query(usersCollectionRef, where('email', '==', userInGroup));
-    const userSnapshot = await getDocs(usersQuery);
-
-    if (userSnapshot.empty) {
-      console.log('User not found');
-      return;
+    const dropdown = () => {
+        document.getElementById("myDropdown").classList.toggle("show");
     }
 
-    const userDoc = userSnapshot.docs[0];
-    const userId = userDoc.id;
+    window.onclick = (event) => {
+        if (event.target.matches('.userManagement-dropdownButton')) {
+            const dropdowns = document.getElementsByClassName("dropdown-content");
+            for (let i = 0; i < dropdowns.length; i++) {
+                if (dropdowns[i].classList.contains('show')) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+    }
 
-    setUsers((prevUsers) => [
-      ...prevUsers,
-      { id: userId, name: userDoc.data().fullname, email: userInGroup },
-    ]);
-    setUserInGroup('');
-  };
+    const getUserGroupsData = async () => {
+        const userGroupsRef = collection(firestore, "userGroups");
+        const userGroupsQuery = query(userGroupsRef);
+        const querySnapshot = await getDocs(userGroupsQuery);
+        setUserGroupIDs([]);
 
-  const handleDeleteUser = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
-  };
+        querySnapshot.forEach(doc => {
+            let data = doc.data();
+            setUserGroupIDs(curr => [...curr,
+                <tr key={doc.id}>
+                    <td className={"userGroups-tableElement"}>{}</td>
+                    <td className={"userGroups-tableElement"}>{data.name}</td>
+                    <td className={"userGroups-tableElement"}>{data.active ? "Yes" : "No"}</td>
+                    <td className={"userGroups-tableElement"}>
+                        <div className={"userManagement-dropdownDiv"}>
+                            <button onClick={dropdown} className={"userManagement-dropdownButton"}
+                                    id={"userManagement-dropDownButtonID"}><img
+                                src={"/triangle-right.svg"}
+                                alt={"Right arrow used to redirect user to item link."}
+                                id={"userManagement-tableLinkArrow"}>
+                            </img></button>
+                            <div id={"myDropdown"} className={"dropdown-content"}>
+                                <a href={`/userGroup`} className={"userManagement-dropdownButton"}>Edit</a>
+                                <a href={`/userGroup`} className={"userManagement-dropdownButton"}>Permission</a>
+                                <button className={"userManagement-dropdownButton"}
+                                        id={"userManagement-dropdownCancel"}>Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>])
+        })
+    }
 
-  const handleSaveUserGroup = async () => {
-    const userGroupsCollectionRef = collection(firestore, 'userGroups');
+    useEffect(() => {
+        getUserGroupsData().then(() => {
+            setLoaded(true);
+        })
+    }, []);
 
-    const newUserGroup = {
-      name: groupName,
-      rent: rentChecked,
-      forRent: forRentChecked,
-      viewAll: viewAllChecked,
-      users: users.map((user) => user.id),
-    };
+    return (
+        <div id={"userGroups-body"}>
+            <div id={"userGroups-header"}>
+                <div id={"userGroups-backButton"}>
+                    <a href={"/"}
+                       className={"arrow left"}>
+                    </a>
+                </div>
+                <div id={"userGroups-titleText"}>
+                    <h3 id={"userGroups-titleText"}>User Group</h3>
+                </div>
+                <div id={"userGroups-addButtonDiv"}>
+                    <a href={"/userGroup/create"} id={"userGroups-addButtonLink"}>
+                        <img src={"/locationAdd.png"} id={"userGroups-addButton"}
+                             alt={"Add user group button"}>
+                        </img>
+                    </a>
+                </div>
+            </div>
 
-    await addDoc(userGroupsCollectionRef, newUserGroup).then(() => {
-        alert("User group added.");
-    });
-
-    setGroupName('');
-    setUsers([]);
-  };
-
-  return (
-    <div id="userGroup-body">
-      <div id="userGroup-header">
-        <div id="userGroup-backButton">
-          <a href="/" className="arrow left"></a>
+            <div id={"userGroups-tableDiv"}>
+                {loaded ?
+                    <table
+                    className={"userGroups-tableElement"}
+                    id={"userGroups-table"}>
+                        <tbody>
+                        <tr>
+                            <th className={"userGroups-tableHeading"}>#</th>
+                            <th className={"userGroups-tableHeading"}>Name</th>
+                            <th className={"userGroups-tableHeading"}>Active</th>
+                            <th className={"userGroups-tableHeading"}></th>
+                        </tr>
+                        {userGroupIDs}
+                        </tbody>
+                    </table>
+                    : <p className={"loading"}>Loading...</p>}
+            </div>
         </div>
-        <h3 id="userGroup-titleText">Create User Group</h3>
-      </div>
-
-      <div id="userGroup-inputBox">
-        <input
-          type="text"
-          value={groupName}
-          onChange={handleGroupNameChange}
-          placeholder="User Group Name"
-        />
-      </div>
-      <h4 id="userGroup-permissionsHeader">User Group permissions</h4>
-      <div id="userGroup-checkboxes">
-        <label>
-          <input
-            type="checkbox"
-            checked={rentChecked}
-            onChange={handleRentChange}
-            className="checkbox"
-          />
-          <span className="checkbox-label">Rent</span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={forRentChecked}
-            onChange={handleForRentChange}
-            className="checkbox"
-          />
-          <span className="checkbox-label">For Rent</span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={viewAllChecked}
-            onChange={handleViewAllChange}
-            className="checkbox"
-          />
-          <span className="checkbox-label">View All</span>
-        </label>
-      </div>
-      <div id="userGroup-addUserSection">
-        <input
-          type="text"
-          value={userInGroup}
-          onChange={handleUserInGroupChange}
-          placeholder="User in Group"
-        />
-        <button id="userGroup-addButton" onClick={handleAddUser}>
-          Add
-        </button>
-      </div>
-      <br />
-      <table id={"userGroup-table"}>
-        <thead id={"userGroup-tableHead"}>
-          <tr>
-            <th className={"userGroup-tableHeading"}>STT</th>
-            <th className={"userGroup-tableHeading"}>Name</th>
-            <th className={"userGroup-tableHeading"}>Email</th>
-            <th className={"userGroup-tableHeading"}></th>
-          </tr>
-        </thead>
-        <tbody id={"userGroup-tableBody"}>
-          {users.map((user, index) => (
-            <tr key={user.id}>
-              <td>{index + 1}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>
-                <button
-                  onClick={() => handleDeleteUser(user.id)}
-                  className="remove-button"
-                >
-                  X
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <br />
-      <button id="userGroup-saveButton" onClick={handleSaveUserGroup}>
-        Update
-      </button>
-    </div>
-  );
-};
+    );
+}
 
 export default UserGroup;

@@ -55,7 +55,7 @@ const UserManagement = () => {
             let data = docSnap.data();
 
             setUsersData(curr => [...curr,
-                <tr key={`${docSnap.id}`}>
+                <tr key={docSnap.id}>
                     <td className={"userManagement-usersInfoTableElement"}>{}</td>
                     <td className={"userManagement-usersInfoTableElement"}>{data.fullname}</td>
                     <td className={"userManagement-usersInfoTableElement"}>{data.email}</td>
@@ -103,17 +103,16 @@ const UserManagement = () => {
                     <h3 id={"userManagement-titleText"}>User Management</h3>
                 </div>
                 <div id={"userManagement-addButtonDiv"}>
-                <a href={"/userManagement/createUser"} id={"userManagement-addButtonLink"}>
-                    <img src={"/locationAdd.png"} id={"userManagement-addButton"}
-                         alt={"Add user button"}>
-                    </img>
-                </a>
+                    <a href={"/userManagement/createUser"} id={"userManagement-addButtonLink"}>
+                        <img src={"/locationAdd.png"} id={"userManagement-addButton"}
+                             alt={"Add user button"}>
+                        </img>
+                    </a>
                 </div>
             </div>
 
             <div id={"userManagement-usersInfo"}>
                 {loaded ?
-                    <div>
                         <table
                             className={"userManagement-usersInfoTableElement"}
                             id={"userManagement-usersInfoTable"}>
@@ -128,7 +127,6 @@ const UserManagement = () => {
                             {usersData}
                             </tbody>
                         </table>
-                    </div>
                     : <p className={"loading"}>Loading...</p>}
             </div>
         </div>
