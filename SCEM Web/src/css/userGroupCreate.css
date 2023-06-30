@@ -1,11 +1,14 @@
 #userGroup-body {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    width: 400px;
+    margin: 0 auto;
+    padding: 10px 20px 20px 20px;
 }
 
 #userGroup-header {
     background-color: #133da5;
-    padding-bottom: 4em;
+    padding-bottom: 3em;
     padding-top: 2em;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em;
@@ -14,28 +17,23 @@
 
 #userGroup-titleText {
     color: white;
-    display: inline-block;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #userGroup-backButton {
     position: relative;
     display: inline-block;
-    right: 4em;
-    bottom: 0.1em;
+    top: 2.5em;
+    left: 30%;
     filter: invert(100%);
-}
-
-#userGroup-body {
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
 }
 
 #userGroup-inputBox {
     margin-bottom: 20px;
 }
 
-#userGroup-inputBox input[type="text"] {
+#userGroup-inputBox .userGroup-textInput {
     width: 100%;
     padding: 15px;
     font-size: 16px;
@@ -59,7 +57,7 @@
     margin-bottom: 10px;
 }
 
-#userGroup-checkboxes input[type="checkbox"] {
+#userGroup-checkboxes .checkbox {
     margin-right: 10px;
     width: 20px;
     height: 20px;
@@ -71,7 +69,7 @@
     margin-top: 10px;
 }
 
-#userGroup-addUserSection input[type="text"] {
+#userGroup-addUserSection .userGroup-textInput {
     flex: 1;
     padding: 15px; /* Increase padding for height */
     font-size: 18px; /* Increase font size */

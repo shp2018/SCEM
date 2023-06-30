@@ -76,7 +76,7 @@ const UserGroupCreate = () => {
     };
 
     return (
-        <div id="userGroup-body">
+        <div>
             <div id="userGroup-header">
                 <div id="userGroup-backButton">
                     <a href="/userGroup" className="arrow left"></a>
@@ -84,12 +84,15 @@ const UserGroupCreate = () => {
                 <h3 id="userGroup-titleText">Create User Group</h3>
             </div>
 
+            <div id="userGroup-body">
+
             <div id="userGroup-inputBox">
                 <input
                     type="text"
                     value={groupName}
                     onChange={handleGroupNameChange}
                     placeholder="User Group Name"
+                    className={"userGroup-textInput"}
                 />
             </div>
             <h4 id="userGroup-permissionsHeader">User Group permissions</h4>
@@ -128,6 +131,7 @@ const UserGroupCreate = () => {
                     value={userInGroup}
                     onChange={handleUserInGroupChange}
                     placeholder="User in Group"
+                    className={"userGroup-textInput"}
                 />
                 <button id="userGroup-addButton" onClick={handleAddUser}>
                     Add
@@ -165,6 +169,7 @@ const UserGroupCreate = () => {
             <button id="userGroup-saveButton" onClick={handleSaveUserGroup}>
                 Update
             </button>
+            </div>
         </div>
     );
 };
