@@ -37,7 +37,7 @@ const UserGroupCreate = () => {
         const userSnapshot = await getDocs(usersQuery);
 
         if (userSnapshot.empty) {
-            console.log('User not found');
+            alert('User not found.');
             return;
         }
 

@@ -43,16 +43,17 @@
     margin-left: auto;
     margin-right: auto;
     counter-reset: rowNumber;
+    border-collapse: collapse;
 }
 
 .userGroups-tableElement {
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid #cccccc;
     height: 2.5em;
 }
 
 .userGroups-tableHeading {
-    border: 1px solid black;
+    border: 1px solid #cccccc;
     height: 2.5em;
     background-color: #5982d3;
 }
