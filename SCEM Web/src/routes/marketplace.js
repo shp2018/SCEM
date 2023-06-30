@@ -24,7 +24,7 @@ function Marketplace() {
                             {data.name} </a>
                     </div>
                     <div id={"marketplace-marketplaceItemDescription"}>
-                        {data.description.substring(0, 100) + "..."}
+                        {data.description.length > 125 ? data.description.substring(0, 125) + "..." : data.description}
                     </div>
                     <div id={"marketplace-marketplaceItemUserCreated"}>
                         <a href={`/profile/${data.userID}`}
