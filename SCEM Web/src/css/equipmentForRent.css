@@ -25,63 +25,35 @@
     filter: invert(100%);
 }
 
-#equipmentForRent-marketplaceItem {
-    position: relative;
+#equipmentForRent-table {
+    margin-left: auto;
+    margin-right: auto;
+    counter-reset: rowNumber;
+    border-collapse: collapse;
+}
+
+.equipmentForRent-tableElement {
     text-align: center;
-    margin-bottom: 2em;
-    padding: 0.7em 3em 0 3em;
-    background-color: whitesmoke;
-    border-radius: 2em;
-    margin-left: 35%;
-    margin-right: 35%;
-    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #cccccc;
+    height: 2.5em;
 }
 
-#equipmentForRent-marketplaceItemTitle {
-    margin-top: 0.5em;
+.equipmentForRent-tableHeading {
+    height: 2.5em;
+    background-color: #5982d3;
+    border: 1px solid #cccccc;
 }
 
-#equipmentForRent-marketplaceItemLink {
-    color: blue;
+#equipmentForRent-tableArrow {
+    height: 1.5em;
+    width: 1.5em;
 }
 
-#equipmentForRent-marketplaceItemDescription {
-    padding: 2em 0 3em 8em;
-    text-align: left;
+#equipmentForRent-table tr:not(:first-child) {
+    counter-increment: rowNumber;
 }
 
-#equipmentForRent-marketplaceItemImageDiv {
-    position: absolute;
-    top: 22%;
-    left: 2.5em;
-}
-
-#equipmentForRent-marketplaceItemImage {
-    width: 6em;
-    height: 5em;
-    border-radius: 1em;
-    object-fit: cover;
-    border: 5px solid white;
-}
-
-#equipmentForRent-marketplaceItemUserCreated {
-    position: absolute;
-    bottom: 0;
-    left: 31.5%;
-}
-
-#equipmentForRent-marketplaceItemUserCreatedLink {
-    color: blue;
-}
-
-#equipmentForRent-marketplaceItemDateAndTimeCreated {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-
-#equipmentForRent-marketplaceItemDailyPrice {
-    position: absolute;
-    top: 0;
-    right: 0;
+#equipmentForRent-table tr .equipmentForRent-tableElement:first-child::before {
+    content: counter(rowNumber);
+    margin: 0 0.5em 0 0.5em;
 }

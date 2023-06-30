@@ -34,7 +34,7 @@ const UserGroup = () => {
                 <tr key={doc.id}>
                     <td className={"userGroups-tableElement"}>{}</td>
                     <td className={"userGroups-tableElement"}>{data.name}</td>
-                    <td className={"userGroups-tableElement"}>{data.active ? "Yes" : "No"}</td>
+                    <td className={"userGroups-tableElement"}>{data.active ? "On" : "Off"}</td>
                     <td className={"userGroups-tableElement"}>
                         <div className={"userManagement-dropdownDiv"}>
                             <button onClick={dropdown} className={"userManagement-dropdownButton"}

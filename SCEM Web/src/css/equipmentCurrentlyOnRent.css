@@ -29,6 +29,7 @@
     counter-reset: rowNumber;
     margin-left: auto;
     margin-right: auto;
+    border-collapse: collapse;
 }
 
 #equipmentCurrentlyOnRent-table tr:not(:first-child) {
@@ -42,14 +43,14 @@
 }
 
 .equipmentCurrentlyOnRent-tableHeading {
-    border: 1px solid black;
+    border: 1px solid #cccccc;
     height: 2.5em;
     background-color: #5982d3;
 }
 
 .equipmentCurrentlyOnRent-tableElement {
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid #cccccc;
     height: 2.5em;
 }
 
