@@ -50,7 +50,7 @@ function Marketplace() {
     }, []);
 
     return (
-        <div>
+        <div id={"marketplace-body"}>
             <div id={"marketplace-header"}>
                 <a href={"/"}
                    id={"marketplace-homeIcon"}>

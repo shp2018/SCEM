@@ -1,3 +1,8 @@
+#login-body {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
 #login-logo {
     margin-top: 4em;
     border-radius: 1em;
@@ -10,11 +15,6 @@
     z-index: 1;
     width: 15px;
     height: 15px;
-}
-
-#login-body {
-    overflow-x: hidden;
-    text-align: center;
 }
 
 #loginMain {
@@ -46,9 +46,16 @@
     box-sizing: border-box;
 }
 
-#forgot {
+#forgotPasswordTextDiv {
+    width: 500px;
+    display: block;
+    margin: -1em auto auto auto;
+    text-align: right;
+}
+
+#login-forgotPassword {
     position: relative;
-    left: 57%;
+
 }
 
 #signin {
@@ -105,7 +112,6 @@
 }
 
 #signup {
-    text-align: center;
     color: grey;
 }
 
@@ -114,11 +120,7 @@
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
-}
-
-.left {
     transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
 }
 
 .separator {

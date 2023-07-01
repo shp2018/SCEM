@@ -1,5 +1,6 @@
 #createLocationGroup-page {
     text-align: center;
+    font-family: Roboto, sans-serif;
 }
 
 #createLocationGroup-backButton {
@@ -22,12 +23,10 @@
 
 #createLocationGroup-createLocationGroupText {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #createLocationGroup-subtitle {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #createLocationGroup-inputBoxes {
@@ -45,15 +44,11 @@
     box-sizing: border-box;
 }
 
-
-
 #createLocationGroup-Label {
     text-align:left;
 }
 
-
 #createLocationGroup-createLocationGroupbutton {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: white;
     width: 300px;

@@ -1,6 +1,6 @@
-/*marketplaceAddItem Page*/
 #marketplaceAddItem-page {
     text-align: center;
+    font-family: Roboto, sans-serif;
 }
 
 #marketplaceAddItem-backButton {
@@ -23,12 +23,10 @@
 
 #marketplaceAddItem-marketplaceAddItemText {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #marketplaceAddItem-subtitle {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #marketplaceAddItem-inputBoxes {
@@ -50,14 +48,7 @@
     text-align:left;
 }
 
-/*input {*/
-/*    height: 2em;*/
-/*    width: 2em;*/
-/*    vertical-align: middle;*/
-/*}*/
-
 #marketplaceAddItem-marketplaceAddItembutton {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: white;
     width: 300px;

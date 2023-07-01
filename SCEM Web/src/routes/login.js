@@ -65,8 +65,11 @@ function Login() {
                    onChange={handleEmailChange}></input><br></br>
             <input className="login-input" type="password" placeholder="Password" name="password"
                    onChange={handlePasswordChange}></input><br></br>
-            <a id="forgot" href="/forgotPassword">Forgot Password</a>
             <br></br>
+            <div id={"forgotPasswordTextDiv"}>
+                <a href={"/forgotPassword"} id={"login-forgotPassword"}>Forgot password?</a>
+            </div>
+
             <button id="signin" onClick={handleClick}>
                 Sign in
             </button>
