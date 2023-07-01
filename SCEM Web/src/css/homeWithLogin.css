@@ -16,10 +16,11 @@
 }
 
 #homeWithLogin-userInfo {
-    position: relative;
+    display: inline-block;
     color: #1a1818;
-    background-color: white;
-    margin: -3.5em 43% 4em;
+    background-color: #eceaea;
+    padding: 0 1em 0 1em;
+    border: black 3px solid;
 }
 
 #homeWithLogin-suggestions {

@@ -38,7 +38,6 @@ function HomeWithLogin() {
 
             <div id={"homeWithLogin-userInfo"}>
                 {userData ? <p> Welcome! {userData.fullname} </p>: <p> Loading... </p>}
-
             </div>
 
             <div id={"homeWithLogin-suggestions"}>
