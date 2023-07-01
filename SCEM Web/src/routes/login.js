@@ -12,7 +12,7 @@ const clientId = "1020057730481-3iflk45qqttk0v8pg48bjk4j0nmi6qm2.apps.googleuser
 
 export let user;
 
-function Login() {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -23,6 +23,7 @@ function Login() {
                 scope: ""
             })
         }
+
         gapi.load('client:auth2', start)
     })
 
@@ -52,44 +53,42 @@ function Login() {
 
     return (
         <div id={"login-body"}>
-
-        <div>
-            <img id="login-logo" src='/logoWithBackground.jpg' alt={"SCEM logo"}></img>
-            <a href="/" id="back" className="arrow left"></a>
-        </div>
-
-        <div className="loginMain">
-            <h1 id="loginTitle">Login</h1>
-            <p id="subtitle">Safeguard your assets with advanced equipment management technology.</p>
-            <input className="login-input" type="text" placeholder="Email" name="email"
-                   onChange={handleEmailChange}></input><br></br>
-            <input className="login-input" type="password" placeholder="Password" name="password"
-                   onChange={handlePasswordChange}></input><br></br>
-            <br></br>
-            <div id={"forgotPasswordTextDiv"}>
-                <a href={"/forgotPassword"} id={"login-forgotPassword"}>Forgot password?</a>
-            </div>
-
-            <button id="signin" onClick={handleClick}>
-                Sign in
-            </button>
-            <br></br>
-
-            <div className="separator">
-                OR
-            </div>
-
-            <div id={"loginButtons"}>
-                <Glogin/>
-                <FbLogin/>
-            </div>
-
             <div>
-                <p id="signup">Don't have an account? <a href="/signup"> Signup </a></p>
+                <img id="login-logo" src='/logoWithBackground.jpg' alt={"SCEM logo"}></img>
+                <a href="/" id="back" className="arrow left"></a>
             </div>
 
-        </div>
+            <div className="loginMain">
+                <h1 id="loginTitle">Login</h1>
+                <p id="subtitle">Safeguard your assets with advanced equipment management technology.</p>
+                <input className="login-input" type="text" placeholder="Email" name="email"
+                       onChange={handleEmailChange}></input><br></br>
+                <input className="login-input" type="password" placeholder="Password" name="password"
+                       onChange={handlePasswordChange}></input><br></br>
+                <br></br>
+                <div id={"forgotPasswordTextDiv"}>
+                    <a href={"/forgotPassword"} id={"login-forgotPassword"}>Forgot password?</a>
+                </div>
 
+                <button id="signin" onClick={handleClick}>
+                    Sign in
+                </button>
+                <br></br>
+
+                <div className="separator">
+                    OR
+                </div>
+
+                <div id={"loginButtons"}>
+                    <Glogin/>
+                    <FbLogin/>
+                </div>
+
+                <div>
+                    <p id="signup">Don't have an account? <a href="/signup"> Signup </a></p>
+                </div>
+
+            </div>
         </div>
     );
 }
