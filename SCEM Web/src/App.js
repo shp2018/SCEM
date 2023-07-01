@@ -22,6 +22,8 @@ import UserGroup from "./routes/userGroup";
 import UserGroupCreate from "./routes/userGroupCreate";
 import EquipmentGroup from "./routes/equipmentGroup";
 import CreateEquipmentGroup from './routes/createEquipmentGroup';
+import EquipmentType from "./routes/equipmentType";
+import EquipmentTypeCreate from "./routes/equipmentType-create";
 
 function App() {
     return (
@@ -48,6 +50,8 @@ function App() {
                 <Route path={"/userGroup/create"} element={<UserGroupCreate/>}/>
                 <Route path={"/equipmentGroup"} element={<EquipmentGroup/>}/>
                 <Route path="/equipmentGroup/create" element={<CreateEquipmentGroup/>}/>
+                <Route path={"/equipmentType"} element={<EquipmentType/>}/>
+                <Route path={"/equipmentType/create"} element={<EquipmentTypeCreate/>}/>
             </Routes>
         </Router>
     );

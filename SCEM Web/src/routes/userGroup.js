@@ -83,7 +83,7 @@ const UserGroup = () => {
                     <h3 id={"userGroups-titleText"}>User Group</h3>
                 </div>
                 <div id={"userGroups-addButtonDiv"}>
-                    <a href={"/userGroup/create"} id={"userGroups-addButtonLink"}>
+                    <a href={"/userGroup/create"}>
                         <img src={"/locationAdd.png"} id={"userGroups-addButton"}
                              alt={"Add user group button"}>
                         </img>
