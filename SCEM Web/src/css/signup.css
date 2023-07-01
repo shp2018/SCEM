@@ -1,5 +1,5 @@
-/*Sign Up Page*/
 #signup-page {
+    font-family: Roboto, sans-serif;
     text-align: center;
 }
 
@@ -23,12 +23,10 @@
 
 #signup-signupText {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #signup-subtitle {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #signup-inputBoxes {
@@ -82,12 +80,6 @@
     box-sizing: border-box;
 }
 
-/*input {*/
-/*    height: 2em;*/
-/*    width: 2em;*/
-/*    vertical-align: middle;*/
-/*}*/
-
 #tacbox {
     position: relative;
     display: block;
@@ -100,7 +92,6 @@
 }
 
 #signup-signupbutton {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: white;
     width: 300px;
@@ -138,10 +129,9 @@
     font-weight: bold;
 }
 
-
 #checkbox-error {
-    font-size : 14px;
+    font-size: 14px;
     margin: 15px 0;
     display: inline-block;
     color: #ff0000;
-  }
+}

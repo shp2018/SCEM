@@ -1,7 +1,6 @@
-/*Forgot Password Page*/
-
 #forgot-page {
     text-align: center;
+    font-family: Roboto, sans-serif;
 }
 
 #forgot-backButton {
@@ -23,7 +22,6 @@
 
 #forgot-forgotPasswordText {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
     display: inline-block;
 }
 
@@ -35,7 +33,6 @@
 
 #forgot-subtitle {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #forgot-emailInput {
@@ -50,7 +47,6 @@
 }
 
 #forgot-submit {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: white;
     width: 300px;
