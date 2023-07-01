@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import "../css/userGroup.css";
-import {collection, getDocs, query} from "firebase/firestore";
-import {firestore} from "../firebase";
+import {collection, getDocs, query, where} from "firebase/firestore";
+import {auth, firestore} from "../firebase";
+import {onAuthStateChanged} from "firebase/auth";
 
 const UserGroup = () => {
     const [userGroupIDs, setUserGroupIDs] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [currentUserID, setCurrentUserID] = useState(null);
 
     const dropdown = () => {
         document.getElementById("myDropdown").classList.toggle("show");
@@ -22,9 +24,15 @@ const UserGroup = () => {
         }
     }
 
+    const getCurrentUserID = () => {
+        onAuthStateChanged(auth, (user) => {
+            setCurrentUserID(user.uid);
+        })
+    }
+
     const getUserGroupsData = async () => {
         const userGroupsRef = collection(firestore, "userGroups");
-        const userGroupsQuery = query(userGroupsRef);
+        const userGroupsQuery = query(userGroupsRef, where("userCreatedID", "==", currentUserID));
         const querySnapshot = await getDocs(userGroupsQuery);
         setUserGroupIDs([]);
 
@@ -57,10 +65,11 @@ const UserGroup = () => {
     }
 
     useEffect(() => {
+        getCurrentUserID();
         getUserGroupsData().then(() => {
             setLoaded(true);
         })
-    }, []);
+    }, [currentUserID]);
 
     return (
         <div id={"userGroups-body"}>

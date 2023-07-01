@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {collection, addDoc, getDocs, query, where} from 'firebase/firestore';
-import {firestore} from '../firebase';
+import {auth, firestore} from '../firebase';
 import '../css/userGroupCreate.css';
+import {onAuthStateChanged} from "firebase/auth";
 
 const UserGroupCreate = () => {
     const [groupName, setGroupName] = useState('');
@@ -10,26 +11,17 @@ const UserGroupCreate = () => {
     const [rentChecked, setRentChecked] = useState(false);
     const [forRentChecked, setForRentChecked] = useState(false);
     const [viewAllChecked, setViewAllChecked] = useState(false);
+    const [currentUserID, setCurrentUserID] = useState(null);
 
-    const handleGroupNameChange = (event) => {
-        setGroupName(event.target.value);
-    };
+    const getCurrentUserData = () => {
+        onAuthStateChanged(auth, (user) => {
+            setCurrentUserID(user.uid);
+        })
+    }
 
-    const handleUserInGroupChange = (event) => {
-        setUserInGroup(event.target.value);
-    };
-
-    const handleRentChange = () => {
-        setRentChecked(!rentChecked);
-    };
-
-    const handleForRentChange = () => {
-        setForRentChecked(!forRentChecked);
-    };
-
-    const handleViewAllChange = () => {
-        setViewAllChecked(!viewAllChecked);
-    };
+    useEffect(() => {
+        getCurrentUserData();
+    }, [currentUserID]);
 
     const handleAddUser = async () => {
         const usersCollectionRef = collection(firestore, 'users');
@@ -57,22 +49,37 @@ const UserGroupCreate = () => {
 
     const handleSaveUserGroup = async () => {
         const userGroupsCollectionRef = collection(firestore, 'userGroups');
+        const allDocumentsQuery = query(userGroupsCollectionRef);
+        const querySnapshot = await getDocs(allDocumentsQuery);
+        let isDuplicated = false;
 
-        const newUserGroup = {
-            name: groupName,
-            rent: rentChecked,
-            forRent: forRentChecked,
-            viewAll: viewAllChecked,
-            users: users.map((user) => user.id),
-            active: true,
-        };
+        querySnapshot.forEach((doc) => {
+            if (doc.data().name === groupName) isDuplicated = true;
+        })
 
-        await addDoc(userGroupsCollectionRef, newUserGroup).then(() => {
-            alert("User group added.");
-        });
+        if (isDuplicated) alert("The group name already exists, please update your information.");
 
-        setGroupName('');
-        setUsers([]);
+        else {
+            const newUserGroup = {
+                name: groupName,
+                rent: rentChecked,
+                forRent: forRentChecked,
+                viewAll: viewAllChecked,
+                users: users.map((user) => user.id),
+                active: true,
+                userCreatedID: currentUserID,
+            };
+
+            await addDoc(userGroupsCollectionRef, newUserGroup).then(() => {
+                alert("User group added.");
+            });
+
+            setGroupName('');
+            setUsers([]);
+            setRentChecked(false);
+            setForRentChecked(false);
+            setViewAllChecked(false);
+        }
     };
 
     return (
@@ -90,7 +97,7 @@ const UserGroupCreate = () => {
                 <input
                     type="text"
                     value={groupName}
-                    onChange={handleGroupNameChange}
+                    onChange={(event) => setGroupName(event.target.value)}
                     placeholder="User Group Name"
                     className={"userGroup-textInput"}
                 />
@@ -101,7 +108,7 @@ const UserGroupCreate = () => {
                     <input
                         type="checkbox"
                         checked={rentChecked}
-                        onChange={handleRentChange}
+                        onChange={() => setRentChecked(!rentChecked)}
                         className="checkbox"
                     />
                     <span className="checkbox-label">Rent</span>
@@ -110,7 +117,7 @@ const UserGroupCreate = () => {
                     <input
                         type="checkbox"
                         checked={forRentChecked}
-                        onChange={handleForRentChange}
+                        onChange={() => setForRentChecked(!forRentChecked)}
                         className="checkbox"
                     />
                     <span className="checkbox-label">For Rent</span>
@@ -119,7 +126,7 @@ const UserGroupCreate = () => {
                     <input
                         type="checkbox"
                         checked={viewAllChecked}
-                        onChange={handleViewAllChange}
+                        onChange={() => setViewAllChecked(!viewAllChecked)}
                         className="checkbox"
                     />
                     <span className="checkbox-label">View All</span>
@@ -129,7 +136,7 @@ const UserGroupCreate = () => {
                 <input
                     type="text"
                     value={userInGroup}
-                    onChange={handleUserInGroupChange}
+                    onChange={(event) => setUserInGroup(event.target.value)}
                     placeholder="User in Group"
                     className={"userGroup-textInput"}
                 />
