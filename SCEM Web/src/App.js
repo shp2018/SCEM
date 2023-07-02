@@ -21,6 +21,9 @@ import UserManagementCreateUser from "./routes/userManagement-createUser";
 import UserGroup from "./routes/userGroup";
 import EquipmentGroup from "./routes/equipmentGroup";
 import CreateEquipmentGroup from './routes/createEquipmentGroup';
+import EquipmentManagement from './routes/equipmentManagement';
+import CreateEquipmentManagement from './routes/createEquipmentManagement';
+
 
 function App() {
     return (
@@ -46,6 +49,9 @@ function App() {
                 <Route path={"/userGroup"} element={<UserGroup/>}/>
                 <Route path={"/equipmentGroup"} element={<EquipmentGroup/>}/>
                 <Route path="/equipmentGroup/create" element={<CreateEquipmentGroup/>}/>
+                <Route path="/equipmentManagement" element={<EquipmentManagement/>}/>
+                <Route path="/equipmentManagement/create" element={<CreateEquipmentManagement/>}/>
+
             </Routes>
         </Router>
     );
