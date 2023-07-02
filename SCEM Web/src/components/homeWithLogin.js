@@ -141,7 +141,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/equipmentManagement"}
+                    <a href={"/"}
                        id={"homeWithLogin-menuItemLinks"}> Equipment Management </a>
                 </div>
 

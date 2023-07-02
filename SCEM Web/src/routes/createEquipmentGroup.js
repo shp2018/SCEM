@@ -42,10 +42,10 @@ function CreateEquipmentGroup() {
 
         if (equipmentData.exists()) {
             await updateDoc(equipmentGroup, data);
-            alert("Existing equipment group data has been updated.");
+            alert("Existing location data has been updated.");
         } else {
             await setDoc(equipmentGroup, data);
-            alert("New equipment group data has been created.");
+            alert("New location data has been created.");
         }
 
         window.location.replace("/equipmentGroup");
