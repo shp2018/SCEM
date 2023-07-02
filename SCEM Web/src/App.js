@@ -24,6 +24,8 @@ import EquipmentGroup from "./routes/equipmentGroup";
 import CreateEquipmentGroup from './routes/createEquipmentGroup';
 import EquipmentType from "./routes/equipmentType";
 import EquipmentTypeCreate from "./routes/equipmentType-create";
+import EquipmentManagement from "./routes/equipmentManagement";
+import CreateEquipmentManagement from "./routes/createEquipmentManagement";
 
 function App() {
     return (
@@ -52,6 +54,8 @@ function App() {
                 <Route path="/equipmentGroup/create" element={<CreateEquipmentGroup/>}/>
                 <Route path={"/equipmentType"} element={<EquipmentType/>}/>
                 <Route path={"/equipmentType/create"} element={<EquipmentTypeCreate/>}/>
+                <Route path={"/equipmentManagement"} element={<EquipmentManagement/>}/>
+                <Route path={"/equipmentManagement/create"} element={<CreateEquipmentManagement/>}/>
             </Routes>
         </Router>
     );
