@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {collection, query, where, getDocs} from "firebase/firestore";
-import {auth, firestore} from "../firebase";
+import {firestore} from "../firebase";
 import "../css/marketplaceItem.css";
-import {onAuthStateChanged} from "firebase/auth";
 import "../css/equipmentManagement.css";
 
 function EquipmentManagement() {

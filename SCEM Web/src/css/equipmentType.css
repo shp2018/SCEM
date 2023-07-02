@@ -1,0 +1,40 @@
+#equipmentType-body {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#equipmentType-header {
+    background-color: #133da5;
+    padding-bottom: 3em;
+    padding-top: 2em;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
+    position: relative;
+}
+
+#equipmentType-backButtonDiv {
+    position: relative;
+    display: inline-block;
+    filter: invert(100%);
+    right: 6em;
+    top: 2.45em;
+}
+
+#equipmentType-titleText {
+    color: white;
+}
+
+#equipmentType-addButtonDiv {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+#equipmentType-addButton {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 39%;
+    right: 5%;
+}
