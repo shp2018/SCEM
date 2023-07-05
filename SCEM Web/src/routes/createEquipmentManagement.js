@@ -32,6 +32,9 @@ function CreateEquipmentManagement() {
   const [capacity, setCapacity] = useState("");
   const [equipmentGroup, setEquipmentGroup] = useState("");
   const [equipmentGroupNames, setEquipmentGroupNames] = useState([]);
+  const [latitude, setLatitude] = useState([]);
+  const [longitude, setLongitude] = useState([]);
+  const [site, setSite] = useState([]);
 
   async function checkAuthState() {
     onAuthStateChanged(auth, async (user) => {
@@ -83,7 +86,10 @@ function CreateEquipmentManagement() {
       equipmentType: equipmentType,
       weight: weight,
       capacity: capacity,
-      equipmentGroup :equipmentGroup
+      equipmentGroup :equipmentGroup,
+      latitude : latitude,
+      longitude : longitude,
+      site : site,
     };
 
     if (equipmentManagementData.exists()) {
@@ -290,6 +296,36 @@ function CreateEquipmentManagement() {
                 </option>
               ))}
             </select>
+            <br />
+
+            <label id="createEquipmentManagement-Label">Latitude</label>
+            <input
+              id="createEquipmentManagement-Input"
+              type="text"
+              onChange={(e) => {
+                setLatitude(e.target.value);
+              }}
+            ></input>
+            <br />
+
+            <label id="createEquipmentManagement-Label">Longitude</label>
+            <input
+              id="createEquipmentManagement-Input"
+              type="text"
+              onChange={(e) => {
+                setLongitude(e.target.value);
+              }}
+            ></input>
+            <br />
+
+            <label id="createEquipmentManagement-Label">Site</label>
+            <input
+              id="createEquipmentManagement-Input"
+              type="text"
+              onChange={(e) => {
+                setSite(e.target.value);
+              }}
+            ></input>
             <br />
           </div>
         </div>
