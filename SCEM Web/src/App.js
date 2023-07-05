@@ -26,6 +26,7 @@ import EquipmentType from "./routes/equipmentType";
 import EquipmentTypeCreate from "./routes/equipmentType-create";
 import EquipmentManagement from "./routes/equipmentManagement";
 import CreateEquipmentManagement from "./routes/createEquipmentManagement";
+import ViewEquipmentList from "./routes/viewEquipmentList";
 
 function App() {
     return (
@@ -56,6 +57,7 @@ function App() {
                 <Route path={"/equipmentType/create"} element={<EquipmentTypeCreate/>}/>
                 <Route path={"/equipmentManagement"} element={<EquipmentManagement/>}/>
                 <Route path={"/equipmentManagement/create"} element={<CreateEquipmentManagement/>}/>
+                <Route path={"/viewEquipmentList"} element={<ViewEquipmentList/>}/>
             </Routes>
         </Router>
     );
