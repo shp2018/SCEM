@@ -68,15 +68,18 @@ function CreateEquipmentGroup() {
                 <div>
                     <div id={"createEquipmentGroup-inputBoxes"}>
                         <label id="createEquipmentGroup-Label">Name</label>
+                        <br></br>
                         <input id="createEquipmentGroup-Input" type="text" onChange={(e) => {
                             setName(e.target.value)
-                        }}></input><br></br>
-
+                        }}></input>
+                        <br></br>
+                        <br></br>
                         <label id="createEquipmentGroup-Label">Description</label>
+                        <br></br>
                         <input id="createEquipmentGroup-Input" type="text"
                                onChange={(e) => {
                                    setDescription(e.target.value)
-                               }}></input><br></br>
+                               }}></input>
                     </div>
 
                     <button id="createEquipmentGroup-createEquipmentGroupbutton" type="submit">Update</button>
