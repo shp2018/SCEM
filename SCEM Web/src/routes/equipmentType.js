@@ -27,7 +27,21 @@ const EquipmentType = () => {
     }
 
     const handleDelete = () => {
+        let rows = document.getElementsByTagName("td");
+        let dataArr = [];
+        for (let i = 0; i < rows.length; i++) {
+            dataArr.push(rows[i].innerText);
+        }
+        dataArr = dataArr.filter(e => e !== "" && e !== "Edit\nDelete\nCancel");
 
+        const equipmentTypeDataObj = [];
+        for (let i = 0; i < dataArr.length; i += 2) {
+            equipmentTypeDataObj.push({
+                name: dataArr[i],
+                description: dataArr[i + 1],
+            })
+        }
+        console.log(equipmentTypeDataObj);
     }
 
     const getEquipmentTypesData = async () => {
@@ -36,30 +50,33 @@ const EquipmentType = () => {
         const querySnapshot = await getDocs(equipmentTypesQuery);
         setEquipmentTypesData([]);
 
-        querySnapshot.forEach( doc => {
+        querySnapshot.forEach(doc => {
             let data = doc.data();
-            setEquipmentTypesData(curr => [...curr, <tr key={doc.id}>
-                <td className={"equipmentType-tableElement"}>{}</td>
-                <td className={"equipmentType-tableElement"}>{data.name}</td>
-                <td className={"equipmentType-tableElement"}>{data.description}</td>
-                <td className={"equipmentType-tableElement"}>
-                    <div className={"equipmentType-dropdownDiv"}>
-                        <button onClick={dropdown} className={"equipmentType-dropdownButton"}
-                                id={"equipmentType-dropdownButtonID"}>
-                            <img src={"/triangle-right.svg"} alt={"Right arrow used to create dropdown menu."}
-                                 id={"equipmentType-tableLinkArrow"}>
-                            </img>
-                        </button>
-                        <div id={"myDropdown"} className={"dropdown-content"}>
-                            <a className={"equipmentType-dropdownButton"} onClick={handleEdit}>Edit</a>
-                            <a className={"equipmentType-dropdownButton"} onClick={handleDelete}>Delete</a>
-                            <button className={"equipmentType-dropdownButton"}
-                                    id={"equipmentType-dropdownCancel"}>Cancel
+            setEquipmentTypesData(curr => [...curr, {
+                id: doc.id,
+                render: <tr key={doc.id}>
+                    <td className={"equipmentType-tableElement"}>{}</td>
+                    <td className={"equipmentType-tableElement"}>{data.name}</td>
+                    <td className={"equipmentType-tableElement"}>{data.description}</td>
+                    <td className={"equipmentType-tableElement"}>
+                        <div className={"equipmentType-dropdownDiv"}>
+                            <button onClick={dropdown} className={"equipmentType-dropdownButton"}
+                                    id={"equipmentType-dropdownButtonID"}>
+                                <img src={"/triangle-right.svg"} alt={"Right arrow used to create dropdown menu."}
+                                     id={"equipmentType-tableLinkArrow"}>
+                                </img>
                             </button>
+                            <div id={"myDropdown"} className={"dropdown-content"}>
+                                <a className={"equipmentType-dropdownButton"} onClick={handleEdit}>Edit</a>
+                                <a className={"equipmentType-dropdownButton"} onClick={handleDelete}>Delete</a>
+                                <button className={"equipmentType-dropdownButton"}
+                                        id={"equipmentType-dropdownCancel"}>Cancel
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>]);
+                    </td>
+                </tr>
+            }]);
         });
     }
 
@@ -68,7 +85,7 @@ const EquipmentType = () => {
             setLoaded(true);
         });
         // eslint-disable-next-line
-    }, []);
+    }, [loaded]);
 
     return (<div id={"equipmentType-body"}>
         <div id={"equipmentType-header"}>
@@ -92,7 +109,7 @@ const EquipmentType = () => {
                     <th className={"equipmentType-tableHeading"}>Description</th>
                     <th className={"equipmentType-tableHeading"}></th>
                 </tr>
-                {equipmentTypesData}
+                {equipmentTypesData.map(equipmentType => equipmentType.render)}
                 </tbody>
             </table>
         </div> : <p className={"loading"}>Loading...</p>}

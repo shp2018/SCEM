@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { auth, firestore } from "../firebase";
+import React, { useState } from "react";
+import { firestore } from "../firebase";
 import {
-  doc,
-  setDoc,
   collection,
   getDocs,
   query,
   where,
-  getDoc,
-  updateDoc,
 } from "firebase/firestore";
 import "../css/viewEquipmentList.css";
-import { onAuthStateChanged } from "firebase/auth";
 
 function ViewEquipmentList() {
   const [equipmentType, setEquipmentType] = useState("");
