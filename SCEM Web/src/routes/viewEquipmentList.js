@@ -106,26 +106,24 @@ function ViewEquipmentList() {
       {equipmentList.length > 0 && (
         <div>
           <h4>Matching Equipment List</h4>
-          <table>
+          <table id={"viewEquipmentList-table"}>
             <thead>
               <tr>
-                <th>#</th>
-                <th>Site</th>
-                <th>Lat</th>
-                <th>Lon</th>
-                <th>Date</th>
-                {/* Add more table headers as needed */}
+                <th className={"viewEquipmentList-tableHeading"}>#</th>
+                <th className={"viewEquipmentList-tableHeading"}>Site</th>
+                <th className={"viewEquipmentList-tableHeading"}>Lat</th>
+                <th className={"viewEquipmentList-tableHeading"}>Lon</th>
+                <th className={"viewEquipmentList-tableHeading"}>Date</th>
               </tr>
             </thead>
             <tbody>
               {equipmentList.map((equipment, index) => (
                 <tr key={equipment.id}>
-                  <td>{index + 1}</td>
-                  <td>{equipment.site}</td>
-                  <td>{equipment.latitude}</td>
-                  <td>{equipment.longitude}</td>
-                  <td>{equipment.plateDate}</td>
-                  {/* Add more table cells for additional fields */}
+                  <td className={"viewEquipmentList-tableData"}>{index + 1}</td>
+                  <td className={"viewEquipmentList-tableData"}>{equipment.site}</td>
+                  <td className={"viewEquipmentList-tableData"}>{equipment.latitude}</td>
+                  <td className={"viewEquipmentList-tableData"}>{equipment.longitude}</td>
+                  <td className={"viewEquipmentList-tableData"}>{equipment.plateDate}</td>
                 </tr>
               ))}
             </tbody>
