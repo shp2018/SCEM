@@ -137,6 +137,15 @@ function HomeWithLogin() {
                 </div>
 
                 <div id={"homeWithLogin-menuItem"}>
+                    <img src={'equipmentGroup.jpeg'}
+                         id={"homeWithLogin-menuItemIcons"}
+                         alt={""}>
+                    </img>
+                    <a href={"/equipmentType"}
+                       id={"homeWithLogin-menuItemLinks"}> Equipment Type </a>
+                </div>
+
+                <div id={"homeWithLogin-menuItem"}>
                     <img src={'equipmentManagement.jpg'}
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
