@@ -1,4 +1,3 @@
-
 #createToolAlerts-page {
     text-align: center;
 }
@@ -36,21 +35,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
+}
 
-  #createToolAlerts-Input {
+.createToolAlerts-Input {
     width: 300px;
     padding: 10px;
     margin-bottom: 10px;
-  }
-
-
-
-#createToolAlerts-Label {
-    text-align:left;
 }
 
+#createToolAlerts-equipmentInput {
+    width: 330px;
+}
+
+#createToolAlerts-Label {
+    text-align: left;
+}
 
 #createToolAlerts-createToolAlertsbutton {
     font-family: Arial, Helvetica, sans-serif;
@@ -67,16 +66,9 @@
 .activeButton {
     background-color: green;
     color: white;
-  }
-  
-  .inactiveButton {
+}
+
+.inactiveButton {
     background-color: red;
     color: white;
-  }
-  
-
- 
-  
-  
-  
-  
+}
