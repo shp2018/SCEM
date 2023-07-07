@@ -46,7 +46,6 @@
 #equipmentType-table {
     margin-left: auto;
     margin-right: auto;
-    counter-reset: rowNumber;
     border-collapse: collapse;
 }
 
@@ -63,66 +62,54 @@
     background-color: #5982d3;
 }
 
-#equipmentType-tableLinkArrow {
+#equipmentType-tableArrowButton {
+    border: none;
+    background-color: white;
+}
+
+#equipmentType-tableArrow {
     width: 1.5em;
     height: 1.5em;
 }
 
-#equipmentType-table tr:not(:first-child) {
-    counter-increment: rowNumber;
+#equipmentType-dropdown {
+    display: inline-block;
 }
 
-#equipmentType-table tr .equipmentType-tableElement:first-child::before {
-    content: counter(rowNumber);
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+#equipmentType-dropdownMenu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+#equipmentType-dropdownMenu .equipmentType-dropdownButton {
+    text-decoration: none;
+    display: block;
+    padding: 12px 16px;
 }
 
 .equipmentType-dropdownButton {
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    min-width: 120px;
+    font-weight: bold;
+}
+
+.equipmentType-dropdownButton:first-child {
+    border-bottom: none;
 }
 
 .equipmentType-dropdownButton:hover {
     background-color: #f1f1f1;
 }
 
-#equipmentType-dropdownButtonID {
-    background-color: white;
-}
-
-#equipmentType-dropdownCancel {
-    color: black;
-    padding: 12px 53px;
-    background-color: #ffffff;
-}
-
-#equipmentType-dropdownCancel:hover {
-    min-width: 160px;
-    background-color: #f1f1f1;
-}
-
-#equipmentType-dropdownDiv {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
+#equipmentType-dropdown:hover #equipmentType-dropdownMenu {
     display: block;
 }
 
-.show {display: block;}
+#equipmentType-dropdown:hover {
+    background-color: #0b7dda;
+}
