@@ -1,0 +1,91 @@
+#alerts {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    counter-reset: rowNumber;
+}
+
+#alerts tr:not(:first-child) {
+    counter-increment: rowNumber;
+}
+
+#alerts tr td:first-child::before {
+    content: counter(rowNumber);
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+#alerts td, #alerts th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#alerts tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#alerts tr:hover {
+    background-color: #ddd;
+}
+
+#alerts th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #5982d3;
+    color: black;
+    text-align: center;
+}
+
+#toolAlerts-addButton {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 3em;
+    right: 2em;
+}
+
+#toolAlerts-page {
+    text-align: center;
+}
+
+#toolAlerts-backButton {
+    position: absolute;
+    left: 3%;
+    filter: invert(100%);
+    padding-top: 3.5em;
+    padding-left: 1em;
+}
+
+#toolAlerts-header {
+    position: relative;
+    top: 50px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    background-color: #224cbf;
+    margin-left: auto;
+    margin-right: auto;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 30%;
+    width: 50%;
+}
+
+#toolAlerts-toolAlertsText {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    padding-left: 5em;
+    padding-top: 2.5em;
+}
+
+#toolAlerts-tableLinkArrow {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+#toolAlerts-linkArrowBox {
+    width: 2em;
+    height: 1em;
+}
