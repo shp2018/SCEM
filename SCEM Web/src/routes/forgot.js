@@ -20,7 +20,10 @@ function ForgotPassword() {
         const emailQuery = query(collection(firestore, "users"), where("email", "==", email));
         const querySnapshot = await getDocs(emailQuery);
 
-        if (querySnapshot.size === 0) return;
+        if (querySnapshot.size === 0) {
+            alert("Account does not exist. Please review.");
+            return;
+        }
 
         querySnapshot.forEach((doc) => {
             let data = doc.data();

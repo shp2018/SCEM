@@ -20,7 +20,7 @@ function MyRentalManagement() {
         querySnapshot.forEach((doc) => {
             let data = doc.data();
             setMyRentals(curr => [...curr,
-                <tr key={`${doc.id}`}>
+                <tr key={doc.id}>
                     <td className={"myRentalManagement-myRentalsTableElement"}> {} </td>
                     <td className={"myRentalManagement-myRentalsTableElement"}> {data.name} </td>
                     <td className={"myRentalManagement-myRentalsTableElement"}> {data.fromDate} </td>

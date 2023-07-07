@@ -63,9 +63,8 @@ const UserManagement = () => {
                     <td className={"userManagement-usersInfoTableElement"}>
                         <div className={"userManagement-dropdownDiv"}>
                             <button onClick={dropdown} className={"userManagement-dropdownButton"}
-                                    id={"userManagement-dropDownButtonID"}><img
-                                src={"/triangle-right.svg"}
-                                alt={"Right arrow used to redirect user to item link."}
+                                    id={"userManagement-dropDownButtonID"}>
+                                <img src={"/triangle-right.svg"} alt={"Right arrow used to create dropdown menu."}
                                 id={"userManagement-tableLinkArrow"}>
                             </img></button>
                             <div id={"myDropdown"} className={"dropdown-content"}>
