@@ -110,7 +110,6 @@ const EquipmentType = () => {
                                             className={"equipmentType-dropdownButton"}>Delete</button>
                                 </div>
                             </div>
-
                         </td>
                     </tr>)}
                 </tbody>
