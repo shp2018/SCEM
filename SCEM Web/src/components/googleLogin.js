@@ -5,17 +5,15 @@ import {doc, setDoc, getDoc} from "firebase/firestore";
 
 const GoogleLogin = ({text}) => {
     const auth = getAuth();
+    const provider = new GoogleAuthProvider();
 
     useEffect(() => {
         auth.useDeviceLanguage();
     }, []);
 
     const signIn = () => {
-        const provider = new GoogleAuthProvider();
-
         signInWithPopup(auth, provider).then(async res => {
             const user = res.user;
-
             const userDoc = doc(firestore, "users", user.uid);
             const userData = await getDoc(userDoc);
 
@@ -30,9 +28,9 @@ const GoogleLogin = ({text}) => {
             window.location.href = "/";
 
         }).catch(err => {
-            console.log(err.code, err.message);
-            console.log(err.customData.email);
-            console.log(GoogleAuthProvider.credentialFromError(err));
+            console.error(err.code, err.message);
+            console.error(err.customData.email);
+            console.error(GoogleAuthProvider.credentialFromError(err));
         })
     }
 
