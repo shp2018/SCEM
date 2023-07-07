@@ -1,5 +1,5 @@
 import React from "react";
-import Glogin from "../components/googleLogin.js";
+import GoogleLogin from "../components/googleLogin.js";
 import FbLogin from "../components/facebookLogin.js";
 import {useEffect} from 'react';
 import {useState} from 'react';
@@ -80,12 +80,12 @@ const Login = () => {
                 </div>
 
                 <div id={"loginButtons"}>
-                    <Glogin/>
                     <FbLogin/>
+                    <GoogleLogin text={"Sign In with Google"}/>
                 </div>
 
                 <div>
-                    <p id="signup">Don't have an account? <a href="/signup"> Signup </a></p>
+                    <p id="signup">Don't have an account? <a href="/signup"> Sign up </a></p>
                 </div>
 
             </div>
