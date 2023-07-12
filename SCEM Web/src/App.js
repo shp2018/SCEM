@@ -30,7 +30,7 @@ import EquipmentManagement from "./routes/equipmentManagement";
 import CreateEquipmentManagement from "./routes/createEquipmentManagement";
 import ViewEquipmentList from "./routes/viewEquipmentList";
 
-function App() {
+const App = () => {
     return (
         <Router>
             <Routes>
