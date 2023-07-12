@@ -18,7 +18,17 @@ import CreateLocationGroup from './routes/createLocationGroup';
 import LocationGroup from './routes/locationGroup';
 import CreateSite from './routes/createSite';
 import CompanyLocations from './routes/companyLocations';
-
+import UserManagement from "./routes/userManagement";
+import UserManagementCreateUser from "./routes/userManagement-createUser";
+import UserGroup from "./routes/userGroup";
+import UserGroupCreate from "./routes/userGroupCreate";
+import EquipmentGroup from "./routes/equipmentGroup";
+import CreateEquipmentGroup from './routes/createEquipmentGroup';
+import EquipmentType from "./routes/equipmentType";
+import EquipmentTypeCreate from "./routes/equipmentType-create";
+import EquipmentManagement from "./routes/equipmentManagement";
+import CreateEquipmentManagement from "./routes/createEquipmentManagement";
+import ViewEquipmentList from "./routes/viewEquipmentList";
 
 function App() {
     return (
@@ -30,9 +40,16 @@ function App() {
                 <Route path="/companyProfile" element={<CompanyProfile/>}/>
                 <Route path="/locationGroup" element={<LocationGroup/>}/>
                 <Route path="/locationGroup/create" element={<CreateLocationGroup/>}/>
+                <Route path="/forgotPassword" element={<ForgotPassword/>}/>
+                <Route path={"/"} element={<Home/>}/>
+                <Route path={"/login"} element={<Login/>}/>
+                <Route path={"/signup"} element={<Signup/>}/>
+                <Route path={"/companyProfile"} element={<CompanyProfile/>}/>
+                <Route path={"/locationGroup"} element={<LocationGroup/>}/>
+                <Route path={"/locationGroup/create"} element={<CreateLocationGroup/>}/>
+                <Route path={"/forgotPassword"} element={<ForgotPassword/>}/>
                 <Route path ="/companyLocation" element={<CompanyLocations/>}/>
                 <Route path ="/companyLocation/create" element={<CreateSite/>}/>
-                <Route path="/forgotPassword" element={<ForgotPassword/>}/>
                 <Route path={"/marketplace"} element={<Marketplace/>}/>
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
                 <Route path={"/marketplace/addItem"} element={<MarketplaceAddItem/>}/>
@@ -41,7 +58,17 @@ function App() {
                 <Route path={"/profile/:profileId"} element={<Profile/>}/>
                 <Route path={"/equipmentCurrentlyOnRent"} element={<EquipmentCurrentlyOnRent/>}/>
                 <Route path={"/myRentalManagement"} element={<MyRentalManagement/>}/>
-            
+                <Route path={"/userManagement"} element={<UserManagement/>}/>
+                <Route path={"/userManagement/createUser"} element={<UserManagementCreateUser/>}/>
+                <Route path={"/userGroup"} element={<UserGroup/>}/>
+                <Route path={"/userGroup/create"} element={<UserGroupCreate/>}/>
+                <Route path={"/equipmentGroup"} element={<EquipmentGroup/>}/>
+                <Route path="/equipmentGroup/create" element={<CreateEquipmentGroup/>}/>
+                <Route path={"/equipmentType"} element={<EquipmentType/>}/>
+                <Route path={"/equipmentType/create"} element={<EquipmentTypeCreate/>}/>
+                <Route path={"/equipmentManagement"} element={<EquipmentManagement/>}/>
+                <Route path={"/equipmentManagement/create"} element={<CreateEquipmentManagement/>}/>
+                <Route path={"/viewEquipmentList"} element={<ViewEquipmentList/>}/>
             </Routes>
         </Router>
     );
