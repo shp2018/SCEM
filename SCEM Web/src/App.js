@@ -34,13 +34,6 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route exact path="/" element={<Home/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/signup" element={<Signup/>}/>
-                <Route path="/companyProfile" element={<CompanyProfile/>}/>
-                <Route path="/locationGroup" element={<LocationGroup/>}/>
-                <Route path="/locationGroup/create" element={<CreateLocationGroup/>}/>
-                <Route path="/forgotPassword" element={<ForgotPassword/>}/>
                 <Route path={"/"} element={<Home/>}/>
                 <Route path={"/login"} element={<Login/>}/>
                 <Route path={"/signup"} element={<Signup/>}/>
@@ -48,8 +41,15 @@ function App() {
                 <Route path={"/locationGroup"} element={<LocationGroup/>}/>
                 <Route path={"/locationGroup/create"} element={<CreateLocationGroup/>}/>
                 <Route path={"/forgotPassword"} element={<ForgotPassword/>}/>
-                <Route path ="/companyLocation" element={<CompanyLocations/>}/>
-                <Route path ="/companyLocation/create" element={<CreateSite/>}/>
+                <Route path={"/"} element={<Home/>}/>
+                <Route path={"/login"} element={<Login/>}/>
+                <Route path={"/signup"} element={<Signup/>}/>
+                <Route path={"/companyProfile"} element={<CompanyProfile/>}/>
+                <Route path={"/locationGroup"} element={<LocationGroup/>}/>
+                <Route path={"/locationGroup/create"} element={<CreateLocationGroup/>}/>
+                <Route path={"/forgotPassword"} element={<ForgotPassword/>}/>
+                <Route path={"/companyLocation"} element={<CompanyLocations/>}/>
+                <Route path={"/companyLocation/create"} element={<CreateSite/>}/>
                 <Route path={"/marketplace"} element={<Marketplace/>}/>
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
                 <Route path={"/marketplace/addItem"} element={<MarketplaceAddItem/>}/>
@@ -63,7 +63,7 @@ function App() {
                 <Route path={"/userGroup"} element={<UserGroup/>}/>
                 <Route path={"/userGroup/create"} element={<UserGroupCreate/>}/>
                 <Route path={"/equipmentGroup"} element={<EquipmentGroup/>}/>
-                <Route path="/equipmentGroup/create" element={<CreateEquipmentGroup/>}/>
+                <Route path={"/equipmentGroup/create"} element={<CreateEquipmentGroup/>}/>
                 <Route path={"/equipmentType"} element={<EquipmentType/>}/>
                 <Route path={"/equipmentType/create"} element={<EquipmentTypeCreate/>}/>
                 <Route path={"/equipmentManagement"} element={<EquipmentManagement/>}/>
