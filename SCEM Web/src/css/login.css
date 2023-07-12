@@ -1,3 +1,8 @@
+#login-body {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
 #login-logo {
     margin-top: 4em;
     border-radius: 1em;
@@ -10,11 +15,6 @@
     z-index: 1;
     width: 15px;
     height: 15px;
-}
-
-#login-body {
-    overflow-x: hidden;
-    text-align: center;
 }
 
 #loginMain {
@@ -35,7 +35,7 @@
     font-weight: bold;
 }
 
-input[type=text], select {
+.login-input {
     width: 500px;
     padding: 12px 20px;
     display: block;
@@ -46,20 +46,16 @@ input[type=text], select {
     box-sizing: border-box;
 }
 
-input[type=password], select {
+#forgotPasswordTextDiv {
     width: 500px;
-    padding: 12px 20px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    margin: -1em auto auto auto;
+    text-align: right;
 }
 
-#forgot {
+#login-forgotPassword {
     position: relative;
-    left: 57%;
+
 }
 
 #signin {
@@ -82,41 +78,7 @@ input[type=password], select {
     text-align: center;
 }
 
-.btnFacebook, .btnGoogle {
-    width: 200px;
-    height: 35px;
-    border-radius: 4px;
-    color: white;
-    border: 0 transparent;
-}
-
-.btnFacebook {
-    background: #3b5998;
-}
-
-.btnGoogle {
-    background: #db3236;
-}
-
-.btnGoogle:hover {
-    background: #db3236;
-    opacity: 0.6;
-}
-
-.btnFacebook:hover {
-    background: #3b5998;
-    opacity: 0.6;
-}
-
-#fblogo {
-    height: 15px;
-    position: relative;
-    left: -10px;
-    top: 2px;
-}
-
 #signup {
-    text-align: center;
     color: grey;
 }
 
@@ -125,11 +87,7 @@ input[type=password], select {
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
-}
-
-.left {
     transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
 }
 
 .separator {

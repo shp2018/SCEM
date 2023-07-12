@@ -16,34 +16,18 @@ function EquipmentForRent() {
         querySnapshot.forEach((doc) => {
             let data = doc.data();
             setEquipmentForRent(curr => [...curr,
-                <div id={"equipmentForRent-marketplaceItem"}
-                     key={`${doc.id}`}>
-                    <div id={"equipmentForRent-marketplaceItemTitle"}>
-                        <a href={`/marketplace/${doc.id}`}
-                           id={"equipmentForRent-marketplaceItemLink"}>
-                            {data.name} </a>
-                    </div>
-                    <div id={"equipmentForRent-marketplaceItemDescription"}>
-                        {data.description}
-                    </div>
-                    <div id={"equipmentForRent-marketplaceItemDailyPrice"}>
-                        <p> Daily Price: ${data.dailyPrice} </p>
-                    </div>
-                    <div id={"equipmentForRent-marketplaceItemUserCreated"}>
-                        <a href={`/profile/${data.userID}`}
-                           id={"equipmentForRent-marketplaceItemUserCreatedLink"}> {data.userCreated} </a>
-                    </div>
-                    <div id={"equipmentForRent-marketplaceItemDateAndTimeCreated"}>
-                        {data.dateCreated}
-                        {" "}
-                        {data.timeCreated}
-                    </div>
-                    <div id={"equipmentForRent-marketplaceItemImageDiv"}>
-                        <img src={data.images}
-                             alt={"Marketplace Item"}
-                             id={"equipmentForRent-marketplaceItemImage"}></img>
-                    </div>
-                </div>]);
+                <tr key={doc.id}>
+                    <td className={"equipmentForRent-tableElement"}></td>
+                    <td className={"equipmentForRent-tableElement"}>{data.name}</td>
+                    <td className={"equipmentForRent-tableElement"}>{data.dailyPrice}$</td>
+                    <td className={"equipmentForRent-tableElement"}>{data.toDate}</td>
+                    <td className={"equipmentForRent-tableElement"}>
+                        <a href={`/marketplace/${doc._key.path.lastSegment()}`}>
+                            <img src={"/triangle-right.svg"} alt={"Right arrow used to redirect user to item link."}
+                                 id={"equipmentForRent-tableArrow"}></img>
+                        </a>
+                    </td>
+                </tr>]);
         });
     }
 
@@ -55,24 +39,36 @@ function EquipmentForRent() {
     }, []);
 
     return (
-        <body id={"equipmentForRent-body"}>
+        <div id={"equipmentForRent-body"}>
+            <div id={"equipmentForRent-header"}>
+                <div id={"equipmentForRent-backButton"}>
+                    <a href={"/"}
+                       className={"arrow left"}>
+                    </a>
+                </div>
 
-        <div id={"equipmentForRent-header"}>
-            <div id={"equipmentForRent-backButton"}>
-                <a href={"/"}
-                   className={"arrow left"}>
-                </a>
+                <div id={"equipmentForRent-titleText"}>
+                    <h3> Equipment For Rent </h3>
+                </div>
             </div>
-
-            <div id={"equipmentForRent-titleText"}>
-                <h3> Equipment For Rent </h3>
+            <div id={"equipmentForRent-items"}>
+                {loaded ?
+                    <table className={"equipmentForRent-tableElement"}
+                           id={"equipmentForRent-table"}>
+                        <tbody id={"equipmentForRent-tableBody"}>
+                        <tr>
+                            <th className={"equipmentForRent-tableHeading"}>#</th>
+                            <th className={"equipmentForRent-tableHeading"}>Title</th>
+                            <th className={"equipmentForRent-tableHeading"}>Price</th>
+                            <th className={"equipmentForRent-tableHeading"}>Expired</th>
+                            <th className={"equipmentForRent-tableHeading"}></th>
+                        </tr>
+                        {equipmentForRent}
+                        </tbody>
+                    </table>
+                    : <p className={"loaded"}> Loading... </p>}
             </div>
         </div>
-        <div id={"equipmentForRent-items"}>
-            {loaded ? equipmentForRent : <p className={"loaded"}> Loading... </p>}
-        </div>
-
-        </body>
     );
 }
 

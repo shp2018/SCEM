@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {auth, firestore} from "../firebase";
 import {doc, setDoc, collection, getDocs, query, where, getDoc, updateDoc} from "firebase/firestore";
-import '../css/createLocationGroup.css';
+import '../css/createEquipmentGroup.css';
 import {onAuthStateChanged} from "firebase/auth";
 
-function CreateLocationGroup() {
+function CreateEquipmentGroup() {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [userName, setUserName] = useState("");
@@ -33,57 +33,60 @@ function CreateLocationGroup() {
     const handleSave = async (e) => {
         e.preventDefault();
 
-        const locationGroup = doc(firestore, "location", name);
-        const locationData = await getDoc(locationGroup);
+        const equipmentGroup = doc(firestore, "equipmentGroups", name);
+        const equipmentData = await getDoc(equipmentGroup);
 
         let data = {
             name: name, description: description, userCreated: userName, userID: userID,
         };
 
-        if (locationData.exists()) {
-            await updateDoc(locationGroup, data);
-            alert("Existing location data has been updated.");
+        if (equipmentData.exists()) {
+            await updateDoc(equipmentGroup, data);
+            alert("Existing equipment group data has been updated.");
         } else {
-            await setDoc(locationGroup, data);
-            alert("New location data has been created.");
+            await setDoc(equipmentGroup, data);
+            alert("New equipment group data has been created.");
         }
 
-        window.location.replace("/locationGroup");
+        window.location.replace("/equipmentGroup");
     }
 
     return (
-        <div id={"createLocationGroup-page"}>
-            <div id={"createLocationGroup-header"}>
-                <div id={"createLocationGroup-backButton"}>
-                    <a href={"/"}
+        <div id={"createEquipmentGroup-page"}>
+            <div id={"createEquipmentGroup-header"}>
+                <div id={"createEquipmentGroup-backButton"}>
+                    <a href={"/equipmentGroup"}
                        className={"arrow left"}>
                     </a>
                 </div>
-                <div id={"createLocationGroup-createLocationGroupText"}>
-                    <h3> Create Location Group </h3>
+                <div id={"createEquipmentGroup-createEquipmentGroupText"}>
+                    <h3> Create Equipment Group </h3>
                 </div>
             </div>
             <br></br>
-            <form id="createLocationGroup-form" onSubmit={handleSave}>
+            <form id="createEquipmentGroup-form" onSubmit={handleSave}>
                 <div>
-                    <div id={"createLocationGroup-inputBoxes"}>
-                        <label id="createLocationGroup-Label">Name</label>
-                        <input className="createLocationGroup-Input" type="text" onChange={(e) => {
+                    <div id={"createEquipmentGroup-inputBoxes"}>
+                        <label id="createEquipmentGroup-Label">Name</label>
+                        <br></br>
+                        <input id="createEquipmentGroup-Input" type="text" onChange={(e) => {
                             setName(e.target.value)
-                        }}></input><br></br>
-
-                        <label id="createLocationGroup-Label">Description</label>
-                        <input className="createLocationGroup-Input" type="text"
+                        }}></input>
+                        <br></br>
+                        <br></br>
+                        <label id="createEquipmentGroup-Label">Description</label>
+                        <br></br>
+                        <input id="createEquipmentGroup-Input" type="text"
                                onChange={(e) => {
                                    setDescription(e.target.value)
-                               }}></input><br></br>
+                               }}></input>
                     </div>
 
-                    <button id="createLocationGroup-createLocationGroupbutton" type="submit">Update</button>
+                    <button id="createEquipmentGroup-createEquipmentGroupbutton" type="submit">Update</button>
                 </div>
             </form>
         </div>
     );
 }
 
-export default CreateLocationGroup;
+export default CreateEquipmentGroup;

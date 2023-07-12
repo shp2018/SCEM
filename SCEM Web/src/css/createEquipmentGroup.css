@@ -1,16 +1,16 @@
-#companyProfile-page {
+#createEquipmentGroup-page {
     text-align: center;
     font-family: Roboto, sans-serif;
 }
 
-#companyProfile-backButton {
+#createEquipmentGroup-backButton {
     position: absolute;
     left: calc(50% - 153px);
     filter: invert(100%);
     margin-top: 17px;
 }
 
-#companyProfile-header {
+#createEquipmentGroup-header {
     background-color: #224cbf;
     margin-left: 30%;
     margin-right: 30%;
@@ -21,34 +21,32 @@
     margin-top: 25px;
 }
 
-#companyProfile-companyProfileText {
+#createEquipmentGroup-createEquipmentGroupText {
     color: white;
 }
 
-#companyProfile-subtitle {
+#createEquipmentGroup-subtitle {
     text-align: center;
 }
 
-#companyProfile-inputBoxes {
+#createEquipmentGroup-inputBoxes {
     text-align: center;
 }
 
-.companyProfile-Input {
+#createEquipmentGroup-Input {
+    border-style: double;
+    border-radius: 5px;
     width: 500px;
-    padding: 12px 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    height: 60px;
+    font-size: 15px;
+    border-color: #c4c7cc;
 }
 
-#companyProfile-Label {
-    text-align: left;
+#createEquipmentGroup-Label {
+    text-align:left;
 }
 
-#companyProfile-companyProfilebutton {
+#createEquipmentGroup-createEquipmentGroupbutton {
     font-size: 15px;
     color: white;
     width: 300px;

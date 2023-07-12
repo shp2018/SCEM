@@ -2,20 +2,20 @@ import React, {useEffect, useState} from "react";
 import {collection, getDocs} from "firebase/firestore";
 import {firestore} from "../firebase";
 import {query, where} from "firebase/firestore";
-import '../css/locationGroup.css';
+import '../css/equipmentGroup.css';
 
-function LocationGroup() {
-    const [locations, setLocations] = useState([]);
-    const locationRef = collection(firestore, "location");
+function EquipmentGroup() {
+    const [equipments, setEquipments] = useState([]);
+    const equipmentRef = collection(firestore, "equipmentGroups");
 
     async function getLocationData() {
-        const locationQuery = query(locationRef, where("name", "!=", ""));
-        const querySnapshot = await getDocs(locationQuery);
-        setLocations([]);
+        const equipmentQuery = query(equipmentRef, where("name", "!=", ""));
+        const querySnapshot = await getDocs(equipmentQuery);
+        setEquipments([]);
 
         querySnapshot.forEach((doc) => {
             let data = doc.data();
-            setLocations(curr => [...curr,
+            setEquipments(curr => [...curr,
                 <tr key={`${doc.id}`}>
                     <td>
                         {}
@@ -26,7 +26,7 @@ function LocationGroup() {
                     <td>
                         {data.description}
                     </td>
-                    <td id={"locationGroup-linkArrowBox"}>
+                    <td id={"equipmentGroup-linkArrowBox"}>
                         <a href={`/`}>
                             <img src={"/triangle-right.svg"} alt={"Right arrow used to redirect user to item link."}
                                  id={"locationGroup-tableLinkArrow"}></img>
@@ -42,33 +42,33 @@ function LocationGroup() {
     }, []);
 
     return (
-        <div id={"locationGroup-page"}>
-            <div id={"locationGroup-header"}>
-                <div id={"locationGroup-backButton"}>
+        <div id={"equipmentGroup-page"}>
+            <div id={"equipmentGroup-header"}>
+                <div id={"equipmentGroup-backButton"}>
                     <a href={"/"}
                        className={"arrow left"}>
                     </a>
                 </div>
-                <div id={"locationGroup-locationGroupText"}>
-                    <h3> Company Locations </h3>
+                <div id={"equipmentGroup-equipmentGroupText"}>
+                    <h3> Equipment Groups </h3>
                 </div>
-                <a href="/locationGroup/create">
-                    <img src="/locationAdd.png" id="location-addButton" alt="add location button">
+                <a href="/equipmentGroup/create">
+                    <img src="/locationAdd.png" id="equipmentGroup-addButton" alt="add equipment button">
                     </img>
                 </a>
             </div>
             <br></br>
-            <table id="locations">
+            <table id="equipments">
                 <tr>
                     <th>#</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th></th>
                 </tr>
-                {locations}
+                {equipments}
             </table>
         </div>
     );
 }
 
-export default LocationGroup;
+export default EquipmentGroup;
