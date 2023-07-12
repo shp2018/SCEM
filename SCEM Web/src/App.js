@@ -16,6 +16,9 @@ import MyRentalManagement from "./routes/myRentalManagement";
 import EquipmentCurrentlyOnRent from "./routes/equipmentCurrentlyOnRent";
 import CreateLocationGroup from './routes/createLocationGroup';
 import LocationGroup from './routes/locationGroup';
+import CreateSite from './routes/createSite';
+import CompanyLocations from './routes/companyLocations';
+
 
 function App() {
     return (
@@ -27,6 +30,8 @@ function App() {
                 <Route path="/companyProfile" element={<CompanyProfile/>}/>
                 <Route path="/locationGroup" element={<LocationGroup/>}/>
                 <Route path="/locationGroup/create" element={<CreateLocationGroup/>}/>
+                <Route path ="/companyLocation" element={<CompanyLocations/>}/>
+                <Route path ="/companyLocation/create" element={<CreateSite/>}/>
                 <Route path="/forgotPassword" element={<ForgotPassword/>}/>
                 <Route path={"/marketplace"} element={<Marketplace/>}/>
                 <Route path={"/marketplace/search"} element={<MarketplaceSearch/>}/>
@@ -36,6 +41,7 @@ function App() {
                 <Route path={"/profile/:profileId"} element={<Profile/>}/>
                 <Route path={"/equipmentCurrentlyOnRent"} element={<EquipmentCurrentlyOnRent/>}/>
                 <Route path={"/myRentalManagement"} element={<MyRentalManagement/>}/>
+            
             </Routes>
         </Router>
     );
