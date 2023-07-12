@@ -1,9 +1,6 @@
 #homeWithLogin-body {
     text-align: center;
-}
-
-#homeWithLogin-header {
-
+    font-family: 'Roboto', sans-serif;
 }
 
 #homeWithLogin-logo {
@@ -19,12 +16,11 @@
 }
 
 #homeWithLogin-userInfo {
-    position: relative;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    color: black;
-    background-color: white;
-    margin: -3.5em 42% 5em;
+    display: inline-block;
+    color: #1a1818;
+    background-color: #eceaea;
+    padding: 0 1em 0 1em;
+    border: black 3px solid;
 }
 
 #homeWithLogin-suggestions {
@@ -32,7 +28,6 @@
     text-align: center;
     background-color: darkcyan;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     margin-top: 20px;
     margin-left: 30%;
@@ -68,7 +63,6 @@
     padding: 30px;
     background-color: lightgray;
     border-radius: 10px;
-    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
 }
@@ -92,7 +86,6 @@
 
 #homeWithLogin-companyManagementHeader {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #homeWithLogin-equipmentManagement {
@@ -101,5 +94,8 @@
 
 #homeWithLogin-equipmentManagementHeader {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+a[href] {
+    color: black;
 }

@@ -1,5 +1,6 @@
 #homeWithoutLogin-body {
     text-align: center;
+    font-family: Roboto, sans-serif;
 }
 
 #homeWithoutLogin-logo {
@@ -45,7 +46,6 @@ button:hover {
     text-align: center;
     background-color: darkcyan;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     margin-top: 20px;
     margin-left: 30%;
@@ -83,7 +83,6 @@ ul {
 
 li a {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     padding: 50px;
     text-decoration: none;
@@ -106,5 +105,4 @@ a:visited {
     padding: 30px;
     background-color: lightgray;
     border-radius: 10px;
-    font-family: Arial, Helvetica, sans-serif;
 }

@@ -29,7 +29,7 @@ function Profile() {
                             {data.name} </a>
                     </div>
                     <div id={"profile-profileItemDescription"}>
-                        {data.description}
+                        {data.description.substring(0, 100) + "..."}
                     </div>
                     <div id={"profile-profileItemUserCreated"}>
                         <a href={`/profile/${data.userID}`}

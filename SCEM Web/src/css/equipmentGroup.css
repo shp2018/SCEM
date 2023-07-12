@@ -1,4 +1,4 @@
-#locations {
+#equipments {
     font-family: Roboto, sans-serif;
     border-collapse: collapse;
     width: 50%;
@@ -7,30 +7,30 @@
     counter-reset: rowNumber;
 }
 
-#locations tr:not(:first-child) {
+#equipments tr:not(:first-child) {
     counter-increment: rowNumber;
 }
 
-#locations tr td:first-child::before {
+#equipments tr td:first-child::before {
     content: counter(rowNumber);
     margin-left: 0.5em;
     margin-right: 0.5em;
 }
 
-#locations td, #locations th {
+#equipments td, #equipments th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#locations tr:nth-child(even) {
+#equipments tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-#locations tr:hover {
+#equipments tr:hover {
     background-color: #ddd;
 }
 
-#locations th {
+#equipments th {
     padding-top: 12px;
     padding-bottom: 12px;
     background-color: #5982d3;
@@ -38,7 +38,7 @@
     text-align: center;
 }
 
-#location-addButton {
+#equipmentGroup-addButton {
     position: absolute;
     height: 40px;
     width: 40px;
@@ -46,11 +46,11 @@
     right: 2em;
 }
 
-#locationGroup-page {
+#equipmentGroup-page {
     text-align: center;
 }
 
-#locationGroup-backButton {
+#equipmentGroup-backButton {
     position: absolute;
     left: 3%;
     filter: invert(100%);
@@ -58,7 +58,7 @@
     padding-left: 1em;
 }
 
-#locationGroup-header {
+#equipmentGroup-header {
     position: relative;
     top: 50px;
     padding-bottom: 20px;
@@ -72,7 +72,7 @@
     width: 50%;
 }
 
-#locationGroup-locationGroupText {
+#equipmentGroup-equipmentGroupText {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
@@ -80,12 +80,12 @@
     padding-top: 2.5em;
 }
 
-#locationGroup-tableLinkArrow {
+#equipmentGroup-tableLinkArrow {
     width: 1.5em;
     height: 1.5em;
 }
 
-#locationGroup-linkArrowBox {
+#equipmentGroup-linkArrowBox {
     width: 2em;
     height: 1em;
 }

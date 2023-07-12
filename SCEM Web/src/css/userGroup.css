@@ -1,62 +1,68 @@
-#myRentalManagement-body {
+#userGroups-body {
     text-align: center;
     font-family: Roboto, sans-serif;
 }
 
-#myRentalManagement-header {
+#userGroups-header {
     background-color: #133da5;
-    padding-bottom: 4em;
-    padding-top: 2em;
+    padding: 2em 0 0 0;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em;
     margin: 2em 30% 2em;
 }
 
-#myRentalManagement-titleText {
+#userGroups-titleText {
     color: white;
     display: inline-block;
 }
 
-#myRentalManagement-backButton {
+#userGroups-backButton {
     position: relative;
     display: inline-block;
     right: 4em;
+    padding-bottom: 4em;
     bottom: 0.1em;
     filter: invert(100%);
 }
 
-#myRentalManagement-myRentalsTable {
+#userGroups-addButtonDiv {
+    position: relative;
+    display: inline-block;
+    height: 5px;
+    width: 5px;
+    left: 20%;
+    top: 0.7em;
+}
+
+#userGroups-addButton {
+    height: 40px;
+    width: 40px;
+}
+
+#userGroups-table {
     margin-left: auto;
     margin-right: auto;
+    counter-reset: rowNumber;
     border-collapse: collapse;
 }
 
-.myRentalManagement-myRentalsTableElement {
+.userGroups-tableElement {
     text-align: center;
     border: 1px solid #cccccc;
     height: 2.5em;
 }
 
-.myRentalManagement-myRentalsTableHeading {
+.userGroups-tableHeading {
     border: 1px solid #cccccc;
     height: 2.5em;
     background-color: #5982d3;
 }
 
-#myRentalManagement-myRentalsTableLinkArrow {
-    height: 60%;
-    width: 60%;
-}
-
-#myRentalManagement-myRentalsTable {
-    counter-reset: rowNumber;
-}
-
-#myRentalManagement-myRentalsTable tr:not(:first-child) {
+#userGroups-table tr:not(:first-child) {
     counter-increment: rowNumber;
 }
 
-#myRentalManagement-myRentalsTable tr .myRentalManagement-myRentalsTableElement:first-child::before {
+#userGroups-table tr .userGroups-tableElement:first-child::before {
     content: counter(rowNumber);
     margin-left: 0.5em;
     margin-right: 0.5em;

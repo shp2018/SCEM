@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import '../css/homeWithLogin.css';
 import {auth, firestore} from "../firebase";
 import {collection, query, where, getDocs} from "firebase/firestore";
@@ -6,7 +6,6 @@ import {onAuthStateChanged} from "firebase/auth";
 import SignOut from "./signout";
 
 function HomeWithLogin() {
-
     const [userData, setUserData] = useState(null);
 
     async function getUserData() {
@@ -23,21 +22,22 @@ function HomeWithLogin() {
         })
     }
 
-    getUserData().then();
+    useEffect(() => {
+        getUserData().then();
+    }, []);
 
     return (
-        <body id={"homeWithLogin-body"}>
+        <div id={"homeWithLogin-body"}>
             <div id={"homeWithLogin-header"}>
                 <img id="homeWithLogin-logo" src="/logoWithBackground.jpg" alt={"SCEM logo"}></img>
             </div>
 
             <div id={"homeWithLogin-signOutButton"}>
-                <SignOut></SignOut>
+                <SignOut/>
             </div>
 
             <div id={"homeWithLogin-userInfo"}>
                 {userData ? <p> Welcome! {userData.fullname} </p>: <p> Loading... </p>}
-
             </div>
 
             <div id={"homeWithLogin-suggestions"}>
@@ -62,7 +62,7 @@ function HomeWithLogin() {
 
                 <ul id={"homeWithLogin-links"}>
                     <li><a href={"/companyProfile"}> Company </a></li>
-                    <li><a href={"/"}> Equipment </a></li>
+                    <li><a href={"/myRentalManagement"}> Equipment </a></li>
                     <li><a href={"/"}> For Rent </a></li>
                     <li><a href={"/marketplace"}> Marketplace </a></li>
                 </ul>
@@ -84,6 +84,14 @@ function HomeWithLogin() {
                 <a href={"/equipmentForRent"}
                    id={"homeWithLogin-menuItemLinks"}> Equipment for rent </a>
             </div>
+            <div id={"homeWithLogin-menuItem"}>
+                <img src={'equipmentForRent.jpg'}
+                     id={"homeWithLogin-menuItemIcons"}
+                     alt={""}>
+                </img>
+                <a href={"/equipmentCurrentlyOnRent"}
+                   id={"homeWithLogin-menuItemLinks"}> Equipment currently on rent </a>
+            </div>
 
             <div id={"homeWithLogin-companyManagement"}>
                 <h3 id={"homeWithLogin-companyManagementHeader"}> Company Management </h3>
@@ -93,7 +101,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/companyProfile"}
                        id={"homeWithLogin-menuItemLinks"}> Company Profile </a>
                 </div>
 
@@ -102,7 +110,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/userGroup"}
                        id={"homeWithLogin-menuItemLinks"}> User group </a>
                 </div>
 
@@ -111,7 +119,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/userManagement"}
                        id={"homeWithLogin-menuItemLinks"}> User management </a>
                 </div>
             </div>
@@ -124,8 +132,17 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/equipmentGroup"}
                        id={"homeWithLogin-menuItemLinks"}> Equipment Group </a>
+                </div>
+
+                <div id={"homeWithLogin-menuItem"}>
+                    <img src={'equipmentGroup.jpeg'}
+                         id={"homeWithLogin-menuItemIcons"}
+                         alt={""}>
+                    </img>
+                    <a href={"/equipmentType"}
+                       id={"homeWithLogin-menuItemLinks"}> Equipment Type </a>
                 </div>
 
                 <div id={"homeWithLogin-menuItem"}>
@@ -133,7 +150,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/equipmentManagement"}
                        id={"homeWithLogin-menuItemLinks"}> Equipment Management </a>
                 </div>
 
@@ -147,7 +164,7 @@ function HomeWithLogin() {
                 </div>
             </div>
 
-        </body>
+        </div>
     );
 }
 

@@ -1,0 +1,87 @@
+#createEquipmentManagement-page {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#createEquipmentManagement-backButton {
+    position: absolute;
+    left: calc(50% - 153px);
+    filter: invert(100%);
+    margin-top: 17px;
+}
+
+#createEquipmentManagement-header {
+    background-color: #224cbf;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-bottom: 50px;
+    padding-top: 25px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 25px;
+}
+
+#createEquipmentManagement-createEquipmentManagementText {
+    color: white;
+}
+
+#createEquipmentManagement-subtitle {
+    text-align: center;
+}
+
+#createEquipmentManagement-inputBoxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#createEquipmentManagement-Input {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+#createEquipmentManagement-Label {
+    text-align: left;
+}
+
+
+#createEquipmentManagement-createEquipmentManagementbutton {
+    font-size: 15px;
+    color: white;
+    width: 330px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
+}
+
+#createEquipmentManagement-CheckImeiButton {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+#viewEquipmentList-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.viewEquipmentList-tableHeading,
+.viewEquipmentList-tableData {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.viewEquipmentList-tableHeading {
+    background-color: #5982d3;
+}

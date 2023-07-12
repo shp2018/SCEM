@@ -1,0 +1,178 @@
+#userGroup-body {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    width: 400px;
+    margin: 0 auto;
+    padding: 10px 20px 20px 20px;
+}
+
+#userGroup-header {
+    background-color: #133da5;
+    padding-bottom: 3em;
+    padding-top: 2em;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
+}
+
+#userGroup-titleText {
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#userGroup-backButton {
+    position: relative;
+    display: inline-block;
+    top: 2.5em;
+    left: 30%;
+    filter: invert(100%);
+}
+
+#userGroup-inputBox {
+    margin-bottom: 20px;
+}
+
+#userGroup-inputBox .userGroup-textInput {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+}
+
+#userGroup-permissionsHeader {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+#userGroup-checkboxes {
+    display: flex;
+    flex-direction: column;
+}
+
+#userGroup-checkboxes label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#userGroup-checkboxes .checkbox {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+#userGroup-addUserSection {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#userGroup-addUserSection .userGroup-textInput {
+    flex: 1;
+    padding: 15px; /* Increase padding for height */
+    font-size: 18px; /* Increase font size */
+    margin-right: 10px;
+}
+
+#userGroup-addButton {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 24px; /* Increase padding for height and width */
+    font-size: 18px; /* Increase font size */
+    cursor: pointer;
+}
+
+#userGroup-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#userGroup-tableHead {
+    background-color: #5982d3;
+}
+
+.userGroup-tableHeading {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc; /* Add grey border to table header cells */
+}
+
+#userGroup-tableBody td {
+    padding: 10px;
+    border: 1px solid #ccc; /* Add grey border to table cells */
+}
+
+#userGroup-table button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ff0000;
+}
+
+#userGroup-table button:hover {
+    color: #ff3333;
+}
+
+.remove-button {
+    background-color: transparent;
+    color: red;
+    border: none;
+    padding: 12px 20px; /* Increase padding to make the button thicker */
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 25px; /* Adjust font size as needed */
+    height: 50px; /* Set a specific height for the button */
+}
+
+#userGroup-saveButton {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 170px; /* Increase padding for height and width */
+    font-size: 18px; /* Increase font size */
+    cursor: pointer;
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkbox-label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 25px;
+}
+
+.checkbox-label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid blue;
+    border-radius: 4px;
+}
+
+.checkbox-label::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    width: 7px;
+    height: 12px;
+    border: solid blue;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+}
+
+.checkbox:checked + .checkbox-label::after {
+    opacity: 1;
+}
