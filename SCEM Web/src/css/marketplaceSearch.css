@@ -29,6 +29,11 @@
     color: grey;
 }
 
+#marketplaceSearch-inputName, #marketplaceSearch-equipmentType, #marketplaceSearch-site,
+#marketplaceSearch-description, #marketplaceSearch-fromDateToDate {
+    margin-top: 2em;
+}
+
 #marketplaceSearch-fromDate {
     display: inline-block;
     margin-right: 1em;
@@ -37,6 +42,15 @@
 #marketplaceSearch-toDate {
     display: inline-block;
     margin-left: 1em;
+}
+
+.marketplaceSearch-input {
+    border-style: solid;
+    border-radius: 5px;
+    width: 400px;
+    height: 40px;
+    font-size: 15px;
+    border-color: #c4c7cc;
 }
 
 #marketplaceSearch-searchButton {
