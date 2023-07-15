@@ -1,6 +1,6 @@
-
 #createToolMaintenance-page {
     text-align: center;
+    font-family: Roboto, sans-serif;
 }
 
 #createToolMaintenance-backButton {
@@ -23,12 +23,10 @@
 
 #createToolMaintenance-createToolMaintenanceText {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #createToolMaintenance-subtitle {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #createToolMaintenance-inputBoxes {
@@ -36,24 +34,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-
-  #createToolMaintenance-Input {
-    width: 300px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-
-
-
-#createToolMaintenance-Label {
-    text-align:left;
 }
 
 
+#createToolMaintenance-Input {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#createToolMaintenance-Label {
+    text-align: left;
+}
+
 #createToolMaintenance-createToolMaintenancebutton {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: white;
     width: 300px;
@@ -67,16 +61,9 @@
 .activeButton {
     background-color: green;
     color: white;
-  }
-  
-  .inactiveButton {
+}
+
+.inactiveButton {
     background-color: red;
     color: white;
-  }
-  
-
- 
-  
-  
-  
-  
+}

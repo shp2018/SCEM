@@ -1,6 +1,6 @@
-
 #createToolScheduling-page {
     text-align: center;
+    font-family: Roboto, sans-serif;
 }
 
 #createToolScheduling-backButton {
@@ -23,12 +23,10 @@
 
 #createToolScheduling-createToolSchedulingText {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #createToolScheduling-subtitle {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #createToolScheduling-inputBoxes {
@@ -36,24 +34,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
+}
 
-  #createToolScheduling-Input {
+#createToolScheduling-Input {
     width: 300px;
     padding: 10px;
     margin-bottom: 10px;
-  }
-
-
-
-#createToolSchedulingLabel {
-    text-align:left;
 }
 
+#createToolSchedulingLabel {
+    text-align: left;
+}
 
 #createToolScheduling-createToolSchedulingbutton {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: white;
     width: 300px;
@@ -63,11 +56,3 @@
     background-color: #224cbf;
     border-color: #c4c7cc;
 }
-
-
-
- 
-  
-  
-  
-  
