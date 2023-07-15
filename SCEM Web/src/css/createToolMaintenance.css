@@ -1,0 +1,69 @@
+#createToolMaintenance-page {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#createToolMaintenance-backButton {
+    position: absolute;
+    left: calc(50% - 153px);
+    filter: invert(100%);
+    margin-top: 17px;
+}
+
+#createToolMaintenance-header {
+    background-color: #224cbf;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-bottom: 50px;
+    padding-top: 25px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 25px;
+}
+
+#createToolMaintenance-createToolMaintenanceText {
+    color: white;
+}
+
+#createToolMaintenance-subtitle {
+    text-align: center;
+}
+
+#createToolMaintenance-inputBoxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#createToolMaintenance-Input {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#createToolMaintenance-Label {
+    text-align: left;
+}
+
+#createToolMaintenance-createToolMaintenancebutton {
+    font-size: 15px;
+    color: white;
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
+}
+
+.activeButton {
+    background-color: green;
+    color: white;
+}
+
+.inactiveButton {
+    background-color: red;
+    color: white;
+}
