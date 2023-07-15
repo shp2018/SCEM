@@ -29,6 +29,8 @@ import EquipmentTypeCreate from "./routes/equipmentType-create";
 import EquipmentManagement from "./routes/equipmentManagement";
 import CreateEquipmentManagement from "./routes/createEquipmentManagement";
 import ViewEquipmentList from "./routes/viewEquipmentList";
+import ToolScheduling from './routes/toolScheduling';
+import CreateToolScheduling from './routes/createToolScheduling';
 
 const App = () => {
     return (
@@ -69,6 +71,8 @@ const App = () => {
                 <Route path={"/equipmentManagement"} element={<EquipmentManagement/>}/>
                 <Route path={"/equipmentManagement/create"} element={<CreateEquipmentManagement/>}/>
                 <Route path={"/viewEquipmentList"} element={<ViewEquipmentList/>}/>
+                <Route path={"/toolScheduling"} element={<ToolScheduling/>}/>
+                <Route path={"/toolScheduling/create"} element={<CreateToolScheduling/>}/>
             </Routes>
         </Router>
     );
