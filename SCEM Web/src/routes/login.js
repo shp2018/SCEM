@@ -1,6 +1,6 @@
 import React from "react";
-import Glogin from "../components/googleLogin.js";
-import FbLogin from "../components/facebookLogin.js";
+import GoogleLogin from "../components/googleLogin.js";
+import FacebookLogin from "../components/facebookLogin.js";
 import {useEffect} from 'react';
 import {useState} from 'react';
 import {gapi} from 'gapi-script'
@@ -38,7 +38,7 @@ const Login = () => {
     const handleClick = () => {
         setPersistence(auth, browserSessionPersistence).then(() => {
             return signInWithEmailAndPassword(auth, email, password).then(() => {
-                alert("Success!")
+                alert("Authentication success! You will now be redirected to the home page.")
                 user = auth.currentUser;
                 const previousURL = sessionStorage.getItem('previousURL');
                 if (previousURL) window.location.href = previousURL;
@@ -80,12 +80,12 @@ const Login = () => {
                 </div>
 
                 <div id={"loginButtons"}>
-                    <Glogin/>
-                    <FbLogin/>
+                    <FacebookLogin text={"Sign In with Facebook"}/>
+                    <GoogleLogin text={"Sign In with Google"}/>
                 </div>
 
                 <div>
-                    <p id="signup">Don't have an account? <a href="/signup"> Signup </a></p>
+                    <p id="signup">Don't have an account? <a href="/signup"> Sign up </a></p>
                 </div>
 
             </div>

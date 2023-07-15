@@ -4,6 +4,8 @@ import {firestore} from "../firebase";
 import {doc, setDoc} from "firebase/firestore";
 import {createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../firebase";
+import GoogleLogin from "../components/googleLogin";
+import FacebookLogin from "../components/facebookLogin";
 
 const Signup = () => {
     const [email, setEmail] = useState("");
@@ -46,7 +48,6 @@ const Signup = () => {
     }
 
     return (
-        <body>
         <div id={"signup-page"}>
             <div id={"signup-header"}>
                 <div id={"signup-backButton"}>
@@ -94,13 +95,15 @@ const Signup = () => {
                     <button id="signup-signupbutton" type="submit">Sign Up</button>
 
                     <hr></hr>
-                    <button id="signup-facebook">Sign Up with Facebook</button>
-                    <button id="signup-google">Sign Up with Google</button>
                 </div>
             </form>
 
+            <div id={"signup-signupButtons"}>
+                <FacebookLogin text={"Sign Up with Facebook"}/>
+                <GoogleLogin text={"Sign Up with Google"}/>
+            </div>
+
         </div>
-        </body>
     );
 }
 

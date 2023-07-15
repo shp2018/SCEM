@@ -1,44 +1,45 @@
-import {GoogleLogin} from 'react-google-login';
-import React from "react";
-import { firestore } from "../firebase";
-import { doc, setDoc } from "@firebase/firestore";
+import React, {useEffect} from 'react';
+import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
+import {firestore} from "../firebase";
+import {doc, setDoc, getDoc} from "firebase/firestore";
 
-const clientId = "1020057730481-3iflk45qqttk0v8pg48bjk4j0nmi6qm2.apps.googleusercontent.com"
+const GoogleLogin = ({text}) => {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
 
-function Glogin(){
-    const onSuccess= (res)=>{
-        const ref = doc(firestore,"users",res.profileObj.googleId);
-      let data = {
-        fullname:res.profileObj.name,
-        email:res.profileObj.email,
-        locked:false
-      }
-      try {
-        setDoc(ref,data)
-      } catch (e) {
-        console.log(e);
-      }
+    useEffect(() => {
+        auth.useDeviceLanguage();
+    }, []);
+
+    const signIn = () => {
+        signInWithPopup(auth, provider).then(async res => {
+            const user = res.user;
+            const userDoc = doc(firestore, "users", user.uid);
+            const userData = await getDoc(userDoc);
+
+            if (!userData.exists()) {
+                await setDoc(userDoc, {
+                    fullname: user.displayName,
+                    email: user.email,
+                    locked: false,
+                })
+            }
+            alert("Authentication success! You will now be redirected to the home page.");
+            window.location.href = "/";
+
+        }).catch(err => {
+            console.error(err.code, err.message);
+            console.error(err.customData.email);
+            console.error(GoogleAuthProvider.credentialFromError(err));
+        })
     }
-    const onFailure= (res)=>{
-        console.log("LOGIN FAILED! res: ",res)
-    }
-    return(
 
-       
-            <GoogleLogin
-            clientId = {clientId}
-            buttonText = "Sign in with Google"
-            onSuccess = {onSuccess}
-            onFailure = {onFailure}
-            cookiePolicy={'single_host_origin'}
-            isSignedIn = {true}
-            className="btnGoogle"
-            ></GoogleLogin>
+    return (
+        <>
+            <button onClick={signIn} id={"signup-google"}>{text}</button>
+        </>
 
-   
-        
-
-
-   )
+    );
 }
-export default Glogin;
+
+export default GoogleLogin;

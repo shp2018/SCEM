@@ -78,39 +78,6 @@
     text-align: center;
 }
 
-.btnFacebook, .btnGoogle {
-    width: 200px;
-    height: 35px;
-    border-radius: 4px;
-    color: white;
-    border: 0 transparent;
-}
-
-.btnFacebook {
-    background: #3b5998;
-}
-
-.btnGoogle {
-    background: #db3236;
-}
-
-.btnGoogle:hover {
-    background: #db3236;
-    opacity: 0.6;
-}
-
-.btnFacebook:hover {
-    background: #3b5998;
-    opacity: 0.6;
-}
-
-#fblogo {
-    height: 15px;
-    position: relative;
-    left: -10px;
-    top: 2px;
-}
-
 #signup {
     color: grey;
 }
