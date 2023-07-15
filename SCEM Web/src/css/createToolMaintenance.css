@@ -1,16 +1,16 @@
 
-#createToolAlerts-page {
+#createToolMaintenance-page {
     text-align: center;
 }
 
-#createToolAlerts-backButton {
+#createToolMaintenance-backButton {
     position: absolute;
     left: calc(50% - 153px);
     filter: invert(100%);
     margin-top: 17px;
 }
 
-#createToolAlerts-header {
+#createToolMaintenance-header {
     background-color: #224cbf;
     margin-left: 30%;
     margin-right: 30%;
@@ -21,17 +21,17 @@
     margin-top: 25px;
 }
 
-#createToolAlerts-createToolAlertsText {
+#createToolMaintenance-createToolMaintenanceText {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#createToolAlerts-subtitle {
+#createToolMaintenance-subtitle {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#createToolAlerts-inputBoxes {
+#createToolMaintenance-inputBoxes {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +39,7 @@
   }
   
 
-  #createToolAlerts-Input {
+  #createToolMaintenance-Input {
     width: 300px;
     padding: 10px;
     margin-bottom: 10px;
@@ -47,12 +47,12 @@
 
 
 
-#createToolAlerts-Label {
+#createToolMaintenance-Label {
     text-align:left;
 }
 
 
-#createToolAlerts-createToolAlertsbutton {
+#createToolMaintenance-createToolMaintenancebutton {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: white;

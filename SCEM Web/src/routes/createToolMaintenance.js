@@ -62,22 +62,22 @@ function CreateToolMaintenance() {
   
 
   return (
-    <div id={"createToolAlerts-page"}>
-      <div id={"createToolAlerts-header"}>
-        <div id={"createToolAlerts-backButton"}>
+    <div id={"createToolMaintenance-page"}>
+      <div id={"createToolMaintenance-header"}>
+        <div id={"createToolMaintenance-backButton"}>
           <a href={"/toolMaintenance"} className={"arrow left"}></a>
         </div>
-        <div id={"createToolAlerts-createToolAlertsText"}>
+        <div id={"createToolMaintenance-createToolMaintenanceText"}>
           <h3>Create maintenance schedule</h3>
         </div>
       </div>
       <br />
-      <form id="createToolAlerts-form" onSubmit={handleSave}>
+      <form id="createToolMaintenance-form" onSubmit={handleSave}>
         <div>
-          <div id={"createToolAlerts-inputBoxes"}>
-            <label id="createToolAlerts-Label">Equipment</label>
+          <div id={"createToolMaintenance-inputBoxes"}>
+            <label id="createToolMaintenance-Label">Equipment</label>
             <select
-  id="createToolAlerts-Input"
+  id="createToolMaintenance-Input"
   style={{ width: "330px" }}
   value={equipment} // Bind equipment state variable here
   onChange={(e) => {
@@ -94,9 +94,9 @@ function CreateToolMaintenance() {
 
             <br />
 
-            <label id="createToolAlerts-Label">Name</label>
+            <label id="createToolMaintenanceLabel">Name</label>
             <input
-              id="createToolAlerts-Input"
+              id="createToolMaintenance-Input"
               type="text"
               onChange={(e) => {
                 setName(e.target.value);
@@ -104,9 +104,9 @@ function CreateToolMaintenance() {
             />
             <br />
 
-            <label id="createToolAlerts-Label">Description</label>
+            <label id="createToolMaintenance-Label">Description</label>
             <input
-              id="createToolAlerts-Input"
+              id="createToolMaintenance-Input"
               type="text"
               onChange={(e) => {
                 setDescription(e.target.value);
@@ -114,9 +114,9 @@ function CreateToolMaintenance() {
             />
             <br/>
 
-            <label id="createToolAlerts-Label">From Date</label>
+            <label id="createToolMaintenance-Label">From Date</label>
             <input
-              id="createToolAlerts-Input"
+              id="createToolMaintenance-Input"
               type="date"
               onChange={(e) => {
                 setFromDate(e.target.value);
@@ -124,9 +124,9 @@ function CreateToolMaintenance() {
             />
             <br />
 
-            <label id="createToolAlerts-Label">To Date</label>
+            <label id="createToolMaintenance-Label">To Date</label>
             <input
-              id="createToolAlerts-Input"
+              id="createToolMaintenance-Input"
               type="date"
               onChange={(e) => {
                 setToDate(e.target.value);
@@ -138,7 +138,7 @@ function CreateToolMaintenance() {
 
           </div>
         </div>
-        <button id="createToolAlerts-createToolAlertsbutton" type="submit" onClick={handleSave}>
+        <button id="createToolMaintenance-createToolMaintenancebutton" type="submit" onClick={handleSave}>
           Update
         </button>
       </form>
