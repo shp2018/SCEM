@@ -3,7 +3,7 @@ import {getDocs, query, collection, doc, deleteDoc, updateDoc} from "firebase/fi
 import {firestore} from "../firebase";
 import "../css/toolMaintenance.css";
 
-function ToolMaintenance() {
+const ToolMaintenance = () => {
     const [editing, setEditing] = useState([]);
     const [toolMaintenanceData, setToolMaintenanceData] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -227,5 +227,3 @@ function ToolMaintenance() {
   }
   
   export default ToolMaintenance;
-
- 

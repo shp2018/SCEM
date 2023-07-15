@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { auth, firestore } from "../firebase";
+import { firestore } from "../firebase";
 import {
   doc,
   setDoc,
   collection,
   getDocs,
   query,
-  where,
   getDoc,
   updateDoc,
 } from "firebase/firestore";
 import "../css/createToolMaintenance.css";
-import { onAuthStateChanged } from "firebase/auth";
 
-function CreateToolMaintenance() {
+const CreateToolMaintenance = () => {
     const [equipment, setEquipment] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -147,4 +145,3 @@ function CreateToolMaintenance() {
 }
 
 export default CreateToolMaintenance;
-
