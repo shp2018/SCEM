@@ -1,16 +1,16 @@
-#createToolMaintenance-page {
+#createToolScheduling-page {
     text-align: center;
     font-family: Roboto, sans-serif;
 }
 
-#createToolMaintenance-backButton {
+#createToolScheduling-backButton {
     position: absolute;
     left: calc(50% - 153px);
     filter: invert(100%);
     margin-top: 17px;
 }
 
-#createToolMaintenance-header {
+#createToolScheduling-header {
     background-color: #224cbf;
     margin-left: 30%;
     margin-right: 30%;
@@ -21,33 +21,32 @@
     margin-top: 25px;
 }
 
-#createToolMaintenance-createToolMaintenanceText {
+#createToolScheduling-createToolSchedulingText {
     color: white;
 }
 
-#createToolMaintenance-subtitle {
+#createToolScheduling-subtitle {
     text-align: center;
 }
 
-#createToolMaintenance-inputBoxes {
+#createToolScheduling-inputBoxes {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-
-#createToolMaintenance-Input {
+#createToolScheduling-Input {
     width: 300px;
     padding: 10px;
     margin-bottom: 10px;
 }
 
-#createToolMaintenance-Label {
+#createToolSchedulingLabel {
     text-align: left;
 }
 
-#createToolMaintenance-createToolMaintenancebutton {
+#createToolScheduling-createToolSchedulingbutton {
     font-size: 15px;
     color: white;
     width: 300px;
@@ -56,14 +55,4 @@
     border-radius: 10px;
     background-color: #224cbf;
     border-color: #c4c7cc;
-}
-
-.activeButton {
-    background-color: green;
-    color: white;
-}
-
-.inactiveButton {
-    background-color: red;
-    color: white;
 }
