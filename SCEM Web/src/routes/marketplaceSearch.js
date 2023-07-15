@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import '../css/marketplaceSearch.css';
-import {collection, query, getDocs} from "firebase/firestore";
+import {collection, query, getDocs, where, orderBy} from "firebase/firestore";
 import {firestore} from "../firebase";
 
 const MarketplaceSearch = () => {
@@ -17,7 +17,15 @@ const MarketplaceSearch = () => {
         e.preventDefault();
 
         const marketplaceRef = collection(firestore, "marketplace");
-        const searchQuery = query(marketplaceRef);
+        const searchQuery = query(marketplaceRef,
+            // search by fromDate or later
+            where("fromDate", ">=", fromDate),
+            // search exactly by equipmentType
+            where("equipmentType", "==", equipmentType),
+            // search exactly by site
+            where("site", "==", site),
+            // ordering of search results
+            orderBy("fromDate", "desc"));
         const querySnapshot = await getDocs(searchQuery);
         setSearchResults([]);
 
@@ -44,13 +52,14 @@ const MarketplaceSearch = () => {
                 <select className={"marketplaceSearch-input"} onChange={e => setEquipmentType(e.target.value)}>
                     <option value={"All"}>All</option>
                     <option value={"GPS"}>GPS</option>
+                    <option value={"Keyboard"}>Keyboard</option>
                 </select>
             </div>
             <div id={"marketplaceSearch-site"}>
                 <label id={"marketplaceSearch-subtitles"}>Site</label>
                 <br></br>
                 <select className={"marketplaceSearch-input"} onChange={e => setSite(e.target.value)}>
-                    <option value={"All"}>All</option>
+                    <option value={"All"} className={"marketplaceSearch-blueInput"}>All</option>
                     <option value={"Canada"}>Canada</option>
                     <option value={"Vietnam"}>Vietnam</option>
                 </select>
@@ -64,12 +73,12 @@ const MarketplaceSearch = () => {
                 <div id={"marketplaceSearch-fromDate"}>
                     <label id={"marketplaceSearch-subtitles"}>From Date</label>
                     <br></br>
-                    <input type={"date"} className={"marketplaceSearch-input"} onChange={e => setFromDate(e.target.value)}/>
+                    <input type={"date"} className={"marketplaceSearch-input"} id={"marketplaceSearch-fromDateInput"} onChange={e => setFromDate(e.target.value)}/>
                 </div>
                 <div id={"marketplaceSearch-toDate"}>
                     <label id={"marketplaceSearch-subtitles"}>To Date</label>
                     <br></br>
-                    <input type={"date"} className={"marketplaceSearch-input"} onChange={e => setToDate(e.target.value)}/>
+                    <input type={"date"} className={"marketplaceSearch-input"} id={"marketplaceSearch-toDateInput"} onChange={e => setToDate(e.target.value)}/>
                 </div>
             </div>
             <div id={"marketplaceSearch-search"}>

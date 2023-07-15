@@ -4,7 +4,7 @@
 }
 
 #marketplaceSearch-header {
-    background-color: #224cbf;
+    background-color: #133da5;
     padding-bottom: 4em;
     padding-top: 2em;
     border-top-left-radius: 2em;
@@ -51,6 +51,13 @@
     height: 40px;
     font-size: 15px;
     border-color: #c4c7cc;
+    color: #133da5;
+}
+
+#marketplaceSearch-fromDateInput, #marketplaceSearch-toDateInput {
+    text-align: center;
+    color: #133da5;
+    width: 182px;
 }
 
 #marketplaceSearch-searchButton {
@@ -62,4 +69,8 @@
     border-radius: 0.7em;
     background-color: #224cbf;
     border-color: #c4c7cc;
+}
+
+#marketplaceSearch-searchResults {
+    margin-top: 4em;
 }
