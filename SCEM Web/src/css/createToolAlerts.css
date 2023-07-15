@@ -1,5 +1,6 @@
 #createToolAlerts-page {
     text-align: center;
+    font-family: Roboto, sans-serif;
 }
 
 #createToolAlerts-backButton {
@@ -22,12 +23,10 @@
 
 #createToolAlerts-createToolAlertsText {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #createToolAlerts-subtitle {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #createToolAlerts-inputBoxes {
@@ -52,7 +51,6 @@
 }
 
 #createToolAlerts-createToolAlertsbutton {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: white;
     width: 300px;

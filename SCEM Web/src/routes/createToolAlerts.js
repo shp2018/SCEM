@@ -1,14 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {firestore} from "../firebase";
-import {
-    doc,
-    setDoc,
-    collection,
-    getDocs,
-    query,
-    getDoc,
-    updateDoc,
-} from "firebase/firestore";
+import {doc, setDoc, collection, getDocs, query} from "firebase/firestore";
 import "../css/createToolAlerts.css";
 
 function CreateToolAlerts() {
@@ -30,11 +22,10 @@ function CreateToolAlerts() {
         fetchEquipmentNames();
     }, []);
 
-    const handleSave = async (e) => {
+    const handleSave = async e => {
         e.preventDefault();
 
-        const toolAlertsDoc = doc(firestore, "toolAlerts", name);
-        const toolAlertsData = await getDoc(toolAlertsDoc);
+        const toolAlertsDoc = doc(collection(firestore, "toolAlerts"));
 
         let data = {
             name: name,
@@ -43,13 +34,8 @@ function CreateToolAlerts() {
             active: isButtonClicked,
         };
 
-        if (toolAlertsData.exists()) {
-            await updateDoc(toolAlertsDoc, data);
-            alert("Existing tool alerts data has been updated.");
-        } else {
-            await setDoc(toolAlertsDoc, data);
-            alert("New tool alerts data has been created.");
-        }
+        await setDoc(toolAlertsDoc, data);
+        alert("Tool alerts updated.");
         window.location.replace("/toolAlerts");
     };
 

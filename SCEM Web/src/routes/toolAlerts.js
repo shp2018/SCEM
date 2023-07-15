@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {collection, query, where, getDocs} from "firebase/firestore";
+import {collection, query, getDocs} from "firebase/firestore";
 import {firestore} from "../firebase";
 import "../css/toolAlerts.css";
 
@@ -8,7 +8,7 @@ function ToolAlerts() {
     const alertsRef = collection(firestore, "toolAlerts");
 
     async function getAlertsData() {
-        const alertsQuery = query(alertsRef, where("name", "!=", ""));
+        const alertsQuery = query(alertsRef);
         const querySnapshot = await getDocs(alertsQuery);
         setAlerts([]);
 
