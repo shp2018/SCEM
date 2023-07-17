@@ -1,0 +1,72 @@
+#createToolAlerts-page {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#createToolAlerts-backButton {
+    position: absolute;
+    left: calc(50% - 153px);
+    filter: invert(100%);
+    margin-top: 17px;
+}
+
+#createToolAlerts-header {
+    background-color: #224cbf;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-bottom: 50px;
+    padding-top: 25px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 25px;
+}
+
+#createToolAlerts-createToolAlertsText {
+    color: white;
+}
+
+#createToolAlerts-subtitle {
+    text-align: center;
+}
+
+#createToolAlerts-inputBoxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.createToolAlerts-Input {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#createToolAlerts-equipmentInput {
+    width: 330px;
+}
+
+#createToolAlerts-Label {
+    text-align: left;
+}
+
+#createToolAlerts-createToolAlertsbutton {
+    font-size: 15px;
+    color: white;
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
+}
+
+.activeButton {
+    background-color: green;
+    color: white;
+}
+
+.inactiveButton {
+    background-color: red;
+    color: white;
+}

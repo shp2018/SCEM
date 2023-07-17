@@ -1,0 +1,58 @@
+#createToolScheduling-page {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#createToolScheduling-backButton {
+    position: absolute;
+    left: calc(50% - 153px);
+    filter: invert(100%);
+    margin-top: 17px;
+}
+
+#createToolScheduling-header {
+    background-color: #224cbf;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-bottom: 50px;
+    padding-top: 25px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 25px;
+}
+
+#createToolScheduling-createToolSchedulingText {
+    color: white;
+}
+
+#createToolScheduling-subtitle {
+    text-align: center;
+}
+
+#createToolScheduling-inputBoxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#createToolScheduling-Input {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#createToolSchedulingLabel {
+    text-align: left;
+}
+
+#createToolScheduling-createToolSchedulingbutton {
+    font-size: 15px;
+    color: white;
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
+}
