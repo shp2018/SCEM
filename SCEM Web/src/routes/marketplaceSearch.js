@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 import '../css/marketplaceSearch.css';
-import {collection, query, getDocs, where, orderBy} from "firebase/firestore";
+import {collection, query, getDocs, where} from "firebase/firestore";
 import {firestore} from "../firebase";
 
 const MarketplaceSearch = () => {
     const [name, setName] = useState("");
     const [equipmentType, setEquipmentType] = useState("");
     const [site, setSite] = useState("");
-    const [description, setDescription] = useState("");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
 
@@ -18,20 +17,19 @@ const MarketplaceSearch = () => {
 
         const marketplaceRef = collection(firestore, "marketplace");
         const searchQuery = query(marketplaceRef,
-            // search by fromDate or later
+            where("name", "==", name),
             where("fromDate", ">=", fromDate),
-            // search exactly by equipmentType
             where("equipmentType", "==", equipmentType),
-            // search exactly by site
-            where("site", "==", site),
-            // ordering of search results
-            orderBy("fromDate", "desc"));
-        const querySnapshot = await getDocs(searchQuery);
+            where("site", "==", site));
+        let querySnapshot = await getDocs(searchQuery);
         setSearchResults([]);
 
         querySnapshot.forEach(doc => {
             setSearchResults(curr => [...curr, doc]);
         })
+
+        // filter out toDate here since query can't do two inequalities with two diff fields
+        setSearchResults(searchResults.filter(doc => doc.data().toDate <= toDate));
     }
 
     return (<div id={"marketplaceSearch-page"}>
@@ -44,7 +42,7 @@ const MarketplaceSearch = () => {
             <div id={"marketplaceSearch-inputName"}>
                 <label id={"marketplaceSearch-subtitles"}>Name</label>
                 <br></br>
-                <input type={"text"} className={"marketplaceSearch-input"} onChange={e => setName(e.target.value)}/>
+                <input type={"text"} className={"marketplaceSearch-input"} onChange={e => setName(e.target.value)} defaultValue={""}/>
             </div>
             <div id={"marketplaceSearch-equipmentType"}>
                 <label id={"marketplaceSearch-subtitles"}> Equipment Type </label>
@@ -64,21 +62,18 @@ const MarketplaceSearch = () => {
                     <option value={"Vietnam"}>Vietnam</option>
                 </select>
             </div>
-            <div id={"marketplaceSearch-description"}>
-                <label id={"marketplaceSearch-subtitles"}>Description</label>
-                <br></br>
-                <input type={"text"} className={"marketplaceSearch-input"} onChange={e => setDescription(e.target.value)}/>
-            </div>
             <div id={"marketplaceSearch-fromDateToDate"}>
                 <div id={"marketplaceSearch-fromDate"}>
                     <label id={"marketplaceSearch-subtitles"}>From Date</label>
                     <br></br>
-                    <input type={"date"} className={"marketplaceSearch-input"} id={"marketplaceSearch-fromDateInput"} onChange={e => setFromDate(e.target.value)}/>
+                    <input type={"date"} className={"marketplaceSearch-input"} id={"marketplaceSearch-fromDateInput"}
+                           onChange={e => setFromDate(e.target.value)}/>
                 </div>
                 <div id={"marketplaceSearch-toDate"}>
                     <label id={"marketplaceSearch-subtitles"}>To Date</label>
                     <br></br>
-                    <input type={"date"} className={"marketplaceSearch-input"} id={"marketplaceSearch-toDateInput"} onChange={e => setToDate(e.target.value)}/>
+                    <input type={"date"} className={"marketplaceSearch-input"} id={"marketplaceSearch-toDateInput"}
+                           onChange={e => setToDate(e.target.value)}/>
                 </div>
             </div>
             <div id={"marketplaceSearch-search"}>
@@ -87,7 +82,32 @@ const MarketplaceSearch = () => {
             </div>
         </form>
         <div id={"marketplaceSearch-searchResults"}>
-            {searchResults.map((doc, index) => <p key={index + 1}>{doc.data().name}</p>)}
+            {searchResults.map((doc, index) =>
+                <div id={"marketplace-marketplaceItem"}
+                     key={index + 1}>
+                    <div id={"marketplace-marketplaceItemTitle"}>
+                        <a href={`/marketplace/${doc.id}`}
+                           id={"marketplace-marketplaceItemLink"}>
+                            {doc.data().name} </a>
+                    </div>
+                    <div id={"marketplace-marketplaceItemDescription"}>
+                        {doc.data().description.length > 125 ? doc.data().description.substring(0, 125) + "..." : doc.data().description}
+                    </div>
+                    <div id={"marketplace-marketplaceItemUserCreated"}>
+                        <a href={`/profile/${doc.data().userID}`}
+                           id={"marketplace-marketplaceItemUserCreatedLink"}> {doc.data().userCreated} </a>
+                    </div>
+                    <div id={"marketplace-marketplaceItemDateAndTimeCreated"}>
+                        {doc.data().dateCreated}
+                        {" "}
+                        {doc.data().timeCreated}
+                    </div>
+                    <div id={"marketplace-marketplaceItemImageDiv"}>
+                        <img src={doc.data().images}
+                             alt={"Marketplace Item"}
+                             id={"marketplace-marketplaceItemImage"}></img>
+                    </div>
+                </div>)}
         </div>
     </div>);
 }
