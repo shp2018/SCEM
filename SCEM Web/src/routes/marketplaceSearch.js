@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import '../css/marketplaceSearch.css';
 import {collection, query, getDocs, where} from "firebase/firestore";
 import {firestore} from "../firebase";
@@ -9,8 +9,37 @@ const MarketplaceSearch = () => {
     const [site, setSite] = useState("All");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
-
+    const [allEquipmentTypes, setAllEquipmentTypes] = useState([]);
+    const [allSites, setAllSites] = useState([]);
     const [searchResults, setSearchResults] = useState([]);
+
+    const getAllEquipmentTypes = async () => {
+        const querySnapshot = await getDocs(collection(firestore, "equipmentTypes"));
+        let dataQueried = [];
+        querySnapshot.forEach(doc => {
+            dataQueried.push(doc);
+        })
+        setAllEquipmentTypes(dataQueried);
+    }
+
+    const getAllSites = async () => {
+        const querySnapshot = await getDocs(collection(firestore, "site location"));
+        let dataQueried = [];
+        querySnapshot.forEach(doc => {
+            dataQueried.push(doc);
+        })
+        setAllSites(dataQueried);
+    }
+
+    useEffect(() => {
+        getAllEquipmentTypes().then(() => {
+        });
+    }, []);
+
+    useEffect(() => {
+        getAllSites().then(() => {
+        });
+    }, []);
 
     const search = async e => {
         e.preventDefault();
@@ -18,20 +47,27 @@ const MarketplaceSearch = () => {
         let searchQuery;
         setSearchResults([]);
         const marketplaceRef = collection(firestore, "marketplace");
+        let searchTerms = name.toLowerCase().split(" ");
 
         if (equipmentType === "All" && site === "All") {
             searchQuery = query(marketplaceRef,
-                where("name", "==", name),
+                where("searchTerms", "array-contains-any", searchTerms),
                 where("fromDate", ">=", fromDate));
         } else if (equipmentType === "All") {
             searchQuery = query(marketplaceRef,
-                where("name", "==", name),
+                where("searchTerms", "array-contains-any", searchTerms),
                 where("fromDate", ">=", fromDate),
                 where("site", "==", site));
         } else if (site === "All") {
             searchQuery = query(marketplaceRef,
-                where("name", "==", name),
+                where("searchTerms", "array-contains-any", searchTerms),
                 where("fromDate", ">=", fromDate),
+                where("equipmentType", "==", equipmentType));
+        } else {
+            searchQuery = query(marketplaceRef,
+                where("searchTerms", "array-contains-any", searchTerms),
+                where("fromDate", ">=", fromDate),
+                where("site", "==", site),
                 where("equipmentType", "==", equipmentType));
         }
         let querySnapshot = await getDocs(searchQuery);
@@ -64,17 +100,17 @@ const MarketplaceSearch = () => {
                 <br></br>
                 <select className={"marketplaceSearch-input"} onChange={e => setEquipmentType(e.target.value)}>
                     <option value={"All"}>All</option>
-                    <option value={"GPS"}>GPS</option>
-                    <option value={"Keyboard"}>Keyboard</option>
+                    {allEquipmentTypes.map((equipmentType, index) => <option value={equipmentType.data().name}
+                                                                             key={index}>{equipmentType.data().name}</option>)}
                 </select>
             </div>
             <div id={"marketplaceSearch-site"}>
                 <label id={"marketplaceSearch-subtitles"}>Site</label>
                 <br></br>
                 <select className={"marketplaceSearch-input"} onChange={e => setSite(e.target.value)}>
-                    <option value={"All"} className={"marketplaceSearch-blueInput"}>All</option>
-                    <option value={"Canada"}>Canada</option>
-                    <option value={"Vietnam"}>Vietnam</option>
+                    <option value={"All"}>All</option>
+                    {allSites.map((site, index) => <option value={site.data().siteName}
+                                                                             key={index}>{site.data().siteName}</option>)}
                 </select>
             </div>
             <div id={"marketplaceSearch-fromDateToDate"}>
@@ -97,7 +133,7 @@ const MarketplaceSearch = () => {
             </div>
         </form>
         <div id={"marketplaceSearch-searchResults"}>
-            {searchResults.map((doc, index) =>
+            {searchResults.length > 0 ? searchResults.map((doc, index) =>
                 <div id={"marketplace-marketplaceItem"}
                      key={index + 1}>
                     <div id={"marketplace-marketplaceItemTitle"}>
@@ -122,7 +158,8 @@ const MarketplaceSearch = () => {
                              alt={"Marketplace Item"}
                              id={"marketplace-marketplaceItemImage"}></img>
                     </div>
-                </div>)}
+                </div>) :
+                <p>No data matches the search data.</p>}
         </div>
     </div>);
 }

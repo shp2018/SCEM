@@ -15,6 +15,8 @@ const MarketplaceAddItem = () => {
     const [monthlyPrice, setMonthlyPrice] = useState("");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
+    const [allEquipmentTypes, setAllEquipmentTypes] = useState([]);
+    const [allSites, setAllSites] = useState([]);
 
     const imageMimeType = /image\/(png|jpg|jpeg|gif|webp)/i;
     const [files, setFiles] = useState(null);
@@ -81,6 +83,34 @@ const MarketplaceAddItem = () => {
         })
     }
 
+    const getAllEquipmentTypes = async () => {
+        const querySnapshot = await getDocs(collection(firestore, "equipmentTypes"));
+        let dataQueried = [];
+        querySnapshot.forEach(doc => {
+            dataQueried.push(doc);
+        })
+        setAllEquipmentTypes(dataQueried);
+    }
+
+    const getAllSites = async () => {
+        const querySnapshot = await getDocs(collection(firestore, "site location"));
+        let dataQueried = [];
+        querySnapshot.forEach(doc => {
+            dataQueried.push(doc);
+        })
+        setAllSites(dataQueried);
+    }
+
+    useEffect(() => {
+        getAllEquipmentTypes().then(() => {
+        });
+    }, []);
+
+    useEffect(() => {
+        getAllSites().then(() => {
+        });
+    }, []);
+
     useEffect(() => {
         checkAuthState();
     }, []);
@@ -118,9 +148,9 @@ const MarketplaceAddItem = () => {
         const marketplaceRef = collection(firestore, "marketplace");
 
         // handle adding search terms
-        let searchTerms = [];
-        for (let i = 0; i < name.length; i++) {
-        }
+        let searchTerms = name.toLowerCase().split(" ");
+        searchTerms.push("");
+        console.log(searchTerms);
 
         let data = {
             name: name,
@@ -185,17 +215,18 @@ const MarketplaceAddItem = () => {
                         }}></input><br></br>
 
                         <label id="marketplaceAddItem-LabelEquipmentType">Equipment type</label>
-                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputEquipmentType"
-                               type="text" placeholder="Equipment type"
-                               onChange={(e) => {
-                                   setEquipmentType(e.target.value)
-                               }}></input><br></br>
+                        <select className={"marketplaceAddItem-inputs"} onChange={e => setEquipmentType(e.target.value)}>
+                            {allEquipmentTypes.map((equipmentType, index) => <option value={equipmentType.data().name}
+                                                                                     key={index}>{equipmentType.data().name}</option>)}
+                        </select>
+                        <br></br>
 
                         <label id="marketplaceAddItem-LabelSite">Site</label>
-                        <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputSite" type="text"
-                               placeholder="Site" onChange={(e) => {
-                            setSite(e.target.value)
-                        }}></input><br></br>
+                        <select className={"marketplaceAddItem-inputs"} onChange={e => setSite(e.target.value)}>
+                            {allSites.map((site, index) => <option value={site.data().siteName}
+                                                                   key={index}>{site.data().siteName}</option>)}
+                        </select>
+                        <br></br>
 
                         <label id="marketplaceAddItem-LabelDescription">Description</label>
                         <input className="marketplaceAddItem-inputs" id="marketplaceAddItem-InputDescription"

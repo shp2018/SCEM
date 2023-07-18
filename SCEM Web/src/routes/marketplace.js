@@ -4,7 +4,7 @@ import {firestore} from "../firebase";
 import {query, where} from "firebase/firestore";
 import '../css/marketplace.css';
 
-function Marketplace() {
+const Marketplace = () => {
     const [marketplaceItems, setMarketplaceItems] = useState([]);
     const marketplaceRef = collection(firestore, "marketplace");
 
