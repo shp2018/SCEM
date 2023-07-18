@@ -1,147 +1,167 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import '../css/marketplaceSearch.css';
-import Typesense from 'typesense';
+import {collection, query, getDocs, where} from "firebase/firestore";
+import {firestore} from "../firebase";
 
-function MarketplaceSearch() {
+const MarketplaceSearch = () => {
     const [name, setName] = useState("");
-    const [equipmentType, setEquipmentType] = useState("");
-    const [site, setSite] = useState("");
-    const [description, setDescription] = useState("");
+    const [equipmentType, setEquipmentType] = useState("All");
+    const [site, setSite] = useState("All");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
-
+    const [allEquipmentTypes, setAllEquipmentTypes] = useState([]);
+    const [allSites, setAllSites] = useState([]);
     const [searchResults, setSearchResults] = useState([]);
 
-    let client = new Typesense.Client({
-        'nodes': [{
-            'host': '6p7hdz3ktlmosu24p-1.a1.typesense.net', // where xxx is the ClusterID of your Typesense Cloud cluster
-            'port': '443',
-            'protocol': 'https'
-        }],
-        'apiKey': 'nzKj2vqJppoZmSDiJovnLbDbT32PBHGI',
-        'connectionTimeoutSeconds': 2
-    })
-
-    function setState() {
-        setName(document.getElementById("marketplaceSearch-nameInput").value);
-        setEquipmentType(document.getElementById("marketplaceSearch-equipmentTypeInput").value);
-        setSite(document.getElementById("marketplaceSearch-siteInput").value);
-        setDescription(document.getElementById("marketplaceSearch-descriptionInput").value);
-        setFromDate(document.getElementById("marketplaceSearch-fromDateInput").value);
-        setToDate(document.getElementById("marketplaceSearch-toDateInput").value);
+    const getAllEquipmentTypes = async () => {
+        const querySnapshot = await getDocs(collection(firestore, "equipmentTypes"));
+        let dataQueried = [];
+        querySnapshot.forEach(doc => {
+            dataQueried.push(doc);
+        })
+        setAllEquipmentTypes(dataQueried);
     }
 
-    function generateSearchParams() {
-        let searchParams = {};
-
-        searchParams.q = name;
-        searchParams.query_by = 'name';
-        searchParams.filter_by = ``;
-
-        if (description === "") {
-            searchParams.filter_by += `description:!=''`;
-        } else if (description !== "") {
-            searchParams.filter_by += `description:=${description}`;
-        }
-
-        if (site !== "All") {
-            searchParams.filter_by += ` && site:=${site}`;
-        }
-
-        if (equipmentType !== "All") {
-            searchParams.filter_by += ` && equipmentType:=${equipmentType}`;
-        }
-
-        // if (fromDate !== "") {
-        //     searchParams.filter_by += ` && fromDate:>=${fromDate}`;
-        // }
-        //
-        // if (toDate !== "") {
-        //     searchParams.filter_by += ` && toDate:<=${toDate}`;
-        // }
-
-        console.log(searchParams.filter_by);
-
-        return searchParams;
+    const getAllSites = async () => {
+        const querySnapshot = await getDocs(collection(firestore, "site location"));
+        let dataQueried = [];
+        querySnapshot.forEach(doc => {
+            dataQueried.push(doc);
+        })
+        setAllSites(dataQueried);
     }
 
-    const search = e => {
+    useEffect(() => {
+        getAllEquipmentTypes().then(() => {
+        });
+    }, []);
+
+    useEffect(() => {
+        getAllSites().then(() => {
+        });
+    }, []);
+
+    const search = async e => {
         e.preventDefault();
+        let results = [];
+        let searchQuery;
+        setSearchResults([]);
+        const marketplaceRef = collection(firestore, "marketplace");
+        let searchTerms = name.toLowerCase().split(" ");
 
-        // console.log(name);
-        // console.log(equipmentType);
-        // console.log(site);
-        // console.log(description);
-        // console.log(fromDate);
-        // console.log(toDate);
+        if (equipmentType === "All" && site === "All") {
+            searchQuery = query(marketplaceRef,
+                where("searchTerms", "array-contains-any", searchTerms),
+                where("fromDate", ">=", fromDate));
+        } else if (equipmentType === "All") {
+            searchQuery = query(marketplaceRef,
+                where("searchTerms", "array-contains-any", searchTerms),
+                where("fromDate", ">=", fromDate),
+                where("site", "==", site));
+        } else if (site === "All") {
+            searchQuery = query(marketplaceRef,
+                where("searchTerms", "array-contains-any", searchTerms),
+                where("fromDate", ">=", fromDate),
+                where("equipmentType", "==", equipmentType));
+        } else {
+            searchQuery = query(marketplaceRef,
+                where("searchTerms", "array-contains-any", searchTerms),
+                where("fromDate", ">=", fromDate),
+                where("site", "==", site),
+                where("equipmentType", "==", equipmentType));
+        }
+        let querySnapshot = await getDocs(searchQuery);
+        querySnapshot.forEach(doc => {
+            results.push(doc);
+        });
 
-        let searchParams = generateSearchParams();
-
-        client.collections('marketplace')
-            .documents()
-            .search(searchParams)
-            .then(function (searchResults) {
-                console.log(searchResults);
-                setSearchResults([]);
-                for (let i = 0; i < searchResults.hits.length; i++) {
-                    setSearchResults(curr => [...curr,
-                        <div key={searchResults.hits[i].document.id}> {searchResults.hits[i].document.name} </div>]);
-                }
-            })
+        // filter out toDate here since query can't do two inequalities with two diff fields
+        if (toDate !== "") {
+            results = results.filter(doc => new Date(doc.data().toDate) <= new Date(toDate));
+        }
+        setSearchResults(results);
     }
 
-    return (
-        <div id={"marketplaceSearch-page"}>
-            <div id={"marketplaceSearch-header"}>
-                <a href="/marketplace" id="marketplaceSearch-backButton" className="arrow left"></a>
-                <h3 id={"marketplaceSearch-title"}> Search </h3>
-            </div>
-
-            <form onSubmit={search}>
-                <div id={"marketplaceSearch-inputName"}>
-                    <p id={"marketplaceSearch-subtitles"}> Name </p>
-                    <input type={"text"} id={"marketplaceSearch-nameInput"}/>
-                </div>
-                <div id={"marketplaceSearch-equipmentType"}>
-                    <p id={"marketplaceSearch-subtitles"}> Equipment Type </p>
-                    <select id={"marketplaceSearch-equipmentTypeInput"}>
-                        <option> All</option>
-                        <option> GPS</option>
-                    </select>
-                </div>
-                <div id={"marketplaceSearch-site"}>
-                    <p id={"marketplaceSearch-subtitles"}> Site </p>
-                    <select id={"marketplaceSearch-siteInput"}>
-                        <option> All</option>
-                        <option> Canada</option>
-                        <option> Vietnam</option>
-                    </select>
-                </div>
-                <div id={"marketplaceSearch-description"}>
-                    <p id={"marketplaceSearch-subtitles"}> Description </p>
-                    <input type={"text"} id={"marketplaceSearch-descriptionInput"}/>
-                </div>
-                <div id={"marketplaceSearch-fromDateToDate"}>
-                    <div id={"marketplaceSearch-fromDate"}>
-                        <p id={"marketplaceSearch-subtitles"}> From Date </p>
-                        <input type={"date"} id={"marketplaceSearch-fromDateInput"}/>
-                    </div>
-                    <div id={"marketplaceSearch-toDate"}>
-                        <p id={"marketplaceSearch-subtitles"}> To Date </p>
-                        <input type={"date"} id={"marketplaceSearch-toDateInput"}/>
-                    </div>
-                </div>
-                <div id={"marketplaceSearch-search"}>
-                    <button type={"submit"} id={"marketplaceSearch-searchButton"} onClick={setState}> Search
-                    </button>
-                </div>
-
-                <div id={"marketplaceSearch-searchResults"}>
-                    {searchResults}
-                </div>
-            </form>
+    return (<div id={"marketplaceSearch-page"}>
+        <div id={"marketplaceSearch-header"}>
+            <a href="/marketplace" id="marketplaceSearch-backButton" className="arrow left"></a>
+            <h3 id={"marketplaceSearch-title"}> Search </h3>
         </div>
-    );
+
+        <form onSubmit={search}>
+            <div id={"marketplaceSearch-inputName"}>
+                <label id={"marketplaceSearch-subtitles"}>Name</label>
+                <br></br>
+                <input type={"text"} className={"marketplaceSearch-input"} onChange={e => setName(e.target.value)}
+                       defaultValue={""}/>
+            </div>
+            <div id={"marketplaceSearch-equipmentType"}>
+                <label id={"marketplaceSearch-subtitles"}> Equipment Type </label>
+                <br></br>
+                <select className={"marketplaceSearch-input"} onChange={e => setEquipmentType(e.target.value)}>
+                    <option value={"All"}>All</option>
+                    {allEquipmentTypes.map((equipmentType, index) => <option value={equipmentType.data().name}
+                                                                             key={index}>{equipmentType.data().name}</option>)}
+                </select>
+            </div>
+            <div id={"marketplaceSearch-site"}>
+                <label id={"marketplaceSearch-subtitles"}>Site</label>
+                <br></br>
+                <select className={"marketplaceSearch-input"} onChange={e => setSite(e.target.value)}>
+                    <option value={"All"}>All</option>
+                    {allSites.map((site, index) => <option value={site.data().siteName}
+                                                                             key={index}>{site.data().siteName}</option>)}
+                </select>
+            </div>
+            <div id={"marketplaceSearch-fromDateToDate"}>
+                <div id={"marketplaceSearch-fromDate"}>
+                    <label id={"marketplaceSearch-subtitles"}>From Date</label>
+                    <br></br>
+                    <input type={"date"} className={"marketplaceSearch-input"} id={"marketplaceSearch-fromDateInput"}
+                           onChange={e => setFromDate(e.target.value)}/>
+                </div>
+                <div id={"marketplaceSearch-toDate"}>
+                    <label id={"marketplaceSearch-subtitles"}>To Date</label>
+                    <br></br>
+                    <input type={"date"} className={"marketplaceSearch-input"} id={"marketplaceSearch-toDateInput"}
+                           onChange={e => setToDate(e.target.value)}/>
+                </div>
+            </div>
+            <div id={"marketplaceSearch-search"}>
+                <button type={"submit"} id={"marketplaceSearch-searchButton"}>Search
+                </button>
+            </div>
+        </form>
+        <div id={"marketplaceSearch-searchResults"}>
+            {searchResults.length > 0 ? searchResults.map((doc, index) =>
+                <div id={"marketplace-marketplaceItem"}
+                     key={index + 1}>
+                    <div id={"marketplace-marketplaceItemTitle"}>
+                        <a href={`/marketplace/${doc.id}`}
+                           id={"marketplace-marketplaceItemLink"}>
+                            {doc.data().name} </a>
+                    </div>
+                    <div id={"marketplace-marketplaceItemDescription"}>
+                        {doc.data().description.length > 125 ? doc.data().description.substring(0, 125) + "..." : doc.data().description}
+                    </div>
+                    <div id={"marketplace-marketplaceItemUserCreated"}>
+                        <a href={`/profile/${doc.data().userID}`}
+                           id={"marketplace-marketplaceItemUserCreatedLink"}> {doc.data().userCreated} </a>
+                    </div>
+                    <div id={"marketplace-marketplaceItemDateAndTimeCreated"}>
+                        {doc.data().dateCreated}
+                        {" "}
+                        {doc.data().timeCreated}
+                    </div>
+                    <div id={"marketplace-marketplaceItemImageDiv"}>
+                        <img src={doc.data().images}
+                             alt={"Marketplace Item"}
+                             id={"marketplace-marketplaceItemImage"}></img>
+                    </div>
+                </div>) :
+                <p>No data matches the search data.</p>}
+        </div>
+    </div>);
 }
 
 export default MarketplaceSearch;

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {getAuth, signInWithPopup, FacebookAuthProvider} from "firebase/auth";
+import {getAuth, signInWithPopup, FacebookAuthProvider, setPersistence, browserSessionPersistence} from "firebase/auth";
 import {doc, getDoc, setDoc} from "firebase/firestore";
 import {firestore} from "../firebase";
 
@@ -11,32 +11,35 @@ const FacebookLogin = ({text}) => {
         auth.useDeviceLanguage();
     }, []);
 
-    const signIn = () => {
-        signInWithPopup(auth, provider).then(async res => {
-            const user = res.user;
-            const userDoc = doc(firestore, "users", user.uid);
-            const userData = await getDoc(userDoc);
+    const signIn = async () => {
+        await auth.signOut();
+        setPersistence(auth, browserSessionPersistence).then(() => {
+            return signInWithPopup(auth, provider).then(async res => {
+                const user = res.user;
+                const userDoc = doc(firestore, "users", user.uid);
+                const userData = await getDoc(userDoc);
 
-            if (!userData.exists()) {
-                await setDoc(userDoc, {
-                    fullname: user.displayName,
-                    email: user.email,
-                    locked: false,
-                })
-            }
-            alert("Authentication success! You will now be redirected to the home page.");
-            window.location.href = "/";
+                if (!userData.exists()) {
+                    await setDoc(userDoc, {
+                        fullname: user.displayName,
+                        email: user.email,
+                        locked: false,
+                    })
+                }
+                alert("Authentication success! You will now be redirected to the home page.");
+                window.location.href = "/";
 
-        }).catch((err) => {
-            console.error(err.code, err.message);
-            console.error(err.customData.email);
-            console.error(FacebookAuthProvider.credentialFromError(err));
-            if (err.code === "auth/operation-not-allowed") alert("This feature will be enabled once app is deployed.");
+            }).catch((err) => {
+                console.error(err.code, err.message);
+                console.error(err.customData.email);
+                console.error(FacebookAuthProvider.credentialFromError(err));
+                if (err.code === "auth/operation-not-allowed") alert("This feature will be enabled once app is deployed.");
+            })
         })
     }
 
     return (
-      <button id={"signup-facebook"} onClick={signIn}>{text}</button>
+        <button id={"signup-facebook"} onClick={signIn}>{text}</button>
     );
 }
 export default FacebookLogin;
