@@ -5,8 +5,8 @@ import {firestore} from "../firebase";
 
 const MarketplaceSearch = () => {
     const [name, setName] = useState("");
-    const [equipmentType, setEquipmentType] = useState("");
-    const [site, setSite] = useState("");
+    const [equipmentType, setEquipmentType] = useState("All");
+    const [site, setSite] = useState("All");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
 
@@ -14,22 +14,36 @@ const MarketplaceSearch = () => {
 
     const search = async e => {
         e.preventDefault();
-
-        const marketplaceRef = collection(firestore, "marketplace");
-        const searchQuery = query(marketplaceRef,
-            where("name", "==", name),
-            where("fromDate", ">=", fromDate),
-            where("equipmentType", "==", equipmentType),
-            where("site", "==", site));
-        let querySnapshot = await getDocs(searchQuery);
+        let results = [];
+        let searchQuery;
         setSearchResults([]);
+        const marketplaceRef = collection(firestore, "marketplace");
 
+        if (equipmentType === "All" && site === "All") {
+            searchQuery = query(marketplaceRef,
+                where("name", "==", name),
+                where("fromDate", ">=", fromDate));
+        } else if (equipmentType === "All") {
+            searchQuery = query(marketplaceRef,
+                where("name", "==", name),
+                where("fromDate", ">=", fromDate),
+                where("site", "==", site));
+        } else if (site === "All") {
+            searchQuery = query(marketplaceRef,
+                where("name", "==", name),
+                where("fromDate", ">=", fromDate),
+                where("equipmentType", "==", equipmentType));
+        }
+        let querySnapshot = await getDocs(searchQuery);
         querySnapshot.forEach(doc => {
-            setSearchResults(curr => [...curr, doc]);
-        })
+            results.push(doc);
+        });
 
         // filter out toDate here since query can't do two inequalities with two diff fields
-        setSearchResults(searchResults.filter(doc => doc.data().toDate <= toDate));
+        if (toDate !== "") {
+            results = results.filter(doc => new Date(doc.data().toDate) <= new Date(toDate));
+        }
+        setSearchResults(results);
     }
 
     return (<div id={"marketplaceSearch-page"}>
@@ -42,7 +56,8 @@ const MarketplaceSearch = () => {
             <div id={"marketplaceSearch-inputName"}>
                 <label id={"marketplaceSearch-subtitles"}>Name</label>
                 <br></br>
-                <input type={"text"} className={"marketplaceSearch-input"} onChange={e => setName(e.target.value)} defaultValue={""}/>
+                <input type={"text"} className={"marketplaceSearch-input"} onChange={e => setName(e.target.value)}
+                       defaultValue={""}/>
             </div>
             <div id={"marketplaceSearch-equipmentType"}>
                 <label id={"marketplaceSearch-subtitles"}> Equipment Type </label>

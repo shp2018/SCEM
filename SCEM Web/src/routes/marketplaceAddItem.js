@@ -5,7 +5,7 @@ import '../css/marketplaceAddItem.css';
 import {onAuthStateChanged} from "firebase/auth";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 
-function MarketplaceAddItem() {
+const MarketplaceAddItem = () => {
     const [name, setName] = useState("");
     const [equipmentType, setEquipmentType] = useState("");
     const [site, setSite] = useState("");
@@ -95,7 +95,7 @@ function MarketplaceAddItem() {
         setFile(files[imgNum]);
     }
 
-    const changeHandler = (e) => {
+    const changeHandler = e => {
         const files = e.target.files;
         const file = e.target.files[0];
         if (!file.type.match(imageMimeType)) {
@@ -107,7 +107,7 @@ function MarketplaceAddItem() {
         setIsShown(current => !current);
     }
 
-    const handleSave = async (e) => {
+    const handleSave = async e => {
         e.preventDefault();
 
         if (!authState) {
@@ -116,6 +116,11 @@ function MarketplaceAddItem() {
         }
 
         const marketplaceRef = collection(firestore, "marketplace");
+
+        // handle adding search terms
+        let searchTerms = [];
+        for (let i = 0; i < name.length; i++) {
+        }
 
         let data = {
             name: name,
@@ -135,6 +140,7 @@ function MarketplaceAddItem() {
             onRent: false,
             onRentName: "",
             onRentID: "",
+            searchTerms: searchTerms,
         };
         try {
             addDoc(marketplaceRef, data).then((res) => {
@@ -157,7 +163,6 @@ function MarketplaceAddItem() {
     }
 
     return (
-        <body>
         <div id={"marketplaceAddItem-page"}>
             <div id={"marketplaceAddItem-header"}>
                 <div id={"marketplaceAddItem-backButton"}>
@@ -257,7 +262,6 @@ function MarketplaceAddItem() {
                 </div>
             </form>
         </div>
-        </body>
     );
 }
 

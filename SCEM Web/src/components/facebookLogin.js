@@ -11,7 +11,8 @@ const FacebookLogin = ({text}) => {
         auth.useDeviceLanguage();
     }, []);
 
-    const signIn = () => {
+    const signIn = async () => {
+        await auth.signOut();
         setPersistence(auth, browserSessionPersistence).then(() => {
             return signInWithPopup(auth, provider).then(async res => {
                 const user = res.user;
