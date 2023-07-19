@@ -35,6 +35,7 @@ import ToolMaintenance from "./routes/toolMaintenance";
 import CreateToolMaintenance from './routes/createToolMaintenance';
 import ToolAlerts from './routes/toolAlerts';
 import CreateToolAlerts from './routes/createToolAlerts';
+import ToolEquipmentCount from "./routes/toolEquipmentCount";
 
 const App = () => {
     return (
@@ -75,12 +76,13 @@ const App = () => {
                 <Route path={"/equipmentManagement"} element={<EquipmentManagement/>}/>
                 <Route path={"/equipmentManagement/create"} element={<CreateEquipmentManagement/>}/>
                 <Route path={"/viewEquipmentList"} element={<ViewEquipmentList/>}/>
-                <Route path={"/toolScheduling"} element={<ToolScheduling/>}/>
-                <Route path={"/toolScheduling/create"} element={<CreateToolScheduling/>}/>
-                <Route path={"/toolMaintenance"} element={<ToolMaintenance/>}/>
-                <Route path="/toolMaintenance/create" element={<CreateToolMaintenance/>}/>
-                <Route path={"/toolAlerts"} element={<ToolAlerts/>}/>
-                <Route path={"/toolAlerts/create"} element={<CreateToolAlerts/>}/>
+                <Route path={"/tool/scheduling"} element={<ToolScheduling/>}/>
+                <Route path={"/tool/scheduling/create"} element={<CreateToolScheduling/>}/>
+                <Route path={"/tool/maintenance"} element={<ToolMaintenance/>}/>
+                <Route path={"/tool/maintenance/create"} element={<CreateToolMaintenance/>}/>
+                <Route path={"/tool/alerts"} element={<ToolAlerts/>}/>
+                <Route path={"/tool/alerts/create"} element={<CreateToolAlerts/>}/>
+                <Route path={"/tool/equipmentCount"} element={<ToolEquipmentCount/>}/>
             </Routes>
         </Router>
     );
