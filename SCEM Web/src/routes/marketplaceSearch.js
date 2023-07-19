@@ -159,7 +159,7 @@ const MarketplaceSearch = () => {
                              id={"marketplace-marketplaceItemImage"}></img>
                     </div>
                 </div>) :
-                <p>No data matches the search data.</p>}
+                <p>No data matches the search query.</p>}
         </div>
     </div>);
 }
