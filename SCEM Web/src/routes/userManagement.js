@@ -25,7 +25,7 @@ const UserManagement = () => {
         querySnapshot.forEach(doc => {
             const usersArray = doc.data().users;
 
-            usersArray.forEach((res) => {
+            usersArray.forEach(res => {
                 setUsersPath(curr => [...curr,
                     res._key.path.lastSegment()]);
             });
@@ -34,28 +34,13 @@ const UserManagement = () => {
 
     const getUsersData = async () => {
         setUsersData([]);
+        let dataQueried = [];
         for (const res of usersPath) {
             const docRef = doc(firestore, "users", res);
             const docSnap = await getDoc(docRef);
-            let data = docSnap.data();
-
-            setUsersData(curr => [...curr,
-                <tr key={docSnap.id}>
-                    <td className={"userManagement-usersInfoTableElement"}>{}</td>
-                    <td className={"userManagement-usersInfoTableElement"}>{data.fullname}</td>
-                    <td className={"userManagement-usersInfoTableElement"}>{data.email}</td>
-                    <td className={"userManagement-usersInfoTableElement"}>{data.locked ? "Off" : "On"}</td>
-                    <td className={"userManagement-usersInfoTableElement"}>
-                        <div id={"userManagement-dropdown"}>
-                            <button id={"userManagement-tableArrowButton"}>
-                                <img src={"/triangle-right.svg"}
-                                     alt={"Right arrow used to create dropdown menu."}
-                                     id={"userManagement-tableArrow"}/>
-                            </button>
-                        </div>
-                    </td>
-                </tr>]);
+            dataQueried.push(docSnap);
         }
+        setUsersData(dataQueried);
     }
 
     useEffect(() => {
@@ -101,7 +86,22 @@ const UserManagement = () => {
                             <th className={"userManagement-usersInfoTableHeading"}>Active</th>
                             <th className={"userManagement-usersInfoTableHeading"}></th>
                         </tr>
-                        {usersData}
+                        {usersData.map((docSnap, index) =>
+                            <tr key={docSnap.id}>
+                                <td className={"userManagement-usersInfoTableElement"}>{index + 1}</td>
+                                <td className={"userManagement-usersInfoTableElement"}>{docSnap.data().fullname}</td>
+                                <td className={"userManagement-usersInfoTableElement"}>{docSnap.data().email}</td>
+                                <td className={"userManagement-usersInfoTableElement"}>{docSnap.data().locked ? "Off" : "On"}</td>
+                                <td className={"userManagement-usersInfoTableElement"}>
+                                    <div id={"userManagement-dropdown"}>
+                                        <button id={"userManagement-tableArrowButton"}>
+                                            <img src={"/triangle-right.svg"}
+                                                 alt={"Right arrow used to create dropdown menu."}
+                                                 id={"userManagement-tableArrow"}/>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>)}
                         </tbody>
                     </table>
                     : <p className={"loading"}>Loading...</p>}

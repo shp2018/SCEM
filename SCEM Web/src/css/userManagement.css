@@ -42,7 +42,6 @@
 #userManagement-usersInfoTable {
     margin-left: auto;
     margin-right: auto;
-    counter-reset: rowNumber;
     border-collapse: collapse;
 }
 
@@ -50,6 +49,7 @@
     text-align: center;
     border: 1px solid #cccccc;
     height: 2.5em;
+    padding: 2px 1em;
 }
 
 .userManagement-usersInfoTableHeading {
@@ -61,14 +61,4 @@
 #userManagement-tableArrow {
     width: 1.5em;
     height: 1.5em;
-}
-
-#userManagement-usersInfoTable tr:not(:first-child) {
-    counter-increment: rowNumber;
-}
-
-#userManagement-usersInfoTable tr .userManagement-usersInfoTableElement:first-child::before {
-    content: counter(rowNumber);
-    margin-left: 0.5em;
-    margin-right: 0.5em;
 }
