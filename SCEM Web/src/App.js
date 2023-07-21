@@ -36,6 +36,8 @@ import CreateToolMaintenance from './routes/createToolMaintenance';
 import ToolAlerts from './routes/toolAlerts';
 import CreateToolAlerts from './routes/createToolAlerts';
 import ToolEquipmentCount from "./routes/toolEquipmentCount";
+import SiteAndTrackingLink from "./routes/siteAndTrackingLink";
+import CreateSiteAndTrackingLink from "./routes/createSiteAndTrackingLink";
 
 const App = () => {
     return (
@@ -83,6 +85,8 @@ const App = () => {
                 <Route path={"/tool/alerts"} element={<ToolAlerts/>}/>
                 <Route path={"/tool/alerts/create"} element={<CreateToolAlerts/>}/>
                 <Route path={"/tool/equipmentCount"} element={<ToolEquipmentCount/>}/>
+                <Route path={"/siteAndTrackingLink"} element={<SiteAndTrackingLink/>}/>
+                <Route path={"/siteAndTrackingLink/create"} element={<CreateSiteAndTrackingLink/>}/>
             </Routes>
         </Router>
     );

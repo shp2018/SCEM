@@ -159,7 +159,7 @@ function HomeWithLogin() {
                          id={"homeWithLogin-menuItemIcons"}
                          alt={""}>
                     </img>
-                    <a href={"/"}
+                    <a href={"/siteAndTrackingLink"}
                        id={"homeWithLogin-menuItemLinks"}> Site and Tracking link </a>
                 </div>
             </div>

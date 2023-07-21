@@ -1,9 +1,9 @@
-#equipmentType-body {
+#siteAndTrackingLink-page {
     text-align: center;
     font-family: Roboto, sans-serif;
 }
 
-#equipmentType-header {
+#siteAndTrackingLink-header {
     background-color: #133da5;
     padding-bottom: 3em;
     padding-top: 2em;
@@ -13,11 +13,7 @@
     position: relative;
 }
 
-#equipmentType-editableText {
-    color: #e32020;
-}
-
-#equipmentType-backButtonDiv {
+#siteAndTrackingLink-backButtonDiv {
     position: relative;
     display: inline-block;
     filter: invert(100%);
@@ -25,11 +21,11 @@
     top: 2.45em;
 }
 
-#equipmentType-titleText {
+#siteAndTrackingLink-titleText {
     color: white;
 }
 
-#equipmentType-addButton {
+#siteAndTrackingLink-addButton {
     position: absolute;
     height: 40px;
     width: 40px;
@@ -37,46 +33,45 @@
     right: 5%;
 }
 
-#equipmentType-table {
-    margin-left: auto;
-    margin-right: auto;
+#siteAndTrackingLink-table {
+    margin: 3em auto 0 auto;
     border-collapse: collapse;
 }
 
-.equipmentType-tableElement {
+.siteAndTrackingLink-tableElement {
     text-align: center;
     border: 1px solid #cccccc;
     height: 2.5em;
     padding: 2px 1em;
 }
 
-.equipmentType-tableHeading {
+.siteAndTrackingLink-tableHeading {
     border: 1px solid #cccccc;
     height: 2.5em;
     background-color: #5982d3;
 }
 
-#equipmentType-tableArrowButton {
+#siteAndTrackingLink-tableArrowButton {
     border: none;
     background-color: white;
 }
 
-#equipmentType-tableArrow {
+#siteAndTrackingLink-tableArrow {
     width: 1.5em;
     height: 1.5em;
 }
 
-#equipmentType-dropdown {
+#siteAndTrackingLink-dropdown {
     display: inline-block;
 }
 
-#equipmentType-dropdownMenu {
+#siteAndTrackingLink-dropdownMenu {
     display: none;
     position: absolute;
     z-index: 1;
 }
 
-.equipmentType-dropdownButton {
+.siteAndTrackingLink-dropdownButton {
     background-color: white;
     border-style: solid;
     border-color: black;
@@ -89,18 +84,18 @@
     padding: 12px 16px;
 }
 
-.equipmentType-dropdownButton:first-child {
+.siteAndTrackingLink-dropdownButton:first-child {
     border-bottom: none;
 }
 
-.equipmentType-dropdownButton:hover {
+.siteAndTrackingLink-dropdownButton:hover {
     background-color: #f1f1f1;
 }
 
-#equipmentType-dropdown:hover #equipmentType-dropdownMenu {
+#siteAndTrackingLink-dropdown:hover #siteAndTrackingLink-dropdownMenu {
     display: block;
 }
 
-#equipmentType-dropdown:hover {
+#siteAndTrackingLink-dropdown:hover {
     background-color: #0b7dda;
 }
