@@ -42,7 +42,7 @@ const EquipmentTypeCreate = () => {
                     <input type={"text"} className={"equipmentTypeCreate-formInput"} onChange={(e) => setDescription(e.target.value)}/>
                 </div>
                 <div className={"equipmentTypeCreate-formInputDiv"}>
-                    <button type={"submit"} id={"equipmentTypeCreate-formSubmitButton"}>Update</button>
+                    <button type={"submit"} id={"equipmentTypeCreate-formSubmitButton"}>Create</button>
                 </div>
             </form>
         </div>

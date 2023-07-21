@@ -1,0 +1,56 @@
+#createSiteAndTrackingLink-page {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#createSiteAndTrackingLink-header {
+    background-color: #133da5;
+    padding-bottom: 3em;
+    padding-top: 2em;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
+    position: relative;
+}
+
+#createSiteAndTrackingLink-backButtonDiv {
+    position: relative;
+    display: inline-block;
+    filter: invert(100%);
+    right: 10em;
+    top: 2.45em;
+}
+
+#createSiteAndTrackingLink-titleText {
+    color: white;
+}
+
+.createSiteAndTrackingLink-formDivs {
+    margin-top: 2em;
+}
+
+.createSiteAndTrackingLink-labels {
+    color: gray;
+}
+
+.createSiteAndTrackingLink-inputs {
+    border-style: solid;
+    border-radius: 5px;
+    width: 400px;
+    height: 50px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+    color: #133da5;
+}
+
+#createSiteAndTrackingLink-button {
+    font-size: 16px;
+    color: white;
+    width: 400px;
+    height: 50px;
+    margin-top: 2em;
+    border-radius: 0.7em;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
+    font-weight: bold;
+}
