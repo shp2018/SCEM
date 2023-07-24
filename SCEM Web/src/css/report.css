@@ -1,0 +1,36 @@
+#report-page {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#report-header {
+    background-color: #133da5;
+    padding-bottom: 3em;
+    padding-top: 2em;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
+    position: relative;
+}
+
+#report-backButtonDiv {
+    position: relative;
+    display: inline-block;
+    filter: invert(100%);
+    right: 6em;
+    top: 2.45em;
+}
+
+#report-titleText {
+    color: white;
+}
+
+#report-select {
+    border-style: solid;
+    border-radius: 5px;
+    width: 400px;
+    height: 50px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+    color: #133da5;
+}
