@@ -3,7 +3,7 @@ import { getDocs, query, collection, doc, deleteDoc, updateDoc } from "firebase/
 import { firestore } from "../firebase";
 import "../css/toolAlerts.css";
 
-function ToolAlerts() {
+const ToolAlerts = () => {
   const [editing, setEditing] = useState([]);
   const [toolAlertsData, setToolAlertsData] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -118,7 +118,7 @@ function ToolAlerts() {
                         ...updatedData,
                         [toolAlerts.name]: {
                           ...updatedData[toolAlerts.name],
-                          active: updatedValue.toLowerCase() === 'on' ? true : false,
+                          active: updatedValue.toLowerCase() === 'on',
                         },
                       });
                     }}
@@ -154,7 +154,7 @@ function ToolAlerts() {
                         ...updatedData,
                         [toolAlerts.name]: {
                           ...updatedData[toolAlerts.name],
-                          active: updatedValue === 'on' ? true : false,
+                          active: updatedValue === 'on',
                         },
                       });
                     }}
