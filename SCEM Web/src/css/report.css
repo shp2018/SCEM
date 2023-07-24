@@ -34,3 +34,30 @@
     border-color: #c4c7cc;
     color: #133da5;
 }
+
+#report-data {
+    margin-top: 3em;
+}
+
+#report-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.report-tableHeading {
+    border: 1px solid #cccccc;
+    height: 2.5em;
+    background-color: #5982d3;
+}
+
+.report-tableElement {
+    text-align: center;
+    border: 1px solid #cccccc;
+    height: 2.5em;
+    padding: 2px 1em;
+}
+
+#report-tableArrow {
+    width: 1.5em;
+    height: 1.5em;
+}
