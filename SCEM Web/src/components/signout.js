@@ -1,6 +1,5 @@
 import React from "react";
 import {auth} from "../firebase";
-import '../css/signout.css';
 
 const SignOut = ({id, text, redirect}) => {
     const removeAuthentication = (e) => {
@@ -16,7 +15,7 @@ const SignOut = ({id, text, redirect}) => {
     }
 
     return (
-        <div id={"signOut"}>
+        <div>
             <button onClick={removeAuthentication}
                     id={id}> {text}
             </button>
