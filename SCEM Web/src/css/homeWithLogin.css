@@ -9,18 +9,22 @@
     border-radius: 1em;
 }
 
-#homeWithLogin-signOutButton {
-    position: fixed;
-    top: 0;
-    right: 0;
-}
-
 #homeWithLogin-userInfo {
     display: inline-block;
     color: #1a1818;
     background-color: #eceaea;
     padding: 0 1em 0 1em;
     border: black 3px solid;
+}
+
+#homeWithLogin-displayName {
+    color: #133da5;
+}
+
+#homeWithLogin-loading {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
 }
 
 #homeWithLogin-suggestions {

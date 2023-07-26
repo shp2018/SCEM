@@ -1,29 +1,21 @@
 import React, {useEffect, useState} from "react";
 import '../css/homeWithLogin.css';
 import {auth, firestore} from "../firebase";
-import {collection, query, where, getDocs} from "firebase/firestore";
-import {onAuthStateChanged} from "firebase/auth";
-import SignOut from "./signout";
+import {doc, getDoc} from "firebase/firestore";
 
-function HomeWithLogin() {
-    const [userData, setUserData] = useState(null);
+const HomeWithLogin = () => {
+    const [loaded, setLoaded] = useState(false);
 
-    async function getUserData() {
-        onAuthStateChanged(auth, async (user) => {
-            const ref = collection(firestore, "users");
-
-            const q = query(ref, where("email", "==", user.email));
-
-            const querySnapshot = await getDocs(q);
-
-            querySnapshot.forEach((doc) => {
-                if (!userData) setUserData(doc.data());
-            });
-        })
+    const getAuthData = async () => {
+        const ref = doc(firestore, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(ref);
+        auth.currentUser.displayName = docSnap.data().fullname;
     }
 
     useEffect(() => {
-        getUserData().then();
+        getAuthData().then(() => {
+            setLoaded(true);
+        });
     }, []);
 
     return (
@@ -32,12 +24,8 @@ function HomeWithLogin() {
                 <img id="homeWithLogin-logo" src="/logoWithBackground.jpg" alt={"SCEM logo"}></img>
             </div>
 
-            <div id={"homeWithLogin-signOutButton"}>
-                <SignOut/>
-            </div>
-
             <div id={"homeWithLogin-userInfo"}>
-                {userData ? <p> Welcome! {userData.fullname} </p>: <p> Loading... </p>}
+                {loaded ? <p> Welcome! <a href={"/user"} id={"homeWithLogin-displayName"}>{auth.currentUser.displayName}</a></p> : <p className={"homeWithLogin-loading"}> Loading... </p>}
             </div>
 
             <div id={"homeWithLogin-suggestions"}>
@@ -63,7 +51,7 @@ function HomeWithLogin() {
                 <ul id={"homeWithLogin-links"}>
                     <li><a href={"/companyProfile"}> Company </a></li>
                     <li><a href={"/myRentalManagement"}> Equipment </a></li>
-                    <li><a href={"/"}> For Rent </a></li>
+                    <li><a href={"/marketplace/addItem"}> For Rent </a></li>
                     <li><a href={"/marketplace"}> Marketplace </a></li>
                 </ul>
             </nav>
@@ -73,7 +61,7 @@ function HomeWithLogin() {
                      id={"homeWithLogin-menuItemIcons"}
                      alt={""}>
                 </img>
-                <a href={"/"}
+                <a href={"/marketplace/addItem"}
                    id={"homeWithLogin-menuItemLinks"}> Rent my equipment </a>
             </div>
             <div id={"homeWithLogin-menuItem"}>
