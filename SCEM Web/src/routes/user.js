@@ -71,7 +71,7 @@ const User = () => {
                     <LinkDiv text={"Manage Rent"} link={"/myRentalManagement"}/>
                     <LinkDiv text={"Notification"} link={"/"}/>
                     <LinkDiv text={"Change Profile"} link={"/user/changeProfile"}/>
-                    <LinkDiv text={"Change Password"} link={"/"}/>
+                    <LinkDiv text={"Change Password"} link={"/user/changePassword"}/>
 
                     <h3 className={"user-headings"}>Company Management</h3>
                     <LinkDiv text={"Company Profile"} link={"/companyProfile"}/>
