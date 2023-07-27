@@ -150,7 +150,6 @@ const MarketplaceAddItem = () => {
         // handle adding search terms
         let searchTerms = name.toLowerCase().split(" ");
         searchTerms.push("");
-        console.log(searchTerms);
 
         let data = {
             name: name,
@@ -176,6 +175,7 @@ const MarketplaceAddItem = () => {
             addDoc(marketplaceRef, data).then((res) => {
                 for (let i = 0; i < files.length; i++) {
                     const storageRef = ref(storage, `/marketplaceImages/${res._key.path.lastSegment()}/${i + 1}`);
+                    console.log(files[i]);
                     uploadBytes(storageRef, files[i]).then(() => {
                         getDownloadURL(storageRef).then((url) => {
                             const itemRef = doc(firestore, "marketplace", res._key.path.lastSegment());

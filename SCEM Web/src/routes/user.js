@@ -9,18 +9,18 @@ const LinkDiv = ({text, link, id}) => {
     if (id === "firstItem") {
         return (
             <div className={"user-linkDivs"} id={"user-firstItem"}>
-                <img src={"blue-circle.png"} className={"user-blueCircle"} alt={"Blue circle"}></img>
+                <img src={"/blue-circle.png"} className={"user-blueCircle"} alt={"Blue circle"}></img>
                 <a href={link} id={"user-linkText"}>{text}</a>
-                <a href={link}><img src={"right-arrow.png"} id={"user-linkArrow"}
+                <a href={link}><img src={"/right-arrow.png"} id={"user-linkArrow"}
                                     alt={"Right arrow with embed link to redirect to site."}></img></a>
             </div>
         );
     } else {
         return (
             <div className={"user-linkDivs"}>
-                <img src={"blue-circle.png"} className={"user-blueCircle"} alt={"Blue circle"}></img>
+                <img src={"/blue-circle.png"} className={"user-blueCircle"} alt={"Blue circle"}></img>
                 <a href={link} id={"user-linkText"}>{text}</a>
-                <a href={link}><img src={"right-arrow.png"} id={"user-linkArrow"}
+                <a href={link}><img src={"/right-arrow.png"} id={"user-linkArrow"}
                                     alt={"Right arrow with embed link to redirect to site."}></img></a>
             </div>
         );
@@ -37,9 +37,10 @@ const User = () => {
             if (auth) {
                 const ref = doc(firestore, "users", auth.currentUser.uid);
                 const docSnap = await getDoc(ref);
-                // auth.currentUser.photoURL = docSnap.data().profilePicture;
-                auth.currentUser.photoURL = "default-pfp.jpg";
+
+                auth.currentUser.photoURL = docSnap.data().profilePicture;
                 auth.currentUser.displayName = docSnap.data().fullname;
+
                 setAuthState(true);
                 setUserData(user);
             }
