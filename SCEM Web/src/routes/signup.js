@@ -34,6 +34,10 @@ const Signup = () => {
                 fullname: fullname,
                 email: email,
                 locked: false,
+                address: "",
+                profilePicture: "/default-pfp.jpg",
+                gender: "",
+                birthday: "",
             }
             try {
                 setDoc(ref, data).then(() => {
