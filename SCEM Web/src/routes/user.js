@@ -69,7 +69,7 @@ const User = () => {
 
                     <LinkDiv text={"Rent my equipment"} link={"/marketplace/addItem"} id={"firstItem"}/>
                     <LinkDiv text={"Manage Rent"} link={"/myRentalManagement"}/>
-                    <LinkDiv text={"Notification"} link={"/"}/>
+                    <LinkDiv text={"Notification"} link={"/user/notification"}/>
                     <LinkDiv text={"Change Profile"} link={"/user/changeProfile"}/>
                     <LinkDiv text={"Change Password"} link={"/user/changePassword"}/>
 
