@@ -4,7 +4,7 @@ import {firestore} from "../firebase";
 import {query, where} from "firebase/firestore";
 import '../css/equipmentGroup.css';
 
-function EquipmentGroup() {
+const EquipmentGroup = () => {
     const [equipments, setEquipments] = useState([]);
     const equipmentRef = collection(firestore, "equipmentGroups");
 
@@ -59,6 +59,7 @@ function EquipmentGroup() {
             </div>
             <br></br>
             <table id="equipments">
+                <tbody>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
@@ -66,6 +67,7 @@ function EquipmentGroup() {
                     <th></th>
                 </tr>
                 {equipments}
+                </tbody>
             </table>
         </div>
     );
