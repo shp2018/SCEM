@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDocs, query, collection, doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { getDocs, query, collection, doc, deleteDoc, updateDoc, setDoc } from "firebase/firestore";
 import { firestore } from "../firebase";
 import "../css/toolAlerts.css";
 
@@ -9,7 +9,7 @@ function ToolAlerts() {
   const [loaded, setLoaded] = useState(false);
   const [updatedData, setUpdatedData] = useState({});
 
-  const handleEdit = (idx, name) => {
+  const handleEdit = (idx, id) => {
     const mutatedEditing = editing.map((element, index) => {
       if (index === idx) return true;
       else return element;
@@ -20,7 +20,7 @@ function ToolAlerts() {
     const toolAlerts = toolAlertsData[idx];
     setUpdatedData({
       ...updatedData,
-      [name]: {
+      [id]: {
         name: toolAlerts.name,
         equipment: toolAlerts.equipment,
         description: toolAlerts.description,
@@ -29,11 +29,11 @@ function ToolAlerts() {
     });
   };
 
-  const handleSave = async (idx, name) => {
-    const updatedToolAlerts = updatedData[name];
+  const handleSave = async (idx, id) => {
+    const updatedToolAlerts = updatedData[id];
     if (updatedToolAlerts) {
-      // Update the database doc
-      await updateDoc(doc(firestore, 'toolAlerts', name), {
+      // Update the database doc using the "id" field as the identifier
+      await updateDoc(doc(firestore, 'toolAlerts', id), {
         name: updatedToolAlerts.name,
         equipment: updatedToolAlerts.equipment,
         description: updatedToolAlerts.description,
@@ -48,9 +48,9 @@ function ToolAlerts() {
     }
   };
 
-  const handleDelete = async (name) => {
-    setToolAlertsData(toolAlertsData.filter((toolAlertsData) => toolAlertsData.name !== name));
-    await deleteDoc(doc(firestore, 'toolAlerts', name));
+  const handleDelete = async (id) => {
+    setToolAlertsData(toolAlertsData.filter((toolAlertsData) => toolAlertsData.id !== id));
+    await deleteDoc(doc(firestore, 'toolAlerts', id));
   };
 
   const getToolAlertsData = async () => {
@@ -66,7 +66,8 @@ function ToolAlerts() {
       setToolAlertsData((curr) => [
         ...curr,
         {
-          name: doc.id,
+          id: doc.id, // Use the "id" field from Firestore as the unique identifier
+          name: data.name,
           equipment: data.equipment,
           description: data.description,
           active: data.active,
@@ -105,20 +106,20 @@ function ToolAlerts() {
                 <th className={'toolAlerts-tableHeading'}></th>
               </tr>
               {toolAlertsData.map((toolAlerts, index) => (
-                <tr key={toolAlerts.name}>
+                <tr key={toolAlerts.id}>
                   <td className={'toolAlerts-tableElement'}>{index + 1}</td>
                   <td
                     className={'toolAlerts-tableElement'}
                     contentEditable={editing[index]}
                     suppressContentEditableWarning={true}
-                    id={`toolAlerts-${toolAlerts.name}name`}
+                    id={`toolAlerts-${toolAlerts.id}name`}
                     onInput={(e) => {
                       const updatedValue = e.target.textContent;
                       setUpdatedData({
                         ...updatedData,
-                        [toolAlerts.name]: {
-                          ...updatedData[toolAlerts.name],
-                          active: updatedValue.toLowerCase() === 'on' ? true : false,
+                        [toolAlerts.id]: {
+                          ...updatedData[toolAlerts.id],
+                          name: updatedValue,
                         },
                       });
                     }}
@@ -129,13 +130,13 @@ function ToolAlerts() {
                     className={'toolAlerts-tableElement'}
                     contentEditable={editing[index]}
                     suppressContentEditableWarning={true}
-                    id={`toolAlerts-${toolAlerts.name}description`}
+                    id={`toolAlerts-${toolAlerts.id}description`}
                     onInput={(e) => {
                       const updatedValue = e.target.textContent;
                       setUpdatedData({
                         ...updatedData,
-                        [toolAlerts.name]: {
-                          ...updatedData[toolAlerts.name],
+                        [toolAlerts.id]: {
+                          ...updatedData[toolAlerts.id],
                           description: updatedValue,
                         },
                       });
@@ -147,13 +148,13 @@ function ToolAlerts() {
                     className={'toolAlerts-tableElement'}
                     contentEditable={editing[index]}
                     suppressContentEditableWarning={true}
-                    id={`toolAlerts-${toolAlerts.name}active`}
+                    id={`toolAlerts-${toolAlerts.id}active`}
                     onInput={(e) => {
                       const updatedValue = e.target.textContent.toLowerCase();
                       setUpdatedData({
                         ...updatedData,
-                        [toolAlerts.name]: {
-                          ...updatedData[toolAlerts.name],
+                        [toolAlerts.id]: {
+                          ...updatedData[toolAlerts.id],
                           active: updatedValue === 'on' ? true : false,
                         },
                       });
@@ -174,21 +175,21 @@ function ToolAlerts() {
                       <div id={'toolAlerts-dropdownMenu'}>
                         {editing[index] ? (
                           <button
-                            onClick={() => handleSave(index, toolAlerts.name)}
+                            onClick={() => handleSave(index, toolAlerts.id)}
                             className={'toolAlerts-dropdownButton'}
                           >
                             Save
                           </button>
                         ) : (
                           <button
-                            onClick={() => handleEdit(index, toolAlerts.name)}
+                            onClick={() => handleEdit(index, toolAlerts.id)}
                             className={'toolAlerts-dropdownButton'}
                           >
                             Edit
                           </button>
                         )}
                         <button
-                          onClick={() => handleDelete(toolAlerts.name)}
+                          onClick={() => handleDelete(toolAlerts.id)}
                           className={'toolAlerts-dropdownButton'}
                         >
                           Delete
