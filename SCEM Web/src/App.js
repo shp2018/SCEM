@@ -43,6 +43,7 @@ import User from "./routes/user";
 import ChangeProfile from "./routes/changeProfile";
 import ChangePassword from "./routes/changePassword";
 import Notification from "./routes/notification";
+import ManufactureManagement from "./routes/manufactureManagement";
 
 const App = () => {
     return (
@@ -97,6 +98,7 @@ const App = () => {
                 <Route path={"/user/changeProfile"} element={<ChangeProfile/>}/>
                 <Route path={"/user/changePassword"} element={<ChangePassword/>}/>
                 <Route path={"/user/notification"} element={<Notification/>}/>
+                <Route path={"/manufactureManagement"} element={<ManufactureManagement/>}/>
             </Routes>
         </Router>
     );
