@@ -1,40 +1,37 @@
-#alerts {
+#toolAlerts-body {
+    text-align: center;
     font-family: Roboto, sans-serif;
-    border-collapse: collapse;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    counter-reset: rowNumber;
 }
 
-#alerts tr:not(:first-child) {
-    counter-increment: rowNumber;
+#toolAlerts-header {
+    background-color: #133da5;
+    padding-bottom: 3em;
+    padding-top: 2em;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
+    position: relative;
 }
 
-#alerts tr td:first-child::before {
-    content: counter(rowNumber);
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+#toolAlerts-editableText {
+    color: #e32020;
 }
 
-#alerts td, #alerts th {
-    border: 1px solid #ddd;
-    padding: 8px;
+#toolAlerts-backButtonDiv {
+    position: relative;
+    display: inline-block;
+    filter: invert(100%);
+    right: 12em;
+    top: 2.45em;
 }
 
-#alerts tr:nth-child(even) {
-    background-color: #f2f2f2;
+#toolAlerts-titleText {
+    color: white;
 }
 
-#alerts tr:hover {
-    background-color: #ddd;
-}
-
-#alerts th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: #5982d3;
-    color: black;
+#toolAlerts-addButtonDiv {
+    position: relative;
+    display: inline-block;
     text-align: center;
 }
 
@@ -42,50 +39,77 @@
     position: absolute;
     height: 40px;
     width: 40px;
-    top: 3em;
-    right: 2em;
+    top: 39%;
+    right: 5%;
 }
 
-#toolAlerts-page {
-    text-align: center;
-}
-
-#toolAlerts-backButton {
-    position: absolute;
-    left: 3%;
-    filter: invert(100%);
-    padding-top: 3.5em;
-    padding-left: 1em;
-}
-
-#toolAlerts-header {
-    position: relative;
-    top: 50px;
-    padding-bottom: 20px;
-    margin-bottom: 50px;
-    background-color: #224cbf;
+#toolAlerts-table {
     margin-left: auto;
     margin-right: auto;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    height: 30%;
-    width: 50%;
+    border-collapse: collapse;
 }
 
-#toolAlerts-toolAlertsText {
-    color: white;
-    font-family: Roboto, sans-serif;
-    text-align: left;
-    padding-left: 5em;
-    padding-top: 2.5em;
+.toolAlerts-tableElement {
+    text-align: center;
+    border: 1px solid #cccccc;
+    height: 2.5em;
+    padding: 2px 1em;
 }
 
-#toolAlerts-tableLinkArrow {
+.toolAlerts-tableHeading {
+    border: 1px solid #cccccc;
+    height: 2.5em;
+    background-color: #5982d3;
+}
+
+#toolAlerts-tableArrowButton {
+    border: none;
+    background-color: white;
+}
+
+#toolAlerts-tableArrow {
     width: 1.5em;
     height: 1.5em;
 }
 
-#toolAlerts-linkArrowBox {
-    width: 2em;
-    height: 1em;
+#toolAlerts-dropdown {
+    display: inline-block;
+}
+
+#toolAlerts-dropdownMenu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+#toolAlerts-dropdownMenu .toolAlerts-dropdownButton {
+    text-decoration: none;
+    display: block;
+    padding: 12px 16px;
+}
+
+.toolAlerts-dropdownButton {
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    min-width: 120px;
+    font-weight: bold;
+}
+
+.toolAlerts-dropdownButton:first-child {
+    border-bottom: none;
+}
+
+.toolAlerts-dropdownButton:hover {
+    background-color: #f1f1f1;
+}
+
+#toolAlerts-dropdown:hover #toolAlerts-dropdownMenu {
+    display: block;
+}
+
+#toolAlerts-dropdown:hover {
+    background-color: #0b7dda;
 }
