@@ -35,6 +35,39 @@ function CreateEquipmentManagement() {
   const [latitude, setLatitude] = useState([]);
   const [longitude, setLongitude] = useState([]);
   const [site, setSite] = useState([]);
+  const [dropdownOptions, setDropdownOptions] = useState([]);
+  const [EquipTypeDrop, setEqipTypeOptions] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+        const locationref = collection(firestore, "location");
+        const locationQuery = query(locationref, where("name", "!=", ""));
+
+        const equipref = collection(firestore, "equipmentTypes");
+        const equiptypeQuery = query(equipref, where("name", "!=", ""));
+
+
+        const querySnapshot = await getDocs(locationQuery);
+        const equipQuery =  await getDocs(equiptypeQuery);
+        const options = [];
+        const equipmentTypes = []
+
+        querySnapshot.forEach((doc) => {
+            options.push(doc.data().name);
+        });
+
+        equipQuery.forEach((equip)=>{
+          equipmentTypes.push(equip.data().name);
+        })
+
+        setDropdownOptions(options);
+        setEqipTypeOptions(equipmentTypes)
+    };
+
+    fetchData();
+    checkAuthState();
+    fetchEquipmentGroupNames();
+}, []);
 
   async function checkAuthState() {
     onAuthStateChanged(auth, async (user) => {
@@ -52,10 +85,7 @@ function CreateEquipmentManagement() {
     });
   }
 
-  useEffect(() => {
-    checkAuthState();
-    fetchEquipmentGroupNames();
-  }, []);
+ 
 
   const fetchEquipmentGroupNames = async () => {
     const equipmentGroupsRef = collection(firestore, "equipmentGroups");
@@ -246,21 +276,21 @@ function CreateEquipmentManagement() {
             <br />
 
             <label id="createEquipmentManagement-Label">Equipment type</label>
+          
+           
             <select
-              id="createEquipmentManagement-Input"
-              style={{ width: "330px" }}
-              onChange={(e) => {
-                setEquipmentType(e.target.value);
-              }}
-            >
-              <option value="">Select equipment type</option>
-              <option value="Type 1">Type 1</option>
-              <option value="Type 2">Type 2</option>
-              <option value="Type 3">Type 3</option>
-              {/* Add more options as needed */}
-            </select>
-            <br />
-
+                id="createEquipmentManagement-Input"
+                  onChange={(e) => {
+                    setEquipmentType(e.target.value);
+                  }}>
+                <option value={""}>Choose a Equipment Type...</option>
+                    {EquipTypeDrop.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                </option>
+                                ))}
+              </select>
+              <br />
             <label id="createEquipmentManagement-Label">Weight</label>
             <input
               id="createEquipmentManagement-Input"
@@ -319,17 +349,22 @@ function CreateEquipmentManagement() {
             <br />
 
             <label id="createEquipmentManagement-Label">Site</label>
-            <input
-              id="createEquipmentManagement-Input"
-              type="text"
-              onChange={(e) => {
-                setSite(e.target.value);
-              }}
-            ></input>
+            <select
+                id="createEquipmentManagement-Input"
+                  onChange={(e) => {
+                      setSite(e.target.value);
+                  }}>
+                <option value={""}>Choose a Site...</option>
+                    {dropdownOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                </option>
+                                ))}
+              </select>
             <br />
           </div>
         </div>
-
+     
         <button
           id="createEquipmentManagement-createEquipmentManagementbutton"
           type="submit"
