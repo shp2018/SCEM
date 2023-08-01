@@ -17,17 +17,102 @@
     display: block;
     filter: invert(100%);
     text-align: left;
-    top: 3em;
+    top: 60px;
 }
 
 #manufactureManagement-titleText {
     color: white;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 #manufactureManagement-form {
     position: relative;
     background-color: #f1f1f1;
-    margin: 1em 3% 0 3%;
-    padding: 4em;
+    margin: 0 3% 0 3%;
+    padding: 4em 4em 6em 4em;
+}
+
+#manufactureManagement-formName {
+    position: absolute;
+    left: 60px;
+    top: 3em;
+    font-weight: bold;
+}
+
+#manufactureManagement-searchInput {
+    position: absolute;
+    font-size: 17px;
+    display: block;
+    width: 1670px;
+    height: 50px;
+    border-radius: 5px;
+    border: black;
+    padding: 0 0 0 10px;
+}
+
+#manufactureManagement-searchButton {
+    position: relative;
+    display: block;
+    font-size: 17px;
+    color: white;
+    width: 330px;
+    height: 50px;
+    border-radius: 0.7em;
+    background-color: #224cbf;
+    border-color: transparent;
+    font-weight: bold;
+    top: 4em;
+    margin: 0 auto;
+}
+
+#manufactureManagement-createButtonDiv {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    margin-top: 1em;
+    margin-left: 3%;
+}
+
+#manufactureManagement-createButton {
+    position: absolute;
+    background-color: #224cbf;
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    width: 200px;
+    height: 50px;
+    border-radius: 0.7em;
+    border-color: transparent;
+}
+
+#manufactureManagement-plusIcon {
+    position: absolute;
+    display: block;
+    height: 30px;
+    width: 30px;
+    top: 20%;
+    right: 5%;
+}
+
+#manufactureManagement-table {
+    margin: 2em auto 0 auto;
+    border-collapse: collapse;
+    width: 1800px;
+}
+
+.manufactureManagement-tableElement {
+    text-align: center;
+    border: 1px solid #cccccc;
+    height: 2em;
+}
+
+.manufactureManagement-tableHeading {
+    border: 1px solid #cccccc;
+    height: 2em;
+}
+
+#manufactureManagement-pageNavigation {
+    margin-top: 2em;
 }
