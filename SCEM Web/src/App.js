@@ -45,6 +45,7 @@ import ChangePassword from "./routes/changePassword";
 import Notification from "./routes/notification";
 import ManufactureManagement from "./routes/manufactureManagement";
 import CreateManufacture from "./routes/createManufacture";
+import ViewEquipmentMap from './routes/viewEquipmentMap';
 
 const App = () => {
     return (
@@ -85,6 +86,7 @@ const App = () => {
                 <Route path={"/equipmentManagement"} element={<EquipmentManagement/>}/>
                 <Route path={"/equipmentManagement/create"} element={<CreateEquipmentManagement/>}/>
                 <Route path={"/viewEquipmentList"} element={<ViewEquipmentList/>}/>
+                <Route path={"/ViewEquipmentMap"} element={<ViewEquipmentMap/>}/>
                 <Route path={"/tool/scheduling"} element={<ToolScheduling/>}/>
                 <Route path={"/tool/scheduling/create"} element={<CreateToolScheduling/>}/>
                 <Route path={"/tool/maintenance"} element={<ToolMaintenance/>}/>
