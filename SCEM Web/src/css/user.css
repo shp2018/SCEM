@@ -1,0 +1,100 @@
+#user-page {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#user-header {
+    background-color: #133da5;
+    padding-bottom: 3em;
+    padding-top: 2em;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin: 2em 30% 2em;
+    position: relative;
+}
+
+#user-displayName {
+    position: relative;
+    color: white;
+    top: 2em;
+}
+
+#user-profilePicture {
+    position: relative;
+    top: 2em;
+    right: 0.2em;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+#user-backButtonDiv {
+    position: relative;
+    display: inline-block;
+    filter: invert(100%);
+    right: 8em;
+}
+
+#user-firstItem {
+    margin-top: 3em;
+}
+
+.user-linkDivs {
+    margin: 0 auto 0 auto;
+    height: 50px;
+    width: 400px;
+    background-color: #f1f1f1;
+    position: relative;
+    border-style: inset;
+    border-width: 1px;
+    border-color: gray;
+}
+
+.user-blueCircle {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 3%;
+    top: 25%;
+}
+
+#user-linkText {
+    position: absolute;
+    left: 12%;
+    top: 32%;
+}
+
+#user-linkArrow {
+    position: absolute;
+    right: 4%;
+    top: 30%;
+    width: 20px;
+    height: 20px;
+}
+
+.user-headings {
+    margin-top: 3em;
+}
+
+#user-signOut {
+    margin-top: 3em;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+#user-signOutButton {
+    font-size: 16px;
+    color: white;
+    width: 400px;
+    height: 50px;
+    border-radius: 0.7em;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
+    font-weight: bold;
+}
+
+#user-loadingText {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+}

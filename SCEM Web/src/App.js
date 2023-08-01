@@ -39,6 +39,12 @@ import ToolEquipmentCount from "./routes/toolEquipmentCount";
 import SiteAndTrackingLink from "./routes/siteAndTrackingLink";
 import CreateSiteAndTrackingLink from "./routes/createSiteAndTrackingLink";
 import Report from "./routes/report";
+import User from "./routes/user";
+import ChangeProfile from "./routes/changeProfile";
+import ChangePassword from "./routes/changePassword";
+import Notification from "./routes/notification";
+import ManufactureManagement from "./routes/manufactureManagement";
+import CreateManufacture from "./routes/createManufacture";
 import ViewEquipmentMap from './routes/viewEquipmentMap';
 
 const App = () => {
@@ -91,6 +97,12 @@ const App = () => {
                 <Route path={"/siteAndTrackingLink"} element={<SiteAndTrackingLink/>}/>
                 <Route path={"/siteAndTrackingLink/create"} element={<CreateSiteAndTrackingLink/>}/>
                 <Route path={"/report"} element={<Report/>}/>
+                <Route path={"/user"} element={<User/>}/>
+                <Route path={"/user/changeProfile"} element={<ChangeProfile/>}/>
+                <Route path={"/user/changePassword"} element={<ChangePassword/>}/>
+                <Route path={"/user/notification"} element={<Notification/>}/>
+                <Route path={"/manufactureManagement"} element={<ManufactureManagement/>}/>
+                <Route path={"/manufactureManagement/create"} element={<CreateManufacture/>}/>
             </Routes>
         </Router>
     );

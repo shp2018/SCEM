@@ -1,20 +1,23 @@
 import React from "react";
 import {auth} from "../firebase";
-import '../css/signout.css';
 
-function SignOut() {
+const SignOut = ({id, text, redirect}) => {
     const removeAuthentication = (e) => {
         e.preventDefault();
 
         auth.signOut().then(() => {
-            window.location.reload();
+            if (redirect) {
+                window.location.href = "/login";
+            } else {
+                window.location.reload();
+            }
         })
     }
 
     return (
-        <div id={"signOut"}>
+        <div>
             <button onClick={removeAuthentication}
-                    id={"signOut-signOutButton"}> Sign Out
+                    id={id}> {text}
             </button>
         </div>
     );
