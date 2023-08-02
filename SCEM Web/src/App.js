@@ -46,6 +46,8 @@ import Notification from "./routes/notification";
 import ManufactureManagement from "./routes/manufactureManagement";
 import CreateManufacture from "./routes/createManufacture";
 import ViewEquipmentMap from './routes/viewEquipmentMap';
+import TrackerManagement from "./routes/trackerManagement";
+import CreateTracker from "./routes/createTracker";
 
 const App = () => {
     return (
@@ -103,6 +105,8 @@ const App = () => {
                 <Route path={"/user/notification"} element={<Notification/>}/>
                 <Route path={"/manufactureManagement"} element={<ManufactureManagement/>}/>
                 <Route path={"/manufactureManagement/create"} element={<CreateManufacture/>}/>
+                <Route path={"/trackerManagement"} element={<TrackerManagement/>}/>
+                <Route path={"trackerManagement/create"} element={<CreateTracker/>}/>
             </Routes>
         </Router>
     );
