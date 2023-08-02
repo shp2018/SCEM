@@ -116,3 +116,63 @@
 #manufactureManagement-pageNavigation {
     margin-top: 2em;
 }
+
+.manufactureManagement-tableButtons {
+    position: relative;
+    left: 38%;
+}
+
+.manufactureManagement-divider {
+    float: left;
+}
+
+.manufactureManagement-editButton {
+    float: left;
+    width: 40px;
+    height: 50px;
+    border: none;
+    background-color: white;
+    color: #133da5;
+}
+
+.manufactureManagement-saveButton {
+    float: left;
+    width: 40px;
+    height: 50px;
+    border: none;
+    background-color: white;
+    color: #133da5;
+}
+
+.manufactureManagement-modelButton {
+    float: left;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: white;
+    color: #133da5;
+}
+
+#manufactureManagement-prev {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#manufactureManagement-next {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.manufactureManagement-pageNumber {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
