@@ -2,12 +2,7 @@ import React, {useEffect, useState} from 'react';
 import '../css/manufactureManagement.css';
 import {collection, query, where, getDocs, updateDoc, doc} from "firebase/firestore";
 import {firestore} from "../firebase";
-
-const PageNumber = ({num, handler}) => {
-    return (
-        <button className={"manufactureManagement-pageNumber"} id={`manufactureManagement-pageNumber${num}`} onClick={handler}>{num}</button>
-    );
-}
+import PageNumber from "../components/pageNumber";
 
 const ManufactureManagement = () => {
     const [searchResults, setSearchResults] = useState([]);
@@ -32,10 +27,6 @@ const ManufactureManagement = () => {
         });
 
         setSearchResults(results);
-    }
-
-    const redirectToCreate = () => {
-        window.location.href = "/manufactureManagement/create";
     }
 
     const launchPageNumbers = () => {
@@ -103,7 +94,7 @@ const ManufactureManagement = () => {
                 <button id={"manufactureManagement-searchButton"} type={"submit"}>Search</button>
             </form>
             <div id={"manufactureManagement-createButtonDiv"}>
-                <button id={"manufactureManagement-createButton"} onClick={redirectToCreate}>Create New
+                <button id={"manufactureManagement-createButton"} onClick={() => window.location.href = "/manufactureManagement/create"}>Create New
                     <img src={"/locationAdd.png"} id={"manufactureManagement-plusIcon"} alt={"Plus icon"}>
                     </img>
                 </button>

@@ -1,0 +1,206 @@
+#trackerManagement-page {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#trackerManagement-header {
+    position: relative;
+    background-color: #133da5;
+    margin: 1em 3% 0 3%;
+    padding: 2em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+#trackerManagement-backButtonDiv {
+    position: absolute;
+    display: block;
+    filter: invert(100%);
+    text-align: left;
+    top: 60px;
+}
+
+#trackerManagement-titleText {
+    color: white;
+    font-size: 22px;
+}
+
+#trackerManagement-form {
+    position: relative;
+    background-color: #f1f1f1;
+    margin: 0 3% 0 3%;
+    padding: 4em 4em 6em 4em;
+}
+
+#trackerManagement-searchButton {
+    position: relative;
+    display: block;
+    font-size: 17px;
+    color: white;
+    width: 330px;
+    height: 50px;
+    border-radius: 0.7em;
+    background-color: #224cbf;
+    border-color: transparent;
+    font-weight: bold;
+    top: 4em;
+    margin: 5em auto 0 auto;
+}
+
+.trackerManagement-formLabel {
+    color: gray;
+    font-weight: bold;
+}
+
+#trackerManagement-inputDivs {
+    position: relative;
+}
+
+#trackerManagement-inputDivType {
+    position: absolute;
+    bottom: -2em;
+    left: 0;
+}
+
+#trackerManagement-inputDivSite {
+    position: absolute;
+    bottom: -2em;
+    right: 0;
+}
+
+#trackerManagement-inputDivService {
+    position: absolute;
+    top: 3em;
+    left: 0;
+}
+
+#trackerManagement-inputDivID {
+    position: absolute;
+    top: 3em;
+    right: 0;
+}
+
+.trackerManagement-input {
+    width: 800px;
+    height: 50px;
+    border-radius: 5px;
+    border: black;
+    color: #133da5;
+    font-size: 14px;
+    padding-left: 1em;
+}
+
+#trackerManagement-inputID {
+    width: 783px;
+    height: 50px;
+    border-radius: 5px;
+    border: black;
+    color: #133da5;
+    font-size: 14px;
+    padding-left: 1em;
+}
+
+#trackerManagement-createButtonDiv {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    margin-top: 1em;
+    margin-left: 3%;
+}
+
+#trackerManagement-createButton {
+    position: absolute;
+    background-color: #224cbf;
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    width: 200px;
+    height: 50px;
+    border-radius: 0.7em;
+    border-color: transparent;
+}
+
+#trackerManagement-plusIcon {
+    position: absolute;
+    display: block;
+    height: 30px;
+    width: 30px;
+    top: 20%;
+    right: 5%;
+}
+
+#trackerManagement-table {
+    margin: 2em auto 0 auto;
+    border-collapse: collapse;
+    width: 1800px;
+}
+
+.trackerManagement-tableElement {
+    text-align: center;
+    border: 1px solid #cccccc;
+    height: 2em;
+}
+
+.trackerManagement-tableHeading {
+    border: 1px solid #cccccc;
+    height: 2em;
+}
+
+.trackerManagement-tableButtons {
+    position: relative;
+    left: 38%;
+}
+
+.trackerManagement-editButton {
+    float: left;
+    width: 40px;
+    height: 50px;
+    border: none;
+    background-color: white;
+    color: #133da5;
+}
+
+.trackerManagement-saveButton {
+    float: left;
+    width: 40px;
+    height: 50px;
+    border: none;
+    background-color: white;
+    color: #133da5;
+}
+
+#trackerManagement-pageNavigation {
+    margin-top: 2em;
+}
+
+#trackerManagement-prev {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#trackerManagement-next {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.trackerManagement-pageNumber {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#trackerManagement-loading {
+    text-align: center;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+}
