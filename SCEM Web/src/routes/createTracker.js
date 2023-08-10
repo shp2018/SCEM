@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import '../css/createTracker.css';
-import {addDoc, collection, getDocs} from "firebase/firestore";
+import {addDoc, collection, getDocs, query, where} from "firebase/firestore";
 import {firestore} from "../firebase";
 
 const CreateTracker = () => {
-    const [type, setType] = useState("All");
-    const [site, setSite] = useState("All");
-    const [service, setService] = useState("All");
+    const [type, setType] = useState("");
+    const [site, setSite] = useState("");
+    const [service, setService] = useState("");
     const [ID, setID] = useState("");
     const [APIKEY, setAPIKEY] = useState("");
     const [API_SECRET, setAPI_SECRET] = useState("");
@@ -41,8 +41,16 @@ const CreateTracker = () => {
 
         if (duplicate) return;
 
+        let lon;
+        let lat;
+        const siteQuerySnapshot = await getDocs(query(collection(firestore, "site location"), where("siteName", "==", site)))
+        siteQuerySnapshot.forEach(doc => {
+            lon = doc.data().lon;
+            lat = doc.data().lat;
+        });
+
         await addDoc(collection(firestore, `${type}s`), {
-            site, service, ID, APIKEY, API_SECRET, warrantyPolicy, type
+            site, service, ID, APIKEY, API_SECRET, warrantyPolicy, type, lon, lat
         }).then(() => alert("Added successfully."));
     }
 
@@ -85,6 +93,7 @@ const CreateTracker = () => {
                     <label className={"createTracker-label"}>Type</label>
                     <br></br>
                     <select className={"createTracker-input"} onChange={e => setType(e.target.value)}>
+                        <option>Select from below...</option>
                         <option value={"tracker"}>Tracker</option>
                         <option value={"sensor"}>Sensor</option>
                     </select>
@@ -93,6 +102,7 @@ const CreateTracker = () => {
                     <label className={"createTracker-label"}>Site</label>
                     <br></br>
                     <select className={"createTracker-input"} onChange={e => setSite(e.target.value)}>
+                        <option>Select from below...</option>
                         {allSites.map(doc => <option key={doc.id} value={doc.data().siteName}>{doc.data().siteName}</option>)}
                     </select>
                 </div>
@@ -100,6 +110,7 @@ const CreateTracker = () => {
                     <label className={"createTracker-label"}>Service</label>
                     <br></br>
                     <select className={"createTracker-input"} onChange={e => setService(e.target.value)}>
+                        <option>Select from below...</option>
                         {allServices.map(doc => <option key={doc.id} value={doc.data().name}>{doc.data().name}</option>)}
                     </select>
                 </div>

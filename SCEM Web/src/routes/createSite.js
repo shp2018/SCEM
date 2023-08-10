@@ -72,6 +72,7 @@ const CreateSite = () => {
 
         const locationGroup = doc(firestore, "site location", Name);
         const locationData = await getDoc(locationGroup);
+        console.log(mapCenter);
         let data = {
             siteName: Name,
             siteAddress: Address,
@@ -79,6 +80,8 @@ const CreateSite = () => {
             locationGroup: locationGrp,
             userCreated: userName,
             userID: userID,
+            lat: mapCenter.lat,
+            lon: mapCenter.lng,
         };
 
         if (locationData.exists()) {
