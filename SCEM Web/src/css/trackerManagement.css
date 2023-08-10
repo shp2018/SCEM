@@ -191,14 +191,6 @@
     font-weight: bold;
 }
 
-.trackerManagement-pageNumber {
-    border: none;
-    background-color: white;
-    font-family: Roboto, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-}
-
 #trackerManagement-loading {
     text-align: center;
     font-size: 20px;
