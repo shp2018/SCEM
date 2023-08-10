@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import "../css/userGroup.css";
-import {collection, getDocs, query, where} from "firebase/firestore";
+import {collection, doc, getDocs, query, updateDoc, where} from "firebase/firestore";
 import {auth, firestore} from "../firebase";
 import {onAuthStateChanged} from "firebase/auth";
 
@@ -8,21 +8,7 @@ const UserGroup = () => {
     const [userGroupIDs, setUserGroupIDs] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [currentUserID, setCurrentUserID] = useState(null);
-
-    const dropdown = () => {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    window.onclick = (event) => {
-        if (event.target.matches('.userManagement-dropdownButton')) {
-            const dropdowns = document.getElementsByClassName("dropdown-content");
-            for (let i = 0; i < dropdowns.length; i++) {
-                if (dropdowns[i].classList.contains('show')) {
-                    dropdowns[i].classList.remove('show');
-                }
-            }
-        }
-    }
+    const [editing, setEditing] = useState([]);
 
     const getCurrentUserID = () => {
         onAuthStateChanged(auth, (user) => {
@@ -35,41 +21,54 @@ const UserGroup = () => {
         const userGroupsQuery = query(userGroupsRef, where("userCreatedID", "==", currentUserID));
         const querySnapshot = await getDocs(userGroupsQuery);
         setUserGroupIDs([]);
+        let queriedData = [];
 
         querySnapshot.forEach(doc => {
-            let data = doc.data();
-            setUserGroupIDs(curr => [...curr,
-                <tr key={doc.id}>
-                    <td className={"userGroups-tableElement"}>{}</td>
-                    <td className={"userGroups-tableElement"}>{data.name}</td>
-                    <td className={"userGroups-tableElement"}>{data.active ? "On" : "Off"}</td>
-                    <td className={"userGroups-tableElement"}>
-                        <div className={"userManagement-dropdownDiv"}>
-                            <button onClick={dropdown} className={"userManagement-dropdownButton"}
-                                    id={"userManagement-dropDownButtonID"}><img
-                                src={"/triangle-right.svg"}
-                                alt={"Right arrow used to redirect user to item link."}
-                                id={"userManagement-tableLinkArrow"}>
-                            </img></button>
-                            <div id={"myDropdown"} className={"dropdown-content"}>
-                                <a href={`/userGroup`} className={"userManagement-dropdownButton"}>Edit</a>
-                                <a href={`/userGroup`} className={"userManagement-dropdownButton"}>Permission</a>
-                                <button className={"userManagement-dropdownButton"}
-                                        id={"userManagement-dropdownCancel"}>Cancel
-                                </button>
-                            </div>
-                        </div>
-                    </td>
-                </tr>])
-        })
+            queriedData.push(doc);
+        });
+        setUserGroupIDs(queriedData);
     }
 
     useEffect(() => {
         getCurrentUserID();
         getUserGroupsData().then(() => {
+            setEditing(Array(userGroupIDs.size).fill(false));
             setLoaded(true);
         })
     }, [currentUserID]);
+
+    const handleEdit = idx => {
+        const mutatedEditing = editing.map((element, index) => {
+            if (index === idx) return true;
+            else return element;
+        });
+        setEditing(mutatedEditing);
+    }
+
+    const handleSave = async (idx, id) => {
+        const name = document.getElementById(`userGroups-${id}name`).innerText;
+        const active = document.getElementById(`userGroups-${id}active`).innerText === 'On';
+
+        if (document.getElementById(`userGroups-${id}active`).innerText !== 'On'
+        && document.getElementById(`userGroups-${id}active`).innerText !== 'Off') {
+            alert("Please only change this to On or Off");
+            return;
+        }
+
+        await updateDoc(doc(firestore, "userGroups", id), {
+            name, active
+        });
+
+        const mutatedEditing = editing.map((element, index) => {
+            if (index === idx) return false;
+            else return element;
+        });
+        setEditing(mutatedEditing);
+    }
+
+    const handlePermission = () => {
+        alert("This feature will be implemented later.");
+    }
 
     return (
         <div id={"userGroups-body"}>
@@ -94,8 +93,8 @@ const UserGroup = () => {
             <div id={"userGroups-tableDiv"}>
                 {loaded ?
                     <table
-                    className={"userGroups-tableElement"}
-                    id={"userGroups-table"}>
+                        className={"userGroups-tableElement"}
+                        id={"userGroups-table"}>
                         <tbody>
                         <tr>
                             <th className={"userGroups-tableHeading"}>#</th>
@@ -103,7 +102,36 @@ const UserGroup = () => {
                             <th className={"userGroups-tableHeading"}>Active</th>
                             <th className={"userGroups-tableHeading"}></th>
                         </tr>
-                        {userGroupIDs}
+                        {userGroupIDs.map((doc, index) =>
+                            <tr key={doc.id}>
+                                <td className={"userGroups-tableElement"}>{index + 1}</td>
+                                <td className={"userGroups-tableElement"}
+                                contentEditable={editing[index]}
+                                suppressContentEditableWarning={true}
+                                id={`userGroups-${doc.id}name`}>{doc.data().name}</td>
+                                <td className={"userGroups-tableElement"}
+                                    contentEditable={editing[index]}
+                                    suppressContentEditableWarning={true}
+                                    id={`userGroups-${doc.id}active`}>{doc.data().active ? "On" : "Off"}</td>
+                                <td className={"userGroups-tableElement"}>
+                                    <div id={"userGroups-dropdown"}>
+                                        <button id={"userGroups-tableArrowButton"}>
+                                            <img src={"/triangle-right.svg"}
+                                                 alt={"Right arrow used to create dropdown menu."}
+                                                 id={"userGroups-tableArrow"}/>
+                                        </button>
+                                        <div id={"userGroups-dropdownMenu"}>
+                                            {!editing[index] ?
+                                                <button onClick={() => handleEdit(index)}
+                                                        className={"userGroups-dropdownButton"}>Edit</button> :
+                                                <button onClick={() => handleSave(index, doc.id)}
+                                                        className={"userGroups-dropdownButton"}>Save</button>}
+                                            <button onClick={handlePermission}
+                                                    className={"userGroups-dropdownButton"}>Permission</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>)}
                         </tbody>
                     </table>
                     : <p className={"loading"}>Loading...</p>}
