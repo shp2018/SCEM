@@ -40,30 +40,64 @@
 }
 
 #userGroups-table {
-    margin-left: auto;
-    margin-right: auto;
-    counter-reset: rowNumber;
+    margin: 2em auto 0 auto;
     border-collapse: collapse;
+    width: 600px;
 }
 
 .userGroups-tableElement {
     text-align: center;
     border: 1px solid #cccccc;
-    height: 2.5em;
+    height: 3em;
 }
 
 .userGroups-tableHeading {
     border: 1px solid #cccccc;
-    height: 2.5em;
+    height: 2em;
     background-color: #5982d3;
 }
 
-#userGroups-table tr:not(:first-child) {
-    counter-increment: rowNumber;
+#userGroups-tableArrowButton {
+    background-color: transparent;
+    border: none;
 }
 
-#userGroups-table tr .userGroups-tableElement:first-child::before {
-    content: counter(rowNumber);
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+#userGroups-tableArrow {
+    height: 2em;
+    width: 2em;
+}
+
+#userGroups-dropdown {
+    display: inline-block;
+}
+
+#userGroups-dropdownMenu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.userGroups-dropdownButton {
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    min-width: 120px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    padding: 12px 16px;
+}
+
+.userGroups-dropdownButton:first-child {
+    border-bottom: none;
+}
+
+.userGroups-dropdownButton:hover {
+    background-color: #f1f1f1;
+}
+
+#userGroups-dropdown:hover #userGroups-dropdownMenu {
+    display: block;
 }

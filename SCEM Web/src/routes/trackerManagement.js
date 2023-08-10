@@ -179,7 +179,7 @@ const TrackerManagement = () => {
         let querySnapshot = await getDocs(collection(firestore, "trackers"));
         querySnapshot.forEach(doc => {
             let docID = doc.data().ID;
-            if (ID === docID) {
+            if (ID === docID && doc.id !== id) {
                 alert("ID already exists, please check again.");
                 duplicate = true;
             }
@@ -190,7 +190,7 @@ const TrackerManagement = () => {
         querySnapshot = await getDocs(collection(firestore, "sensors"));
         querySnapshot.forEach(doc => {
             let docID = doc.data().ID;
-            if (ID === docID) {
+            if (ID === docID && doc.id !== id) {
                 alert("ID already exists, please check again.");
                 duplicate = true;
             }

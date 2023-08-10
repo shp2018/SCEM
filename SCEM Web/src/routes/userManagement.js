@@ -2,14 +2,15 @@ import React, {useState, useEffect} from 'react';
 import '../css/userManagement.css';
 import {onAuthStateChanged} from "firebase/auth";
 import {auth, firestore} from "../firebase";
-import {collection, getDocs, query, where, doc, getDoc} from "firebase/firestore";
+import {collection, getDocs, query, where, doc, getDoc, updateDoc} from "firebase/firestore";
 
 const UserManagement = () => {
     const [userID, setUserID] = useState(null);
     const [usersPath, setUsersPath] = useState([]);
-    const [usersData, setUsersData] = useState([])
+    const [usersData, setUsersData] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const companyRef = collection(firestore, "company");
+    const [editing, setEditing] = useState([]);
 
     const getUserID = async () => {
         onAuthStateChanged(auth, async (user) => {
@@ -24,7 +25,6 @@ const UserManagement = () => {
 
         querySnapshot.forEach(doc => {
             const usersArray = doc.data().users;
-
             usersArray.forEach(res => {
                 setUsersPath(curr => [...curr,
                     res._key.path.lastSegment()]);
@@ -47,11 +47,45 @@ const UserManagement = () => {
         getUserID().then(() => {
             getUsersPaths().then(() => {
                 getUsersData().then(() => {
+                    setEditing(Array(usersData.size).fill(false));
                     setLoaded(true);
                 })
             })
         })
     }, [userID, loaded]);
+
+    const handleEdit = idx => {
+        const mutatedEditing = editing.map((element, index) => {
+            if (index === idx) return true;
+            else return element;
+        });
+        setEditing(mutatedEditing);
+    }
+
+    const handleSave = async (idx, id) => {
+        const fullname = document.getElementById(`userManagement-${id}fullname`).innerText;
+        const locked = document.getElementById(`userManagement-${id}locked`).innerText !== 'On';
+
+        if (document.getElementById(`userManagement-${id}locked`).innerText !== 'On'
+            && document.getElementById(`userManagement-${id}locked`).innerText !== 'Off') {
+            alert("Please only change this to On or Off.");
+            return;
+        }
+
+        await updateDoc(doc(firestore, "users", id), {
+            fullname, locked
+        });
+
+        const mutatedEditing = editing.map((element, index) => {
+            if (index === idx) return false;
+            else return element;
+        });
+        setEditing(mutatedEditing);
+    }
+
+    const handlePermission = () => {
+        alert("This feature will be implemented later.");
+    }
 
     return (
         <div id={"userManagement-body"}>
@@ -89,9 +123,13 @@ const UserManagement = () => {
                         {usersData.map((docSnap, index) =>
                             <tr key={docSnap.id}>
                                 <td className={"userManagement-usersInfoTableElement"}>{index + 1}</td>
-                                <td className={"userManagement-usersInfoTableElement"}>{docSnap.data().fullname}</td>
+                                <td className={"userManagement-usersInfoTableElement"} contentEditable={editing[index]}
+                                    suppressContentEditableWarning={true}
+                                    id={`userManagement-${docSnap.id}fullname`}>{docSnap.data().fullname}</td>
                                 <td className={"userManagement-usersInfoTableElement"}>{docSnap.data().email}</td>
-                                <td className={"userManagement-usersInfoTableElement"}>{docSnap.data().locked ? "Off" : "On"}</td>
+                                <td className={"userManagement-usersInfoTableElement"} contentEditable={editing[index]}
+                                    suppressContentEditableWarning={true}
+                                    id={`userManagement-${docSnap.id}locked`}>{docSnap.data().locked ? "Off" : "On"}</td>
                                 <td className={"userManagement-usersInfoTableElement"}>
                                     <div id={"userManagement-dropdown"}>
                                         <button id={"userManagement-tableArrowButton"}>
@@ -99,6 +137,16 @@ const UserManagement = () => {
                                                  alt={"Right arrow used to create dropdown menu."}
                                                  id={"userManagement-tableArrow"}/>
                                         </button>
+                                        <div id={"userManagement-dropdownMenu"}>
+                                            {!editing[index] ?
+                                                <button onClick={() => handleEdit(index)}
+                                                        className={"userManagement-dropdownButton"}>Edit</button>
+                                                : <button onClick={() => handleSave(index, docSnap.id)}
+                                                          className={"userManagement-dropdownButton"}>Save</button>}
+                                            <button onClick={handlePermission}
+                                                    className={"userManagement-dropdownButton"}>Permission
+                                            </button>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>)}
