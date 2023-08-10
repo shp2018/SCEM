@@ -1,0 +1,56 @@
+#createModel-page {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#createModel-header {
+    position: relative;
+    background-color: #133da5;
+    margin: 1em 3% 0 3%;
+    padding: 2em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+#createModel-backButtonDiv {
+    position: absolute;
+    display: block;
+    filter: invert(100%);
+    text-align: left;
+    top: 60px;
+}
+
+#createModel-titleText {
+    color: white;
+    font-size: 22px;
+}
+
+.createModel-inputBox {
+    margin: 2em 5% 0 5%;
+    text-align: left;
+}
+
+.createModel-input {
+    border-style: solid;
+    border-radius: 5px;
+    margin-top: 1em;
+    width: 1700px;
+    height: 50px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+    color: #133da5;
+}
+
+#createModel-submitButton {
+    font-size: 16px;
+    color: white;
+    width: 300px;
+    height: 50px;
+    margin: 2em 0;
+    border-radius: 12px;
+    background-color: #133da5;
+    border-color: transparent;
+    font-weight: bold;
+}
+
+

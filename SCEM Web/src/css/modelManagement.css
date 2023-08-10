@@ -1,0 +1,192 @@
+#modelManagement-page {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+#modelManagement-header {
+    position: relative;
+    background-color: #133da5;
+    margin: 1em 3% 0 3%;
+    padding: 2em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+#modelManagement-backButtonDiv {
+    position: absolute;
+    display: block;
+    filter: invert(100%);
+    text-align: left;
+    top: 60px;
+}
+
+#modelManagement-titleText {
+    color: white;
+    font-size: 22px;
+}
+
+#modelManagement-form {
+    position: relative;
+    background-color: #f1f1f1;
+    margin: 0 3% 0 3%;
+    padding: 4em 4em 6em 4em;
+}
+
+#modelManagement-formName{
+    position: absolute;
+    left: 60px;
+    top: 3em;
+    font-weight: bold;
+}
+
+
+
+#modelManagement-searchButton {
+    position: relative;
+    display: block;
+    font-size: 17px;
+    color: white;
+    width: 330px;
+    height: 50px;
+    border-radius: 0.7em;
+    background-color: #224cbf;
+    border-color: transparent;
+    font-weight: bold;
+    top: 4em;
+    margin: 0 auto;
+}
+
+#modelManagement-createButtonDiv {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    margin-top: 1em;
+    margin-left: 3%;
+}
+
+#modelManagement-createButton {
+    position: absolute;
+    background-color: #224cbf;
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    width: 200px;
+    height: 50px;
+    border-radius: 0.7em;
+    border-color: transparent;
+}
+
+#modelManagement-plusIcon {
+    position: absolute;
+    display: block;
+    height: 30px;
+    width: 30px;
+    top: 20%;
+    right: 5%;
+}
+
+#modelManagement-table {
+    margin: 2em auto 0 auto;
+    border-collapse: collapse;
+    width: 1800px;
+}
+
+.modelManagement-tableElement {
+    text-align: center;
+    border: 1px solid #cccccc;
+    height: 2em;
+}
+
+.modelManagement-tableHeading {
+    border: 1px solid #cccccc;
+    height: 2em;
+}
+
+#modelManagement-pageNavigation {
+    margin-top: 2em;
+}
+
+.modelManagement-tableButtons {
+    position: relative;
+    left: 38%;
+}
+
+.modelManagement-divider {
+    float: left;
+}
+
+.modelManagement-editButton {
+    float: left;
+    width: 40px;
+    height: 50px;
+    border: none;
+    padding: 5px 10px;
+    background-color: white;
+    color: #133da5;
+}
+
+.modelManagement-saveButton {
+    float: left;
+    width: 40px;
+    height: 50px;
+    border: none;
+    padding: 5px 10px;
+    background-color: white;
+    color: #133da5;
+}
+
+
+
+#modelManagement-prev {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#modelManagement-next {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.modelManagement-pageNumber {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.modelManagement-tableButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.search-input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.search-input-container label {
+    margin-right: 10px;
+    flex: 0.4;
+}
+
+.search-input-container input,
+.search-input-container select {
+    padding: 5px;
+    flex: 0.6;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; 
+}

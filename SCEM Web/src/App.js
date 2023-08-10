@@ -49,6 +49,8 @@ import ViewEquipmentMap from './routes/viewEquipmentMap';
 import TrackerManagement from "./routes/trackerManagement";
 import CreateTracker from "./routes/createTracker";
 import RawData from "./routes/rawData";
+import ModelManagement from './routes/modelManagement';
+import CreateModel from './routes/createModel';
 
 const App = () => {
     return (
@@ -109,6 +111,8 @@ const App = () => {
                 <Route path={"/trackerManagement"} element={<TrackerManagement/>}/>
                 <Route path={"trackerManagement/create"} element={<CreateTracker/>}/>
                 <Route path={"rawData"} element={<RawData/>}/>
+                <Route path={"/modelManagement"} element={<ModelManagement/>}/>
+                <Route path={"/modelManagement/create"} element={<CreateModel/>}/>
             </Routes>
         </Router>
     );
