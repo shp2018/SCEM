@@ -137,6 +137,7 @@ const TrackerManagement = () => {
             dataQueried.push(doc);
         });
         setAllSites(dataQueried);
+        setSite(dataQueried[0].data().name);
     }
 
     const getAllServices = async () => {
@@ -146,6 +147,7 @@ const TrackerManagement = () => {
             dataQueried.push(doc);
         });
         setAllServices(dataQueried);
+        setService(dataQueried[0].data().name);
     }
 
     useEffect(() => {
@@ -155,10 +157,6 @@ const TrackerManagement = () => {
             });
         });
     }, []);
-
-    // useEffect(() => {
-    //     getAllServices();
-    // }, []);
 
     const handleEdit = idx => {
         const mutatedEditing = editing.map((element, index) => {
@@ -236,6 +234,7 @@ const TrackerManagement = () => {
                             <label className={"trackerManagement-formLabel"}>Site</label>
                             <br></br>
                             <select className={"trackerManagement-input"} onChange={e => setSite(e.target.value)}>
+                                <option>Select from below...</option>
                                 {allSites.map(doc => <option key={doc.id}
                                                              value={doc.data().siteName}>{doc.data().siteName}</option>)}
                             </select>
@@ -244,6 +243,7 @@ const TrackerManagement = () => {
                             <label className={"trackerManagement-formLabel"}>Service</label>
                             <br></br>
                             <select className={"trackerManagement-input"} onChange={e => setService(e.target.value)}>
+                                <option>Select from below...</option>
                                 {allServices.map(doc => <option key={doc.id}
                                                                 value={doc.data().name}>{doc.data().name}</option>)}
                             </select>
