@@ -39,7 +39,18 @@ import ToolEquipmentCount from "./routes/toolEquipmentCount";
 import SiteAndTrackingLink from "./routes/siteAndTrackingLink";
 import CreateSiteAndTrackingLink from "./routes/createSiteAndTrackingLink";
 import Report from "./routes/report";
+import User from "./routes/user";
+import ChangeProfile from "./routes/changeProfile";
+import ChangePassword from "./routes/changePassword";
+import Notification from "./routes/notification";
+import ManufactureManagement from "./routes/manufactureManagement";
+import CreateManufacture from "./routes/createManufacture";
 import ViewEquipmentMap from './routes/viewEquipmentMap';
+import TrackerManagement from "./routes/trackerManagement";
+import CreateTracker from "./routes/createTracker";
+import RawData from "./routes/rawData";
+import ModelManagement from './routes/modelManagement';
+import CreateModel from './routes/createModel';
 import YearlyReleaseCreate from './routes/yearlyReleaseCreate';
 import YearlyRelease from './routes/yearlyRelease';
 
@@ -93,6 +104,17 @@ const App = () => {
                 <Route path={"/siteAndTrackingLink"} element={<SiteAndTrackingLink/>}/>
                 <Route path={"/siteAndTrackingLink/create"} element={<CreateSiteAndTrackingLink/>}/>
                 <Route path={"/report"} element={<Report/>}/>
+                <Route path={"/user"} element={<User/>}/>
+                <Route path={"/user/changeProfile"} element={<ChangeProfile/>}/>
+                <Route path={"/user/changePassword"} element={<ChangePassword/>}/>
+                <Route path={"/user/notification"} element={<Notification/>}/>
+                <Route path={"/manufactureManagement"} element={<ManufactureManagement/>}/>
+                <Route path={"/manufactureManagement/create"} element={<CreateManufacture/>}/>
+                <Route path={"/trackerManagement"} element={<TrackerManagement/>}/>
+                <Route path={"trackerManagement/create"} element={<CreateTracker/>}/>
+                <Route path={"rawData"} element={<RawData/>}/>
+                <Route path={"/modelManagement"} element={<ModelManagement/>}/>
+                <Route path={"/modelManagement/create"} element={<CreateModel/>}/>
                 <Route path={"/yearlyRelease"} element = {<YearlyRelease/>}/>
                 <Route path={"/yearlyRelease/create"} element = {<YearlyReleaseCreate/>}/>
             </Routes>
