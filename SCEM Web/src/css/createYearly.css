@@ -1,0 +1,81 @@
+
+#createYearly-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#createYearly-page {
+    text-align: left;
+    flex-direction: column;
+}
+#createYearly-createYearlyText{
+    text-align: center;
+}
+#createYearly-header {
+    background-color: #224cbf;
+    padding: 25px 30%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 25px;
+}
+
+#createYearly-createYearlyText {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#createYearly-select{
+    border-style: double;
+    border-radius: 5px;
+    width: 1050px;
+    height: 50px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+    margin-bottom: 25px;
+}
+
+
+#createYearly-Label {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+#createYearly-Input {
+    border-style: double;
+    border-radius: 5px;
+    width: 300px;
+    height: 50px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+    margin-bottom: 25px;
+}
+
+
+#createYearly-createYearlybutton {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: white;
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #224cbf;
+    border-color: #c4c7cc;
+}
+
+
+
+
+#createYearly-label{
+    text-align: left;
+}
+
+#createYearly-Textbox{
+    border-style: double;
+    border-radius: 5px;
+    width: 1050px;
+    height: 100px;
+    font-size: 15px;
+    border-color: #c4c7cc;
+    margin-bottom: 25px;
+}

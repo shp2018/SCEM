@@ -40,6 +40,8 @@ import SiteAndTrackingLink from "./routes/siteAndTrackingLink";
 import CreateSiteAndTrackingLink from "./routes/createSiteAndTrackingLink";
 import Report from "./routes/report";
 import ViewEquipmentMap from './routes/viewEquipmentMap';
+import YearlyReleaseCreate from './routes/yearlyReleaseCreate';
+import YearlyRelease from './routes/yearlyRelease';
 
 const App = () => {
     return (
@@ -91,6 +93,8 @@ const App = () => {
                 <Route path={"/siteAndTrackingLink"} element={<SiteAndTrackingLink/>}/>
                 <Route path={"/siteAndTrackingLink/create"} element={<CreateSiteAndTrackingLink/>}/>
                 <Route path={"/report"} element={<Report/>}/>
+                <Route path={"/yearlyRelease"} element = {<YearlyRelease/>}/>
+                <Route path={"/yearlyRelease/create"} element = {<YearlyReleaseCreate/>}/>
             </Routes>
         </Router>
     );
