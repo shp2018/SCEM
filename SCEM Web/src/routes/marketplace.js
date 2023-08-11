@@ -79,13 +79,6 @@ const Marketplace = () => {
             <div id="marketplace-marketplaceItems">
                 {marketplaceItems}
             </div>
-
-            <div id={"marketplace-addItem"}>
-                <a href={"/marketplace/addItem"}>
-                    <button> Add Item</button>
-                </a>
-            </div>
-
         </div>
 
     );

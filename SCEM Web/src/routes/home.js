@@ -32,7 +32,7 @@ function Home() {
         );
     } else if (authState === null) {
         return (
-            <div><p className={"loading"}>Loading... </p></div>
+            <div><p id={"homeWithLogin-loading"}>Loading... </p></div>
         );
     }
 

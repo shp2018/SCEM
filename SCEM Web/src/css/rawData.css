@@ -1,0 +1,144 @@
+#rawData-page {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+}
+
+#rawData-header {
+    position: relative;
+    background-color: #133da5;
+    margin: 1em 3% 0 3%;
+    padding: 2em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+#rawData-backButtonDiv {
+    position: absolute;
+    display: block;
+    filter: invert(100%);
+    text-align: left;
+    top: 60px;
+}
+
+#rawData-titleText {
+    color: white;
+    font-size: 22px;
+}
+
+#rawData-form {
+    position: relative;
+    background-color: #f1f1f1;
+    margin: 0 3% 0 3%;
+    padding: 4em 4em 6em 4em;
+}
+
+#rawData-searchButton {
+    position: relative;
+    display: block;
+    font-size: 17px;
+    color: white;
+    width: 330px;
+    height: 50px;
+    border-radius: 0.7em;
+    background-color: #224cbf;
+    border-color: transparent;
+    font-weight: bold;
+    top: 4em;
+    margin: 5em auto 0 auto;
+}
+
+.rawData-formLabel {
+    color: gray;
+    font-weight: bold;
+}
+
+#rawData-inputDivs {
+    position: relative;
+}
+
+#rawData-inputDivType {
+    position: absolute;
+    bottom: -2em;
+    left: 0;
+}
+
+#rawData-inputDivSite {
+    position: absolute;
+    bottom: -2em;
+    right: 0;
+}
+
+#rawData-inputDivService {
+    position: absolute;
+    top: 3em;
+    left: 0;
+}
+
+#rawData-inputDivID {
+    position: absolute;
+    top: 3em;
+    right: 0;
+}
+
+.rawData-input {
+    width: 800px;
+    height: 50px;
+    border-radius: 5px;
+    border: black;
+    color: #133da5;
+    font-size: 14px;
+    padding-left: 1em;
+}
+
+#rawData-inputID {
+    width: 783px;
+    height: 50px;
+    border-radius: 5px;
+    border: black;
+    color: #133da5;
+    font-size: 14px;
+    padding-left: 1em;
+}
+
+#rawData-table {
+    margin: 2em auto 0 auto;
+    border-collapse: collapse;
+    width: 1800px;
+}
+
+.rawData-tableElement {
+    text-align: center;
+    border: 1px solid #cccccc;
+    height: 3em;
+}
+
+.rawData-tableHeading {
+    border: 1px solid #cccccc;
+    height: 2em;
+}
+
+#rawData-pageNavigation {
+    margin-top: 2em;
+}
+
+#rawData-prev {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#rawData-next {
+    border: none;
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#rawData-loading {
+    text-align: center;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+}

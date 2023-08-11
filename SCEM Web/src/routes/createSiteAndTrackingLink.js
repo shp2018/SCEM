@@ -76,7 +76,7 @@ const CreateSiteAndTrackingLink = () => {
                 </div>
                 <h3 id={"createSiteAndTrackingLink-titleText"}>Create Site and Tracking link</h3>
             </div>
-            <form id={"createSiteAndTrackingLink-form"} onSubmit={handleCreateAndSendDocument}>
+            <form onSubmit={handleCreateAndSendDocument}>
                 <div className={"createSiteAndTrackingLink-formDivs"}>
                     <label className={"createSiteAndTrackingLink-labels"}>Equipment type</label>
                     <br></br>

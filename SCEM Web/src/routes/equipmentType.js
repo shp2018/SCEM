@@ -23,8 +23,7 @@ const EquipmentType = () => {
 
         // update database doc
         await updateDoc(doc(firestore, "equipmentTypes", id), {
-            name: name,
-            description: description,
+            name, description
         });
 
         const mutatedEditing = editing.map((element, index) => {
