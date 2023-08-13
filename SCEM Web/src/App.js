@@ -51,6 +51,8 @@ import CreateTracker from "./routes/createTracker";
 import RawData from "./routes/rawData";
 import ModelManagement from './routes/modelManagement';
 import CreateModel from './routes/createModel';
+import YearlyReleaseCreate from './routes/yearlyReleaseCreate';
+import YearlyRelease from './routes/yearlyRelease';
 
 const App = () => {
     return (
@@ -113,6 +115,8 @@ const App = () => {
                 <Route path={"rawData"} element={<RawData/>}/>
                 <Route path={"/modelManagement"} element={<ModelManagement/>}/>
                 <Route path={"/modelManagement/create"} element={<CreateModel/>}/>
+                <Route path={"/yearlyRelease"} element = {<YearlyRelease/>}/>
+                <Route path={"/yearlyRelease/create"} element = {<YearlyReleaseCreate/>}/>
             </Routes>
         </Router>
     );

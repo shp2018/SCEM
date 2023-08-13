@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDocs, query, collection, doc, deleteDoc, updateDoc, setDoc } from "firebase/firestore";
+import { getDocs, query, collection, doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { firestore } from "../firebase";
 import "../css/toolAlerts.css";
 
@@ -155,7 +155,7 @@ function ToolAlerts() {
                         ...updatedData,
                         [toolAlerts.id]: {
                           ...updatedData[toolAlerts.id],
-                          active: updatedValue === 'on' ? true : false,
+                          active: updatedValue === 'on',
                         },
                       });
                     }}
