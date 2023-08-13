@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../css/changeProfile.css';
 import {auth, firestore, storage} from "../firebase";
 import {onAuthStateChanged} from "firebase/auth";
@@ -40,18 +40,19 @@ const ChangeProfile = () => {
         await updateDoc(doc(firestore, "users", userID), {
             fullname, email, gender, birthday, address
         }).then(() => {
-            const storageRef = ref(storage, `/userProfilePictures/${userID}`);
-            uploadBytes(storageRef, profilePicture).then(() => {
-                getDownloadURL(storageRef).then(url => {
-                    updateDoc(doc(firestore, "users", userID), {
-                        profilePicture: url
-                    }).then(() => {
-                        alert("Update success!");
+            if (uploadedImage !== "") {
+                const storageRef = ref(storage, `/userProfilePictures/${userID}`);
+                uploadBytes(storageRef, profilePicture).then(() => {
+                    getDownloadURL(storageRef).then(url => {
+                        updateDoc(doc(firestore, "users", userID), {
+                            profilePicture: url
+                        });
                     });
+                }).catch(err => {
+                    console.error(err);
                 });
-            }).catch(err => {
-                console.error(err);
-            });
+            }
+            alert("Update success!");
         });
     }
 

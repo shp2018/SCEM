@@ -1,9 +1,9 @@
-#trackerManagement-page {
+#yearlyRelease-page {
     text-align: center;
     font-family: Roboto, sans-serif;
 }
 
-#trackerManagement-header {
+#yearlyRelease-header {
     position: relative;
     background-color: #133da5;
     margin: 1em 3% 0 3%;
@@ -12,7 +12,7 @@
     border-top-right-radius: 1em;
 }
 
-#trackerManagement-backButtonDiv {
+#yearlyRelease-backButtonDiv {
     position: absolute;
     display: block;
     filter: invert(100%);
@@ -20,19 +20,19 @@
     top: 60px;
 }
 
-#trackerManagement-titleText {
+#yearlyRelease-titleText {
     color: white;
     font-size: 22px;
 }
 
-#trackerManagement-form {
+#yearlyRelease-form {
     position: relative;
     background-color: #f1f1f1;
     margin: 0 3% 0 3%;
     padding: 4em 4em 6em 4em;
 }
 
-#trackerManagement-searchButton {
+#yearlyRelease-searchButton {
     position: relative;
     display: block;
     font-size: 17px;
@@ -44,43 +44,31 @@
     border-color: transparent;
     font-weight: bold;
     top: 4em;
-    margin: 5em auto 0 auto;
+    margin: 1em auto 0 auto;
 }
 
-.trackerManagement-formLabel {
+.yearlyRelease-label {
     font-weight: bold;
 }
 
-#trackerManagement-inputDivs {
+#yearlyRelease-inputDivs {
     position: relative;
 }
 
-#trackerManagement-inputDivType {
+#yearlyRelease-inputDivName {
     position: absolute;
     bottom: -2em;
-    left: 0;
+    left: 4em;
 }
 
-#trackerManagement-inputDivSite {
+#yearlyRelease-inputDivModel {
     position: absolute;
     bottom: -2em;
-    right: 0;
+    right: 4em;
 }
 
-#trackerManagement-inputDivService {
-    position: absolute;
-    top: 3em;
-    left: 0;
-}
-
-#trackerManagement-inputDivID {
-    position: absolute;
-    top: 3em;
-    right: 0;
-}
-
-.trackerManagement-input {
-    width: 800px;
+#yearlyRelease-inputName {
+    width: 700px;
     height: 50px;
     border-radius: 5px;
     border: black;
@@ -89,8 +77,8 @@
     padding-left: 1em;
 }
 
-#trackerManagement-inputID {
-    width: 783px;
+#yearlyRelease-inputModel {
+    width: 683px;
     height: 50px;
     border-radius: 5px;
     border: black;
@@ -99,82 +87,34 @@
     padding-left: 1em;
 }
 
-#trackerManagement-createButtonDiv {
-    position: relative;
-    width: 200px;
-    height: 50px;
-    margin-top: 1em;
-    margin-left: 3%;
-}
-
-#trackerManagement-createButton {
-    position: absolute;
-    background-color: #224cbf;
-    display: block;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    font-size: 17px;
-    width: 200px;
-    height: 50px;
-    border-radius: 0.7em;
-    border-color: transparent;
-}
-
-#trackerManagement-plusIcon {
-    position: absolute;
-    display: block;
-    height: 30px;
-    width: 30px;
-    top: 20%;
-    right: 5%;
-}
-
-#trackerManagement-table {
+#yearlyRelease-table {
     margin: 2em auto 0 auto;
     border-collapse: collapse;
     width: 1800px;
 }
 
-.trackerManagement-tableElement {
+.yearlyRelease-tableHeading {
+    border: 1px solid #cccccc;
+    height: 2em;
+}
+
+.yearlyRelease-tableElement {
     text-align: center;
     border: 1px solid #cccccc;
     height: 2em;
 }
 
-.trackerManagement-tableHeading {
-    border: 1px solid #cccccc;
-    height: 2em;
-}
-
-.trackerManagement-tableButtons {
-    position: relative;
-    left: 38%;
-}
-
-.trackerManagement-editButton {
-    float: left;
-    width: 40px;
-    height: 50px;
+.yearlyRelease-editButton {
     border: none;
     background-color: white;
     color: #133da5;
 }
 
-.trackerManagement-saveButton {
-    float: left;
-    width: 40px;
-    height: 50px;
-    border: none;
-    background-color: white;
-    color: #133da5;
-}
-
-#trackerManagement-pageNavigation {
+#yearlyRelease-pageNavigation {
     margin-top: 2em;
 }
 
-#trackerManagement-prev {
+#yearlyRelease-prev {
     border: none;
     background-color: white;
     font-family: Roboto, sans-serif;
@@ -182,7 +122,7 @@
     font-weight: bold;
 }
 
-#trackerManagement-next {
+#yearlyRelease-next {
     border: none;
     background-color: white;
     font-family: Roboto, sans-serif;
@@ -190,7 +130,7 @@
     font-weight: bold;
 }
 
-#trackerManagement-loading {
+#yearlyRelease-loading {
     text-align: center;
     font-size: 20px;
     font-family: Roboto, sans-serif;

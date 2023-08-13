@@ -1,128 +1,155 @@
-import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { firestore } from "../firebase";
-import { query, where } from "firebase/firestore";
-import '../css/locationGroup.css';
+import React, {useEffect, useState} from "react";
+import {collection, getDocs} from "firebase/firestore";
+import {firestore} from "../firebase";
+import {query, where} from "firebase/firestore";
+import '../css/yearlyRelease.css';
+import PageNumber from "../components/pageNumber";
+import {useNavigate} from "react-router-dom";
 
-function YearlyRelease() {
-   
-    const [name, setName] = useState([]);
-    const [model, setModel] = useState([]);
-    const [yearly, setYearly] = useState([]);
+const YearlyRelease = () => {
+    const [name, setName] = useState("");
+    const [model, setModel] = useState("");
     const [filteredYearly, setFilteredYearly] = useState([]);
-    const yearlyref = collection(firestore, "yearlyRelease");
+    const [allModels, setAllModels] = useState([]);
 
-    async function getYearlyData() {
-        const yearlyQuery = query(yearlyref, where("name", "!=", ""));
-        const querySnapshot = await getDocs(yearlyQuery);
-        var table = document.getElementById("myTable");
-        setYearly([]);
-        const newData = [];
-        querySnapshot.forEach((doc) => {
-            let data = doc.data();
-            newData.push(
-                <tr key={doc.id}>
-                    <td></td>
-                    <td>{data.model}</td>
-                    <td>{data.name}</td>
-                    <td>{data.year}</td>
-                    <td>{data.modelCode}</td>
-                </tr>
-            );
-            setYearly(newData);
-        });
+    const navigate = useNavigate();
+    const [loaded, setLoaded] = useState(false);
+
+    const [pageNumbers, setPageNumbers] = useState([]);
+    const [currentPageNumber, setCurrentPageNumber] = useState(0);
+    const MAX_RESULTS = 6;
+
+    const launchPageNumbers = () => {
+        let pageNumbers = Math.ceil(filteredYearly.length / MAX_RESULTS);
+        let res = [];
+        for (let i = 0; i < pageNumbers; i++) {
+            res.push(<PageNumber key={i} num={i + 1} handler={() => setCurrentPageNumber(i + 1)}/>);
+        }
+        setPageNumbers(res);
+        setCurrentPageNumber(1);
     }
-    async function filterData() {
-        let filteredyearlyQuery = yearlyref;
+
+    useEffect(launchPageNumbers, [filteredYearly]);
+
+    const decrementPageNumber = () => {
+        if (currentPageNumber > 1) setCurrentPageNumber(currentPageNumber - 1);
+    }
+
+    const incrementPageNumber = () => {
+        if (currentPageNumber < Math.ceil(filteredYearly.length / MAX_RESULTS)) {
+            setCurrentPageNumber(currentPageNumber + 1);
+        }
+    }
+
+    //TODO: REWORK
+    const filterData = async e => {
+        e.preventDefault();
+        const yearlyRef = collection(firestore, "yearlyRelease");
+        const filteredData = [];
+        let filteredYearlyQuery;
 
         if (name !== "") {
-            filteredyearlyQuery = query(filteredyearlyQuery, where("name", "==", name));
-        }
-        if (model !== "") {
-            filteredyearlyQuery = query(filteredyearlyQuery, where("model", "==", model));
+            filteredYearlyQuery = query(yearlyRef, where("name", "==", name));
+        } else {
+            if (model !== "") {
+                filteredYearlyQuery = query(yearlyRef, where("model", "==", model));
+            } else {
+                filteredYearlyQuery = query(yearlyRef);
+            }
         }
 
-        const fquerySnapshot = await getDocs(filteredyearlyQuery);
-        const filteredData = [];
-        fquerySnapshot.forEach((doc) => {
-            let data = doc.data();
-            filteredData.push(
-                <tr key={doc.id}>
-                    <td></td>
-                    <td>{data.model}</td>
-                    <td>{data.name}</td>
-                    <td>{data.year}</td>
-                    <td>{data.modelCode}</td>
-                </tr>
-            );
-            setFilteredYearly(filteredData);
+        const fQuerySnapshot = await getDocs(filteredYearlyQuery);
+        fQuerySnapshot.forEach((doc) => {
+            filteredData.push(doc);
         });
-        console.log(filteredData)
+        setFilteredYearly(filteredData);
+    }
+
+    const getAllModels = async () => {
+        const querySnapshot = await getDocs(collection(firestore, "model"));
+        let dataQueried = [];
+        querySnapshot.forEach(doc => {
+            dataQueried.push(doc);
+        });
+        setAllModels(dataQueried);
     }
 
     useEffect(() => {
-      
-        getYearlyData();
+        getAllModels().then(() => {
+            setLoaded(true);
+        });
     }, []);
 
     return (
-        <div id={"locationGroup-page"}>
-            <div id={"locationGroup-header"}>
-                <div id={"locationGroup-backButton"}>
-                    <a href={"/"}
-                        className={"arrow left"}>
-                    </a>
-                </div>
-                <div id={"locationGroup-locationGroupText"}>
-                    <h3> Yearly Release </h3>
-                    <a href="/yearlyRelease/create">
-                        +
-                    </a>
-                </div>
-            </div>
+        <>
+            {loaded ? <div id={"yearlyRelease-page"}>
+                    <div id={"yearlyRelease-header"}>
+                        <div id={"yearlyRelease-backButtonDiv"}>
+                            <a href={"/"} className={"arrow left"}></a>
+                        </div>
+                        <h3 id={"yearlyRelease-titleText"}>Yearly Release</h3>
+                    </div>
+                    <br></br>
+                    <form id={"yearlyRelease-form"} onSubmit={filterData}>
+                        <div id={"yearlyRelease-inputDivs"}>
+                            <div id={"yearlyRelease-inputDivName"}>
+                                <label className={"yearlyRelease-label"}>Name</label>
+                                <br></br>
+                                <input id={"yearlyRelease-inputName"} onChange={(e) => {
+                                    setName(e.target.value)
+                                }}/>
+                            </div>
+                            <div id={"yearlyRelease-inputDivModel"}>
+                                <label className={"yearlyRelease-label"}>Model</label>
+                                <br></br>
+                                <select id={"yearlyRelease-inputModel"} onChange={(e) => {
+                                    setModel(e.target.value)
+                                }}>
+                                    <option value="">Select a model...</option>
+                                    {allModels.map(doc =>
+                                        <option key={doc.id} value={doc.data().modName}>{doc.data().modName}</option>)}
+                                </select>
+                            </div>
+                        </div>
+                        <button id={"yearlyRelease-searchButton"} type={"submit"}>
+                            Search
+                        </button>
+                    </form>
 
-            <br></br>
-
-            <div id={"createLocationGroup-inputBoxes"}>
-                <label id="createLocationGroup-Label">Name</label>
-                <input id="createLocationGroup-Input" type="text" placeholder = "Name"onChange={(e) => {
-                    setName(e.target.value)
-                }}></input>
-                <label id="createLocationGroup-Label">Model</label>
-                <select id="createLocationGroup-Input"
-                    onChange={(e) => {
-                        setModel(e.target.value);
-                    }}
-                >
-                    <option value="">Select a Model</option>
-                    <option value="Model 1">Model 1</option>
-                    <option value="Model 2">Model 2</option>
-                    <option value="Model 3">Model 3</option>
-              
-                </select>
-                <button id="createYearly-createYearlybutton" type="button" onClick={filterData}>
-                        Search
-                    </button>
-             
-                <br></br>
-            </div>
-
-            <table id="locations">
-                <tr>
-                    <th>#</th>
-                    <th>Model</th>
-                    <th>Name</th>
-                    <th>Year</th>
-                    <th>Model Code</th>
-                </tr>
-                {filteredYearly.length > 0 ? filteredYearly : yearly}
-            </table>
-
-
-
-
-        </div>
-
+                    {filteredYearly.length > 0 ?
+                        <table id={"yearlyRelease-table"} className={"yearlyRelease-tableElement"}>
+                            <tbody>
+                            <tr>
+                                <th className={"yearlyRelease-tableHeading"}>#</th>
+                                <th className={"yearlyRelease-tableHeading"}>Model</th>
+                                <th className={"yearlyRelease-tableHeading"}>Name</th>
+                                <th className={"yearlyRelease-tableHeading"}>Year</th>
+                                <th className={"yearlyRelease-tableHeading"}>Model Code</th>
+                                <th className={"yearlyRelease-tableHeading"}></th>
+                            </tr>
+                            {filteredYearly.slice((currentPageNumber - 1) * MAX_RESULTS, currentPageNumber * MAX_RESULTS).map((doc, index) =>
+                                <tr key={doc.id}>
+                                    <td className={"yearlyRelease-tableElement"}>{index + 1}</td>
+                                    <td className={"yearlyRelease-tableElement"}>{doc.data().model}</td>
+                                    <td className={"yearlyRelease-tableElement"}>{doc.data().name}</td>
+                                    <td className={"yearlyRelease-tableElement"}>{doc.data().year}</td>
+                                    <td className={"yearlyRelease-tableElement"}>{doc.data().modelCode}</td>
+                                    <td className={"yearlyRelease-tableElement"}>
+                                        <button onClick={() => navigate('/yearlyRelease/create', {state: {data: doc.data(), id: doc.id}})}
+                                                className={"yearlyRelease-editButton"}>Edit
+                                        </button>
+                                    </td>
+                                </tr>)}
+                            </tbody>
+                        </table> : null}
+                    {filteredYearly.length > 0 ? <div id={"yearlyRelease-pageNavigation"}>
+                        <button onClick={decrementPageNumber} id={"yearlyRelease-prev"}>Prev</button>
+                        {pageNumbers}
+                        <button onClick={incrementPageNumber} id={"yearlyRelease-next"}>Next</button>
+                    </div> : null}
+                </div> :
+                <p id={"yearlyRelease-loading"}>Loading...</p>}
+        </>
     );
 }
 

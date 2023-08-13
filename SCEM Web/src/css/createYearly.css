@@ -1,39 +1,81 @@
-
-#createYearly-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 #createYearly-page {
-    text-align: left;
-    flex-direction: column;
-}
-#createYearly-createYearlyText{
+    font-family: Roboto, sans-serif;
     text-align: center;
 }
+
 #createYearly-header {
-    background-color: #224cbf;
-    padding: 25px 30%;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    margin-top: 25px;
+    position: relative;
+    background-color: #133da5;
+    margin: 1em 3% 0 3%;
+    padding: 2em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
 }
 
-#createYearly-createYearlyText {
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+#createYearly-backButtonDiv {
+    position: absolute;
+    display: block;
+    filter: invert(100%);
+    text-align: left;
+    top: 55px;
 }
+
+#createYearly-createYearlyText{
+    font-size: 22px;
+    color: white;
+}
+
+#createYearly-form {
+    margin-top: 2em;
+}
+
 #createYearly-select{
-    border-style: double;
     border-radius: 5px;
     width: 1050px;
-    height: 50px;
+    height: 60px;
+    color: #133da5;
+    padding-left: 1em;
     font-size: 15px;
-    border-color: #c4c7cc;
-    margin-bottom: 25px;
 }
 
+#createYearly-textInputs {
+    position: relative;
+    margin: 3em 3% 3em 3%;
+}
+
+#createYearly-nameDiv {
+    display: inline-block;
+    margin: 0 2em;
+}
+
+#createYearly-yearDiv {
+    display: inline-block;
+    margin: 0 2em;
+}
+
+#createYearly-modelCodeDiv {
+    display: inline-block;
+    margin: 0 2em;
+}
+
+#createYearly-suffixDiv {
+    display: inline-block;
+    margin: 0 2em;
+}
+
+#createYearly-capacityDiv {
+    display: inline-block;
+    margin: 0 2em;
+}
+
+#createYearly-engineDiv {
+    display: inline-block;
+    margin: 0 2em;
+}
+
+#createYearly-availableColorsDiv {
+    margin-bottom: 3em;
+}
 
 #createYearly-Label {
     text-align: left;
@@ -50,27 +92,20 @@
     margin-bottom: 25px;
 }
 
-
 #createYearly-createYearlybutton {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     color: white;
     width: 300px;
-    height: 40px;
-    margin-top: 20px;
-    border-radius: 10px;
+    height: 50px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-radius: 0.7em;
     background-color: #224cbf;
     border-color: #c4c7cc;
+    font-weight: bold;
 }
 
-
-
-
-#createYearly-label{
-    text-align: left;
-}
-
-#createYearly-Textbox{
+.createYearly-textBox{
     border-style: double;
     border-radius: 5px;
     width: 1050px;
@@ -78,4 +113,22 @@
     font-size: 15px;
     border-color: #c4c7cc;
     margin-bottom: 25px;
+    padding-left: 1em;
+}
+
+#createYearly-imageInput {
+    margin-top: 1em;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#createYearly-profilePicture {
+    margin-top: 1em;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #9d9d9d;
 }

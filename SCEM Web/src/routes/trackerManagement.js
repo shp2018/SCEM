@@ -137,7 +137,6 @@ const TrackerManagement = () => {
             dataQueried.push(doc);
         });
         setAllSites(dataQueried);
-        setSite(dataQueried[0].data().name);
     }
 
     const getAllServices = async () => {
@@ -147,7 +146,6 @@ const TrackerManagement = () => {
             dataQueried.push(doc);
         });
         setAllServices(dataQueried);
-        setService(dataQueried[0].data().name);
     }
 
     useEffect(() => {
