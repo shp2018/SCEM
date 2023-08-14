@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {collection, getDocs} from "firebase/firestore";
+import {collection, getDocs, query, where} from "firebase/firestore";
 import {firestore} from "../firebase";
-import {query, where} from "firebase/firestore";
 import '../css/yearlyRelease.css';
 import PageNumber from "../components/pageNumber";
 import {useNavigate} from "react-router-dom";
@@ -115,6 +114,12 @@ const YearlyRelease = () => {
                             Search
                         </button>
                     </form>
+                    <div id={"yearlyRelease-createButtonDiv"}>
+                        <button id={"yearlyRelease-createButton"}
+                                onClick={() => window.location.href = "/yearlyRelease/create"}>Create New
+                            <img src={"/locationAdd.png"} id={"yearlyRelease-plusIcon"} alt={"Plus icon"}/>
+                        </button>
+                    </div>
 
                     {filteredYearly.length > 0 ?
                         <table id={"yearlyRelease-table"} className={"yearlyRelease-tableElement"}>
@@ -135,7 +140,12 @@ const YearlyRelease = () => {
                                     <td className={"yearlyRelease-tableElement"}>{doc.data().year}</td>
                                     <td className={"yearlyRelease-tableElement"}>{doc.data().modelCode}</td>
                                     <td className={"yearlyRelease-tableElement"}>
-                                        <button onClick={() => navigate('/yearlyRelease/create', {state: {data: doc.data(), id: doc.id}})}
+                                        <button onClick={() => navigate('/yearlyRelease/create', {
+                                            state: {
+                                                data: doc.data(),
+                                                id: doc.id
+                                            }
+                                        })}
                                                 className={"yearlyRelease-editButton"}>Edit
                                         </button>
                                     </td>
