@@ -51,10 +51,10 @@ const CreateToolMaintenance = () => {
       alert("Existing tool maintenance data has been updated.");
     } else {
       await setDoc(toolAlertsDoc, data);
-      alert("New tool alerts maintenance has been created.");
+      alert("New tool maintenance data has been created.");
     }
 
-    window.location.replace("/toolMaintenance");
+    window.location.replace("/tool/maintenance");
   };
 
   
@@ -63,7 +63,7 @@ const CreateToolMaintenance = () => {
     <div id={"createToolMaintenance-page"}>
       <div id={"createToolMaintenance-header"}>
         <div id={"createToolMaintenance-backButton"}>
-          <a href={"/toolMaintenance"} className={"arrow left"}></a>
+          <a href={"/tool/maintenance"} className={"arrow left"}></a>
         </div>
         <div id={"createToolMaintenance-createToolMaintenanceText"}>
           <h3>Create maintenance schedule</h3>

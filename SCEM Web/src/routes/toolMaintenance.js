@@ -89,7 +89,7 @@ const ToolMaintenance = () => {
             <a href={'/'} className={'arrow left'}></a>
           </div>
           <h3 id={'toolMaintenance-titleText'}>Upcoming maintenance schedule</h3>
-          <a href={'/toolMaintenance/create'}>
+          <a href={'/tool/maintenance/create'}>
             <img src={'/locationAdd.png'} id={'toolMaintenance-addButton'} alt={'Add equipment type button'}></img>
           </a>
         </div>

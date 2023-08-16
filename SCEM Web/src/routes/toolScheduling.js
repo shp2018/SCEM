@@ -89,7 +89,7 @@ function ToolScheduling() {
             <a href={'/'} className={'arrow left'}></a>
           </div>
           <h3 id={'toolScheduling-titleText'}>Scheduling</h3>
-          <a href={'/toolScheduling/create'}>
+          <a href={'/tool/scheduling/create'}>
             <img src={'/locationAdd.png'} id={'toolScheduling-addButton'} alt={'Add equipment type button'}></img>
           </a>
         </div>

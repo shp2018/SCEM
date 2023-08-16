@@ -31,7 +31,7 @@ function CreateToolAlerts() {
   }, []);
 
   const handleButtonClick = (e) => {
-    e.preventDefault(); // Prevent form submission on button click
+    e.preventDefault(); 
     setIsButtonClicked(!isButtonClicked);
   };
 
@@ -123,7 +123,7 @@ function CreateToolAlerts() {
         <button
           id="createToolAlerts-createToolAlertsbutton"
           type="submit"
-          onClick={handleSave} // Call handleSave explicitly when Update button is clicked
+          onClick={handleSave} 
         >
           Update
         </button>
