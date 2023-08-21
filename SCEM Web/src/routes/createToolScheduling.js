@@ -53,7 +53,7 @@ function CreateToolScheduling() {
       alert("Existing tool scheduling data has been updated.");
     } else {
       await setDoc(toolSchedulingDoc, data);
-      alert("New tool scheduling has been created.");
+      alert("New tool scheduling data has been created.");
     }
 
     window.location.replace("/toolScheduling");
@@ -65,7 +65,7 @@ function CreateToolScheduling() {
     <div id={"createToolScheduling-page"}>
       <div id={"createToolScheduling-header"}>
         <div id={"createToolScheduling-backButton"}>
-          <a href={"/toolScheduling"} className={"arrow left"}></a>
+          <a href={"/tool/scheduling"} className={"arrow left"}></a>
         </div>
         <div id={"createToolScheduling-createToolSchedulingText"}>
           <h3>Create schedule</h3>
