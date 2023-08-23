@@ -37,7 +37,7 @@
     display: block;
     font-size: 17px;
     color: white;
-    width: 330px;
+    width: 25%;
     height: 50px;
     border-radius: 0.7em;
     background-color: #224cbf;
@@ -52,23 +52,20 @@
 }
 
 #yearlyRelease-inputDivs {
-    position: relative;
+    display: flex;
+    margin: -1em 0 -2em 0;
 }
 
 #yearlyRelease-inputDivName {
-    position: absolute;
-    bottom: -2em;
-    left: 4em;
+    width: 100%;
 }
 
 #yearlyRelease-inputDivModel {
-    position: absolute;
-    bottom: -2em;
-    right: 4em;
+    width: 100%;
 }
 
 #yearlyRelease-inputName {
-    width: 700px;
+    width: 80%;
     height: 50px;
     border-radius: 5px;
     border: black;
@@ -78,7 +75,7 @@
 }
 
 #yearlyRelease-inputModel {
-    width: 683px;
+    width: 80%;
     height: 50px;
     border-radius: 5px;
     border: black;
@@ -121,7 +118,7 @@
 #yearlyRelease-table {
     margin: 2em auto 0 auto;
     border-collapse: collapse;
-    width: 1800px;
+    width: 94%;
 }
 
 .yearlyRelease-tableHeading {
@@ -132,7 +129,7 @@
 .yearlyRelease-tableElement {
     text-align: center;
     border: 1px solid #cccccc;
-    height: 2em;
+    height: 3em;
 }
 
 .yearlyRelease-editButton {
@@ -142,7 +139,7 @@
 }
 
 #yearlyRelease-pageNavigation {
-    margin-top: 2em;
+    margin: 2em 0;
 }
 
 #yearlyRelease-prev {

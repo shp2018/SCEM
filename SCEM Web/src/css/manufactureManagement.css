@@ -40,14 +40,13 @@
 }
 
 #manufactureManagement-searchInput {
-    position: absolute;
     font-size: 17px;
     display: block;
-    width: 1670px;
+    width: 99.3%;
     height: 50px;
     border-radius: 5px;
     border: black;
-    padding: 0 0 0 10px;
+    margin-bottom: -3em;
 }
 
 #manufactureManagement-searchButton {
@@ -55,7 +54,7 @@
     display: block;
     font-size: 17px;
     color: white;
-    width: 330px;
+    width: 25%;
     height: 50px;
     border-radius: 0.7em;
     background-color: #224cbf;
@@ -99,7 +98,7 @@
 #manufactureManagement-table {
     margin: 2em auto 0 auto;
     border-collapse: collapse;
-    width: 1800px;
+    width: 94%;
 }
 
 .manufactureManagement-tableElement {
@@ -114,7 +113,7 @@
 }
 
 #manufactureManagement-pageNavigation {
-    margin-top: 2em;
+    margin: 2em 0;
 }
 
 .manufactureManagement-tableButtons {

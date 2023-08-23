@@ -32,11 +32,36 @@
     padding: 4em 4em 6em 4em;
 }
 
-#modelManagement-formName {
-    position: absolute;
-    left: 60px;
-    top: 3em;
-    font-weight: bold;
+#modelManagement-inputDivs {
+    display: flex;
+}
+
+#modelManagement-inputDivModel {
+    width: 100%;
+}
+
+#modelManagement-inputDivManufacture {
+    width: 100%;
+}
+
+#modelManagement-modelInput {
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    border: black;
+    color: #133da5;
+    font-size: 14px;
+    padding-left: 1em;
+}
+
+#modelManagement-manufactureSelect {
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    border: black;
+    color: #133da5;
+    font-size: 14px;
+    padding-left: 1em;
 }
 
 #modelManagement-searchButton {
@@ -44,7 +69,7 @@
     display: block;
     font-size: 17px;
     color: white;
-    width: 330px;
+    width: 25%;
     height: 50px;
     border-radius: 0.7em;
     background-color: #224cbf;
@@ -88,7 +113,7 @@
 #modelManagement-table {
     margin: 2em auto 0 auto;
     border-collapse: collapse;
-    width: 1800px;
+    width: 94%;
 }
 
 .modelManagement-tableElement {
@@ -103,7 +128,7 @@
 }
 
 #modelManagement-pageNavigation {
-    margin-top: 2em;
+    margin: 2em 0;
 }
 
 .modelManagement-tableButtons {
@@ -166,44 +191,6 @@
     height: 100%;
 }
 
-.search-input-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
 .modelManagement-label {
     font-weight: bold;
-}
-
-#modelManagement-inputDivModel {
-    position: absolute;
-    top: 2em;
-    left: 7em;
-}
-
-#modelManagement-inputDivManufacture {
-    position: absolute;
-    top: 2em;
-    right: 7em;
-}
-
-#modelManagement-manufactureSelect {
-    width: 700px;
-    height: 50px;
-    border-radius: 5px;
-    border: black;
-    color: #133da5;
-    font-size: 14px;
-    padding-left: 1em;
-}
-
-#modelManagement-searchInput {
-    width: 683px;
-    height: 50px;
-    border-radius: 5px;
-    border: black;
-    color: #133da5;
-    font-size: 14px;
-    padding-left: 1em;
 }

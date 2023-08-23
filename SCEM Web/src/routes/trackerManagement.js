@@ -218,7 +218,7 @@ const TrackerManagement = () => {
                     <h3 id={"trackerManagement-titleText"}>Tracker Management</h3>
                 </div>
                 <form id={"trackerManagement-form"} onSubmit={handleSearch}>
-                    <div id={"trackerManagement-inputDivs"}>
+                    <div id={"trackerManagement-inputDivsUpper"}>
                         <div id={"trackerManagement-inputDivType"}>
                             <label className={"trackerManagement-formLabel"}>Type</label>
                             <br></br>
@@ -237,6 +237,8 @@ const TrackerManagement = () => {
                                                              value={doc.data().siteName}>{doc.data().siteName}</option>)}
                             </select>
                         </div>
+                    </div>
+                    <div id={"trackerManagement-inputDivsLower"}>
                         <div id={"trackerManagement-inputDivService"}>
                             <label className={"trackerManagement-formLabel"}>Service</label>
                             <br></br>
@@ -249,7 +251,7 @@ const TrackerManagement = () => {
                         <div id={"trackerManagement-inputDivID"}>
                             <label className={"trackerManagement-formLabel"}>ID</label>
                             <br></br>
-                            <input id={"trackerManagement-inputID"} onChange={e => setID(e.target.value)}/>
+                            <input className={"trackerManagement-input"} onChange={e => setID(e.target.value)}/>
                         </div>
                     </div>
                     <button id={"trackerManagement-searchButton"} type={"submit"}>Search</button>

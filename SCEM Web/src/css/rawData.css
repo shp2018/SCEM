@@ -37,7 +37,7 @@
     display: block;
     font-size: 17px;
     color: white;
-    width: 330px;
+    width: 25%;
     height: 50px;
     border-radius: 0.7em;
     background-color: #224cbf;
@@ -52,46 +52,34 @@
     font-weight: bold;
 }
 
-#rawData-inputDivs {
-    position: relative;
+#rawData-inputDivsUpper {
+    display: flex;
+    margin: -1em 0 2em 0;
 }
 
 #rawData-inputDivType {
-    position: absolute;
-    bottom: -2em;
-    left: 0;
+    width: 100%;
 }
 
 #rawData-inputDivSite {
-    position: absolute;
-    bottom: -2em;
-    right: 0;
+    width: 100%;
+}
+
+#rawData-inputDivsLower {
+    display: flex;
+    margin-bottom: -6em;
 }
 
 #rawData-inputDivService {
-    position: absolute;
-    top: 3em;
-    left: 0;
+    width: 100%;
 }
 
 #rawData-inputDivID {
-    position: absolute;
-    top: 3em;
-    right: 0;
+    width: 100%;
 }
 
 .rawData-input {
-    width: 800px;
-    height: 50px;
-    border-radius: 5px;
-    border: black;
-    color: #133da5;
-    font-size: 14px;
-    padding-left: 1em;
-}
-
-#rawData-inputID {
-    width: 783px;
+    width: 80%;
     height: 50px;
     border-radius: 5px;
     border: black;
@@ -103,7 +91,7 @@
 #rawData-table {
     margin: 2em auto 0 auto;
     border-collapse: collapse;
-    width: 1800px;
+    width: 94%;
 }
 
 .rawData-tableElement {
@@ -118,7 +106,7 @@
 }
 
 #rawData-pageNavigation {
-    margin-top: 2em;
+    margin: 2em 0;
 }
 
 #rawData-prev {
