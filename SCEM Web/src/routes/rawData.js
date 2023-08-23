@@ -165,7 +165,7 @@ const RawData = () => {
                         <h3 id={"rawData-titleText"}>Raw Data</h3>
                     </div>
                     <form id={"rawData-form"} onSubmit={handleSearch}>
-                        <div id={"rawData-inputDivs"}>
+                        <div id={"rawData-inputDivsUpper"}>
                             <div id={"rawData-inputDivType"}>
                                 <label className={"rawData-formLabel"}>Type</label>
                                 <br></br>
@@ -184,6 +184,8 @@ const RawData = () => {
                                                                  value={doc.data().siteName}>{doc.data().siteName}</option>)}
                                 </select>
                             </div>
+                        </div>
+                        <div id={"rawData-inputDivsLower"}>
                             <div id={"rawData-inputDivService"}>
                                 <label className={"rawData-formLabel"}>Service</label>
                                 <br></br>
@@ -196,7 +198,7 @@ const RawData = () => {
                             <div id={"rawData-inputDivID"}>
                                 <label className={"rawData-formLabel"}>ID</label>
                                 <br></br>
-                                <input id={"rawData-inputID"} onChange={e => setID(e.target.value)}/>
+                                <input className={"rawData-input"} onChange={e => setID(e.target.value)}/>
                             </div>
                         </div>
                         <button id={"rawData-searchButton"} type={"submit"}>Search</button>

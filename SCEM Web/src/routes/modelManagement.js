@@ -114,26 +114,28 @@ const ModelManagement = () => {
                 <h3 id={'modelManagement-titleText'}>Model Management</h3>
             </div>
             <form id={"modelManagement-form"} onSubmit={handleSearch}>
-                <div id={"modelManagement-inputDivModel"}>
-                    <label htmlFor={"modelManagement-searchInput"} className={"modelManagement-label"}>Model</label>
-                    <br></br>
-                    <input
-                        id={"modelManagement-searchInput"}
-                        onChange={(e) => setModel(e.target.value)}/>
-                </div>
-                <div id={"modelManagement-inputDivManufacture"}>
-                    <label htmlFor={"modelManagement-manufactureSelect"}
-                           className={"modelManagement-label"}>Manufacture</label>
-                    <br></br>
-                    <select
-                        id={"modelManagement-manufactureSelect"}
-                        value={manufacture}
-                        onChange={(e) => setManufacture(e.target.value)}>
-                        <option value="">All Manufactures</option>
-                        {manufactureNames.map(name => (
-                            <option key={name} value={name}>{name}</option>
-                        ))}
-                    </select>
+                <div id={"modelManagement-inputDivs"}>
+                    <div id={"modelManagement-inputDivModel"}>
+                        <label htmlFor={"modelManagement-modelInput"} className={"modelManagement-label"}>Model</label>
+                        <br></br>
+                        <input
+                            id={"modelManagement-modelInput"}
+                            onChange={(e) => setModel(e.target.value)}/>
+                    </div>
+                    <div id={"modelManagement-inputDivManufacture"}>
+                        <label htmlFor={"modelManagement-manufactureSelect"}
+                               className={"modelManagement-label"}>Manufacture</label>
+                        <br></br>
+                        <select
+                            id={"modelManagement-manufactureSelect"}
+                            value={manufacture}
+                            onChange={(e) => setManufacture(e.target.value)}>
+                            <option value="">All Manufactures</option>
+                            {manufactureNames.map(name => (
+                                <option key={name} value={name}>{name}</option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
                 <button id={"modelManagement-searchButton"} type={"submit"}>
                     Search

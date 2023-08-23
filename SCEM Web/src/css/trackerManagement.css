@@ -37,7 +37,7 @@
     display: block;
     font-size: 17px;
     color: white;
-    width: 330px;
+    width: 25%;
     height: 50px;
     border-radius: 0.7em;
     background-color: #224cbf;
@@ -51,46 +51,35 @@
     font-weight: bold;
 }
 
-#trackerManagement-inputDivs {
-    position: relative;
+#trackerManagement-inputDivsUpper {
+    display: flex;
+    margin-top: -1em;
+    margin-bottom: 2em;
 }
 
 #trackerManagement-inputDivType {
-    position: absolute;
-    bottom: -2em;
-    left: 0;
+    width: 100%;
 }
 
 #trackerManagement-inputDivSite {
-    position: absolute;
-    bottom: -2em;
-    right: 0;
+    width: 100%;
+}
+
+#trackerManagement-inputDivsLower {
+    display: flex;
+    margin-bottom: -6em;
 }
 
 #trackerManagement-inputDivService {
-    position: absolute;
-    top: 3em;
-    left: 0;
+    width: 100%;
 }
 
 #trackerManagement-inputDivID {
-    position: absolute;
-    top: 3em;
-    right: 0;
+    width: 100%;
 }
 
 .trackerManagement-input {
-    width: 800px;
-    height: 50px;
-    border-radius: 5px;
-    border: black;
-    color: #133da5;
-    font-size: 14px;
-    padding-left: 1em;
-}
-
-#trackerManagement-inputID {
-    width: 783px;
+    width: 80%;
     height: 50px;
     border-radius: 5px;
     border: black;
@@ -133,7 +122,7 @@
 #trackerManagement-table {
     margin: 2em auto 0 auto;
     border-collapse: collapse;
-    width: 1800px;
+    width: 94%;
 }
 
 .trackerManagement-tableElement {
@@ -171,7 +160,7 @@
 }
 
 #trackerManagement-pageNavigation {
-    margin-top: 2em;
+    margin: 2em 0;
 }
 
 #trackerManagement-prev {
