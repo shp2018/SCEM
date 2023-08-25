@@ -15,6 +15,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// ONLY FOR DEBUG BUILD, REMOVE BELOW LINE WHEN BUILDING PRODUCTION/DEPLOYING!
+window.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
 initializeAppCheck(app, {
     provider: new ReCaptchaEnterpriseProvider("6LfpdMEnAAAAAE7RWLhdzHdcJu0ttrokIUD8i7Dr"),
     isTokenAutoRefreshEnabled: true
