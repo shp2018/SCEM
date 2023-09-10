@@ -1,7 +1,7 @@
 
 import { when } from 'jest-when'
-import { userExist } from '../components/userExist'
-import { getData } from '../components/getdata'
+import { userExist } from '../userExist'
+import { getData } from '../getdata'
 
 jest.mock('../components/getdata')
 

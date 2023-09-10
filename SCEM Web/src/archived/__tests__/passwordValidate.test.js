@@ -1,7 +1,7 @@
 
 import { when } from 'jest-when'
-import { getData } from '../components/getdata'
-import {passWordValidate} from '../components/passwordValidate'
+import { getData } from '../getdata'
+import {passWordValidate} from '../passwordValidate'
 
 jest.mock('../components/getdata')
 

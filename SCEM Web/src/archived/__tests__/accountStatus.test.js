@@ -1,7 +1,7 @@
 
 import { when } from 'jest-when'
-import { getData } from '../components/getdata'
-import {accountStatus} from '../components/accountStatus'
+import { getData } from '../getdata'
+import {accountStatus} from '../accountStatus'
 
 jest.mock('../components/getdata')
 
